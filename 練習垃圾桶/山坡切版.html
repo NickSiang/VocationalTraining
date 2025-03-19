@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            position: relative;
+            /* background-image: url(./練習圖片1/180-10-100-monochrome.png);
+            mix-blend-mode: lighten; */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 50%;
+            width: 200vw;
+            height: 100vh;
+            background-image: url(./練習圖片1/180-10-100-monochrome.png);
+            background-repeat: repeat;
+            mix-blend-mode: lighten;
+            z-index: 10;
+            transform: translateX(-50%);
+            animation: moveBackground 30s linear infinite;
+        }
+
+
+
+        .all {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav {
+            width: 100%;
+            height: 300px;
+            background-color: rgb(227, 224, 207);
+            background: linear-gradient(rgb(0, 0, 0), rgb(24, 21, 9));
+            position: fixed;
+            top: 0;
+        }
+
+        .header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.885);
+            display: flex;
+            mix-blend-mode: lighten;
+            position: sticky;
+            top: 0;
+        }
+
+        img {
+            width: 100%;
+            position: relative;
+            z-index: 10;
+
+        }
+
+
+        .block {
+            width: 100%;
+            height: 500px;
+            /* background: url(./練習圖片1/180-10-100-monochrome.png),
+                linear-gradient(rgb(92, 134, 148), rgb(11, 38, 105)); */
+            /* 最上層的漸層 */
+            background: linear-gradient(rgb(92, 134, 148), rgb(11, 38, 105));
+
+            position: relative;
+            z-index: 0;
+
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+        .big-box {
+            display: flex;
+            gap: 40px;
+
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            border: 1px solid white;
+            border-radius: 20px;
+            mix-blend-mode: normal;
+            background-color: white;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+
+        }
+
+        .block-1 {
+            width: 100%;
+            height: 1500px;
+            background: linear-gradient(rgb(219, 215, 191), rgb(5, 69, 101));
+        }
+
+        .ex1 {
+            display: flex;
+            background-color: rgb(11, 38, 105);
+        }
+
+
+        @keyframes moveBackground {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(-25%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+
+        <section></section>
+        <section>
+            <div></div>
+        </section>
+        <section></section>
+
+
+
+        <section class="scroll">
+            <div class="nav"></div>
+            <div class="header"><img src="./練習圖片1/Frame 1000004445 (1).png" alt=""></div>
+        </section>
+
+        <div class="block">
+            <div class="noise"></div>
+            <h1>服務項目</h1>
+
+            <div class="big-box">
+                <div class="box">
+                    <img src="../圖 素材/img/dinotaeng/logo.jpg" alt="">
+                </div>
+                <div class="box">
+                    <img src="../圖 素材/img/dinotaeng/logo.jpg" alt="">
+                </div>
+                <div class="box">
+                    <img src="../圖 素材/img/dinotaeng/logo.jpg" alt="">
+                </div>
+                <div class="box">
+                    <img src="../圖 素材/img/dinotaeng/logo.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="ex1"><img src="./練習圖片1/Frame 1000004446 (4).png" alt=""></div>
+
+        <div class="block-1"></div>
+    </div>
+</body>
+
+</html>

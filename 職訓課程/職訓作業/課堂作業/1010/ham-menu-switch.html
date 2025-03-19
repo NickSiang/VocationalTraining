@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-漢堡條按鈕</title>
+    <style>
+        * {
+
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 缺乏高度所以無法垂直置中 應設置100vh */
+        }
+
+        .ham-btn {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            display: block;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+
+
+        }
+
+        .ham-btn .line {
+            width: 80%;
+            height: 10%;
+            background-color: black;
+            border-radius: 20px;
+            /* position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+            
+
+        }
+
+        .ham-btn .line-1 {
+            top: 25%;
+
+        }
+
+        .ham-btn .line-2 {
+            top: 50%;
+
+        }
+
+        .ham-btn .line-3 {
+            top: 75%;
+
+        }
+
+
+        #ham-menu-switch:checked+.ham-btn .line-1 {
+            position: absolute;
+            top: 50%;
+            transform:  rotate(45deg);
+        }
+
+        #ham-menu-switch:checked+.ham-btn .line-2 {
+            display: none;
+        }
+        /* 記得:不要留空 */
+
+
+        #ham-menu-switch:checked+.ham-btn .line-3 {
+            position: absolute;
+            top: 50%;
+            transform: rotate(-45deg);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <input type="checkbox" id="ham-menu-switch" hidden>
+    <label for="ham-menu-switch" class="ham-btn">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+
+    </label>
+
+
+
+</body>
+
+</html>

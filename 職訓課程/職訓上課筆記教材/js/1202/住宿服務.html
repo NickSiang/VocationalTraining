@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            display: flex;
+            gap: 8px;
+
+        }
+
+        div {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .n1 {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .n2 {
+            display: flex;
+            gap: 0 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <label for="">
+            <span>姓名:</span>
+            <input type="text" id="list01">
+        </label>
+        <label for="">
+            <span>性別:</span>
+            <input type="text" id="list02">
+        </label>
+        <label for="">
+            <span>手機:</span>
+            <input type="text" id="list03">
+        </label>
+        <label for="">
+            <span>信箱:</span>
+            <input type="text" id="list04">
+        </label>
+
+        <select name="" id="list05">
+            <option value="" selected disabled>請選擇房號</option>
+        </select>
+
+        <button type="button">送出</button>
+
+    </section>
+
+    <section class="n1">
+
+        <div class="n2">
+            <div>房間編號</div>
+            <div>姓名</div>
+            <div>性別</div>
+            <div>手機</div>
+            <div>信箱</div>
+        </div>
+
+    </section>
+
+    <script>
+        let list05 = document.querySelector('#list05');
+        let room = [];
+
+
+        // 1.運用for迴圈在陣列裡生成物件
+        for (let i = 1; i <= 10; i++) {
+            list05.innerHTML += `<option value=${i + 120}>${i + 120}房</option>`
+            room.push({ id: i + 120, gender: '', phone: '', email: '' });
+            // console.log(room);
+        };
+
+        // 2.點擊按鈕做監聽事件
+        let btn = document.querySelector('button');
+
+        btn.addEventListener('click', function () {
+            let n1 = document.querySelector('.n1');
+            let list01 = document.querySelector('#list01');
+            let list02 = document.querySelector('#list02');
+            let list03 = document.querySelector('#list03');
+            let list04 = document.querySelector('#list04');
+            let list05 = document.querySelector('#list05');
+
+            // 3.將資料存進陣列
+
+            room.forEach((item) => {
+
+                if (item.id == list05.value) {
+                    item.name = list01.value;
+                    item.gender = list02.value;
+                    item.phone = list03.value;
+                    item.email = list04.value;
+                }
+            });
+            // 4.清空前一筆資料後再寫入
+            n1.innerHTML = '';
+            list()
+
+        });
+
+
+
+        function list() {
+            let n1 = document.querySelector('.n1');
+            n1.innerHTML = `
+            <div class='n2'>
+            <div>房間編號</div>
+            <div>姓名</div>
+            <div>性別</div>
+            <div>手機</div>
+            <div>信箱</div>
+            </div>
+            `
+            // 4.畫面顯示
+            room.forEach((item) => {
+                if (item.name || item.gender || item.phone || item.email) {
+                    n1.innerHTML += `
+                <div class='n2'>
+                <div>${item.id}</div>
+                <div>${item.name}</div>
+                <div>${item.gender}</div>
+                <div>${item.phone}</div>
+                <div>${item.email}</div>
+                </div>
+                `;
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

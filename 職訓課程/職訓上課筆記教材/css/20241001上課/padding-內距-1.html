@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box-a {
+      background-color: aqua;
+      /* 計算 */
+      width:calc(200PX - 10px * 2);
+      height: calc(100px - 10px * 2);
+      /* padding 會有面積變大效應 */
+      /* 四邊都留 10px*/
+      padding: 10px;
+      /* 四個參數 */
+      /* padding內距 */
+      padding-top: 20px;
+      padding-left: 50px;
+      padding-right: 10px;
+      padding-bottom: 30px;
+               /* 上   左右  下 */
+      padding: 10px 20px 50px;
+              /* 上   右   下  左 */
+      padding: 10px 20px 30px 40px;
+              /* 上下   左右 */
+      padding: 10px 50px;
+      
+      padding: 100px;
+    }
+
+    #box-b {
+      background-color: blue;
+      width: 50px;
+      height: 50px;
+      float: left;
+    }
+    #box-right {
+      background-color: red;
+      width: 50px;
+      height: 50px;
+      float: right;
+    }
+    #box-bottom {
+      background-color: yellow;
+      width: 50px;
+      height: 30px;
+      float: left;
+      clear: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box-a">
+    <div id="box-b"></div>
+    <div id="box-right"></div>
+    <div id="box-bottom"></div>
+  </div>
+
+  <!-- <div id="box-c"></div> -->
+</body>
+
+</html>

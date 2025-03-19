@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            /* background: #fff5d5; */
+        }
+
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: black;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            border: transparent;
+        }
+
+        button:hover {
+            background-color: rgb(79, 79, 79);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        #load {
+            font-size: 30px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 26px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 80px auto;
+            display: flex;
+            padding: 0 8%;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            width: calc((100% - 160px) / 3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(121, 121, 121, 0.223);
+            padding: 20px;
+        }
+
+        .imgblock {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0 40px 0;
+        }
+
+        .product img {
+            max-width: 100%;
+            max-height: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            gap: 60px;
+        }
+
+        .productname {
+            font-size: 24px;
+            font-weight: 600px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .content .details {
+            width: fit-content;
+            font-size: 16px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        @media (max-width:1200px) {
+            .product {
+                width: calc((100% - 80px) / 2);
+            }
+
+            .container {
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width:720px) {
+            .product {
+                width: calc((100% - 40px));
+            }
+
+            .container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width:420px) {
+            .container {
+                padding: 0;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button id="load">Load Products</button>
+
+    <hr>
+
+    <ul class="container">
+    </ul>
+
+    <script>
+
+        const loadBtn = document.querySelector('#load');
+        const erroeimg = 'https://memeprod.sgp1.digitaloceanspaces.com/user-resource/aaa5ea30708aef68af78543f707fe55c.png';
+        let data;
+
+        loadBtn.addEventListener('click', () => {
+            const container = document.querySelector('.container');
+            container.innerHTML = '';
+
+            fetch('https://fakestoreapi.com/products')
+                .then((res) => res.json())
+                .then((json) => {
+                    data = json
+                    loading();
+                })
+                .catch((error)=>{
+                    alert('抱歉，請稍後重新嘗試。')
+                })
+
+        })
+
+        function loading() {
+            console.log(data);
+            data.forEach((item, index) => {
+                let title = item.title;
+                let img = item.image;
+                const container = document.querySelector('.container')
+
+                let cardData = `
+                <li class="product">
+                    <div class="imgblock">
+                    <img src="${img}" alt="商品圖片${index + 1}" onerror="this.src='${erroeimg}' ">
+                    </div>
+                    <div class="content">
+                        <span class="productname">${title}</span>
+                        <button class="details">Details</button>
+                    </div>
+                </li>`;
+                // insertAdjacentHTML性能更佳，它不會重建整個 DOM 結構，只是插入新的內容。
+                container.insertAdjacentHTML('beforeend', cardData)
+            });
+
+            const deleteBtn = document.querySelectorAll('.details');
+            deleteBtn.forEach((btn, i) => {
+                btn.addEventListener('click', () => {
+                    const item = data[i]
+                    alert(`id = ${item.id}`);
+                    alert(`category = ${item.category}`);
+                    alert(`description = ${item.description}`);
+                })
+            })
+        }
+
+    </script>
+</body>
+
+</html>

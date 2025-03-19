@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <div id="all">
+
+        性別:
+        <label for="">
+            男 <input type="radio" name="gender" id="male" value="male" v-model="gender">
+        </label>
+        <label for="">
+            女 <input type="radio" name="gender" id="female" value="female" v-model="gender">
+        </label>
+
+        <br /><br />
+
+        年齡:
+        <select name="" id="" v-model="age">
+            <option value="" disabled>請選擇</option>
+            <option v-for="item in agemax">{{item}}</option>
+        </select>
+
+        <br /><br />
+        <button type="button" @click="calc">送出</button>
+        <br /><br />
+
+        <div>結果:{{result}}</div> 
+
+    </div>
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js">
+    </script>
+
+    <script>
+
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    age: '',
+                    gender: '',
+                    agemax: 100,
+                    result: '',
+
+                }
+            },
+            methods: {
+                calc() {
+
+                    if (this.gender == '' || this.age == '') {
+                        this.result = ''
+                        return;
+                    }
+
+                    if (this.gender == 'female') {
+                        this.result = '你不用當兵';
+                    }
+                    
+                    else {
+                        if (this.age >= 18 && this.age <= 30) {
+                            this.result = '你要當兵';
+                        }
+                        else {
+                            this.result = '你不用當兵';
+                        }
+
+                    }
+
+                }
+            },
+
+
+
+        }).mount('#all')
+
+
+
+    </script>
+
+</body>
+
+</html>

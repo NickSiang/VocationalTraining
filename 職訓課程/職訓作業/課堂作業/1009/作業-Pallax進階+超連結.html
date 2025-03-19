@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pallax進階+超連結</title>
+    <style>
+        body {
+            /* height: 3000px; */
+            background-color: blanchedalmond;
+            margin: 0;
+
+        }
+
+        .nav {
+            width: 80%;
+            height: 100px;
+            background-color: brown;
+            border-radius: 22px;
+            position: fixed;
+            left: 10%;
+            z-index: 9;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: bisque;
+            border-radius: 50%;
+            float: left;
+            margin: 10px;
+            background-image: url(./img/logo.gif);
+            background-position: center;
+            background-size: cover;
+            /* 直接到youtube */
+            cursor: pointer;
+            /* 移到上面有手指 */
+        }
+
+
+        .nav-btn-all {
+            width: 290px;
+            height: 50px;
+            /* background: white; */
+            border-radius: 10px;
+            margin: 25px;
+            float: right;
+        }
+
+
+
+        .nav-btn {
+            width: 86px;
+            height: 50px;
+            border-radius: 16px;
+            background-color: bisque;
+            float: left;
+            margin-left: 8px;
+            background-repeat: no-repeat;
+            background-position: center;
+
+
+
+
+        }
+
+        .nav-btn-1 {
+            background-color: rgb(241, 46, 16);
+            background-image: url(./img/house-chimney\ .png);
+
+            /* 此為回到上層頁面 */
+
+        }
+
+        .nav-btn-2 {
+            background-color: rgb(249, 241, 21);
+            background-image: url(./img/star\ .png);
+
+            /* 新分頁官網 */
+}
+
+        .nav-btn-3 {
+            background-color: rgb(11, 226, 54);
+            background-image: url(./img/instagram.png);
+
+            /* 直接到ig */
+
+        }
+
+        a:hover {
+            opacity: 0.7;
+            transform: scale(0.9);
+        }
+
+        .container {
+            width: 80%;
+            /* height: 3000px; */
+            /* background-color: pink; */
+            margin: auto;
+        }
+
+        .banner {
+            width: 100%;
+            height: 50vh;
+            background-color: yellow;
+            padding-top: 50vh;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .banner-1 {
+            background-image: url(./img/b1.jpg);
+
+
+        }
+
+        .banner-2 {
+            background-image: url(./img/b5.jpg);
+
+        }
+
+        .banner-3 {
+            background-image: url(./img/b4.jpg);
+        }
+
+
+        .mask {
+            width: 100%;
+            height: 50vh;
+            background-color: black;
+            opacity: 0.5;
+        }
+
+        .btn {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            opacity: 0.5;
+            background-image: url(./img/add.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 50%;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+        /* .go-top{
+            background-color: brown;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: fixed;
+            left: 50%;
+            right: 50%;
+        } */
+
+
+
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div class="nav">
+        <div class="logo.">
+            <a class="logo" href="https://www.youtube.com/watch?v=i44eawh9-3Y" target="_blank"
+                rel="noopener noreferrer"></a>
+        </div>
+        <div class="nav-btn-all">
+            <a href="" class="nav-btn nav-btn-1"></a>
+            <a href="https://en.dinotaeng.com/" class="nav-btn nav-btn-2" target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://www.instagram.com/dinotaeng/" class="nav-btn nav-btn-3"></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="banner banner-1">
+            <div class="mask">
+                <div class="btn"></div>
+            </div>
+
+        </div>
+        <div class="banner banner-2">
+            <div class="mask">
+                <div class="btn"></div>
+            </div>
+        </div>
+        <div class="banner banner-3">
+            <div class="mask">
+                <div class="btn"></div>
+            </div>
+        </div>
+        <div class="go-top">top</div>
+
+    </div>
+
+
+</body>
+
+</html>

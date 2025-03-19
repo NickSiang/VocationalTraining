@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 亂數 隨意出的數 random
+        // Math.ranndom();
+
+
+        let a = Math.random();
+        console.log(a);
+        // 介於0(包含0)~1(不含)的數
+
+        let b = Math.random() * 10;
+        console.log(b);
+
+        let c = Math.random() * 10 + 1;
+        console.log(c);
+
+        // Math.random() - 生成一個 0 到 1 之間的隨機小數（不包含1）
+        // Math.floor() - 向下取整,去掉小數部分
+
+        // 地板數
+        // 介於0(包含)~10(不含)整數
+        console.log(Math.floor(1.9));
+
+        // 介於1(包含)~10(不含)整數
+        a = Math.floor(Math.random() * 10) + 1
+        console.log(a);
+
+        // 介於1(包含)~6(包含)整數
+        a = Math.floor(Math.random() * 6) + 1
+        console.log(a);
+
+        // 介於3(包含)~6(包含)整數
+        a = Math.floor(Math.random() * 4) + 3
+        // 範圍長度 = 最大值 - 最小值 + 1
+        // 6-3+1
+        console.log(a);
+
+        // 介於2(包含)~7(包含)整數
+        a = Math.floor(Math.random() * 6) + 2
+        console.log(a);
+
+        // a = Math.floor(Math.random() * (7 - 2 + 1)) + 2;
+        // console.log(a);
+
+
+        // getRandomIntBeyween 取得min max 之間的數(都包含)
+
+        function getRandomIntBeyween(min, max) {
+            return Math.floor(Math.random() * 5) + min
+        }
+        
+        console.log(111, getRandomIntBeyween)
+        console.log(111, getRandomIntBeyween)
+
+
+        // ==================================
+        // 函數 clamp(value, min, max) 用來限制 value 的值在 min 和 max 之間。
+        function clamp(value, min, max) {
+            // 有沒有比最小值大
+            return Math.min(Math.max(value, min), max);
+        }
+        // 這段程式碼定義了一個名為 clamp 的函式，
+        // 它的作用是將傳入的 value 限制在一個指定的範圍之內。
+        // 這個範圍由 min（最小值）和 max（最大值）定義。
+        // 如果 value 超過了這個範圍，則會將 value 限制在範圍內。
+
+
+    </script>
+</body>
+
+</html>

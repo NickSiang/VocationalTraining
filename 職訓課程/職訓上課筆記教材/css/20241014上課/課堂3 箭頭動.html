@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* *只針對實際存在的元素有作用 */
+    *, ::before, ::after {
+      box-sizing: border-box;
+    }
+    .box {
+      background-color: aqua;
+      width: 100px;
+      position: relative;
+    }
+    .box:hover::after {
+      background-color: red;
+      right:-40px;
+    }
+    .box::after {
+      content: ">";
+      color:green;
+      background-color: blueviolet;
+      position: absolute;
+      right: -20px;
+      top: 0px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">按這裡動一下</div>
+</body>
+</html>

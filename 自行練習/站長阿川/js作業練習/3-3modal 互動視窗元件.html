@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        main {
+            width: 502px;
+            margin: 80px auto;
+        }
+
+        .modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.238);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            display: none;
+        }
+
+        .card {
+            width: 280px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 24px;
+            background: #fff;
+            border-radius: 20px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            margin-top: 10px;
+            outline: 0;
+            background: rgb(255, 255, 255);
+            box-shadow: transparent 0px 0px 0px 1px inset;
+            padding: 0.6em;
+            border-radius: 14px;
+            border: 1px solid #333;
+            color: black;
+        }
+
+        button{
+            background-color: black;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #494949;
+        }
+
+        textarea {
+            width: 100%;
+            outline: 0;
+            margin-top: 10px;
+            resize: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <button onclick="loginModal()">點我登入帳號</button>
+        <hr>
+        <button onclick="postModal()">點我新增貼文</button>
+
+        <div class="modal" id="login-modal">
+            <div class="card">
+
+                <div>帳號：<input type="text"></div>
+                <div>密碼：<input type="password"></div>
+                <hr>
+                    <button class="btn-close">關閉</button>
+            </div>
+        </div>
+
+        <div class="modal" id="post-modal">
+            <div class="card">
+                <div>標題：<input type="text"></div>
+                <div>內文：<textarea></textarea></div>
+                <hr>
+                <button class="btn-close">關閉</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        function loginModal() {
+            const login = document.querySelector('#login-modal');
+            login.style.display = 'flex';
+        };
+
+        function postModal() {
+            const post = document.querySelector('#post-modal');
+            post.style.display = 'flex';
+        };
+
+        const closeBtn = document.querySelectorAll('.btn-close');
+
+        closeBtn.forEach((btn) => {
+            btn.addEventListener('click', close)
+        })
+
+        function close(event) {
+            event.target.closest('.modal').style.display = 'none';
+        }
+        
+    </script>
+</body>
+
+</html>

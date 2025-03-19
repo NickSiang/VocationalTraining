@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    /* tbody裡面 tr偶數個       */
+    tbody tr:nth-of-type(2n) {
+      background-color: aqua;
+    }
+
+    /* tbody裡面 tr奇數個       */
+    tbody tr:nth-of-type(2n+1) {
+      background-color: lightcyan;
+    }
+
+    tbody tr:nth-of-type(3n) {
+      background-color: pink
+    }
+
+    tbody tr:nth-of-type(3n+1) {
+      background-color: lightcoral
+    }
+  </style>
+</head>
+
+<body>
+  身高: <input type="number" class="height">
+  體重: <input type="number" class="weight">
+  <button type="button" class="compute">計算</button>
+  <br><br>
+  <div class="result"></div>
+  <br><br>
+
+  <button type="button" class="male-3">男,3</button>
+  <button type="button" class="female-1">女,1</button>
+  <table>
+    <!-- 表頭 -->
+    <thead>
+      <!-- tr 表頭列 -->
+      <tr>
+        <th colspan="4">備註1</th>
+      </tr>
+      <tr>
+        <!-- 表頭欄位 -->
+        <th></th>
+        <th>男性</th>
+        <th>女性</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 表內容列 -->
+      <tr>
+        <td class="kind-col">1月</td>
+        <td class="male-col">25000</td>
+        <td class="female-col">AAAAA</td>
+      </tr>
+      <tr>
+        <td class="kind-col">2月</td>
+        <td class="male-col">25000</td>
+        <td class="female-col">AAAAA</td>
+      </tr>
+      <tr>
+        <td class="kind-col">3月</td>
+        <td class="male-col">25000</td>
+        <td class="female-col">AAAAA</td>
+      </tr>
+      <tr>
+        <td class="kind-col">4月</td>
+        <td class="male-col">25000</td>
+        <td class="female-col">AAAAA</td>
+      </tr>
+      <tr>
+        <td class="kind-col">5月</td>
+        <td class="male-col">25000</td>
+        <td class="female-col">AAAAA</td>
+      </tr>
+      <tr>
+        <td class="kind-col">6月</td>
+        <td class="male-col">25000</td>
+        <td class="female-col">AAAAA</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    //---------------------------------------
+    // 全域變數 global variable
+    const height = document.querySelector('.height');
+    const weight = document.querySelector('.weight');
+    const compute = document.querySelector('.compute');
+    const result = document.querySelector('.result');
+    let BMI;
+    let gender;
+
+
+    // querySelector 通常比 querySelectorAll 快，因為它只需要找到第一個匹配的元素就停止搜索。
+    // querySelectorAll 會遍歷整個 DOM，找到所有匹配的元素。
+    //---------------------------------------
+    const male3Btn = document.querySelector('.male-3');
+    const female1Btn = document.querySelector('.female-1');
+    //  查詢選擇器全部種類.kind-col
+    const kindAll = document.querySelectorAll('.kind-col');
+    const maleAll = document.querySelectorAll('.male-col');
+    const femaleAll = document.querySelectorAll('.female-col');
+    // console.log(kindAll[5], maleAll[5], femaleAll[5]);
+    // 這次的計算值
+    let answerGender;
+    let anserRow;
+    // 前一次的計算值
+    let answerGenderPrev;
+    let anserRowPrev;
+    // 紀錄是否曾輸入過
+    
+    let played = false; // 預設沒玩過
+    let aaa = 10;
+
+    //---------------------------------------
+    console.log(compute);
+    // weightValue因為是區域變數,所以log不到
+    // console.log( console.log(compute););
+
+    compute.addEventListener('click', function () {
+      // 區域變數 local variable
+      let weightValue = weight.value * 1;
+      let heightValue = height.value / 100;
+      BMI = weightValue / (heightValue * heightValue);
+      BMI = weightValue / (heightValue ** 2); // 2次方
+      BMI = weightValue / Math.pow(heightValue, 2); // 2次方
+      BMI = BMI.toFixed(2) * 1;
+      // result.textContent =BMI;
+      result.innerText = BMI;
+      // 3的4次方
+      // console.log(3**4);
+      // console.log(Math.pow(3, 4));
+      // console.log(weightValue, heightValue, BMI);
+      // console.log(aaa);
+      if (BMI > 40) {
+        anserRow = 4;
+      } else if (BMI > 30) {
+        anserRow = 4;
+      }
+      else if (BMI >= 25) {
+        anserRow = 4;
+      }
+      else if (BMI >= 20) {
+        anserRow = 4;
+      } else {
+        if (genderValue === '男') {
+          if (BMI >= 20) {
+            anserRow = 1;
+          }
+          else {
+            anserRow = 0;
+          }
+        }
+      }
+    });
+
+    //---------------------------------------
+    male3Btn.addEventListener('click', function () {
+      console.log('男,3');
+      // 計算得出結果
+      answerGender = 'male';
+      anserRow = 2;
+      if (played) {
+        kindAll[anserRowPrev].style.backgroundColor = 'transparent';
+        femaleAll[anserRowPrev].style.backgroundColor = 'transparent';
+        maleAll[anserRowPrev].style.backgroundColor = 'transparent';
+      }
+      // 顏色設置
+      kindAll[anserRow].style.backgroundColor = 'yellow';
+      maleAll[anserRow].style.backgroundColor = 'yellow';
+      // 把值紀錄
+      anserRowPrev = anserRow;
+      played = true;
+    });
+
+    female1Btn.addEventListener('click', function () {
+      console.log('女,1');
+      answerGender = 'female';
+      anserRow = 0;
+
+      if (played) {
+        kindAll[anserRowPrev].style.backgroundColor = 'transparent';
+        femaleAll[anserRowPrev].style.backgroundColor = 'transparent';
+        maleAll[anserRowPrev].style.backgroundColor = 'transparent';
+      }
+      kindAll[anserRow].style.backgroundColor = 'yellow';
+      femaleAll[anserRow].style.backgroundColor = 'yellow';
+      anserRowPrev = anserRow;
+      played = true;
+      console.log('anserRowPrev=>', anserRowPrev);
+      console.log('played =>', played);
+    });
+  </script>
+</body>
+
+</html>

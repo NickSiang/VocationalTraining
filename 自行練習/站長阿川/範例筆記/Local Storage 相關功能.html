@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Name: <input type="text">
+    Age: <input type="text">
+    <button onclick="save()">Save</button>
+
+    <script>
+
+        if (localStorage.getItem("me")) {
+            var me = JSON.parse(localStorage.getItem("me"));
+            console.log(localStorage.getItem("me"));//{"name":"111","age":"2222"}
+            console.log(typeof(localStorage.getItem("me")));//string
+            console.log(me);
+            
+            alert('hello, ' + me.name + ' (' + me.age + ')');
+        }
+
+        function save() {
+            var name = document.querySelectorAll('input')[0].value;
+
+            var age = document.querySelectorAll('input')[1].value;
+
+            var me = {
+                name: name,
+                age: age
+            };
+
+            localStorage.setItem("me", JSON.stringify(me));
+
+            alert('saved');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 空物件
+        let A = {};
+
+        // 物件屬性的存取
+        // 一般的變數宣告並被賦值後,
+        // 會用該變數的名稱表示要存取的對應內容,
+        // 而如果這個變數裡面存放的是物件則可用[中括號]和
+        // 小點符號. 來拿到物件裡的內容
+        // 陣列是把一系列的數值放在一起所形成的組合
+        // 物件是一個個的名稱和對應內容聚集在一起所形成的結果
+        // 陣列不像物件一樣有明確屬性對哪一個內容作存取
+        // 所以會從第0個元素開始給每個元素一個足以區別內容的號碼
+        // 稱之[索引]index
+        A = { name: '1111', age: '18', gender: 'male' }
+        console.log(A);
+        console.log('age' + A.age);
+        console.log('name' + A.name);
+        console.log('gender' + A.gender);
+        console.log('age' + A['age']);
+
+        let temp = 'name';
+        console.log(A[temp]);
+
+        let temp2 = A['age'];
+        console.log(temp2);
+
+        // 物件新增
+        A.weapon1 = '11111';
+        console.log(A);
+
+        A.power = 10000;
+        console.log(A);
+
+        A.power += 20000;
+        console.log(A);
+
+        A['height'] = 178;
+        A['weight'] = 60;
+        console.log(9999, A);
+
+
+    </script>
+</body>
+
+</html>

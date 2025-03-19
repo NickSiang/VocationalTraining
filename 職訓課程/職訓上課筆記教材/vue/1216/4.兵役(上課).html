@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-兵役查詢</title>
+</head>
+
+<body>
+    <div id="all">
+        <div>
+            <label for="male">
+                男<input type="radio" name="gender" id="male" value="male" v-model="gender">
+            </label>
+
+            <label for="female">
+                女<input type="radio" name="gender" id="female" value="female" v-model="gender">
+            </label>
+        </div>
+        </br>
+        <div>
+            <select name="" id="age" v-model="age">
+                <option value="" disabled>請選擇</option>
+                <option v-for="item in totalage">{{item+15}}</option>
+            </select>
+        </div>
+        </br>
+        <div>
+            <button type="button" @click="search">查詢</button>
+        </div>
+        </br>
+
+        <div>結果:{{result}}</div>
+
+    </div>
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js">
+    </script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    age: '',
+                    gender: '',
+                    result: '',
+                    // totalage: [10,12,13...],
+                    totalage: 85,
+                }
+            },
+            methods: {
+                search() {
+
+                    if (this.gender == '' || this.age == '') {
+                        this.result = ''
+                        return;
+                    }
+
+
+                    if (this.gender == 'female') {
+                        this.result = '不用當兵'
+                    }
+                    else {
+                        if (this.age >= 18 && this.age <= 30) {
+                            this.result = '要當兵'
+                        }
+                        else {
+                            this.result = '不用當兵'
+                        }
+                    }
+                }
+            },
+
+
+
+        }).mount('#all')
+
+
+
+    </script>
+
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- 男18-30需服兵役
+女不用服兵役 -->

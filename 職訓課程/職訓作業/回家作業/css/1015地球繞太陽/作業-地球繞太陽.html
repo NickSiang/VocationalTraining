@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-地球繞太陽，月亮繞地球</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            /* 滿出去的隱藏 */
+        }
+
+        .all {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(1, 17, 28, 0.934);
+            background-image: url(./background.png);
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation-name: color-background;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+
+
+        }
+
+        .sun {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 0.5px dotted;
+            position: absolute;
+            animation-name: color-ball;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+        }
+
+        .planet {
+            border-radius: 50%;
+            position: absolute;
+            animation-name: clockwise;
+            animation-iteration-count: infinite;
+        }
+
+        .mercury {
+            width: 300px;
+            height: 300px;
+            border: 0.2px white dotted;
+            animation-duration: 6s;
+        }
+     
+
+        .venus {
+            width: 500px;
+            height: 500px;
+            border: 1px white dashed;
+            animation-duration: 15s;
+
+        }
+
+        .earth {
+            width: 660px;
+            height: 660px;
+            border: 1px white solid;
+            animation-duration: 24s;
+        }
+
+        .moon {
+            width: 80px;
+            height: 80px;
+            border: 2px white dotted;
+            left: -50%;
+            top: -50%;
+            animation-duration: 15s;
+        }
+
+
+        .mars {
+            width: 900px;
+            height: 900px;
+            border: 1px white dashed;
+            animation-duration: 46s;
+        }
+
+        .jupiter {
+            width: 1200px;
+            height: 1200px;
+            border: 1px white dashed;
+            animation-duration: 100s;
+        }
+
+
+        .box {
+            border-radius: 50%;
+            background-color: aliceblue;
+            position: absolute;
+            /* animation-name: color-ball; */
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+
+
+
+        .mercury-roll {
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(rgb(58, 58, 58), gray);
+            animation-name: rotate;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+        }
+        
+
+        .venus-roll {
+            width: 40px;
+            height: 40px;
+            left: 0%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(orange, rgb(99, 31, 31))
+        }
+
+        .earth-roll {
+            width: 40px;
+            height: 40px;
+            left: 0%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(green, blue)
+        }
+
+        .moon-roll {
+            width: 20px;
+            height: 20px;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(rgb(211, 211, 186), gray)
+        }
+
+        .mars-roll {
+            width: 40px;
+            height: 40px;
+            left: 0%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(burlywood, rgb(105, 28, 40), burlywood);
+
+        }
+
+        .jupiter-roll {
+            width: 120px;
+            height: 120px;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(burlywood, rgb(139, 92, 30), burlywood, rgb(139, 92, 30), burlywood);
+        }
+
+        /* @keyframes clockwise {
+
+
+            0% {
+                border-color: rgba(1, 17, 28, 0.934);
+                transform: rotate(0deg);
+            }
+
+            25% {
+                border-color: gray;
+                transform: rotate(0deg);
+            }
+
+            50% {
+                border-color: white;
+            }
+
+            100% {
+
+                border-color: rgba(1, 17, 28, 0.934);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes color-ball {
+
+            0% {
+                box-shadow: 0 0 10px 5px darkred;
+                background-color: red;
+                transform: rotate(360deg);
+
+            }
+
+            25% {
+                box-shadow: 0 0 15px 15px orangered;
+                background-color: red;
+            }
+
+            50% {
+                box-shadow: 0 0 25px 30px orangered;
+                background-color: orange;
+            }
+
+            75% {
+                box-shadow: 0 0 15px 15px orangered;
+                background-color: red;
+
+            }
+
+            100% {
+                box-shadow: 0 0 10px 5px darkred;
+                background-color: red;
+                transform: rotate(0deg);
+
+            }
+        }
+
+        @keyframes color-background {
+
+            0% {
+
+                background-color: rgb(3, 1, 40);
+
+            }
+
+            25% {
+
+                background-color: rgba(1, 17, 28, 0.934);
+
+            }
+
+            50% {
+
+                background-color: rgba(5, 37, 59, 0.934);
+                ;
+            }
+
+            75% {
+                background-color: rgba(1, 17, 28, 0.934);
+
+            }
+
+            100% {
+
+                background-color: rgb(3, 1, 40);
+
+            }
+        } */
+
+        @keyframes rotate {
+
+
+            0% {
+                transform: rotate(0deg);
+            }
+
+
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="sun">
+        </div>
+
+        <div class="planet mercury">
+            <div class="box mercury-roll"></div>
+        </div>
+
+        <div class="planet venus">
+            <div class="box venus-roll"></div>
+        </div>
+
+        <div class="planet earth">
+            <div class="box earth-roll">
+                <div class="planet moon">
+                    <div class="box moon-roll">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="planet mars">
+            <div class="box mars-roll"></div>
+        </div>
+
+        <div class="planet jupiter">
+            <div class="box jupiter-roll"></div>
+        </div>
+    </div>
+</body>
+
+</html>

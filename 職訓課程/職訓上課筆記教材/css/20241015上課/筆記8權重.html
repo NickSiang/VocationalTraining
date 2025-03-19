@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #a {
+            color: aqua;
+            background-color: black;
+        }
+
+        .b {
+            color: red;
+            background-color: white;
+        }
+
+        div {
+            background-color: aqua;
+        }
+
+        .big {
+            width: 200px;
+            height: 200px;
+            background-color: bisque;
+        }
+
+        .big.red {
+            background-color: red;
+        }
+
+        /* class越多權限越大 */
+        /* 不管class多少會超過id */
+        .small {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+ CSS權重
+就是優先順序
+權重越大,優先權越高
+!important> inline-style> id> class> element 
+前二幾乎不要用 除某些裝況
+    </pre>
+    <div id="a" class="b">1111111</div>
+    <div class="big red small"></div>
+</body>
+
+</html>

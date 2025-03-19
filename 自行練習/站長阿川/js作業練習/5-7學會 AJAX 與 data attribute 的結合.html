@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+        }
+
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        h4 {
+            padding: 0;
+            margin: 10px 0 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: black;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            border: transparent;
+        }
+
+        button:hover {
+            background-color: rgb(79, 79, 79);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        #load {
+            font-size: 30px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 26px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 80px auto;
+            display: flex;
+            padding: 0 8%;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            width: calc((100% - 160px) / 3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(121, 121, 121, 0.223);
+            padding: 20px;
+        }
+
+        .imgblock {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0 40px 0;
+        }
+
+        .product img {
+            max-width: 100%;
+            max-height: 100%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            gap: 60px;
+        }
+
+        .productname {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .content .btn-block {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-block button {
+            width: 94px;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+
+        .modal {
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.247);
+            position: fixed;
+            top: 0;
+            display: none;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-height: 500px;
+            max-width: 600px;
+            padding: 60px;
+            background: #ffffff;
+            display: flex;
+            gap: 40px;
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 0px 10px 0px rgba(121, 121, 121, 0.485);
+
+            overflow: auto;
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .modal-img {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: cover;
+        }
+
+        .modal-img img {
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-text span {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 40px;
+        }
+
+        .modal-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width:1200px) {
+            .product {
+                width: calc((100% - 80px) / 2);
+            }
+
+            .container {
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width:720px) {
+            .product {
+                width: calc((100% - 40px));
+            }
+
+            .container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width:420px) {
+            .container {
+                padding: 0;
+                gap: 30px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="load">Load Products</button>
+
+    <hr>
+    <ul class="container"></ul>
+
+    <div class="modal">
+        <div class="modal-card">
+            <div class="modal-content">
+                <div class="modal-img">
+                    <img src="" alt="">
+                </div>
+                <div class="modal-text">
+                    <h1></h1>
+                    <h4></h4>
+                    <p></p>
+                    <span></span>
+                </div>
+            </div>
+            <button class="windowDeleteBtn">Close</button>
+        </div>
+    </div>
+
+    <script>
+
+        const loadBtn = document.querySelector('#load');
+        const erroeimg = 'https://memeprod.sgp1.digitaloceanspaces.com/user-resource/aaa5ea30708aef68af78543f707fe55c.png';
+        let data;
+
+        loadBtn.addEventListener('click', () => {
+            const container = document.querySelector('.container');
+            container.innerHTML = '';
+
+            fetch('https://fakestoreapi.com/products')
+                .then((res) => res.json())
+                .then((json) => {
+                    data = json
+                    loading();
+                    console.log(data);
+                })
+                .catch((error) => {
+                    alert('抱歉，請稍後重新嘗試。')
+                })
+        })
+
+        function loading() {
+            data.forEach((item, index) => {
+
+                let title = item.title;
+                let category = item.category;
+                let description = item.description;
+                let img = item.image;
+                let price = item.price;
+
+                const container = document.querySelector('.container')
+
+                let cardData = `
+                <li class="product" data-title="${title}" data-category="${category}" data-description="${description}" data-img="${img}" data-price="${price}">
+                    <div class="imgblock">
+                    <img src="${img}" alt="商品圖片${index + 1}" onerror="this.src='${erroeimg}' ">
+                    </div>
+                    <div class="content">
+                        <span class="productname">${title}</span>
+                        <div class="btn-block">
+                        <button class="details">Details</button>
+                        <button class="delete">Delete</button>
+                        </div>
+                    </div>
+                </li>`;
+
+                // insertAdjacentHTML性能更佳，它不會重建整個 DOM 結構，只是插入新的內容。
+                container.insertAdjacentHTML('beforeend', cardData)
+            });
+
+            const detailsBtn = document.querySelectorAll('.details');
+            detailsBtn.forEach((btn, i) => {
+                btn.addEventListener('click', (e) => {
+                    const item = data[i];
+                    const dataHtml = e.target.closest('li');
+
+                    const modalCard = document.querySelector('.modal-card');
+                    const imgSrc = document.querySelector('.modal-img img')
+                    const modal = document.querySelector('.modal');
+                    const spanTitle = document.querySelector('.modal-text h1');
+                    const spanType = document.querySelector('.modal-text h4');
+                    const spanScribe = document.querySelector('.modal-text p');
+                    const spanPrice = document.querySelector('.modal-text span');
+
+                    modal.style.display = 'flex'
+                    spanTitle.textContent = `${dataHtml.dataset.title}`;
+                    spanType.textContent = `${dataHtml.dataset.category}`;
+                    spanScribe.textContent = `${dataHtml.dataset.description}`;
+                    spanPrice.textContent = `US$${dataHtml.dataset.price}`;
+                    imgSrc.src = dataHtml.dataset.img
+                    modalCard.scrollTop = 0;
+                    document.querySelector('body').style.overflow = 'hidden';
+                })
+            });
+
+            const deleteBtn = document.querySelectorAll('.delete');
+            deleteBtn.forEach((btn, i) => {
+                btn.addEventListener('click', (e) => {
+                    let isdelete = e.target.closest('.product');
+
+                    fetch('https://fakestoreapi.com/products/1', {
+                        method: 'DELETE'
+                    })
+                        .then(response => response.json())
+                        .then(data => { isdelete.remove() })
+                        .catch(error => alert('抱歉，請稍後重新嘗試。'))
+                })
+            })
+
+        }
+
+        let windowDeleteBtn = document.querySelector('.windowDeleteBtn');
+        windowDeleteBtn.addEventListener('click', (btn) => {
+            btn.target.closest('.modal').style.display = 'none';
+            document.querySelector('body').style.overflow = 'auto';
+        });
+
+        
+
+    </script>
+</body>
+
+</html>

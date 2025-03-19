@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: red;
+    }
+
+    .big-box {
+      background-color: white;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+    }
+
+    .box {
+      background-color: red;
+      width: 50%;
+      height: 50%;
+      border: 5px solid white;
+    }
+
+    .answer {
+      opacity: 0.8;
+    }
+
+    .none {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="homepage">
+    <div>我是封面</div>
+    <button type="button" class="start">開始</button>
+    <button type="button" class="go">繼續</button>
+  </div>
+
+  <div class="game none">
+    <div class="demo"></div>
+    <button type="button" class="pause">暫停</button>
+    <div class="big-box"></div>
+  </div>
+
+  <script>
+    const homepage = document.querySelector('.homepage');
+    const game = document.querySelector('.game');
+    const start = document.querySelector('.start');
+    const pause = document.querySelector('.pause');
+    const go = document.querySelector('.go');
+    const demo = document.querySelector('.demo');
+    const bigBox = document.querySelector('.big-box');
+
+    let counter = 10;
+    let myInterval;
+    let level = 2;
+    let passCount = 0;
+
+    start.addEventListener('click', () => startGame());
+    pause.addEventListener('click', () => pauseGame());
+    go.addEventListener('click', () => resumeGame());
+    game.classList.add('none');
+    go.classList.add('none');
+
+    function startGame() {
+      homepage.classList.add('none');
+      game.classList.remove('none');
+      demo.textContent = counter;
+      myInterval = setInterval(showCounter, 1000);
+      start.classList.add('none');
+    }
+
+    function pauseGame() {
+      clearInterval(myInterval);
+      homepage.classList.remove('none');
+      go.classList.remove('none');
+      start.classList.remove('none');
+      game.classList.add('none');
+    }
+
+    function resumeGame() {
+      homepage.classList.add('none');
+      game.classList.remove('none');
+      clearInterval(myInterval);
+      myInterval = setInterval(showCounter, 1000);
+    }
+
+    function showCounter() {
+      if (counter > 0) {
+        counter--;
+      } else {
+        alert(`Time's up!`);
+        stopGame();
+      }
+      demo.textContent = counter;
+    }
+
+    function stopGame() {
+      clearInterval(myInterval);
+      counter = 10;
+      homepage.classList.remove('none');
+      go.classList.add('none');
+      start.classList.remove('none');
+      game.classList.add('none');
+    }
+
+    function repeatDo() {
+      bigBox.innerHTML = '';
+      for (let i = 0; i < level ** 2; i++) {
+        bigBox.innerHTML += `<div class="box">${i}</div>`;
+      }
+      const boxAll = document.querySelectorAll('.box');
+      const answerIndex = Math.floor(Math.random() * (level ** 2));
+      const answerBox = boxAll[answerIndex];
+      answerBox.classList.add('answer');
+      answerBox.style.opacity = `${0.8 + level * 0.005}`;
+
+      const color = getColor();
+      boxAll.forEach(box => {
+        box.style.backgroundColor = color;
+        box.style.width = `${100 / level}%`;
+        box.style.height = `${100 / level}%`;
+      });
+
+      answerBox.addEventListener('click', () => handleAnswerClick());
+    }
+
+    function getColor() {
+      const r = Math.floor(Math.random() * 255) + 1;
+      const g = Math.floor(Math.random() * 255) + 1;
+      const b = Math.floor(Math.random() * 255) + 1;
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function handleAnswerClick() {
+      passCount++;
+      if (passCount === level) {
+        level++;
+        passCount = 0;
+      }
+      if (level < 30) {
+        repeatDo();
+      } else {
+        alert('恭喜全數過關');
+      }
+    }
+
+    repeatDo();
+  </script>
+</body>
+
+</html>

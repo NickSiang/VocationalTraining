@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="t99"></div>
+
+
+    <script>
+        for (let i = 1; i < 10; i++) {
+            console.log(`1 * ${i} = ${1 * i}`);
+        }
+        for (let i = 1; i < 10; i++) {
+            console.log(`2 * ${i} = ${2 * i}`)
+        }
+        for (let i = 1; i < 10; i++) {
+            console.log(`3 * ${i} = ${3 * i}`)
+        }
+
+
+
+        // 巢狀 for loop
+
+        for (let i = 1; i < 10; i++) {
+            for (let j = 1; j < 10; j++) {
+                console.log('i=', i, 'j=', j)
+            }
+        }
+        // 上面會是 i = 1 j = 10, i = 2 j = 10,i = 3 j = 10.....
+
+
+
+        /*i++ 是 後綴遞增，它先使用 i 當前的值，再將 i 增加 1。
+        換句話說，i++ 會先返回 i 當前的數值，再將 i 增加 1。*/
+
+        /* ++i 是 前綴遞增，它先將 i 增加 1，再返回增後的值。
+         換句話說，++i 會先將 i 增加 1，再使用 i 的新值。*/
+
+        const t99 = document.querySelector('.t99');
+        t99.innerHTML ='';
+        //  textcontext只有放文字
+
+        for (let i = 1; i < 10; i++) {
+            for (let j = 1; j < 10; j++) {
+                // console.log(`${i} * ${j} = ${i * j}`);
+                t99.innerHTML += `${i} * ${j} = ${i * j}<br/>`;
+            }
+            t99.innerHTML +=` <br/>`;
+        }
+        // +=累加
+
+    </script>
+</body>
+
+</html>

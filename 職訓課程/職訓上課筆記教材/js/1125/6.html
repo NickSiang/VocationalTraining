@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Json格式就是一個字串資料
+    // let a = `{
+    //   "name": "Mary",
+    //   "gender": "female",
+    //   "age": 5,
+    //   "img": "https://tse4.mm.bing.net/th?id=OIP.kAIUTJrUWLaH5a60vbTgvwHaHa&pid=Api&P=0&h=180"
+    // }`
+    // featch =>非同步
+    // fetch 拿取,讀取   位置檔案 
+    fetch('./JSON-1.json') //不能分號
+      // 然後              系統以Json格式回應給取的人
+      .then((response) => response.json())
+      // 然後取的人去接收
+      .then((result) => {
+        console.log(result);
+        console.log(result.name);
+      });
+    console.log('end');
+    
+  </script>
+</body>
+
+</html>

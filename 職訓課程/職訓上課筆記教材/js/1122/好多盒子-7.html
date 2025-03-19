@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+
+
+    .big-box {
+      /* background-color: aqua; */
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background-color: red;
+      width: 50%;
+      height: 50%;
+      border: 2px solid yellow;
+      border-radius: 50%;
+    }
+
+    .answer {
+      opacity: 0.9;
+      /* font-size: 32px; */
+    }
+
+    .homepage {
+      height: 100vh;
+      background-color: antiquewhite;
+    }
+
+    .none {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="homepage">
+    <button type="button" class="start">開始</button>
+    <button type="button" class="go">繼續</button>
+  </div>
+  
+  <div class="game">
+    <div class="demo"></div>
+    <button type="button" class="pause">暫停</button>
+    <div class="big-box">
+    </div>
+  </div>
+
+
+
+
+  <script>
+    const homepage = document.querySelector('.homepage');
+    const game = document.querySelector('.game');
+    const start = document.querySelector('.start');
+    const pause = document.querySelector('.pause ');
+    const go = document.querySelector('.go');
+    const demo = document.querySelector('.demo');
+    const counterMax = 10;
+
+    let counter = counterMax;
+    let myInterval;
+
+    game.classList.add('none');
+    go.classList.add('none');
+
+    start.addEventListener('click', () => {
+      homepage.classList.add('none');
+      game.classList.remove('none');
+      go.classList.add('none');
+      let myInterval = setInterval(showCounter, 1000);
+    })
+
+    pause.addEventListener('click', () => {
+      // 清除一個時段區間變數
+      clearInterval(myInterval);
+      homepage.classList.remove('none');
+      go.classList.remove('none');
+      start.classList.add('none');
+      game.classList.add('none');
+    });
+
+
+    go.addEventListener('click', () => {
+      console.log("go");
+      clearInterval(myInterval);
+      homepage.classList.add('none');
+      game.classList.remove('none');
+    });
+
+
+    const bigBox = document.querySelector('.big-box');
+    const answer = document.querySelector('.answer');
+    let level = 2;
+    let passCount = 0;
+
+    //進入下一關 監聽新的答案盒被按
+    repeatDo(); // 遞迴 recursive 自己呼叫自己
+
+    //進入下一關 監聽新的答案盒被按
+    function repeatDo() {
+      // level++;
+      // 清空
+      bigBox.innerHTML = '';
+      for (let i = 0; i < level ** 2; i++) {
+        bigBox.innerHTML += `<div class="box">${i}</div>`;
+      }
+      boxAll = document.querySelectorAll('.box');
+
+      // 設置答案亂數
+      let answerIndex = Math.floor(Math.random() * (level ** 2));
+      answerBox = boxAll[answerIndex];
+      // 加入答案的class
+      answerBox.classList.add('answer');
+      answerBox.style.opacity = `${0.8 + level * 0.05}`
+      let color = getColor();
+      for (let i = 0; i < level ** 2; i++) {
+        boxAll[i].style.backgroundColor = color;
+        boxAll[i].style.width = `${100 / level}%`;
+        boxAll[i].style.height = `${100 / level}%`;
+      }
+
+      
+      answerBox.addEventListener('click', function () {
+        // 過過關次數+1
+        passCount++;
+        console.log(passCount, level);
+
+        if (passCount === level) {
+          // 關關次數等於level次數，才升級
+          level++;
+          passCount = 0;
+        }
+        // 自己呼叫自己
+        if (level < 30) {
+          repeatDo();
+        } else {
+          alert('恭喜全數過關')
+        }
+      });
+    }
+
+    function getColor() {
+      let r = Math.floor(Math.random() * 255) + 1;
+      let g = Math.floor(Math.random() * 255) + 1;
+      let b = Math.floor(Math.random() * 255) + 1;
+      return `rgb(${r},${g},${b})`;
+    }
+
+    function showCounter() {
+
+      // 不讓值變負
+      if (counter > 0) {
+        counter--;
+      }
+      else if (counter == 0) {
+        alert("時間到")
+        stopGame()
+        
+      }
+      demo.textContent = counter;
+
+    }
+
+
+    function stopGame() {
+      homepage.classList.remove('none');
+      go.classList.add('none');
+      start.classList.remove('none');
+      game.classList.add('none');
+      // 要清除暫停的變數
+      clearInterval(myInterval);
+      counter = counterMax;
+
+    }
+  </script>
+</body>
+
+</html>

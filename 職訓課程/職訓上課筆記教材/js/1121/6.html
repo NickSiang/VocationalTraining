@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball"></div>
+
+    <script>
+        const ball = document.querySelector('.ball');
+
+        ball.addEventListener('click', function () {
+            let r = Math.floor(Math.random() * 255) + 0;
+            let g = Math.floor(Math.random() * 255) + 0;
+            let b = Math.floor(Math.random() * 255) + 0;
+
+            // let color = "rgb('+ r+','+g+','+b + ')"
+            // let color = "rgb(" + r + "," + g + "," + b + ")";
+            // + r + 使用 + 把 r 的值轉換成字串並將它和其他字串拼接在一起。
+
+            // 樣板符號 樣板語法
+            let color = `rgb(${r},${g},${b})`;
+            // 模板字符串可以輕鬆把變數放進文字裡。
+
+
+            ball.style.backgroundColor = color
+        })
+
+    </script>
+</body>
+
+</html>

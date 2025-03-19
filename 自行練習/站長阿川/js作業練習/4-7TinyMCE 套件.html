@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.0/tinymce.min.js"></script>
+    <script>
+
+        tinymce.init({
+            selector: '#mytextarea',
+            height: 400,
+            // TinyMCE 的內容在 iframe 裡
+            // TinyMCE 是使用兩個 <iframe> 來運作的(工具列和編輯區)
+            // 如果想自訂義工具列的樣式，需要使用一個自定義的皮膚，並使用 skin_url 指定你的 CSS 文件。
+            skin: 'oxide-dark',
+            // body 指 iframe 裡的內容區域
+            content_style: 'body { background-color: #1e2a47; color: #ffdd00;}'
+
+        });
+
+    </script>
+
+    <style>
+        div {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        button {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffdd00;
+            background: #222f3d;
+            padding: 10px 20px;
+            border: transparent;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.9);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>TinyMCE 套件練習</h1>
+        <form method="post">
+            <textarea id="mytextarea">Hello, World!</textarea>
+        </form>
+        <button type="button">發佈文章</button>
+    </div>
+</body>
+
+</html>

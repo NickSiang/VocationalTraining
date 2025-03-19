@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.作業:巢狀結構</title>
+
+    <style>
+        #box-all {
+            background-color: black;
+            width: 600px;
+            height: 800px;
+        }
+
+        #box-a {
+            background-color: pink;
+            width: 600px;
+            height: 150px;
+        }
+
+        #box-b {
+            background-color: black;
+            width: 600px;
+            height: 500px;
+        }
+
+        #box-b-left {
+            background-color: lightblue;
+            width: 450px;
+            height: 500px;
+            float: left;
+        }
+
+        #box-b-left-left {
+            background-color: goldenrod;
+            width: 150px;
+            height: 300px;
+            float: left;
+        }
+
+        #box-b-left-right {
+            background-color: silver;
+            width: 300px;
+            height: 300px;
+            float: left;
+        }
+        #box-b-left-right-a {
+            background-color: red;
+            width: 300px;
+            height: 100px;
+            
+        }
+        #box-b-left-right-b {
+            background-color: blue;
+            width: 300px;
+            height: 100px;
+        }
+        #box-b-left-right-c {
+            background-color: yellow;
+            width: 300px;
+            height: 100px;
+            
+        }
+
+        #box-b-left-top {
+            background-color: blanchedalmond;
+            width: 450px;
+            height: 300px;
+
+        }
+
+        #box-b-left-bottom {
+            background-color: gray;
+            width: 450px;
+            height: 200px;
+
+        }
+        #box-b-left-bottom-a {
+            background-color:green;
+            width: 450px;
+            height: 100px;
+
+        }
+        #box-b-left-bottom-b {
+            background-color: purple;
+            width: 450px;
+            height: 100px;
+
+        }
+        #box-b-right {
+            background-color: khaki;
+            width: 150px;
+            height: 500px;
+            float: left;
+        }
+
+        #box-c {
+            background-color: orange;
+            width: 600px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box-all">
+        <div id="box-a"></div>
+        <div id="box-b">
+            <div id="box-b-left">
+                <div id="box-b-left-top">
+                    <div id="box-b-left-left"></div>
+                    <div id="box-b-left-right">
+                    <div id="box-b-left-right-a"></div>
+                    <div id="box-b-left-right-b"></div>
+                    <div id="box-b-left-right-c"></div>
+                </div>
+                </div>
+
+                <div id="box-b-left-bottom">
+                <div id="box-b-left-bottom-a"></div>
+                <div id="box-b-left-bottom-b"></div>
+            </div>
+            </div>
+            <div id="box-b-right">
+            </div>
+        </div>
+        <div id="box-c"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            display: flex;
+            width: 100%;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .inputBlock {
+            max-width: 300px;
+            width: 100%;
+            height: 100vh;
+            padding: 60px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            overflow:auto;
+        }
+
+        .inputBlock label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .inputBlock input,
+        .inputBlock textarea,
+        .inputBlock select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 24px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+
+        .inputBlock button {
+            width: 100%;
+            padding: 12px 20px;
+            margin-top: 30px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .inputBlock button:hover {
+            background-color: #45a049;
+        }
+
+        .noteBlock {
+            max-width: 1400px;
+            width: 100%;
+            height: 100%;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .note {
+            max-width: 250px;
+            width: 100%;
+            max-height: 250px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px 16px 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .note:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .note button {
+            width: fit-content;
+            margin-left: auto;
+            background-color: #4b4b4baa;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .note button:hover {
+            background-color: #fb3939;
+        }
+
+        .red {
+            background: linear-gradient(135deg, #ff4e5155, #fc913a6c);
+        }
+
+        .blue {
+            background: linear-gradient(180deg, #89f6fe4b, #66a6ff33);
+        }
+
+        .green {
+            background: linear-gradient(45deg, #56ab2f1b, #a8e06356);
+        }
+
+        .content {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="inputBlock">
+            <label for="textInput">記事標題:</label>
+            <input type="text" id="textInput" v-model.trim="textInput">
+            <label for="textArea">記事內容:</label>
+            <textarea id="textArea" v-model.trim="textArea" ref="textArea"></textarea>
+            <label for="selectColor">選擇顏色:</label>
+            <select id="selectColor" v-model="color">
+                <option value="" hidden disabled selected>請選擇顏色</option>
+                <option v-for="(color,index) in ['red','green','blue']" :value="color" :key="color">{{color}}</option>
+            </select>
+            <button type="button" @click="addNote">新增</button>
+        </div>
+
+        <div class="noteBlock">
+            <div class="note" v-for="(note, index) in notes" :key="note.title" :class="note.color">
+                <h3>{{ note.title }}</h3>
+                <p class="content">{{ note.content }}</p>
+                <button @click="deleteBtn(index)">刪除</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.20/autosize.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    notes: [
+                        { title: "春節行程安排", content: "吃飽睡，睡飽吃", color: "red" },
+                        { title: "工作待辦事項", content: "詢問各家廠商報價", color: "green" },
+                        { title: "運動健身計畫", content: "每天早上六點去健身", color: "blue" },
+                    ],
+                    textInput: '',
+                    textArea: '',
+                    color: '',
+                }
+            },
+            mounted() {
+                if (localStorage.getItem('notes')) {
+                    this.notes = JSON.parse(localStorage.getItem('notes'));
+                }
+                autosize(this.$refs.textArea);
+            },
+            methods: {
+                addNote() {
+                    if (!this.textInput || !this.textArea || !this.color) {
+                        return alert('請輸入完整資料');
+                    }
+
+                    this.notes.push({
+                        title: this.textInput,
+                        content: this.textArea,
+                        color: this.color,
+                    });
+
+                    this.textInput = '';
+                    this.textArea = '';
+                    this.color = '';
+                },
+                deleteBtn(index) {
+                    this.notes.splice(index, 1);
+                }
+            },
+            watch: {
+                notes: {
+                    handler(newValue) {
+                        localStorage.setItem("notes", JSON.stringify(newValue));
+                    },
+                    deep: true
+                },
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+
+</html>

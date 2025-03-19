@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+<style>
+  p:nth-child(3) { /* 範圍為所有 child，該 p 是否該範圍內排序第 3 */
+    background: red;
+  }
+
+  p:nth-of-type(3) { /* 範圍為所有 child 且 同 type，該 p 是否該範圍內排序第 3 */
+    background: green;
+  }
+
+        
+   
+      </style>
+</head>
+<body>
+    <h3>hhh</h3>
+    <p>ppp</p>
+    <p>ppp</p><!--red-->
+    <p>ppp</p><!--green-->
+    <br><br>
+    <div>
+      <p>ppp</p>
+      <h3>hhh</h3>
+      <p>ppp</p><!--red-->
+      <h3>hhh</h3>
+      <p>ppp</p><!--green-->
+    </div>
+</body>
+</html>

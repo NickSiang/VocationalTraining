@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+
+    .contanter {
+      width: 100%;
+      height: 100vh;
+      background-color: aquamarine;
+      display: flex;
+    }
+
+    .login {
+      width: 100%;
+      height: 100%;
+      background-color: blue;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .login span {
+      font-size: 128px;
+    }
+
+    .login button {
+      font-size: 32px;
+    }
+
+    .login button:hover {
+      cursor: pointer;
+      background-color: aquamarine;
+    }
+
+    .online {
+      width: 100%;
+      height: 100%;
+      background-color: bisque;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .playing {
+      width: 500px;
+      height: 500px;
+      background-color: blueviolet;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .playing div {
+      width: 50%;
+      height: 50%;
+      /* 要換成重程式碼裡面產生 */
+      /* background-color: cadetblue; */
+
+    }
+  </style>
+</head>
+
+<body>
+  <section class="contanter">
+    <!-- 登入畫面 -->
+    <section class="login">
+      <span>歡迎來到色弱遊戲挑戰</span>
+      <button>開始遊戲</button>
+    </section>
+    <!-- 遊玩畫面 -->
+    <section class="online">
+      <div class="playing">
+        <!-- <div class="btn">1</div>
+        <div class="btn">2</div>
+        <div class="btn">3</div>
+        <div class="btn">4</div> -->
+      </div>
+    </section>
+  </section>
+
+
+  <!--
+    1.開始遊玩的畫面
+    2.點擊開始遊玩的按鈕
+    3.產生4個方塊
+    4.其中一個顏色要不一樣
+    5.4個方塊都要可以點擊
+    6.點擊到不一樣的方塊，再產生4個方塊(一直重複3~5的動作) -->
+
+  <!-- 3.4.5.(這個步驟包成一個方法) -->
+
+  <script>
+    gen_btns();
+
+    function gen_btns() {
+      // 宣告產生的RGB顏色
+      let rgb_r = Math.floor(Math.random() * 256);
+      let rgb_g = Math.floor(Math.random() * 256);
+      let rgb_b = Math.floor(Math.random() * 256);
+
+      // 產生4個方塊
+      let btn_area = document.querySelector('.playing');
+
+      //清空裡面的內容
+      btn_area.innerHTML = '';
+
+      // 迴圈(產生方塊)
+      for (let index = 0; index < 4; index++) {
+        btn_area.innerHTML += `<div class="btn"></div>`;
+        console.log(index);
+      }
+
+      // 給予不一樣的顏色
+      // 1.產生0~3個亂數
+      let ranomint = Math.floor(Math.random() * 4);
+      // 2.把選到的亂數(方塊的索引值)，變成不一樣的顏色
+      let btns = document.querySelectorAll('.btn');
+      btns.forEach((item, key) => {
+        // 給予顏色
+        // step01 -> 要判斷哪一個要給不同的顏色
+        // step02 -> 顏色也要隨機
+        // 樣板字串可以放變數 寫法：${}
+        if (key == ranomint) {
+          item.style.backgroundColor = `rgb(${rgb_r} ${rgb_g} ${rgb_b} / 90%)`;
+        } else {
+          item.style.backgroundColor = `rgb(${rgb_r} ${rgb_g} ${rgb_b})`;
+        }
+
+        // 綁上接聽事件
+        item.addEventListener('click', function () {
+          // 判斷不一樣的方塊
+          if (key == ranomint) {
+            console.log('這是不一樣的方塊');
+            gen_btns();
+          }
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

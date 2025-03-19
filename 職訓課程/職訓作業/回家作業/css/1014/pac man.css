@@ -1,0 +1,297 @@
+ @import url('https://fonts.cdnfonts.com/css/8bit-wonder');
+ @import url('https://fonts.cdnfonts.com/css/bm-rizer');
+ @import url('https://fonts.cdnfonts.com/css/ernest-borgnine');
+
+ *,
+ #before,
+ #after {
+     box-sizing: border-box;
+ }
+
+ body {
+     margin: 0;
+     font-family: '8BIT WONDER', sans-serif;
+     /* font-family: 'Shape Bit', sans-serif; */
+     /* font-family: 'Borgnine', sans-serif; */
+
+ }
+
+ a {
+     text-decoration: none;
+ }
+
+ .all {
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-image: linear-gradient(#11034d 2px, transparent 2px), linear-gradient(to right, #11034d 2px, transparent 2px);
+     background-size: 32px 32px;
+     background-color: #000000;
+ }
+
+ .container {
+     width: 90%;
+     height: 90%;
+     background-color: rgb(0, 0, 0);
+     /* border: 6px solid rgb(11, 4, 74); */
+     box-shadow: 0px 0px 100px 2px rgb(64, 64, 232);
+     animation:color-change 5s linear infinite;
+ }
+
+
+
+
+ .container-full {
+     width: 100%;
+ }
+
+ .container-normal {
+     width: 80%;
+ }
+
+ nav {
+     font-size: 26px;
+     height: 50px;
+     padding: 0px 6px;
+     /* background-color: #00000081; */
+     border: black 10px solid;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+
+ }
+
+ .left-nav {
+     color: #ff0505;
+     list-style: none;
+     display: flex;
+     align-items: center;
+     font-family: 'BM rizer', sans-serif;
+ }
+
+ .left-nav li {
+     padding: 4px;
+ }
+
+ .right-nav {
+     font-size: 14px;
+     color: white;
+     font-family: 'BM rizer', sans-serif;
+
+ }
+
+ header {
+     height: 50%;
+     background-color: blue;
+
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     margin: auto;
+
+     padding: 20px;
+     border-bottom: #000 12px solid;
+     border-radius: 5px;
+     opacity: 1;
+     animation: light 3s linear infinite;
+ }
+
+ .container-normal .big-font {
+     font-size: 66px;
+     display: flex;
+     justify-content: center;
+     margin: 20px 0 0 0;
+     animation: light 0.1s linear infinite;
+ }
+
+ @media (max-width:1270px) {
+     .container-normal .big-font {
+         font-size: 56px;
+     }
+ }
+
+ @media (max-width:698px) {
+     .container-normal .big-font {
+         font-size: 40px;
+         margin: 0;
+     }
+ }
+
+ .container-normal .font {
+     font-size: 16px;
+     margin: 20px 36px;
+     animation: light 0.2s linear infinite;
+ }
+
+ @media (max-width:1270px) {
+     .container-normal .font {
+         font-size: 14px;
+         margin: 0;
+     }
+
+ }
+
+ @media (max-width:698px) {
+     .container-normal .font {
+         font-size: 12px;
+     }
+ }
+
+ .container-normal .btn {
+     font-size: 30px;
+     width: min-content;
+     padding: 10px;
+     background-color: #ff0505;
+     color: #000;
+     border: rgb(255, 255, 255) 2px solid;
+     box-shadow: 4px 5px 0px 0px #000000;
+     animation: light 0.1s linear infinite;
+
+ }
+
+ .btn:hover {
+     background-color: #898989;
+
+ }
+
+ .btn:active {
+     position: relative;
+     top: 2px;
+
+ }
+
+ @media (max-width:1270px) {
+     .container-normal .btn {
+         font-size: 22px;
+     }
+
+ }
+
+ @media (max-width:698px) {
+     .container-normal .btn {
+         font-size: 14px;
+         margin: 0;
+     }
+ }
+
+ main {
+     width: 100%;
+     height: calc(50% - 50px);
+     /* border-bottom: rgb(207, 207, 207) 8px solid; */
+     /* background-color: #383737; */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .loader {
+     width: 1390px;
+     height: 268px;
+     /* padding: 2px 0; */
+     box-sizing: border-box;
+     display: flex;
+     animation: l5-0 5s infinite steps(6);
+     /* 球消失時間 */
+     position: relative;
+     background:
+         linear-gradient(#000000 0 0) 0 0/0% 100% no-repeat,
+         radial-gradient(circle 14px, yellow 30%, orange 60%, #0000) 0 0/20% 100% #000;
+     overflow: hidden;
+ }
+
+ @media (max-width:1286px) {
+     .loader {
+         background: #000;
+     }
+
+ }
+
+ .loader::before {
+     content: "";
+     width: 268px;
+     transform: translate(-100%);
+     border-radius: 50%;
+     background: radial-gradient(circle 120px, yellow, orange 90%, rgba(255, 255, 0, 0));
+     animation:
+         l5-1 .100s .153s infinite steps(5) alternate,
+         /*嘴巴*/
+         l5-2 5s infinite linear;
+     /*跑速*/
+     position: relative;
+ }
+
+
+ .loader::after {
+     content: "";
+     position: absolute;
+     transform: translate(-100%);
+     top: 0%;
+     width: 230px;
+     height: 230px;
+     clip-path: ellipse(4% 6% at 62% 28%);
+     background-color: rgba(0, 0, 0, 0.819);
+     animation: l5-2 5s infinite linear;
+ }
+
+
+ @keyframes l5-1 {
+
+     0% {
+         clip-path: polygon(50% 50%, 100% 0, 100% 0, 0 0, 0 100%, 100% 100%, 100% 100%)
+     }
+
+     100% {
+         clip-path: polygon(50% 50%, 100% 65%, 100% 0, 0 0, 0 100%, 100% 100%, 100% 35%)
+     }
+ }
+
+ @keyframes l5-2 {
+
+     100% {
+         transform: translate(1390px)
+     }
+ }
+
+
+ @keyframes l5-0 {
+     100% {
+         background-size: 120% 100%, 20% 100%
+     }
+ }
+
+
+ @keyframes light {
+     0% {
+         opacity: 1;
+     }
+
+     10% {
+         opacity: 0.9;
+     }
+
+     50% {
+         opacity: 0.6;
+     }
+
+
+     100% {
+         opacity: 1;
+     }
+ }
+
+ @keyframes color-change {
+    0% {
+        box-shadow: 0px 0px 20px 10px rgb(4, 26, 136);
+    }
+
+    50% {
+        box-shadow: 0px 0px 100px 2px rgb(22, 43, 233);
+    }
+
+
+    100% {
+        box-shadow: 0px 0px 20px 10px rgb(4, 26, 136);
+    }
+} 

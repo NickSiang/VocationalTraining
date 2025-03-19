@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+
+    <div class="t99"></div>
+
+
+    <script>
+        /*i++ 是 後綴遞增，它先使用 i 當前的值，再將 i 增加 1。
+        換句話說，i++ 會先返回 i 當前的數值，再將 i 增加 1。*/
+
+        /* ++i 是 前綴遞增，它先將 i 增加 1，再返回增後的值。
+         換句話說，++i 會先將 i 增加 1，再使用 i 的新值。*/
+
+        const t99 = document.querySelector('.t99');
+        t99.innerHTML = '<p>橫式99乘法表</p>';
+        //  textcontext只有放文字
+
+
+        /*innerHTML 是 JavaScript 中用來 讀取或修改 HTML 元素內容 的屬性。它可以讓你操作元素內的 HTML 標籤或文本，甚至修改整個元素的內容。
+        1. 讀取內容：
+        使用 innerHTML 你可以獲取元素內的 HTML 結構。
+          2. 修改內容：
+        使用 innerHTML 也可以將元素內的 HTML 結構或文本更改為你指定的內容。*/
+
+        for (let i = 1; i < 10; i++) {
+
+            for (let j = 1; j < 10; j++) {
+                if (i * j < 10) {
+                    t99.innerHTML += `${i} * ${j} = ${i * j}, &nbsp;&nbsp;&nbsp; &nbsp;`;
+                }
+                else
+                    t99.innerHTML += `${i} * ${j} = ${i * j}, &nbsp; &nbsp;`;
+            }
+            t99.innerHTML += ` <br/>`;
+        }
+        // +=累加
+
+        t99.innerHTML += '<p>直式99乘法表</p>';
+
+
+
+        for (let i = 1; i < 10; i++) {
+
+            for (let j = 1; j < 10; j++) {
+                if (i * j < 10) {
+                    t99.innerHTML += `${j} * ${i} = ${i * j}, &nbsp;&nbsp;&nbsp; &nbsp;`;
+                }
+                else
+                    t99.innerHTML += `${j} * ${i} = ${i * j}, &nbsp; &nbsp;`;
+            }
+            t99.innerHTML += ` <br/>`;
+        }
+
+
+        t99.innerHTML += '<p>99乘法表</p>';
+
+
+
+        for (let i = 1; i < 10; i++) {
+
+            for (let j = 1; j < 10; j++) {
+                if (i * j < 10) {
+                    t99.innerHTML += `${j} * ${i} = ${i * j}, &nbsp;&nbsp;&nbsp; &nbsp;`;
+                }
+                else
+                    t99.innerHTML += `${j} * ${i} = ${i * j}, &nbsp; &nbsp;`;
+            }
+
+        }
+       
+    </script>
+</body>
+
+</html>

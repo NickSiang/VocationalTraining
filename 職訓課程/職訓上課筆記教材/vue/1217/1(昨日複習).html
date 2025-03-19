@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- @mouseover -->
+        <!-- v-on的縮寫是@,後面接要觸發的事件 (click,mouseover ...)-->
+        <button type="button" @click="showScore = true">送出</button>
+        <p>數學</p>
+
+        <p>分數:{{score}}</p>
+
+        <!-- v-if會讓dom元素完全消失(消耗比較大) v-show則是加上display:none來控制顯示 -->
+        <!-- 資訊上 或 效能上 -->
+        <!-- div長都沒長出來 使用在不常見的-->
+        <div v-if="showScore">v-if已送出分數</div>
+        <!-- 會在div上加上display:none 使用在較常見的-->
+        <div v-show="showScore">v-show已送出分數</div>
+
+        <input type="number" v-model="text">
+        {{text}}
+    
+    
+    </div>
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            
+            data() {
+                return {
+                    showScore: false,
+                    score: 80,
+                    text:'',
+                }
+            },
+            methods: {
+                getScore() {
+                    if (showScore) {
+                        return this.score;
+                    }
+                    else {
+                        return ''
+                    }
+                },
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+
+</html>

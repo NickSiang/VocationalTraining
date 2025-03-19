@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #all {
+      background-color: aqua;
+      width: 600px;
+      height: 400px;
+    }
+    #box-top {
+      background-color: pink;
+      width: 600px;
+      height: 100px;
+    }
+    #box-middle {
+      background-color: yellow;
+      width: 600px;
+      height: 200px;
+    }
+    #box-middle-left {
+      background-color: red;
+      width: 150px;
+      height: 200px;
+      float: left;
+    }
+    #box-middle-right {
+      background-color: purple;
+      width: 450px;
+      height: 200px;
+      float: left;
+    }
+    #box-middle-right-top {
+      background-color: green;
+      width: 450px;
+      height: 60px;
+    }
+    #box-middle-right-middle {
+      background-color: pink;
+      width: 450px;
+      height: 70px;
+    }
+    #box-middle-right-bottom {
+      background-color: lightblue;
+      width: 450px;
+      height: 70px;
+    }
+    #box-bottom {
+      background-color: blue;
+      width: 600px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 父(親)層 -->
+  <div id="all">
+    <!-- 子層 -->
+    <div id="box-top"></div>
+    <div id="box-middle">
+      <div id="box-middle-left"></div>
+      <div id="box-middle-right">
+        <div id="box-middle-right-top"></div>
+        <div id="box-middle-right-middle"></div>
+        <div id="box-middle-right-bottom"></div>
+      </div>
+    </div>
+    <div id="box-bottom"></div>
+  </div>
+</body>
+</html>

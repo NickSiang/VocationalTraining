@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函式陳述式與表達式
+        // 陳述式 一種聲明或是對邏輯的描寫
+        // 會影響程式的運行流程,並且一定會做事,
+        // 邏輯判斷為一種陳述式,但陳述式在js裡面不會產生數值,
+        // 所以不能被放在js內預期會產生數值的地方
+        // ?像是函式的參數,函式的回傳值,或是宣告變數時=的右邊
+        // 常見陳述式:
+        // 1.if/switch判斷式
+        // 在這個區塊會根據程式碼邏輯做事,
+        // 但完成後並不會回傳任何數值
+
+        // 2.for/while迴圈
+
+        // 3.變數宣告
+
+        // 4.一般函式宣告
+
+        // 表達式
+        // 一段js在執行完後所得到一個結果的程式碼
+        // 只要是執行後會回傳結果的一段程式碼,就是表達式
+
+        // =============================================
+        // 函式陳述式和函式表達式
+
+        // 函式陳述式直接給定函式名稱來宣告一個函式
+        // 就是一般的函式宣告
+
+        // 函式表達式寫法為直接把一個函式指派給變數
+
+        // =============================================
+        // 立即執行函式(函式被創造之後馬上執行)5-10
+
+        // 匿名函式只被允許在使用函式表達式時使用(指派變數)
+        // 或必須搭配運算子使用
+
+        (function getName() {
+            console.log('匿名函式');
+        })
+
+        // 若在括號外面嘗試用括號內的函式名稱去呼叫
+        // js會回報錯誤,因為它不是函式陳述式
+        // 所以該函式名稱不會被保留下來
+        // 所以對全域環境 getName這個函式不存在
+        //console.log(getName);
+
+        // 創造後馬上執行(呼叫)
+        // (function getName1() {
+        //     console.log('匿名函式');
+        // })();
+
+        let myName1 = 'Nick';
+
+        (function greet(name) {
+            let my1 = ' my name is ';
+
+            console.log('Hello' + my1 + name);
+        })(myName1);
+
+        // =============================================
+        // 一級函式和高階函式5-13
+        // 高階函式 可以接收函式做為參數 或是回傳函式
+        // 作為輸出的函式 稱之為高階函式ex map filter
+        // 他們能夠接收函式做為他們的參數
+
+        // let array = [1, 2, 3]
+        // let newArray = array.map(
+        //     function (element, index) {
+        //         return element * 2;
+        //     }
+        // )
+
+
+        // map實作
+
+        let arr1 = [1, 2, 3]
+
+        function arrayMap(fn, array) {
+            let newArray = [];
+            console.log(newArray);
+
+            for (let i = 0; i < array.length; i++) {
+                const result = fn(array[i]);
+                // 將陣列中的每個元素傳遞給回呼函數 `fn`，並取得返回值。
+                newArray.push(result);
+            }
+            return newArray;
+        }
+
+        let newArray1 = arrayMap(function (item) {
+            return item * 2
+        }, arr1);
+
+        console.log(newArray1);
+
+        // filter實作 5-17再複習
+
+        // let arr2 = [1, 2, 3];
+
+        // let newArray2 = arr2.filter(
+        //     function (element, index) {
+        //         return element >1
+        //     }
+        // )
+        // console.log(newArray2);
+
+        let arr3 = [1, 2, 3, 4];
+
+        function filterArray(fn, index) {
+            let newArray = [];
+
+            for (let index = 0; index < arr3.length; index++) {
+                let element = arr3[index];
+                let shouldKeep = fn(element);
+
+                if (Boolean(shouldKeep)) {
+                    newArray.push(element);
+                }
+            };
+
+            return newArray;
+        }
+
+
+        let newArray3 = filterArray(function (elenent) {
+            return elenent > 2;
+        }, arr3)
+
+
+        console.log(newArray3);
+
+        // =============================================
+        // forEach 5-19
+        let array4 = [1, 2, 3]
+
+        for (let index = 0; index < array4.length; index++) {
+            console.log(array4[index]);
+
+        }
+
+        // 用forEach方式取用每個元素
+        array4.forEach(function (element) {
+            console.log(element);
+        })
+
+        // =============================================
+        // 箭頭函式(本身是匿名的 只能用在表達式)
+        let arrowFunction = () => {
+        }
+
+        // 無錯誤但無意義
+        () => {
+            console.log("hello");
+        }
+
+        // 立即執行
+        (() => {
+            console.log("hello");
+        })()
+
+        // 簡潔回傳值
+        // 使用箭頭函式時, 若要回傳的內容單純只有一個表達式時
+        // 可省略區塊{}
+        // ex
+        const add = (a, b) => a + b;
+
+        // add(參數)
+        console.log(add(1, 2));
+
+        // ??問題(a)=>(b)兩個函式(在b裡面放a+b運算式?)
+        // 箭頭函式本身也是表達式,在js裡函式又可以被傳給另一個函式
+        const add1 = (a) => (b) => a + b;
+        console.log(add1(1)(2));
+
+
+        // 箭頭函式與function
+
+        //  1.箭頭函式沒有arguments(引數)物件
+        // function a1(參數) {
+        //     return a + b;
+        // }
+        // a1(引數)
+
+
+        // 2.箭頭函式沒有this
+
+        // =============================================
+        // 回呼函式 在函式裡面執行另一個函式
+        // 是從外部傳入 並在函式內執行
+
+        // 5-27以上再複習
+        // =============================================
+        // 閉包
+        // 閉包（Closure）是函式以及該函式被宣告時所在的作用域環境（lexical environment）的組合。
+        // 閉包被定義為函式以及該函式被宣告時所在的作用域環境 (lexical environment) 的組合。
+        // 白話一點說，閉包就是內部函式能夠取得函式外部的變數，
+        // 並且記住這個變數。因為能夠記住這個外部變數，閉包很常被用來做狀態保存。
+        function addAB(a) {
+            return function addB(b) {
+                console.log(a + b);//8 
+                // ??問題 那為什麼不直接return函式內的值,而是放在函式前?
+                // 或者閉包有甚麼作用
+            }
+        }
+        let addB = addAB(3);
+        let result = addB(5);
+
+        // 上述例子會發現當從addAB函式執行到addB函式時,因為addAB
+        // 已經回傳了(return)addB這個函式,所以理當已經結束了它對應
+        // 的執行環境,而只剩下addB函式的執行環境
+
+        // 參數a還是能正常取得 這就是閉包所造成的
+        // addAB的執行環境在addB執行環境存在時,暫時為了addAB
+        // 而被保留,且這段這段期間完全屬於addB的函式執行環境
+        // 這個暫時存在的封閉環境 被稱為閉包
+
+        // ?????(不太懂執行的邏輯) 5-32 閉包例子
+
+        function pushFuncToArray() {
+            var funcArr = [];
+
+            for (var i = 0; i < 3; i = i + 1) {
+                funcArr.push(function () {
+                    console.log(i);
+                });
+            }
+            return functionArr;
+        }
+
+        var functionArr = pushFuncToArray();
+
+        functionArr[0](); // 輸出: 0
+        // functionArr[1](); // 輸出: 1
+        // functionArr[2](); // 輸出: 2
+
+        // 問題1 為甚麼控台報錯
+        // 問題2 答案為甚麼是3?
+        // 問題3  functionArr[0](); []是殺毀
+
+        // =============================================
+        // 其餘參數以及物件參數
+
+        // 其餘參數
+        // 當一個函式有可能接收一個以上但不確定數量的參數,能夠使用
+        // 其餘函數以...加上變數名稱來表示且只能擺放在最後一個位置
+        // 它會將所有後面未在函式裡面定義的變數,蒐集而成一個陣列傳入函式
+        // ex:
+        function addAll(a, b, ...rest) {
+            let sum = a + b;
+
+            console.log(...rest);
+
+            rest.forEach((num) => {
+                sum = sum + num;
+            })
+
+            return sum;
+        }
+
+
+        addAll(1, 2, 3, 4, 5, 6);
+
+        // =============================================
+        // 物件參數的展開
+        // 當一個物件參數傳入函式時 可以把這個物件展開
+        // 快速地取得物件裡面的屬性作為參數給函式內的邏輯使用
+        // ({})解構賦值意即可以快速把物件數值的內容[拆解]並取出來使用
+
+
+        var userInfo = {
+            name: 'Anakin',
+            nickName: 'King'
+        }
+
+        function displayUser({ name, nickName }) {
+
+        }
+
+        displayUser(userInfo);
+
+
+    </script>
+
+</body>
+
+</html>

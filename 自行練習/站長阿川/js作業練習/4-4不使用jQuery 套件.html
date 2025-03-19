@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <h1 class="title">
+        Make me green
+    </h1>
+
+    <p class="para">
+        Make me red
+    </p>
+    <p class="para">
+        Me red too
+    </p>
+    <p class="para">
+        Also me
+    </p>
+
+    <script>
+        document.querySelector('.title').style.color = 'green'
+        document.querySelectorAll('.para').forEach((p) => {
+            p.style.color = 'red';
+        })
+        // for (var p of document.querySelectorAll('.para')) { 
+        //     p.style.color = 'red';
+        // }
+
+    </script>
+</body>
+
+</html>

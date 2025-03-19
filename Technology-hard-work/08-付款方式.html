@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-付款方式</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+
+        <div class="w-full h-screen max-w-[375px] font-semibold mx-auto flex flex-col">
+        <nav class="w-full relative">
+            <!-- logo -->
+            <button onclick="location.href='./01-起始畫面.html';"
+                class="w-full h-[68px] flex items-center justify-center border-b-[1px] border-[#D9D9D9]">
+                <img class="w-[68px]" src="./img/logo.png" alt="logo">
+            </button>
+
+            <button onclick="location.href='./07-購物車內容.html';" <a href="./07-購物車內容.html"><img
+                    class="absolute top-[78px] left-[10px] w-[56px] " src="./img/叉叉按鈕.png" alt="返回">
+            </button>
+        </nav>
+
+        <main class="h-full">
+            <!-- 標題文字 -->
+            <div class="w-full h-[94px] p-16">
+                <p class="text-center text-black-500 text-2xl font-black ">請選擇付款方式</p>
+            </div>
+            <!-- 卡片區 -->
+
+            <div class="h-[100%] flex justify-center ">
+                <!-- 第一張卡 -->
+                <div class="w-[264px] h-min flex flex-wrap gap-4">
+                    <button onclick='location.href="./09-請感應行動支付.html"'>
+                        <div
+                            class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                            <img class="w-[100px] " src="./img/line pay.png" alt="支付line pay圖">
+                            <div class="text-center px-2 ">
+                                <p class="text-[12px] font-bold truncate">LINE Pay
+                                </p>
+                            </div>
+                        </div>
+                    </button>
+                    <!-- 第二張卡 -->
+                    <button onclick='location.href="./09-請感應行動支付.html"'>
+                        <div
+                            class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                            <img class="h-[100px]" src="./img/街口支付.png" alt="支付街口圖">
+                            <div class="text-center px-2">
+                                <p class="text-xs font-bold truncate">街口支付</p>
+                            </div>
+                        </div>
+                    </button>
+                    <!-- 第三張卡 -->
+                    <button onclick='location.href="./09-請感應行動支付.html"'>
+                        <div
+                            class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                            <img class="w-[100px]" src="./img/apple pay.png" alt="支付apple pay圖">
+                            <div class="text-center px-2">
+                                <p class="text-xs font-bold truncate">Apple Pay
+                                </p>
+                            </div>
+                        </div>
+                    </button>
+                    <!-- 第四張卡 -->
+                    <button onclick='location.href="./10-選擇發票方式.html"'>
+                        <div
+                            class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                            <img class="w-[100px]" src="./img/櫃台支付.png" alt="支付櫃台結帳圖">
+                            <div class="text-center px-2">
+                                <p class="text-xs font-bold truncate">櫃台支付</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- </div> -->
+</body>
+
+</html>

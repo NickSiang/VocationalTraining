@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 引入CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- 定義一個 div 元素，id="app" 是 Vue 的掛載點 -->
+    <div id="app">
+        <!-- 使用 {{ message }} 是 Vue 的插值語法，
+         會將 JavaScript 中的 message 資料顯示在 HTML 上。 -->
+        {{ message }} {{hello}}
+
+        <ul>
+            <!-- 迴圈  v-for -->
+            <li v-for="(value,key) in hello">
+                {{hello}}
+                {{value}}
+                {{key}}
+            </li>
+        </ul>
+
+        <!-- 1.將值賦予在輸入框內 -->
+        <!-- html要使用vue的語法和功能 在前面加上: -->
+        <input type="text" :value="name">
+        </br></br>
+        <!-- 2.將值綁定 -->
+        <!-- 畫面輸入的資料要跟js資料有關連 用v-model -->
+        <!-- v-model="searchText" -->
+        <input type="text" v-model="name">
+        {{name}}
+
+        <!-- 判斷  v-for -->
+        <div v-if="age>10">大於10</div>
+        <div v-else-if="age>5 && age<10 ">大於5 小於10</div>
+        <div v-else="age<5">小於5</div>
+
+    </div>
+
+    <script>
+        // 從 Vue 庫中解構出 createApp 方法，用於建立 Vue 應用程式。
+        // 它的作用是從 Vue 物件中提取出 createApp 方法，
+        // 然後將其存儲在變數 createApp 中。
+
+        // 原始寫法需要用 Vue.createApp 呼叫方法，但透過解構賦值，
+        // 我們可以直接使用 createApp，這樣程式碼更簡潔。
+
+        const { createApp } = Vue
+        // createApp({})：創建一個 Vue 應用。
+        createApp({
+            // data()：用於定義應用的資料模型，回傳一個物件。
+            // 這裡的 message 是定義的資料，初始值為 'Hello Vue!'。
+            data() {
+                return {
+                    message: 'Hello Vue!',
+                    hello: [2, 3, 6, 4, 5],
+                    name: '111',
+                    age: '2'
+                }
+            }
+        }).mount('#app')
+        // .mount('#app')：將 Vue 應用程式掛載到 id="app" 的 DOM 元素上。
+
+
+        // Vue 的雙向數據綁定：
+        // Vue 的核心特性是「響應式資料」，
+        // 當 message 的值改變時，HTML 的顯示內容也會即時更新。
+
+    </script>
+</body>
+
+</html>

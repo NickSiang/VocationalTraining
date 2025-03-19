@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-麥當勞商品卡片</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w-full h-screen max-w-[375px] font-semibold mx-auto flex flex-col">
+        <!-- Nav Section -->
+        <nav class="w-full relative">
+            <input type="button" 
+                onclick="location.href='./04-餐點畫面.html';" 
+                value="<"
+                class="w-[56px] h-[32px] bg-black rounded-2xl absolute left-4 top-4 flex items-center justify-center text-white text-base cursor-pointer border-0" />
+        </nav>
+
+        <!-- Main Section -->
+        <main class="flex-1 overflow-auto">
+            <div class="w-[375px] h-[226px] relative flex flex-col items-center">
+                <img class="w-[200px] h-[160px] object-contain mt-2" src="./img/大圖.png" alt="商品圖片">
+                <h1 class="w-[375px] h-[34px] text-2xl font-bold text-center mt-1 leading-[34px]">帕瑪森主廚雞腿堡</h1>
+                <p class="w-[375px] h-[24px] text-[#00a650] text-xl font-bold text-center mt-1 leading-[24px]">$108</p>
+            </div>
+
+            <div class="w-[370px] flex flex-col gap-2 mt-4">
+                <div class="w-full h-[52px] bg-white rounded-[20px] p-3 flex justify-between items-center border border-[rgba(146,146,146,0.403)]">
+                    <div class="flex items-center gap-3">
+                        <div class="w-[40px] h-[40px] bg-gray-200 rounded-md"></div>
+                        <div class="flex flex-col justify-center">
+                            <p class="text-base font-bold">配餐</p>
+                            <p class="text-xs text-gray-500">無須加購套餐</p>
+                        </div>
+                    </div>
+                    <input type="button" 
+                        value="+" 
+                        class="w-[32px] h-[32px] bg-yellow-400 rounded-full flex items-center justify-center cursor-pointer border-0" />
+                </div>
+
+                <div class="grid grid-cols-4 gap-1">
+                    <div class="w-[90px] rounded-lg border border-gray-200 cursor-pointer" onclick="location.href='';">
+                        <div class="flex flex-col items-center justify-center bg-gray-50 p-[8px]">
+                            <img src="./img/麵包.png" alt="加購圖片" class="w-[23px] h-[23px] rounded-md mb-1">
+                            <p class="text-[10px]">麵包</p>
+                            <p class="text-[8px] text-gray-400">無須加購套餐</p>
+                        </div>
+                        <div class="h-[26px] flex items-center justify-end px-2">
+                            <span class="text-[6px] font-bold cursor-pointer">-</span>
+                            <span class="text-[6px]">1</span>
+                            <span class="text-[6px] font-bold cursor-pointer">+</span>
+                            <span class="text-[6px]">$10</span>
+                        </div>
+                    </div>
+                    <div class="w-[90px] rounded-lg border border-gray-200 cursor-pointer" onclick="location.href='';">
+                        <div class="flex flex-col items-center justify-center bg-gray-50 p-[8px]">
+                            <img src="./img/麵包.png" alt="加購圖片" class="w-[23px] h-[23px] rounded-md mb-1">
+                            <p class="text-[10px]">麵包</p>
+                            <p class="text-[8px] text-gray-400">無須加購套餐</p>
+                        </div>
+                        <div class="h-[26px] flex items-center justify-end px-2">
+                            <span class="text-[6px] font-bold cursor-pointer">-</span>
+                            <span class="text-[6px]">1</span>
+                            <span class="text-[6px] font-bold cursor-pointer">+</span>
+                            <span class="text-[6px]">$10</span>
+                        </div>
+                    </div>
+                    <div class="w-[90px] rounded-lg border border-gray-200 cursor-pointer" onclick="location.href='';">
+                        <div class="flex flex-col items-center justify-center bg-gray-50 p-[8px]">
+                            <img src="./img/麵包.png" alt="加購圖片" class="w-[23px] h-[23px] rounded-md mb-1">
+                            <p class="text-[10px]">麵包</p>
+                            <p class="text-[8px] text-gray-400">無須加購套餐</p>
+                        </div>
+                        <div class="h-[26px] flex items-center justify-end px-2">
+                            <span class="text-[6px] font-bold cursor-pointer">-</span>
+                            <span class="text-[6px]">1</span>
+                            <span class="text-[6px] font-bold cursor-pointer">+</span>
+                            <span class="text-[6px]">$10</span>
+                        </div>
+                    </div>
+                    <div class="w-[90px] rounded-lg border border-gray-200 cursor-pointer" onclick="location.href='';">
+                        <div class="flex flex-col items-center justify-center bg-gray-50 p-[8px]">
+                            <img src="./img/麵包.png" alt="加購圖片" class="w-[23px] h-[23px] rounded-md mb-1">
+                            <p class="text-[10px]">麵包</p>
+                            <p class="text-[8px] text-gray-400">無須加購套餐</p>
+                        </div>
+                        <div class="h-[26px] flex items-center justify-end px-2">
+                            <span class="text-[6px] font-bold cursor-pointer">-</span>
+                            <span class="text-[6px]">1</span>
+                            <span class="text-[6px] font-bold cursor-pointer">+</span>
+                            <span class="text-[6px]">$10</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[370px] flex flex-col gap-2 ">
+                    <div class="w-full h-[52px] bg-white rounded-[20px] p-3 flex justify-between items-center border border-[rgba(146,146,146,0.403)]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-[40px] h-[40px] bg-gray-200 rounded-md"></div>
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base font-bold">配餐</p>
+                                <p class="text-xs text-gray-500">無須加購套餐</p>
+                            </div>
+                        </div>
+                        <input type="button" 
+                            value="+" 
+                            class="w-[32px] h-[32px] bg-yellow-400 rounded-full flex items-center justify-center cursor-pointer border-0" />
+                    </div>
+                </div>
+                <div class="w-[370px] flex flex-col gap-2 ">
+                    <div class="w-full h-[52px] bg-white rounded-[20px] p-3 flex justify-between items-center border border-[rgba(146,146,146,0.403)]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-[40px] h-[40px] bg-gray-200 rounded-md"></div>
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base font-bold">配餐</p>
+                                <p class="text-xs text-gray-500">無須加購套餐</p>
+                            </div>
+                        </div>
+                        <input type="button" 
+                            value="+" 
+                            class="w-[32px] h-[32px] bg-yellow-400 rounded-full flex items-center justify-center cursor-pointer border-0" />
+                    </div>
+                </div>
+                       
+                <!-- 重複一次上面的配餐選項結構 -->
+
+                <!-- Footer Section -->
+                <footer class="fixed bottom-0 flex">
+                    <div class="w-[375px] bg-[#F5F5F5] shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)] rounded-t-[30px] flex justify-center items-center gap-3 p-[10px_5px]">
+                        <input type="button" 
+                            onclick="location.href='./01-起始畫面.html';" 
+                            value="取消整筆訂單"
+                            class="w-[120px] h-[39px] bg-[#FCC305] text-base font-semibold rounded-[10px] flex items-center justify-center cursor-pointer border-0" />
+                        <input type="button" 
+                            onclick="location.href='./06-需要購物袋嗎.html';" 
+                            value="下一步"
+                            class="w-[120px] h-[39px] bg-[#FCC305] text-base font-semibold rounded-[10px] flex items-center justify-center cursor-pointer border-0" />
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

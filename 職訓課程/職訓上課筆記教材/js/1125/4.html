@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .card-region {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 10px;
+        }
+
+        .card {
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-region"></div>
+    <!-- <img src="" alt=""> -->
+    <script>
+        const cardRegion = document.querySelector('.card-region');
+        let dataAll = [
+            {
+                name: 'Merry',
+                sex: 'male',
+                age: 20,
+                img: './img/dinotaeng/logo.jpg',
+            },
+            {
+                name: 'john',
+                sex: 'male',
+                age: 10,
+                img: './img/dinotaeng/logo.jpg',
+            }
+            ,
+            {
+                name: 'john',
+                sex: 'male',
+                age: 10,
+                img: './img/dinotaeng/logo.jpg',
+            }
+            ,
+            {
+                name: 'john',
+                sex: 'male',
+                age: 10,
+                img: './img/dinotaeng/logo.jpg',
+            }
+        ]
+
+        cardRegion.innerHTML = '';
+
+        // 箭頭函式帶參數
+        // 假設 dataAll 是一個陣列，
+        // dataAll.forEach 就是用來對 dataAll 中的每個元素進行操作。
+        dataAll.forEach((person) => {
+            // cardRegion.innerHTML += `<img src ='${person.img}'alt= ,></br>`
+            // cardRegion.innerHTML += `姓名${person.name}</br>`
+            // cardRegion.innerHTML += `年紀${person.age}</br>`
+            // cardRegion.innerHTML += `性別${person.sex}</br>`
+            showAllCard(person);
+        });
+
+        function showAllCard(person) {
+            cardRegion.innerHTML += `
+            <div class='card'>
+            <img src ='${person.img}'alt=圖片 ,><br/>
+            <p>姓名${person.name}</p>
+            <p>年紀${person.age}</p>
+            <p>性別${person.sex}</p>
+            </div>
+            `
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Cards</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .card-region {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 10px;
+        }
+
+        .card {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" class="all">全部</button>
+    <button type="button" class="north">北部</button>
+    <div class="card-region"></div>
+
+    <script>
+        const cardRegion = document.querySelector('.card-region');
+        const url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-98DE9976-8906-41AD-A1E7-2599F553F4A3';
+        let orgData = []; // 整理后的数据存储
+
+        // 主程序
+        fetchData();
+
+        // 获取数据
+        function fetchData() {
+            fetch(url)
+                .then((response) => response.json())
+                .then((result) => {
+                    // 处理并整理数据
+                    organizeData(result.records.location);
+                    // 渲染所有卡片
+                    renderCards(orgData);
+                });
+        }
+
+        // 整理数据
+        function organizeData(locations) {
+            orgData = locations.map(location => {
+                const wxElement = location.weatherElement[0].time[0];
+                return {
+                    city: location.locationName,
+                    Wx: wxElement.parameter.parameterName,
+                    WxImgIndex: wxElement.parameter.parameterValue, // 图片索引
+                    startTime: wxElement.startTime,
+                    maxT: location.weatherElement[4].time[0].parameter.parameterName
+                };
+            });
+        }
+
+        // 渲染卡片
+        function renderCards(data) {
+            cardRegion.innerHTML = ''; // 清空区域
+            data.forEach(city => {
+                cardRegion.innerHTML += `
+                    <div class='card'>
+                        <img src='https://example.com/icons/${city.WxImgIndex}.png' alt='天气图片'>
+                        <p>城市：${city.city}</p>
+                        <p>天气：${city.Wx}</p>
+                        <p>开始时间：${city.startTime}</p>
+                        <p>最高温度：${city.maxT}°C</p>
+                    </div>
+                `;
+            });
+        }
+
+        // 监听按钮点击
+        document.querySelector('.all').addEventListener('click', () => renderCards(orgData));
+        document.querySelector('.north').addEventListener('click', () => {
+            const northCities = ['台北市', '新北市', '基隆市'];
+            const filteredData = orgData.filter(city => northCities.includes(city.city));
+            renderCards(filteredData);
+        });
+    </script>
+</body>
+
+</html>

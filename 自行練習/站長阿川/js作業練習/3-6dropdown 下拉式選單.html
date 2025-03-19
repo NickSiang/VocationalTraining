@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            padding: 16px;
+        }
+
+        span {
+            padding: 0 0 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease-in-out;
+        }
+
+        span:hover {
+            border-bottom: 2px solid white;
+        }
+
+        button {
+            border: none;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            font-size: 16px;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .nav-bar {
+            width: 100%;
+            max-width: 1400px;
+            padding: 15px 10px;
+            margin: auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            background-color: rgb(0, 0, 0);
+            border-radius: 12px;
+        }
+
+        .list-item {
+            padding: 5px 60px;
+            position: relative;
+        }
+
+
+        .dropdown-menu {
+            width: 100%;
+            padding: 30px 0;
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+
+            position: absolute;
+            top: 150%;
+            right: 0;
+
+            background-color: black;
+            color: white;
+            border-radius: 12px;
+        }
+
+        .dropdown-open {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <section>
+            <ul class="nav-bar">
+                <li class="list-item"><a href=""><span>首頁</span></a></li>
+                <li class="list-item"><a href=""><span>全部商品</span></a></li>
+                <li class="list-item"><a href=""><span>全部品牌</span></a></li>
+                <li class="list-item">
+                    <button class="dropdown-btn">
+                        <span>關於我們</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="" class="dropdown-item"><span>團隊介紹</span></a></li>
+                        <li><a href="" class="dropdown-item"><span>企業宗旨</span></a></li>
+                        <li><a href="" class="dropdown-item"><span>創業故事</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </nav>
+
+    <script>
+
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        dropdownBtn.addEventListener('click', dropdown);
+
+        function dropdown(event) {
+            event.stopPropagation();
+            dropdownMenu.classList.toggle('dropdown-open');
+        };
+
+        document.addEventListener('click', function (event) {
+            if (!dropdownBtn.contains(event.target) && !dropdownMenu.contains(event.target));
+                dropdownMenu.classList.remove('dropdown-open');
+        })
+
+    </script>
+</body>
+
+</html>

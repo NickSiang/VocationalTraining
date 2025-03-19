@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex justify-center bg-white">
+    <!-- 主容器 -->
+    <div class="w-[375px] min-h-screen flex flex-col bg-gradient-to-b from-red-600 to-red-500">
+        <!-- Logo -->
+        <div class="flex justify-center items-center p-3">
+            <div class="w-10 h-10 bg-gray-200"></div>
+        </div>
+
+        <!-- 選單 -->
+        <div class="flex justify-center items-center gap-4 mb-3">   
+            <a href="#" class="text-white">超值全餐</a>
+            <a href="#" class="text-white">飲料</a>
+            <a href="#" class="text-white">極選系列</a>
+            <a href="#" class="text-white">點心</a>
+        </div>
+
+        <!-- 主要內容 -->
+        <div class="flex-1 flex p-3 gap-3">
+            <!-- 左側小圖 -->
+            <div>
+                <div class="w-20 h-20 bg-gray-200 rounded mb-2"></div>
+                <div class="w-20 h-20 bg-gray-200 rounded mb-2"></div>
+                <div class="w-20 h-20 bg-gray-200 rounded mb-2"></div>
+                <div class="w-20 h-20 bg-gray-200 rounded mb-2"></div>
+                <div class="w-20 h-20 bg-gray-200 rounded mb-2"></div>
+                <div class="w-20 h-20 bg-gray-200 rounded mb-2"></div>
+            </div>
+
+            <!-- 右側內容 -->
+            <div class="flex-1 text-center">
+                <div class="w-[200px] h-[200px] bg-gray-200 rounded mx-auto mb-4"></div>
+                <h2 class="text-white mb-2">大麥克</h2>
+                <p class="text-white mb-2">502 kcal</p>
+                <p class="text-white text-sm mb-4">麥當勞永遠的一號餐，全球狂銷50億份...</p>
+                <button class="bg-black text-white px-4 py-2 rounded">加入購物車</button>
+            </div>
+        </div>
+
+        <!-- 底部按鈕 -->
+        <div class="p-4 flex justify-around">
+            <button class="bg-white px-4 py-2 rounded-full">友善模式</button>
+            <button class="bg-white px-4 py-2 rounded-full">專人服務鈴</button>
+        </div>
+    </div>
+</body>
+</html>

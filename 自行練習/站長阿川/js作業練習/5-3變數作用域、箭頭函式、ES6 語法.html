@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    simple counter:
+    <button id="sub">-</button>
+    <button id="add">+</button>
+
+    <hr>
+
+    simple calculator:
+    <input type="number" />
+    <input type="number" />
+    <button id="calc">加/減/乘/除</button>
+
+    <script>
+        const subBtn = document.querySelector('#sub');
+        const addBtn = document.querySelector('#add');
+        var total = 0;
+
+        subBtn.addEventListener('click', () => {
+            total = total - 1;
+            alert('simple counte = ' + total)
+        });
+        addBtn.addEventListener('click', () => {
+            total = total + 1;
+            alert('simple counte = ' + total)
+        });
+
+        const calcBtn = document.querySelector('#calc');
+        calcBtn.addEventListener('click', () => {
+            let input1 = Number(document.querySelectorAll('input')[0].value);
+            let input2 = Number(document.querySelectorAll('input')[1].value);
+
+            alert(input1 + input2)
+            alert(input1 - input2)
+            alert(input1 * input2)
+            alert(input1 / input2)
+        })
+
+    </script>
+</body>
+
+</html>
+

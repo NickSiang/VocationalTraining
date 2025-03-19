@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            
+
+        }
+
+        .container {
+            position: relative;
+            /* background-color: aquamarine; */
+            width: 600px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .earth-1 {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 3px solid blue;
+            position: absolute;
+            background-size: cover;
+            animation: rotate 5s linear infinite;
+            
+        }
+
+        .earth-2 {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 3px solid blue;
+            position: absolute;
+            background-size: cover;
+            animation: rotate-reserve 5s linear infinite;
+        }
+        .earth-4 {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 3px solid blue;
+            position: absolute;
+            background-size: cover;
+            animation: rotate-reserve-1 5s linear infinite;
+        }
+
+        
+        .earth-3 {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            /* border: 2px solid blue; */
+            position: absolute;
+            /* background-image: url(./96a83316017b4e21a308b5c3341e0a68.gif); */
+            background-position: center;
+            background-size:cover;
+
+        }
+/* skew */
+        @keyframes rotate {
+            0% {
+                transform: rotateX(100deg) rotateY(160deg);
+            }
+
+            100% {
+                transform: rotateX(100deg) rotateY(180deg);
+            }
+        }
+
+        @keyframes rotate-reserve {
+            0% {
+                transform: rotateX(100deg) rotateY(170deg);
+            }
+
+            100% {
+                transform: rotateX(100deg) rotateY(170deg);
+            }
+        }
+        @keyframes rotate-reserve-1 {
+            0% {
+                transform: rotateX(100deg) rotateY(180deg);
+            }
+
+            100% {
+                transform: rotateX(100deg) rotateY(160deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="earth-1"></div>
+        <div class="earth-2"></div>
+        <div class="earth-3"></div>
+        <div class="earth-4"></div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(40, 192, 192);
+            display: flex;
+        }
+
+        .login {
+            width: 100%;
+            height: 100%;
+            background-color: bisque;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            display: none;
+        }
+
+        .login>span {
+            font-size: 128px;
+        }
+
+
+        .login>button {
+            font-size: 32px;
+        }
+
+        .login>button:hover {
+            cursor: pointer;
+        }
+
+        .online {
+            width: 100%;
+            height: 100%;
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .playing {
+            width: 500px;
+            height: 500px;
+            /* color: bisque; */
+            border: 10px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .playing div {
+            width: 50%;
+            height: 50%;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+
+        <section class="login">
+            <span>遊戲</span>
+            <button>開始遊戲</button>
+        </section>
+
+        <section class="online">
+            <div class="playing">
+
+            </div>
+        </section>
+
+    </section>
+    <script>
+
+        gen_btns()
+
+        function gen_btns() {
+            let btn_area = document.querySelector('.playing');
+            btn_area.innerHTML = '';
+
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+
+            let btns = document.querySelectorAll('.btn');
+            let randomint = Math.floor(Math.random() * 4);
+
+
+            btns.forEach((item, key) => {
+
+                // 給予顏色
+                if (key == randomint) {
+                    item.style.backgroundColor = `rgba(${r} ,${g} ,${b}, /0.8)`;
+
+                } else {
+                    item.style.backgroundColor = `rgb(${r} ,${g}, ${b})`;
+                };
+
+
+                for (let index = 0; index < 4; index++) {
+                btn_area.innerHTML += '<div class="btn">1</div>';
+            };
+
+                item.addEventListener('click', function () {
+                    if (i === randomint) {
+                        console.log('你選對了！');
+                        gen_btns(); // 重新生成按鈕
+                    } else {
+                        console.log('你選錯了！');
+                    }
+                });
+
+                
+          
+
+              
+            })
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
+<!-- 1.開始遊玩的按鈕 -->
+<!-- 2.點擊開始遊玩的按鈕 -->
+<!-- 3.生成4個方塊 -->
+<!-- 4.其中一個顏色不一樣 -->
+<!-- 5.4個方塊都可以點擊 -->
+<!-- 6.點擊到不一樣的方塊,在產生4個方塊(一直重複3-5的動作) -->

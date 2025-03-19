@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 在 JavaScript 中，總共有六種型別：
+        // string 字串
+        // number 數字
+        // boolean 布林值
+        // null 空值
+        // undefined 未定義
+        // object 物件
+
+        // 其中又可以分成以下兩大類別：
+        // 原始型別
+        // 物件型別
+
+        // 這六種型別之中，除了 object 是物件型別以外，
+        // 其餘都是原始型別。
+
+        // =======================================
+        // 陣列和函式為物件
+        // 如何判斷是否為陣列
+        // js提供Array所有地方都可以使用的全域物件
+
+        var arr = [];
+        console.log(typeof arr);
+
+        // 沒有存儲返回值的情況
+        // 在這種情況下，true 的返回值只是暫時存在，
+        // 但程式不會顯示或記錄它。
+        //  Array.isArray(arr);
+        let arr1 = Array.isArray(arr);
+        console.log(arr1);
+
+
+        // 函式算是一個比較特別的物件稱為函式物件
+
+        function someFunction() {
+        }
+
+        someFunction.newProperty = '函式是物件';
+        console.log(someFunction.newProperty);
+
+        // =======================================
+        // 原始型別 又稱純值 單一值得一中資料型態
+        // 六種純值
+        // null 
+        // undefined
+        // Number
+        // string
+        // boolean
+        // symbol
+
+        // Symbol是透過Symbol()方法產生
+        // 每個Symbol值被產生出來之後,所存放的記憶體位置不ㄧ樣
+        // 因此適合用來避免物件屬性意外被修改
+
+        let a = {};
+        let symbol1 = Symbol('123');
+        let symbol2 = Symbol('123');
+        // symbol1和symbol2是不同的兩個值
+
+        console.log(symbol1 === symbol2);
+        console.log(symbol1);
+        console.log(typeof symbol1);
+
+        a.symbol1 = 'hello';
+        console.log(a);
+
+        console.log(a[symbol1]);
+        // 方括號內的屬性名稱必須是字串或變數
+        //undefined 這邊是用symbol型別來存取而不是字串
+
+        console.log(a['symbol1']);
+
+        // 上述例子可以看出使用字串來存取物件屬性跟以symbol
+        // 來存取會得到不同的結果
+        
+        // ??問題
+
+        // =======================================
+        // 原始型別指派給變數
+        // 存值指派給變數值所傳遞的是[數值的複製]
+        let a1 = 12;
+        let b1 = a1;
+
+        b1 = 21;
+
+        console.log(a1);
+        console.log(b1);
+
+        // 可發現重新對b指派其他值,a也不會受到影響
+        // 因兩個變數的存放位置是分開的
+        // 像這樣的行為又稱[傳值呼叫[]
+
+        // =======================================
+        // 物件型別指派給變數
+        // 當一個物件型被指派給變數時,這個物件並非真的存在於該變數裡
+        // 而是被存在某個另外的位置,也就是該物件真正存放的記憶體位置
+        //傳到這個變數內的數值,其實就是這個記憶體位置
+
+        //存值指派給變數值所傳遞的是[數值的複製]
+        //物件指派給變數時所傳的則是[記憶體位置的參考]
+
+        // ex 
+        let a2 = { name: 'nick' };
+        let b2 = a2;
+
+        b2.name = 'nick666'
+
+        console.log(a2);
+        // 上述例子可發現當修改b2內容的值,a也會跟著改變
+        // 像這種不同變數間取用相同記憶體的行為,稱[傳參考呼叫]
+
+        // =======================================
+        // call by shaing 4-10
+        let jedList = ['Anakin', 'Luke', 'Ahosoka']
+
+        // 函式內對陣列內的修改會連帶瑩想函式外的list內容
+        function add(list) {
+            list.push('yoda');
+        }
+
+        add(jedList);
+        console.log(jedList);//['Anakin', 'Luke', 'Ahosoka', 'yoda']
+
+        // =======================================
+        //js知道你要對這個變數指派一個全新的而且屬於物件型別
+        // 的陣列時,會創造一個新的記憶體空間並把新創造的陣列
+        // 存進去,就結果來看指派陣列的這個動作並不會改到外部
+        // 傳進來的變數內容
+
+        // ex
+        let jedList1 = ['Anakin', 'Luke', 'Ahosoka']
+
+        function add1(list) {
+            list = ['nobody'];
+        }
+
+        add1(jedList1);
+        console.log(jedList1);
+
+        // =======================================
+
+        let objectData = { name: 'john' };
+        let functionArg = objectData;
+
+        functionArg.name = 'nick';
+        functionArg = { name: 'billy' }
+        console.log(objectData);//{ name: 'nick' };
+        console.log(functionArg);//{ name: 'billy' };
+
+        // 上述例子可發現當把物件變數指派給另一個變數
+        // 就可以透過另一個變數來對物件屬性做修改
+
+        // 但若後面又對這一個變數指派一個全新物件
+        // 這兩個變數間的連結就會消失,但不會因此而造成
+        // 任何一個已經被創造的物件消滅
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+        }
+
+        .area {
+            display: flex;
+            gap: 16px;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="area">
+        <div>
+            <img src="./img/order.avif" alt="">
+        </div>
+        <div>
+            <!-- 問答式 -->
+            <p>客人：餐點有哪一些</p>
+            <p>
+                服務員：餐點有
+                <span class="no1"></span>種，
+                有<span class="no2"></span>
+            </p>
+            <p>
+                客人：不好意思剛才沒有聽清楚；倒數第三個的餐點是什麼?麻煩在講一次
+            </p>
+            <p>
+                服務生：好的，是
+                <span class="no3"></span>
+            </p>
+            <p>
+                客人：謝謝，我要一顆肉粽、兩個豆沙粽、一碗魚丸蘿蔔湯、在兩碗大腸肉羹麵線
+            </p>
+            <p>
+                服務員：好的，你點的餐點是
+                <span class="no4"></span>
+            </p>
+            <p>
+                服務員：抱歉，大腸肉羹麵線只剩下一碗，另一碗是否換成其他的餐點？
+            </p>
+            <p>
+                客人：好的幫我改成一顆菜粽，另外我要再追加一碗碗粿
+            </p>
+            <p>
+                服務員：我在重複跟你確認一次餐點，
+                餐點是
+                <span class="no5"></span>，
+                總共<span class="no6"></span>份
+
+            </p>
+        </div>
+    </section>
+
+
+
+    <script>
+
+        let menu = ['肉粽', '菜粽', '豆沙粽', '魚丸蘿蔔湯', '大腸肉羹麵線', '碗粿'];
+
+        let no1 = document.querySelector('.no1');
+        let no2 = document.querySelector('.no2');
+        let no3 = document.querySelector('.no3');
+        let no4 = document.querySelector('.no4');
+        let no5 = document.querySelector('.no5');
+        let no6 = document.querySelector('.no6');
+
+        let menu2 = ['肉粽', '豆沙粽', '豆沙粽', '魚丸蘿蔔湯', '大腸肉羹麵線', '大腸肉羹麵線'];
+        let menu3 = [];
+
+        let costlist = [0, 0, 0, 0, 0, 0]
+        let costlist2 = []
+
+        no1.textContent = menu;
+        no2.textContent = menu.length;
+        no3.textContent = menu[3];
+
+        for (let i = 0; i < menu.length; i++) {
+            menu2.forEach((item) => {
+                if (menu[i] == item) costlist[i]++;
+                // console.log(costlist); [1, 0, 2, 1, 2, 0]
+            });
+        };
+
+        // forEach((item元素值, index索引值, arr陣列);
+        costlist.forEach((item, index) => {
+            if (item > 0) {
+                no4.textContent += `${menu2[index]}x${item},`;
+
+                menu3.push(`${menu2[index]}x${item}`);
+                costlist2.push(`${item}`)
+            }
+        });
+
+        menu3.splice(1, 0, '菜粽x1');
+        menu3.splice(4, 1, '大腸肉羹麵線x1');
+        menu3.splice(5, 0, '碗粿x1');
+
+        costlist2.splice(1, 0, 1);
+        costlist2.splice(4, 0, 1);
+        costlist2.splice(5, 1, 1);
+
+        no5.textContent = menu3;
+        no6.textContent = costlist2.reduce((a, b) => a * 1 + b * 1, 0);
+
+    </script>
+</body>
+
+</html>

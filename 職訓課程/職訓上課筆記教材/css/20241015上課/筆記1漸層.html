@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .box-all {
+            width: 300px;
+            height: 300px;;
+           /* background-color: blue; */
+           display: flex;
+           flex-wrap: wrap;
+           border-radius: 50%;
+        
+
+
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            /* background: linear-gradient(方向, 顏色1, 位置1, 顏色2, 位置2); */
+            /* 漸層 */
+            border-radius: 50%;
+
+
+
+        }
+
+        .box-1 {
+            background: linear-gradient(pink, red);
+        }
+
+        .box-2 {
+            background: linear-gradient(to right, pink, red);
+        }
+
+        .box-3 {
+            background: linear-gradient(45deg, pink, red);
+        }
+
+        .box-4 {
+            background: linear-gradient(60deg, pink 20%, red);
+        }
+        .box-5 {
+            background: radial-gradient(circle at center, pink, red);
+        }
+        .box-6 {
+            background: linear-gradient(to top, pink, red);
+        }
+        .box-7 {
+            background: linear-gradient(-20deg, pink 20%, red);
+        }
+        .box-8 {
+            background: linear-gradient(-120deg,pink 30%, red);
+        }
+        .box-9 {
+            background: linear-gradient(-60deg,pink , red);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-all">
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+    <div class="box box-3"></div>
+    <div class="box box-4"></div>
+    <div class="box box-5"></div>
+    <div class="box box-6"></div>
+    <div class="box box-7"></div>
+    <div class="box box-8"></div>
+    <div class="box box-9"></div>
+</div>
+</body>
+
+</html>

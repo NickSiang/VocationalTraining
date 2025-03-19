@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    /* tbody裡面 tr偶數個      
+    tbody tr:nth-of-type(2n) {
+      background-color: aqua;
+    }
+
+    /* tbody裡面 tr奇數個       */
+    /* tbody tr:nth-of-type(2n+1) {
+      background-color: lightcyan;
+    }
+
+    tbody tr:nth-of-type(3n) {
+      background-color: pink
+    }
+
+    tbody tr:nth-of-type(3n+1) {
+      background-color: lightcoral
+    } */
+  </style>
+</head>
+
+<body>
+  身高: <input type="number" class="height">
+  體重: <input type="number" class="weight">
+  <div>
+    <!-- 這是一個標籤元素，為了輔助描述 input 元素。
+      for="male"：這裡的 for 屬性將標籤與表單中 id="male" 的元素關聯起來。
+      點擊這個標籤時，會自動觸發與其關聯的 input 元素。 -->
+
+    <!-- type="radio"：這是一個單選按鈕，表示只能從多個選項中選擇一個。
+      id="male"：為這個單選按鈕設定了一個唯一的識別符，
+      方便通過標籤的 for 屬性或 JavaScript 操作。
+      name="gender"：設定了單選按鈕的名稱，表明這是一組性別選項。
+      同一組（即擁有相同 name 值）的單選按鈕只能選擇一個。
+      value="男"：當這個選項被選中並提交表單時，表單的 gender 值將被設為 "男"。
+      這是標籤的內容，用來告訴用戶這個按鈕的含義（即 "男" 性別選項）。 -->
+
+    性別
+    <label for="male">
+      <input type="radio" id="male" name="gender" value="男">男
+    </label>
+    <label for="female">
+      <input type="radio" id="female" name="gender" value="女">女
+    </label>
+  </div>
+  <button type="button" class="compute">計算</button>
+  <br><br>
+  <div class="result"></div>
+  <table>
+    <!-- 表頭 -->
+    <thead>
+      <!-- tr 表頭列 -->
+      <tr>
+        <th colspan="4">BMI計算機</th>
+      </tr>
+      <tr>
+        <!-- 表頭欄位 -->
+        <th></th>
+        <th>男性</th>
+        <th>女性</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 表內容列 -->
+      <tr>
+        <td class="kind-col">體重過輕</td>
+        <td class="male-col">
+          <20　< /td>
+        <td class="female-col">
+          <19　< /td>
+      </tr>
+      <tr>
+        <td class="kind-col">正常範圍</td>
+        <td class="male-col">20-25</td>
+        <td class="female-col">19-25</td>
+      </tr>
+      <tr>
+        <td class="kind-col">體重過重</td>
+        <td class="male-col">25-30</td>
+        <td class="female-col">25-30</td>
+      </tr>
+      <tr>
+        <td class="kind-col">肥胖</td>
+        <td class="male-col">30-40</td>
+        <td class="female-col">30-40</td>
+      </tr>
+      <tr>
+        <td class="kind-col">病態肥胖</td>
+        <td class="male-col">>40</td>
+        <td class="female-col">>40</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    //---------------------------------------
+    // 全域變數 global variable
+    const height = document.querySelector('.height');
+    const weight = document.querySelector('.weight');
+    const compute = document.querySelector('.compute');//計算鈕
+    const result = document.querySelector('.result');//結果
+
+    // BMI, genderValue：用來儲存計算的 BMI 值和選擇的性別。
+    let BMI;
+    let genderValue;
+
+    //---------------------------------------
+    const male3Btn = document.querySelector('.male-3');
+    const female1Btn = document.querySelector('.female-1');
+    //  查詢選擇器全部種類.kind-col
+    // kindAll, maleAll, femaleAll：分別是對應的表格資料欄位，用來設定顏色。
+    const kindAll = document.querySelectorAll('.kind-col');
+    const maleAll = document.querySelectorAll('.male-col');
+    const femaleAll = document.querySelectorAll('.female-col');
+    // 這次的計算值
+    let anserRow;
+    // 前一次的計算值
+    let answerGenderPrev;
+    // anserRowPrev 變數的主要作用是保存前一次 
+    // BMI 計算結果對應的行索引，這樣當用戶進行新的計算時
+    // ，可以根據這個索引恢復顏色或做其他處理，
+    // 避免顏色或狀態的重複或錯誤覆蓋。
+    let anserRowPrev;
+    // 紀錄是否曾輸入過
+    let played = false; // 預設沒玩過
+    let aaa = 10;
+
+    //---------------------------------------
+    // weightValue因為是區域變數,所以log不到
+    // console.log( console.log(compute););
+
+    // compute函式 先算取得BMI 再取得計算後該亮燈顯示的表格位置
+    // 由得到的值做判斷式 判斷是男還女並得到值(為是否遊玩過)後亮燈
+    
+    // compute 函式的目的是在用戶點擊 "計算" 
+    // 按鈕後，先計算 BMI，再根據 BMI 值和性別選擇
+    // ，更新表格中對應位置的顏色，並確保顯示結果。
+
+    compute.addEventListener('click', function () {
+      // 計算BMI
+      getBMI();
+      // 取得 answerRow 答案哪一列
+      anserRowFunc();
+
+
+      // played 是一個布爾值，代表是否已經進行過一次計算。
+      // 如果 played 為 true（即表示已經計算過一次 BMI），
+      // 則調用 doAll() 函數來恢復所有表格欄位的顏色。
+      // 這樣做是為了清除先前的顏色標記。
+
+      if (genderValue === '男') {
+        if (played) { // 有輸入過
+          // 所有欄位恢復顏色
+          doAll();
+        }
+
+        // 顏色男性設置 並把值紀錄
+        doMale();
+
+      } else {
+        // answerGender = 'female';
+        if (played) {
+          // 所有欄位恢復顏色
+          doAll();
+        }
+        // 顏色女性設置 並把值紀錄
+        doFemale();
+      }
+    });
+
+    function getBMI() {
+      // 區域變數 local variable
+      let gender = document.querySelector('input[name="gender"]:checked');
+      genderValue = gender.value;
+      let weightValue = weight.value * 1;
+      let heightValue = height.value / 100;
+      BMI = weightValue / (heightValue ** 2); // 2次方
+      BMI = BMI.toFixed(2) * 1;
+      // result.textContent = BMI;
+      result.innerText = BMI;
+    }
+
+    function anserRowFunc() {
+      // 如果 BMI 大於 40，則將 anserRow 設為 4。
+      // 這代表 BMI 值超過 40，應該顯示表格的第五行（因為索引是從 0 開始的）。
+      if (BMI > 40) { // > 40 
+        anserRow = 4;
+        // 如果 BMI 大於 30 且小於等於 40，anserRow 設為 4，
+      } else if (BMI > 30) { // 30-40
+        anserRow = 3;
+        // 如果 BMI 大於 25 且小於等於 30，anserRow設為 3
+
+      } else if (BMI > 25) { // 25-30
+        anserRow = 2;
+      } else {
+        // 表示男性且 BMI 在這個範圍內應該顯示在第二行。
+        if (genderValue === '男') {
+          if (BMI >= 20) { // 20-25 
+            anserRow = 1;
+          }
+          // 表示男性且 BMI 低於 20 應該顯示在第一行。
+          else { // < 20
+            anserRow = 0;
+          }
+        }
+        // 性別為女性，且 BMI 在 19 到 25 之間，則將 anserRow 設為 1，
+        // 表示女性且 BMI 在這個範圍內應該顯示在第二行。
+        else {
+          if (BMI >= 19) { // 19-25 
+            anserRow = 1;
+          } else { // < 19
+            anserRow = 0;
+          }
+        }
+      }
+
+    }
+
+    // 所有欄位恢復顏色
+    function doAll() {
+      kindAll[anserRowPrev].style.backgroundColor = 'transparent';
+      femaleAll[anserRowPrev].style.backgroundColor = 'transparent';
+      maleAll[anserRowPrev].style.backgroundColor = 'transparent';
+    }
+    // 所有顏色設置 與 紀錄使用過的列值 、是否輸入過
+    function doNeed() {
+      kindAll[anserRow].style.backgroundColor = 'yellow';
+
+      // anserRowPrev 是一個記錄前一次計算結果所對應的行數的變數。
+      // 這行代碼將當前的 anserRow 賦值給 anserRowPrev，
+      // 這樣下一次計算時就可以根據 anserRowPrev
+      // 恢復先前的顏色或執行其他操作。
+      anserRowPrev = anserRow;
+      played = true;
+    }
+    // 顏色男性設置
+    function doMale() {
+      maleAll[anserRow].style.backgroundColor = 'yellow';
+      doNeed();
+    }
+    // 顏色女性設置
+    function doFemale() {
+      femaleAll[anserRow].style.backgroundColor = 'yellow';
+      doNeed();
+    }
+  </script>
+</body>
+
+</html>

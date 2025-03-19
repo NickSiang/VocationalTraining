@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Input Validation</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1,
+        h4 {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>訂閱電子報</h1>
+    <h4>輸入您的電子郵件獲得更多活動資訊</h4>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="email" id="email" placeholder="輸入您的電子郵件">
+        </div>
+        <button id="submit">送出</button>
+    </div>
+
+    <p id="message"></p>
+
+    <script>
+        emailjs.init('FWOuZjvYJe6rfSKOI');
+
+
+        // document.getElementById('email').addEventListener('input', function () {
+
+        //     if (!validateEmail(email)) {
+        //         message.textContent = "電子郵件格式錯誤。";
+        //         message.className = "error";
+        //         return;
+        //     }
+        // })
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+
+        document.getElementById('submit').addEventListener('click', function () {
+            let emailInput = document.getElementById('email');
+            const message = document.getElementById('message');
+            let email = emailInput.value;
+
+            if (!email) {
+                message.textContent = "請輸入電子郵件地址。";
+                message.className = "error";
+                return;
+
+            } else if (!validateEmail(email)) {
+                message.textContent = "電子郵件格式錯誤。";
+                message.className = "error";
+                emailInput.value = '';
+                return;
+            }
+
+            else {
+                message.textContent = "郵件提交成功！";
+                message.className = "success";
+
+            }
+
+            sendemail(event);
+            emailInput.value = '';
+        });
+
+
+
+
+        function sendemail(event) {
+            event.preventDefault();
+
+            const templateParams = {
+                to_email: document.getElementById('email').value,
+                from_email: 's28688117@gmail.com',
+            };
+
+            const serviceID = 'default_service';
+            const templateID = 'template_jyhwspp';
+
+            emailjs.send(serviceID, templateID, templateParams)  // 替換為你的 Service ID 和 Template ID
+                .then(function (response) {
+                    alert("郵件發送成功！" + response.text);
+                }, function (error) {
+                    alert("發送失敗：" + error.text);
+                });
+        }
+
+
+    </script>
+</body>
+
+</html>

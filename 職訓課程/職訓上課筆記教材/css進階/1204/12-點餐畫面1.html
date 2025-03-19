@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點餐畫面1</title>
+
+    <style>
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+            color: #333;
+            font-family: jf-openhuninn-2.1;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(#FF8000 0%, #E60013 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            width: 100px;
+            border-radius: 60px;
+            background: #FFF;
+            border: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: gainsboro;
+        }
+
+
+        .all {
+            width: 100%;
+            height: 100vh;
+            gap: 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+
+            max-width: 375px;
+        }
+
+        .btn-block-top {
+            width: 80%;
+            display: flex;
+        }
+
+        .logo {
+            width: 40px;
+            height: 30px;
+        }
+
+        .btn-block-middle {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            row-gap: 12px;
+        }
+
+
+        .btn-block-middle>button {
+            width: 145px;
+            height: 30px;
+        }
+
+        .card {
+            position: relative;
+        }
+
+        .circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            position: absolute;
+            top: 40%;
+            left: 68%;
+            transform: translate(-50%, -50%);
+        }
+
+        .middle-img {
+            width: 375px;
+        }
+
+        .shopping-cart {
+            width: 145px;
+            height: 30px;
+            background-color: #FAC209;
+
+        }
+
+        .btn-block-bottom {
+            display: flex;
+            gap: 10px;
+        }
+
+        .bottom-img {
+            width: 375px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+
+        <a href=""><img src="./img/logo.png" alt="" class="logo"></a>
+
+        <div class="btn-block-top">
+            <button type="button" class="btn"> <img src="./img/Frame 287.png" alt="">回上一頁</button>
+        </div>
+
+        <div class="btn-block-middle">
+            <button type="button">超值全餐</button>
+            <button type="button">飲料</button>
+            <button type="button">點心</button>
+            <button type="button">極選系列</button>
+        </div>
+
+        <div class="card">
+            <img src="./img/ham.png" alt="" class="middle-img">
+           <a href=""><img src="./img/箭頭@2x.png" alt="" class="circle"></a> 
+        </div>
+
+
+        <a href=""><button type="button" class="shopping-cart">加入購物車+</button></a>
+
+        <div class="btn-block-bottom">
+            <button type="button"><img src="./img/Frame 286 (1).png""  alt="">友善模式</button>
+            <button type=" button"><img src="./img/Vector (7).png" alt="">專人服務鈴</button>
+        </div>
+
+        <img src="./img/跑馬燈動畫.png" alt="" class="bottom-img">
+
+    </div>
+
+</body>
+
+</html>
+
+<!-- max-width =375px -->

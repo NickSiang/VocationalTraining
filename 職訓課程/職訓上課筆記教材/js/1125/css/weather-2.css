@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.card-region {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 20px;
+  justify-content: start;
+  align-items: center;
+  padding: 100px;
+}
+
+.card {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid red;
+}
+
+.card p {
+  width: 100%;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}

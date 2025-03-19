@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.cdnfonts.com/css/comicy" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/comicy');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-image: linear-gradient(#f7d9d3 2px, transparent 2px), linear-gradient(to right, #f7d9d3 2px, transparent 2px);
+            background-size: 32px 32px;
+            background-color: #ffffff;
+            font-family: 'Comicy', sans-serif;
+        }
+
+        .btn {
+            font-family: 'Comicy', sans-serif;
+            font-size: 28px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgba(252, 252, 252, 0.542);
+            color: rgb(0, 0, 0);
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #000;
+            color: #ffffff;
+        }
+
+        .homepage {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* HTML: <div class="loader"></div> */
+        .home {
+            width: 400px;
+            aspect-ratio: 1;
+            background:
+                linear-gradient(#ed303c 0 0),
+                linear-gradient(#3b8183 0 0),
+                linear-gradient(#ff9c5b 0 0) #ed303c;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: l12 2s infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes l12 {
+            0% {
+                background-size: 100% 100%, 100% 100%, 100% 100%
+            }
+
+            33% {
+                background-size: 0px 0px, 100% 100%, 100% 100%
+            }
+
+            66% {
+                background-size: 0px 0px, 0px 0px, 100% 100%
+            }
+
+            100% {
+                background-size: 0px 0px, 0px 0px, 0px 0px
+            }
+        }
+
+
+
+        .big-box {
+            background-color: white;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .box {
+            background-color: red;
+            width: 50%;
+            height: 50%;
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+
+        .answer {
+            opacity: 0.8;
+        }
+
+        .game {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .none {
+            display: none;
+        }
+
+        .demo {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .btn-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="homepage">
+        <div class="home"></div>
+        <button type="button" class="start btn ">Game start!</button>
+        <button type="button" class="go btn">continue</button>
+    </div>
+
+    <div class="game none">
+        <div class="demo"></div>
+        <div class="big-box"></div>
+        <div class="btn-block">
+            <button type="button" class="pause btn">pause</button>
+            <button type="button" class="resume btn">restart</button>
+        </div>
+    </div>
+
+    <script>
+
+        const homepage = document.querySelector('.homepage');//首頁
+        const game = document.querySelector('.game');//遊戲頁
+        const start = document.querySelector('.start');//開始鈕
+        const pause = document.querySelector('.pause');//暫停鈕
+        const resume = document.querySelector('.resume');//重新鈕
+        const go = document.querySelector('.go');//繼續鈕
+        const demo = document.querySelector('.demo');//倒數時間
+        const bigBox = document.querySelector('.big-box');//遊戲盒子
+
+        let counter = 15;//倒數秒數
+
+        //1. let myInterval = null;
+        // 明確地將變數初始化為 null。
+        //顯示出變數的初始狀態，意味著它是有意定義為「沒有值」。
+        //更加直觀和可讀，對於需要表達「尚未賦值但未來會被用到的東西」的情況很有用。
+
+        //2. let myInterval;
+        //變數被宣告但未初始化，因此默認值為 undefined。
+        //通常用於初期可能不確定變數的用途或狀態的場景。
+        let myInterval = null;//用於儲存setInterval的計時器ID。
+
+        let level = 2;//目前關卡的大小（行數和列數相同）。
+        let passCount = 0;//記錄目前關卡內的點擊次數
+
+
+        game.classList.add('none');
+        go.classList.add('none');
+
+        start.addEventListener('click', () => startGame());
+        pause.addEventListener('click', () => pauseGame());
+        go.addEventListener('click', () => goGame());
+        resume.addEventListener('click', () => resumeGame());
+
+        function startGame() {
+            homepage.classList.add('none');
+            game.classList.remove('none');
+            demo.textContent = `TIME: ${counter}`;
+            start.classList.add('none');
+            myInterval = setInterval(showCounter, 1000);
+        }
+
+        function pauseGame() {
+            homepage.classList.remove('none');
+            game.classList.add('none');
+            go.classList.remove('none');
+            start.classList.add('none');
+            clearInterval(myInterval);
+        }
+
+        function goGame() {
+            homepage.classList.add('none');
+            game.classList.remove('none');
+            myInterval = setInterval(showCounter, 1000);
+        }
+
+        function resumeGame() {
+            // 重置遊戲狀態
+            level = 2;          // 重置為 2x2 格子
+            passCount = 0;      // 重置點擊次數
+            counter = 15;       // 重置倒數計時
+            clearInterval(myInterval);
+            demo.textContent = `TIME: ${counter}`;
+            homepage.classList.remove('none');
+            game.classList.add('none');
+            go.classList.add('none');
+            start.classList.remove('none');
+
+            repeatDo(); // 重新生成初始格子
+        }
+
+        function stopGame() {
+            homepage.classList.remove('none');
+            game.classList.add('none');
+            go.classList.add('none');
+            start.classList.remove('none');
+            clearInterval(myInterval);
+            counter = 15;
+        }
+
+        function showCounter() {
+            if (counter > 0) {
+                counter--;
+            } else {
+                alert(`Time's up!`);
+                level = 2;
+                resumeGame();
+            }
+
+            demo.textContent = `TIME: ${counter}`;
+        }
+
+
+        function repeatDo() {
+            // 每次呼叫時，清空.big-box的內容，以便重新產生網格。
+            bigBox.innerHTML = '';
+
+            // 迴圈生成盒子
+            //假設level = 3，level ** 3就是3 * 3 = 9，這意味著會產生9個盒子。
+            //從0開始0-8 
+            for (let i = 0; i < level ** 2; i++) {
+                bigBox.innerHTML += `<div class="box"></div>`;
+            }
+
+            // 答案盒抽選
+            const boxAll = document.querySelectorAll('.box');
+            // 產生的亂數*等級的平方(假設等級2)
+            // 隨機數在這個數字的範圍會是 0 到 4 之間（不包含 4）再轉為整數
+            const answerIndex = Math.floor(Math.random() * (level ** 2));
+            // boxAll[0-3]隨機抽一個
+            const answerBox = boxAll[answerIndex];
+
+            // 將選取的方塊（answerBox）加入一個名為'answer'的 CSS 類別。
+            // 意思是指添加了原本css沒有的class叫做.answer 然後就可以另外用css修改樣式
+            answerBox.classList.add('answer');
+            answerBox.style.opacity = `${0.6 + level * 0.04}`;
+
+            // 隨機顏色
+            const color = getColor();
+
+            // 是指選取boxAll所有的.box 然侯執行下方的函式
+            // for迴圈先生成box然後生成的所有box會執行下方的函式
+            boxAll.forEach(box => {
+                // 隨機顏色
+                box.style.backgroundColor = color;
+                // 寬一半
+                box.style.width = `${100 / level}%`;
+                // 長一半
+                box.style.height = `${100 / level}%`;
+            });
+
+            answerBox.addEventListener('click', () => handleAnswerClick());
+        }
+
+
+        function getColor() {
+            const r = Math.floor(Math.random() * 255) + 1;
+            const g = Math.floor(Math.random() * 255) + 1;
+            const b = Math.floor(Math.random() * 255) + 1;
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function handleAnswerClick() {
+            passCount++;
+            counter += 1;
+
+            if (passCount === level) {
+                level++;
+                passCount = 0;
+            }
+
+            if (level < 8) {
+                repeatDo();
+            } else {
+                alert('恭喜全數過關');
+                resumeGame();
+            }
+        }
+
+        repeatDo();
+
+    </script>
+</body>
+
+</html>

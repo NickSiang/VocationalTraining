@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #app {
+            width: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 80px auto;
+        }
+
+        .note {
+            border: 2px solid rgba(128, 128, 128, 0.249);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .content {
+            width: 160px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="note">
+            <h3 class="title">
+                {{notes[0].title}}
+            </h3>
+            <p class="content">
+                {{notes[0].content}}
+            </p>
+        </div>
+        <div class="note">
+            <h3 class="title">
+                {{notes[1].title}}
+            </h3>
+            <p class="content">
+                {{notes[1].content}}
+            </p>
+        </div>
+        <div class="note">
+            <h3 class="title">
+                {{notes[2].title}}
+            </h3>
+            <p class="content">
+                {{notes[2].content}}
+            </p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    notes: [
+                        {
+                            title: "春節行程安排",
+                            content: "吃飽睡，睡飽吃",
+                            color: "red",
+                        },
+                        {
+                            title: "工作待辦事項",
+                            content: "詢問各家廠商報價",
+                            color: "green",
+                        },
+                        {
+                            title: "運動健身計畫",
+                            content: "每天早上六點去健身",
+                            color: "blue",
+                        },
+                    ]
+                }
+            },
+            mounted() {
+                this.notes[0].content ='多出門、到處走走、也要多運動'
+            },
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

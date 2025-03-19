@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="number" name="" id="textInput" >
+    <br /><br />
+    <output></output>
+
+    <script>
+
+        let textInput = document.querySelector('#textInput')
+
+        //change 當input被改變時觸發(改變完了才作用)
+        //input 當失去焦點時觸發(每次輸入時觸發)
+        textInput.addEventListener('input',function () {
+            console.log(textInput.value);
+        })
+
+    </script>
+</body>
+
+</html>

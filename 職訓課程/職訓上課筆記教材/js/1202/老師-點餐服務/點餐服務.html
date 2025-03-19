@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      width: 500px;
+    }
+
+    .area {
+      display: flex;
+      gap: 16px;
+    }
+
+    span {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="area">
+    <div>
+      <!-- <img src="./img/order.avif" alt=""> -->
+    </div>
+    <div>
+      <!-- 問答式 -->
+      <p>客人：餐點有哪一些</p>
+      <p>
+        服務員：餐點有
+        <span id="text01"></span>種，
+        有<span id="text02"></span>
+      </p>
+      <p>
+        客人：不好意思剛才沒有聽清楚；倒數第三個的餐點是什麼?麻煩在講一次
+      </p>
+      <p>
+        服務生：好的，是
+        <span id="text03"></span>
+      </p>
+
+      <p>
+        客人：謝謝，我要一顆肉粽、兩個豆沙粽、一碗魚丸蘿蔔湯、在兩碗大腸肉羹麵線
+      </p>
+      <p>
+        服務員：好的，你點的餐點是
+        <span id="text04"></span>
+      </p>
+
+      <p>
+        服務員：抱歉，大腸肉羹麵線只剩下一碗，另一碗是否換成其他的餐點？
+      </p>
+      <p>
+        客人：好的幫我改成一顆菜粽，另外我要再追加一碗碗粿
+      </p>
+      <p>
+        服務員：我在重複跟你確認一次餐點，
+        餐點是
+        <span id="text05"></span>，
+        總共<span id="text06"></span>份
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // 1.菜單總共有幾個
+    // 陣列把全部的菜單列出來，計算陣列的數量
+    let orderlist = ['肉粽', '菜粽', '豆沙粽', '魚丸蘿蔔湯', '大腸肉羹麵線', '碗粿'];
+    console.log(orderlist.length);
+    document.querySelector('#text01').textContent = orderlist.length;
+
+    // 2.菜單的品項有哪一些
+    // 使用到剛才的陣列，跑回圈把內容印在網頁上
+
+    let text02 = document.querySelector('#text02')
+    // console.log(text02);
+    // for / foreach
+    // orderlist.forEach((item) => {
+    //   text02.innerHTML += item + ', ';
+    //   console.log(item);
+    // });
+    // 用陣列的處理方式
+    // join()可以將陣列中所有元素，藉由指定的字符合併在一起變成字串呈現，
+    // 若沒有指定字符預設會用「逗號」合併。
+    text02.textContent = orderlist.join(',');
+    // console.log(orderlist.join('+'));
+    // 3.菜單的倒數第三個選項是什麼
+    // 用原本陣列的長度減掉3個
+    document.querySelector('#text03').textContent = orderlist[orderlist.length - 3];
+
+    // 4.列出客人點的餐點
+    // 要記錄客人點的內容
+    let costlist = [];
+    costlist.push(orderlist[0]);
+    costlist.push(orderlist[2]);
+    costlist.push(orderlist[2]);
+    costlist.push(orderlist[3]);
+    costlist.push(orderlist[4]);
+    costlist.push(orderlist[4]);
+    console.log(costlist);
+    // document.querySelector('#text04').textContent = costlist.join(',');
+    // 進階把重複整合
+    let ordertotal = [0, 0, 0, 0, 0, 0]; //紀錄每一個餐點的數量(跟點餐的菜單相似)
+    // 先對菜單跑回圈在對客人點的餐點跑回圈
+    orderlist.forEach((orderitem, key) => {
+      // 在跟客人點的餐點做比對
+      costlist.forEach((costitem) => {
+        // 要判斷客人點的餐點有沒有在菜單上
+        if (costitem == orderitem) {
+          // 餐點的數量結合餐點名稱的索引值
+          // ordertotal[key] += ordertotal[key] //簡化程式碼
+          ordertotal[key] = ordertotal[key] + 1
+          
+        }
+      });
+    });
+
+    orderlist.forEach((item, key) => {
+      if (ordertotal[key] > 0) {
+        document.querySelector('#text04').innerHTML += `${item}x${ordertotal[key]},`;
+      }
+    });
+
+    // 5.修改餐點(修改不用顯示在畫面上)
+    // 客人點的餐點，裡面有沒有要修改的
+    costlist.splice(costlist.indexOf('大腸肉羹麵線'), 1, orderlist[1]);
+    // 6.追加餐點(修改不用顯示在畫面上)
+    costlist.push(orderlist[5]);
+    console.log(costlist);
+    // 7.確認客人點的餐點
+    ordertotal = [0, 0, 0, 0, 0, 0];
+    // 另一種做法
+    costlist.forEach((item) => {
+      if (orderlist.indexOf(item) >= 0) {
+        // 數量對印到的索引值
+        ordertotal[orderlist.indexOf(item)] += 1
+      }
+    });
+
+    orderlist.forEach((item, key) => {
+      if (ordertotal[key] > 0) {
+        document.querySelector('#text05').innerHTML += `${item}x${ordertotal[key]},`;
+      }
+    });
+    // 8.客人點的餐點數量
+    // for / foreach
+    let total = 0;
+    // ordertotal.forEach((item) => {
+    //   total += item;
+    // });
+
+    // 陣列的方法
+    const sumWithInitial = ordertotal.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0,
+    );
+
+    console.log(sumWithInitial);
+    document.querySelector('#text06').textContent = sumWithInitial.toString();
+  </script>
+</body>
+
+</html>

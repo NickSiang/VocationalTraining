@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        國文: <input type="number" v-model="chinese">
+        <br /><br />
+        英文: <input type="number" v-model="english">
+        <br /><br />
+        數學: <input type="number" v-model="math">
+        <br /><br />
+        國文:{{chinese}}<br />
+        英文:{{english}}<br />
+        數學:{{math}}<br /><br />
+
+        <!-- @click="方法" -->
+        <button type="button" @click="calc">計算</button><br /><br />
+
+        <div v-if="avr=='NaN'">平均:<br/></div>
+        <div v-else>平均:{{avr}}<br/></div>
+
+        <div v-if="avr=='NaN'|| avr==''"></div>
+        <div v-else-if="avr>59">及格</div>
+        <div v-else>不及格</div>
+
+    </div>
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js">
+    </script>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            // 1.資料
+            data() {
+                return {
+                    chinese: '',
+                    english: '',
+                    math: '',
+                    avr: '',
+                }
+            },
+
+            // 2.方法
+            // 只要跨到其他地方放(methods跨data)要使用this
+            methods: {
+                calc() {
+                    let total = parseInt(this.chinese) + parseInt(this.english) + parseInt(this.math);
+
+                    this.avr = (total / 3).toFixed(1);
+                }
+            }
+
+        }).mount('#app')
+
+    </script>
+
+</body>
+
+</html>
+<!-- {{(chinese+english+math)/3}} -->

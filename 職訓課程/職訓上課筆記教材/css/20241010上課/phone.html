@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAB</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* 自動計算面積效應 */
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+
+        }
+
+        .nav {
+            width: 100%;
+            height: 100px;
+            background-color: rgb(241, 46, 16);
+            position: relative;
+            padding: 10px 20px;
+
+           
+
+
+        }
+        /* ============================================== */
+        .htm-btn {
+            background-color: rgb(41, 255, 41);
+            width: 80px;
+            height: 80px;
+            display: block;
+            float: left;
+            position: relative;
+            /* left: 10px;
+            top: 10px;
+            */
+        }
+
+        .htm-btn .line {
+            /* 空格代表ham-btn的後代line */
+            background-color: black;
+            width: 80%;
+            height: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10%;
+        }
+
+        .htm-btn .line-1 {
+
+            top: 25%
+        }
+
+        .htm-btn .line-2 {
+            top: 50%
+        }
+
+        .htm-btn .line-3 {
+            top: 75%
+        }
+
+        #ham-menu-switch:checked+.htm-btn .line-1 {
+            background-color: yellow;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        #ham-menu-switch:checked~.nav-btn-all {
+            /* background-color: yellow; */
+            display: block;
+        }
+
+        #ham-menu-switch:checked+.htm-btn .line-3 {
+            background-color: yellow;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+
+        /* ============================================== */
+
+        .nav-btn-all {
+            background-color: brown;
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            /* margin-top: 20px; */
+            display: none;
+            /* 顯示模式隱藏 不占空間*/
+            position: absolute;
+            top:100%;
+            left: 0;
+            padding: 13px;
+
+
+
+
+            /* margin: 0 auto; */
+
+
+        }
+
+        .nav-btn{
+            background-color:blanchedalmond;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            font-size: 32px;
+            /* line-height: 50px; */
+            /* border:2px  inset lightsalmon; */
+            /* border-top-style:groove; */
+            border-radius: 10px;
+            float: left;
+        }
+
+        .logo {
+            background-image: url(./images/avatar.jpg);
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            /* float: left; */
+            /* margin: 10px; */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .container {
+            background-color: blanchedalmond;
+            width: 100%;
+            height: calc(100% - 100px);
+            /* height: calc(100% - (100vh - 570px) / 2); */
+            float: left;
+            /* padding-top: calc((100vh - 570px) / 2); */
+        }
+
+        .content {
+            /* background: lightpink; */
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            /* padding: 70px 40px; */
+
+        }
+
+        .img {
+            background-color: blue;
+            background: center;
+            width: 100%;
+            height: calc(100% / 3);
+            float: left;
+            border-radius: 10px;
+
+
+        }
+
+        .img-1 {
+            width: 100%;
+            background-image: url(./images/t1.jpg);
+            /* margin-bottom: 10px; */
+        }
+
+        .img-2 {
+            width: 100%;
+            background-image: url(./images/t2.jpg);
+            /* margin-right: 10px; */
+        }
+
+        .img-3 {
+            width: 100%;
+            background-image: url(./images/t3.jpg);
+        }
+
+        .img:hover {
+            /* transform: scale(1.05); */
+            /* transform: scale(0.9); */
+            opacity: 0.6;
+            transform: rotateY(180deg) scale(0.8);
+            transition: 2s;
+            border-radius: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="nav">
+        <input type="checkbox" id="ham-menu-switch" hidden>
+
+        <label for="ham-menu-switch" class="htm-btn">
+    
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+    
+        </label>
+        <!-- 漢堡條在此 之後要加 -->
+        <div class="logo"></div>
+        <div class="nav-btn-all">
+            <a href="" class="nav-btn nav-btn-1">1</a>
+            <a href="" class="nav-btn nav-btn-2">2</a>
+            <a href="" class="nav-btn nav-btn-3">3</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <!-- 包進圖片的容器 -->
+            <div class="img img-1"></div>
+            <div class="img img-2"></div>
+            <div class="img img-3"></div>
+        </div>
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<!-- crtl+f可以去查詢 -->

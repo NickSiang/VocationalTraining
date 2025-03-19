@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{height: 3000px;}
+        
+        #my-bg{background-color: rgb(241, 188, 117);
+        width: 80%;
+        height: 300px;
+        background-image: url(./images/table.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        /* contain只要圖片有上下或左右邊碰到就停下來 */
+        /* background-size: 400px 200px; */
+        background-size:cover;
+        /* cover上下與左右都要碰到 */
+        background-position: center;
+        /* 自由控制位置 */
+        background-attachment: fixed;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="my-bg"></div>
+    <!-- css背景圖片可以寫字,body圖片無法 -->
+</body>
+</html>

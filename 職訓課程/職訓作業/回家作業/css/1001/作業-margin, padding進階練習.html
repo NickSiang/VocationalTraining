@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課堂練習-margin, padding進階練習</title>
+    <style>
+        /* 注意box-b和c的背景後續刪掉即可
+    margin往下和往右推比較好
+    檔名最終確認是否有誤 */
+        #box-all {
+            background: black;
+            width: calc(80% - 2*10px);
+            height: calc(600px - 2*10px);
+            margin: auto;
+            margin-top: 100px;
+            padding: 10px;
+        }
+
+        #box-a {
+            background: rgba(242, 180, 9, 0.938);
+            width: 100%;
+            height: 20%;
+            margin-bottom: 10px;
+        }
+
+        #box-b {
+            width: 100%;
+            height: calc(60% - 2*10px);
+            margin-bottom: 10px;
+
+        }
+
+        #box-b-left {
+            background: rgb(20, 230, 12);
+            width: 34%;
+            height: 100%;
+            float: left;
+            margin-right: 10px;
+
+        }
+
+        #box-b-right {
+            width: calc(66% - 10px);
+            height: 100%;
+            float: left;
+            
+
+        }
+
+        #box-b-right-top {
+            background: rgb(238, 228, 35);
+            width: 100%;
+            height: calc(34% - 10px);
+            margin-bottom: 10px;
+        }
+
+        #box-b-right-middle {
+            background: rgb(243, 48, 42);
+            width: 100%;
+            height: 32%;
+            margin-bottom: 10px;
+        }
+
+        #box-b-right-bottom {
+            background: rgb(145, 75, 226);
+            width: 100%;
+            height: calc(34% - 10px);
+            }
+
+
+        #box-c {
+            background: rgb(9, 178, 234);
+            width: 100%;
+            height: 20%;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div id="box-all">
+        <div id="box-a"></div>
+        <div id="box-b">
+            <div id="box-b-left"></div>
+            <div id="box-b-right">
+                <div id="box-b-right-top"></div>
+                <div id="box-b-right-middle"></div>
+                <div id="box-b-right-bottom"></div>
+            </div>
+        </div>
+        <div id="box-c"></div>
+    </div>
+
+</body>
+
+</html>

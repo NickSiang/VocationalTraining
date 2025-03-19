@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-float挑戰題</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .all {
+        width: 80%;
+        height: 80%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .container {
+        width: 100%;
+        height: 33%;
+    }
+
+    .block {
+        width: 40%;
+        height: 100%;
+    }
+
+    .red {
+        background-color: red;
+        float: left;
+    }
+
+    .purple {
+        background-color: purple;
+        float: right;
+    }
+
+    .green {
+        background-color: aquamarine;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <div class="all">
+        <div class="container">
+            <div class="block red"></div>
+            <div class="block purple"></div>
+        </div>
+        <div class="container">
+            <div class="block green"></div>
+        </div>
+
+        <div class="container">
+            <div class="block red"></div>
+            <div class="block purple"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

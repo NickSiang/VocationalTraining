@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas 示例</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex justify-center items-center min-h-screen bg-gray-200">
+        <canvas id="myCanvas" width="500" height="500" class="border-2 border-gray-500"></canvas>
+    </div>
+
+    <script>
+        // 獲取畫布和 2d 上下文
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 畫一個矩形
+        ctx.fillStyle = 'blue'; // 設置填充顏色
+        ctx.fillRect(50, 50, 150, 100); // 填充矩形
+
+        // 畫圓形
+        ctx.beginPath(); // 開始新路徑
+        ctx.arc(250, 250, 50, 0, Math.PI * 2); // 圓心(250, 250)，半徑50
+        ctx.fillStyle = 'green'; // 設置填充顏色
+        ctx.fill(); // 填充圓形
+
+        // 畫直線
+        ctx.moveTo(50, 200); // 移動到起點
+        ctx.lineTo(450, 200); // 畫到終點
+        ctx.strokeStyle = 'red'; // 設置邊框顏色
+        ctx.lineWidth = 5; // 設置線條寬度
+        ctx.stroke(); // 繪製線條
+
+        // 繪製圖片
+        const img = new Image();
+        img.src = 'https://via.placeholder.com/150'; // 圖片來源
+        img.onload = function () {
+            ctx.drawImage(img, 100, 350, 150, 150); // 繪製圖片
+        };
+
+        // 動畫：隨機矩形移動
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空畫布
+            ctx.fillStyle = 'purple';
+            ctx.fillRect(Math.random() * 500, Math.random() * 500, 50, 50); // 隨機位置的矩形
+
+            requestAnimationFrame(draw); // 重新繪製動畫
+        }
+
+        draw(); // 開始動畫
+
+    </script>
+</body>
+
+</html>

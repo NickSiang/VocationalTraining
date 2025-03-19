@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        main {
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 50px 0;
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            border-radius: 8px;
+            background-image: linear-gradient(160deg, #0093E9 0%, #7ac1ff 100%);
+        }
+
+
+        .m-y {
+            margin: 0 40px;
+        }
+
+        .topblock {
+            background: #4f4f4f85;
+            padding: 10px 10px 10px 40px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topblock p {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 800;
+            font-size: 24px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .topblock #alert {
+            background: transparent;
+            border: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 4px;
+        }
+
+        .topblock #alert:hover {
+            opacity: 0.8;
+        }
+
+        .midblock {
+            display: flex;
+
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+
+        .midblock input {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            height: 42px;
+            border: transparent;
+            padding: 0 10px;
+            background: transparent;
+            border: 2px solid rgb(255, 255, 255);
+            border-right: transparent;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            outline: none;
+        }
+
+        .midblock input:focus,
+        .midblock select:focus {
+            color: black;
+            background: white;
+
+        }
+
+        .midblock select {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            background: transparent;
+            border: white 2px solid;
+            margin-right: 12px;
+            padding: 8px;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+            outline: none;
+        }
+
+        .midblock select option {
+            font-weight: 600;
+        }
+
+        .midblock #add {
+            width: 42px;
+            height: 100%;
+            font-size: 24px;
+            color: white;
+            background: transparent;
+            border: white 2px solid;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .midblock #add:hover {
+            background: #F5F5F5;
+            color: #29a5f2;
+        }
+
+        .bottomblock #note {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            margin: 0 0 40px;
+        }
+
+        #note li {
+            list-style: none;
+            padding: 18px 20px;
+            border-bottom-right-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+            background: rgba(98, 98, 98, 0.132);
+            backdrop-filter: blur(3px);
+            color: white;
+            border: 1px solid rgba(162, 162, 162, 0.233);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #note .borderRed {
+            border-left: 6px solid rgb(255, 62, 62);
+        }
+
+        #note .borderOrange {
+            border-left: 6px solid rgb(255, 188, 64);
+        }
+
+        #note .borderGreen {
+            border-left: 6px solid rgb(43, 237, 43);
+        }
+
+
+        #note li button {
+            border: transparent;
+            background: transparent;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #note li button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="topblock">
+            <p>待辦事項</p>
+            <button type="button" id="alert">
+                <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2.2" stroke="#ffffff" fill="none"
+                    viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path>
+                    <path d="M15 3v6h6"></path>
+                </svg>
+            </button>
+        </section>
+        <section class="midblock m-y">
+            <div>
+                <input type="text" id="textInput">
+            </div>
+
+            <select name="" id="borderColor">
+                <option value="" disabled hidden selected>層級</option>
+                <option value="borderGreen">一般</option>
+                <option value="borderOrange">重要</option>
+                <option value="borderRed">緊急</option>
+            </select>
+
+            <button type="button" id="add">+</button>
+        </section>
+        <section class="bottomblock m-y">
+            <ul id="note">
+                <li class="borderRed">
+                    <span>倒垃圾</span>
+                    <button type="button" class="deleteBtn">X</button>
+                </li>
+                <li class="borderOrange">
+                    <span>繳電話費</span>
+                    <button type="button" class="deleteBtn">X</button>
+                </li>
+                <li class="borderGreen">
+                    <span>採買本週食材</span>
+                    <button type="button" class="deleteBtn">X</button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const add = document.getElementById('add');
+
+
+        add.addEventListener('click', function () {
+            const note = document.getElementById('note');
+            const textInput = document.getElementById('textInput');
+            const deleteBtn = document.createElement('button');
+            const list = document.createElement('li');
+            const listText = document.createElement('span');
+            const borderColor = document.getElementById('borderColor');
+
+            if (textInput.value.trim() == '') {
+                alert('請輸入代辦事項');
+                return;
+            }
+
+            if (borderColor.value == '') {
+                alert('請選取層級');
+                return;
+            } else {
+                list.classList.add(`${borderColor.value}`)
+            }
+
+
+            listText.textContent += textInput.value;
+            deleteBtn.textContent = 'X';
+            deleteBtn.classList.add('deleteBtn');
+            deleteBtn.onclick = remove;
+
+            note.append(list);
+            list.append(listText, deleteBtn);
+
+            textInput.value = '';
+            borderColor.value = '';
+        });
+
+        function remove() {
+            event.target.parentElement.remove();
+        };
+
+        document.querySelectorAll('.deleteBtn').forEach(function (btn) {
+            btn.addEventListener('click', remove);
+        });
+
+        const alertBtn = document.getElementById('alert');
+        alertBtn.onclick = listalert;
+
+        function listalert() {
+            const noteAll = document.getElementById('note').children;
+            let text = '';
+            let num = 0;
+
+            for (let i of noteAll) {
+                num = num + 1;
+                if (i.classList.contains('borderRed')) {
+                    text += `${num}.**${i.children[0].textContent}**\n`;
+                } else if (i.classList.contains('borderOrange')) {
+                    text += `${num}.*${i.children[0].textContent}*\n`;
+                }
+                else {
+                    text += `${num}.${i.children[0].textContent}\n`;
+                }
+            }
+            alert('今日待辦：\n' + text)
+            console.log(noteAll);
+        }
+    </script>
+</body>
+
+</html>

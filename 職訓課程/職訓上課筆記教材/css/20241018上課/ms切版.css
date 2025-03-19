@@ -1,0 +1,456 @@
+*,
+#before,
+#after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+ul a {
+    text-decoration: none;
+    display: block;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed transparent;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+
+}
+
+
+li a:focus {
+    border: 1px dashed black;
+}
+
+ul:focus span {
+    border-bottom: 2px solid black;
+}
+
+.container-normal {
+    width: 90%;
+    margin: auto;
+    max-width: 1600px;
+}
+
+.container-full {
+    width: 100%;
+    margin: auto;
+    max-width: 1920px;
+}
+
+
+
+.w-100 {
+    width: 100%;
+    vertical-align: middle;
+}
+
+ul {
+    /* background-color: aquamarine; */
+    width: 100%;
+    /* height: 100px; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+
+
+}
+
+.menu li a {
+    /* background-color: rgb(219, 207, 207); */
+    width: auto;
+    height: 48px;
+    padding: 0 10px;
+    margin: 1px 0 0;
+    /* border-bottom: 2px solid black ; */
+}
+
+/* 只有ul li 的a才有作用 */
+
+
+ul li:hover span {
+    border-bottom: 2px solid black;
+}
+
+nav {
+    /* background-color: red; */
+    width: 100%;
+    height: 54px;
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: flex-start;
+
+
+
+}
+
+nav .container-normal {
+    margin-bottom: 2px;
+}
+
+.logo {
+    margin: 1px 0 0;
+    padding: 16px 6px 16px 10px;
+}
+
+.logo img {
+    width: 108px;
+    height: 23px;
+    margin: -3px 0 0;
+
+}
+
+.menu {
+    font-size: 13px;
+    display: flex;
+
+}
+
+.pc-menu {
+    /* background-color: bisque; */
+    width: 800px;
+    height: 100%;
+    padding: 0 1px 0 2px;
+
+
+
+}
+
+.func-menu {
+    /* background-color: burlywood; */
+    width: 400px;
+    height: 100%;
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1px 0 2px;
+    align-items: end;
+}
+
+.func-menu a i {
+    padding-left: 10px;
+}
+
+
+
+.func-menu .fa-magnifying-glass {
+    transform: rotateY(180deg);
+
+}
+
+button{position: relative;}
+
+.dropdown-menu {
+    position: relative;
+    display: none;
+    width: 100%;
+    
+}
+
+.dropdown-menu:hover {
+    display: block;
+    background-color: #616161;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+
+
+
+
+
+
+
+header.container-full {
+    margin-bottom: 100px;
+}
+
+
+
+section {
+    margin-bottom: 100px;
+}
+
+
+
+
+section.three-choice {
+    /* background-color: pink; */
+    width: 100%;
+    height: 104px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.one-choice {
+    /* background-color: red; */
+    display: flex;
+    margin: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+one-choice a {
+    text-decoration: solid;
+    color: rgb(0, 102, 191);
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 3px dotted transparent;
+}
+
+.one-choice a:focus {
+    border: 3px dotted blue;
+}
+
+
+.one-choice img {
+    width: 40px;
+    height: 40px;
+}
+
+
+
+
+
+
+
+section.four-cards {
+    /* background-color: blue; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+
+
+}
+
+section.four-cards .one-card {
+    width: 24%;
+    height: 480px;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+    
+
+
+
+
+
+
+}
+
+section.four-cards .one-card img {
+    width: 100%;
+    box-shadow: 0 .1875rem .4375rem 0 rgba(0, 0, 0, .13), 0 .0625rem .125rem 0 rgba(0, 0, 0, .11);
+
+}
+
+
+.card-shadow {
+    box-shadow: 0 .1875rem .4375rem 0 rgba(0, 0, 0, .13), 0 .0625rem .125rem 0 rgba(0, 0, 0, .11);
+    height: 100%;
+
+
+
+}
+
+.one-card-half {
+    padding: 24px 24px 0;
+    height: 70%;
+
+}
+.four-cards a:focus {
+    border: 3px dotted white;
+}
+
+.title {
+    /* background-color: red; */
+    margin-bottom: 12px;
+
+    font-size: 29px;
+    text-align: left;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.btn {
+    padding: 16px 24px 24px;
+
+
+
+}
+
+.btn a {
+    background-color: rgb(0, 104, 184);
+    color: white;
+    text-decoration: none;
+    padding: 10px 12px;
+    margin: 8px 0;
+    border: 3px dotted transparent;
+    border-radius: 3px;
+}
+
+
+
+
+section.big-img {
+    width: 100%;
+
+}
+
+section.other {
+    /* background-color: orange; */
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+h2 {
+    font-size: 29px;
+    padding: 0 12px 0;
+}
+
+
+.other-top {
+    width: 100%;
+    padding: 0 16px;
+
+
+
+
+}
+
+.other-top i {
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    color: #000;
+    padding-left: 5px;
+
+}
+
+
+
+.other-bottom {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: end;
+
+}
+
+
+
+
+
+.go-top {
+    background-color: gray;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 93%;
+
+
+}
+
+
+footer {
+    background-color: rgb(242, 242, 242);
+    width: 100%;
+    padding: 20px 0 30px;
+    color: #616161;
+
+}
+
+footer .footer-menu {
+    background-color: rgb(242, 242, 242);
+    width: 90%;
+    padding: 20px 0 30px;
+    display: flex;
+}
+
+footer .footer-menu p {
+    font-size: 15px;
+}
+
+footer .footer-menu ul {
+    font-size: 11px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+
+}
+
+footer .footer-menu ul li {
+
+    margin-bottom: 10px;
+
+
+}
+
+footer .footer-nav {
+    padding: 30px 63px 16px;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .footer-nav-left {
+    color: #000;
+    width: 400px;
+    height: 40px;
+    display: flex;
+
+}
+
+
+footer .footer-nav-right {
+
+    width: 600px;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+
+
+}
+
+.footer-nav-left li {
+    font-size: 11px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 5px;
+
+}
+
+.footer-nav-right li {
+    font-size: 11px;
+    padding: 0 24px 4px 0;
+
+
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+     /*  * => 通用選擇器,對所有的html標籤 */
+    * {
+      box-sizing: border-box;
+    }
+    /* 標籤選擇器 */
+    body, html {
+      margin: 0;
+    }
+    div {
+      border: 3px solid lightseagreen;
+    }
+    /* 類別選擇器 */
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid black;
+      margin-bottom: 10px;
+    }
+     /* id 選擇器 */
+    #box-1 {
+      background-color: aqua;
+    }
+    /* 群組選擇器 */
+    .box-1, .box-2 {
+      background-color: red;
+      /* border-radius: 50%; */
+    }
+    .box-31 {
+      width: 50px;
+      height: 50px;
+      background-color: yellow;
+    }
+    .box-311 {
+      width: 20px;
+      height: 20px;
+      background-color: green
+    }
+    .box-32 {
+      width: 30px;
+      height: 30px;
+      background-color: pink;
+    }
+    /* 空格 =>所有後代選擇器 */
+    .box-3 .box-3x {
+      background-color: purple;
+    }
+    /* > 直接後代選擇器 */
+    .box-3 >.box-3x {
+      background-color:chartreuse;
+    }
+    /* 相鄰後面第一個兄弟 */
+    .box-1+.box {
+      width: 200px;
+    }
+    /* 相鄰所有兄弟 */
+    .box-1~.box {
+      width: 300px;
+    }
+    /* 偽類選擇器 */
+    .line-1::first-letter {
+      font-size: 32px;
+      color: blue;
+    }
+    input[type=radio] {
+      width: 50px;
+      height: 50px;
+    }
+    input[type=radio]:checked {
+      width: 100px;
+      height: 100px;
+    }
+    input[type=checkbox]:checked {
+      width: 200px;
+      height: 200px;
+    }
+    .circle {
+      border-radius: 50%;
+    }
+    /* 偽類 selector*/
+    div:is(.circle) {
+      /* font-size: 32px; */
+      color:red;
+    }
+    div:not(.circle) {
+      /* font-size: 32px; */
+      color: yellow;
+    }
+    div#box-1 {
+      background-color: lightblue;
+    }
+    div.box {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div id ="box-1" class="box box-1">SSS</div>
+  <div class="box box-2">A</div>
+  <div class="box box-3">
+    <div class="box-3x box-31 circle">B
+      <div class="box-3x box-311 circle">C</div>
+    </div>
+    <div class="box-3x box-32 circle">D</div>
+  </div>
+  <div class="box box-2">X</div>
+  <div class="line-1">
+      Lorem, ipsum dolor.
+  </div>
+  <input type="checkbox">選擇1
+  <input type="checkbox">選擇2
+  <input type="checkbox">選擇3
+  <input type="radio" name="gender">選擇4
+  <input type="radio" name="gender">選擇5
+</body>
+</html>

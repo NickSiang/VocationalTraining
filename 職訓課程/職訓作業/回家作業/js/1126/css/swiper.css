@@ -1,0 +1,110 @@
+.swiper {
+    width: 100%;
+    position: relative;
+    padding-bottom: 60px;
+}
+
+@media(max-width:1084px) {
+    .swiper {
+        padding-bottom: 300px;
+    }
+}
+
+@media (max-width: 861px) {
+    .swiper {
+        padding-bottom: 60px;
+    }
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    position: absolute;
+    left: 51.5%;
+    transform: translateX(-50%);
+    width: min-content;
+    height: min-content;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 16px;
+}
+
+.swiper-pagination-bullet {
+    background: none;
+    background-color:black;
+    width: 10px;
+    height: 10px;
+}
+
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-button-next {
+    top: calc(100% - 13px);
+    left: 51.5%;
+    transform: translateX(210%);
+    z-index: 20;
+}
+
+.swiper-button-prev {
+    top: calc(100% - 13px);
+    left: 51.5%;
+    transform: translateX(-300%);
+    z-index: 20;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size: 16px;
+    color: black;
+}
+
+.swiper-button-next:hover {
+    transform: translateX(230%);
+}
+
+.swiper-button-prev:hover {
+    transform: translateX(-320%);
+}
+
+.play,
+.stop {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-500%);
+
+    background: url(../ms-img/pause\(b\).png);
+    background-position: center;
+    background-size: cover;
+
+    border:1px solid black;
+    border-radius: 50%;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.stop:hover{
+    background: url(../ms-img/pause\(w\).png);
+}
+
+.play:hover{
+    background: url(../ms-img/play\(w\).png);
+}
+
+
+.play {
+    display: none;
+    background: url(../ms-img/play\(b\).png);
+}

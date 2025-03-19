@@ -1,0 +1,429 @@
+* {
+  box-sizing: border-box;
+}
+
+/* border-box：指定盒子模型為IE模型（怪異模式），設定border、padding 
+不會影響元素width 與height 的尺寸，即border 與padding 由元素已設空間轉換。
+即空間還是這個空間，只是將部分空餘的地方，轉變成了其他空間用法而已，為內部轉變。 */
+
+/* content-box：指定盒子模型為W3C 標準模型，設定border、padding 會增加元素width與height 的尺寸 */
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../img/P/dinotaeng/b.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* 超連結不要有斜線 */
+a:hover {
+  opacity: 0.7;
+  transform: scale(0.9);
+  /* hover 是在控制當滑鼠移至某元件時，某元件該如何反應 */
+}
+
+.nav {
+  background-color: rgba(165, 42, 42, 0.901);
+  width: 366px;
+  height: 100%;
+  float: left;
+  padding: 75px;
+}
+
+
+@media (max-width:1320px) {
+  .nav {
+
+    width: 100%;
+    height: 100px;
+    padding: 10px 20px;
+
+
+  }
+}
+
+@media (max-width:1320px) {
+  .nav {
+
+
+    position: relative;
+    padding: 10px 20px;
+   
+  }
+}
+
+
+/* ===================================================== */
+
+/* @media (max-width:610px) {
+  .ham-btn {
+    width: 80px;
+    height: 80px;
+    background-color: burlywood;
+    border-radius: 20px;
+    display: block;
+    float: left;
+    position: relative;
+
+  }
+} */
+
+ /* 為了去除鬼影必須要預先在710px就先預載 */
+
+
+@media (max-width:710px) {
+  .ham-btn .line {
+    background-color: rgb(234, 228, 179);
+    width: 80%;
+    height: 10px;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+    display: none;
+    /* display:none 會將元素完全從頁面中移除，包括佔用的空間 */
+    /* visibility:hidden 僅會隱藏元素，但元素佔用的空間仍會保留 */
+  }
+} 
+
+
+/* 在610px再載入 */
+
+@media (max-width:610px) {
+  .ham-btn .line{
+    
+    display: block;
+    /* 顯示模式區塊元素(block) */
+  }
+}
+
+@media (max-width:610px) {
+  .ham-btn .line-1 {
+
+    top: 25%
+  }
+}
+
+@media (max-width:610px) {
+  .ham-btn .line-2 {
+    top: 50%
+  }
+}
+
+@media (max-width:610px) {
+  .ham-btn .line-3 {
+    top: 75%
+  }
+}
+/* 相鄰選擇器( + )：可選擇有相同的父元素，緊接在一個元素後的「第一個」相鄰兄弟元素(同一層中)
++這個被稱為相鄰兄弟選擇器。*/
+/* 白話:在之後的一個元素會變動 之前不會  如果同元素+同元素 則後面元素皆會變動*/
+/* ●間接選擇器( ~ )：可選擇有相同的父元素，兄元素「之後所有的」弟元素,
+白話:在之後的所有元素皆會變動 之前不會
+ */
+ /* https://reurl.cc/34Qyo9  - ㄖ
+ 
+ 選擇器介紹*/
+
+#ham-menu-switch:checked+.ham-btn .line-1 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  /* 置中後角度更改 */
+}
+
+#ham-menu-switch:checked+.ham-btn .line-2 {
+  display: none;
+}
+
+#ham-menu-switch:checked+.ham-btn .line-3 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+#ham-menu-switch:checked~.nav-btn-all {
+  display: block;
+}
+
+@media (max-width:610px) {
+  .ham-btn {
+    width: 80px;
+    height: 80px;
+    background-color: burlywood;
+    border-radius: 20px;
+    display: block;
+    float: left;
+    position: relative;
+    
+
+  }
+}
+
+
+
+.logo {
+  background-image: url(../img/P/dinotaeng/logo.gif);
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 50px;
+}
+
+ 
+
+
+
+@media (max-width:1320px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+    float: left;
+  }
+}
+
+@media (max-width:610px) {
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.nav-btn-all {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+@media (max-width:1280px) {
+  .nav-btn-all {
+    width: auto;
+    height: auto;
+    margin-top: 15px;
+    float: right;
+  }
+}
+
+@media (max-width:610px) {
+  .nav-btn-all {
+
+    width: 100px;
+    height: 200px;
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 13px;
+  }
+}
+
+.nav-btn {
+  background-color: rgba(222, 184, 135, 0.575);
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 32px;
+  line-height: 50px;
+  text-align: center;
+  border-style: dashed;
+  border-radius: 30px;
+  float: left;
+  color: rgb(120, 78, 24);
+}
+
+@media (max-width:1320px) {
+  .nav-btn {
+    width: auto;
+    padding: 0 20px;
+    margin-left: 10px;
+    background-position: center;
+  }
+}
+
+@media (max-width:610px) {
+
+  .nav-btn {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 32px;
+    border-radius: 10px;
+
+
+
+  }
+}
+
+.nav-btn-1 {
+  background-image: url(../img/icon/32px/house-chimney\ .png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+
+
+}
+
+.nav-btn-2 {
+  background-image: url(../img/icon/32px/instagram.png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+}
+
+.nav-btn-3 {
+  background-image: url(../img/icon/32px/facebook.png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+}
+
+
+
+.container {
+  background-color: rgb(247, 176, 84);
+  width: calc(100% - 366px);
+  height: 100%;
+  float: left;
+  padding-top: calc((100vh - 570px) / 2);
+}
+
+@media (max-width:1320px) {
+  .container {
+    width: 100%;
+    height: calc(100% - 100px);
+
+    padding: 0;
+
+
+
+  }
+}
+
+
+
+
+.content {
+
+  width: 960px;
+  height: 570px;
+  margin: auto;
+}
+
+
+@media (max-width:1320px) {
+  .content {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 30px;
+
+
+
+  }
+}
+
+@media (max-width:610px) {
+  .content {
+
+    padding: 0;
+
+
+
+  }
+}
+
+
+
+.img {
+  width: calc((100% - 10px * 2)/ 3);
+  height: 100%;
+  float: left;
+  background-size: contain;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media (max-width:1320px) {
+  .img {
+    height: calc(50% - 5px);
+    background-size: cover;
+    background-position: center;
+
+  }
+}
+
+@media (max-width:610px) {
+  .img {
+
+    background-position: center;
+    width: 100%;
+    height: calc(100% / 3);
+    float: left;
+ }
+}
+
+
+.img:hover {
+  background-image: url(../img/P/dinotaeng/fun.gif);
+  transition: 1s;
+}
+
+
+.img-1 {
+  background-image: url(../img/P/dinotaeng/b2.jpg);
+}
+
+.img-2 {
+  background-image: url(../img/P/dinotaeng/b3.jpg);
+  margin: 0 10px;
+}
+
+.img-3 {
+  background-image: url(../img/P/dinotaeng/b1.jpg);
+}
+
+@media (max-width:1320px) {
+  .img-1 {
+    width: 100%;
+    margin-bottom: 10px;
+
+  }
+
+  .img-2 {
+    margin-left: unset;
+    margin-right: 10px;
+    width: calc(50% - 5px);
+  }
+
+  .img-3 {
+    width: calc(50% - 5px);
+  }
+}
+
+@media (max-width:610px) {
+  .img-1 {
+    margin: 0;
+
+  }
+
+  .img-2 {
+
+    width: 100%;
+  }
+
+  .img-3 {
+    width: 100%;
+  }
+}

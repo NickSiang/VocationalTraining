@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        /* 偽元素 */
+        /* 「偽元素」它其實並不是真正網頁裡的元素，而是透過 CSS 
+         在一個 HTML 的標籤內新增至多兩個元素，而這些新增的元素
+         和真正網頁元素一樣，可以透過 CSS 來操控它的樣式與效果。
+         使用「偽元素」的好處在於，可以讓程式碼看起來比較乾淨整齊，不會太亂。 */
+        /* 通常用絕對位置去調整 */
+        /* 在一個 HTML 元素中，最多只能創建兩個偽元素，
+        偽元素本身是不能再創建偽元素的。*/
+        /* 一定要有content */
+        /* *對實際存在的元素又用 偽元素沒用 */
+        /* <img> 、 <input> 等標籤是無法使用偽元素的。
+        原因是因為，要想要 HTML 標籤使用偽元素，必需要這個元素是可以插入內容的 */
+        /* https://w3c.hexschool.com/blog/5667df85 */
+
+        .box:hover::after,
+        .box:hover::before {
+            background-color: beige;
+            transform: scale(0.9);
+        }
+
+        .box::before {
+            content: "我是before";
+            background-color: blue;
+
+        }
+
+        .box::after {
+            content: "我是after";
+            background-color: yellow;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .box-1::before {
+            content: "我是before";
+            background-color: blue;
+
+        }
+
+        .box-1::after {
+            content: "我是after";
+            background-color: yellow;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box-1"></div>
+    </div>
+</body>
+
+</html>

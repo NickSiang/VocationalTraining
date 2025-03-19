@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+
+        :root {
+            --fc-border-color: #838383;
+            --fc-button-text-color: #5a5a5a;
+            --fc-button-bg-color: white;
+            --fc-button-border-color: #5a5a5a;
+            --fc-button-hover-bg-color: rgb(208, 208, 208);
+            --fc-button-hover-border-color: #5a5a5a;
+            --fc-button-active-bg-color: rgb(208, 208, 208);
+            --fc-button-active-border-color: #5a5a5a;
+            --fc-today-bg-color: rgb(212, 212, 212);
+        }
+
+        .container {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        #calendar {
+            max-width: 700px;
+            max-height: 700px;
+            margin: auto;
+        }
+
+        .fc .fc-toolbar.fc-header-toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .fc-toolbar-chunk {
+            display: flex;
+        }
+
+        .fc-myCustomButton-button {
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 800;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+        }
+
+        .modal {
+            width: 100%;
+            height: 100vh;
+            background-color: #a0a0a051;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .modal-content {
+            width: 300px;
+            padding:40px 20px 20px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--fc-border-color);
+        }
+
+        .modal-content .input-block {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            font-size: 16px;
+        }
+
+        .input-block label {
+           font-weight: 600;
+        }
+
+        .input-block input {
+            height: 30px;
+            padding: 6px;
+        }
+
+        .input-block span {
+            color: red;
+            font-size: 14px;
+        }
+
+        .button-block {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .button-block button {
+            width: 100%;
+            font-size: 16px;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 1px solid var(--fc-border-color);
+            background: var(--fc-button-bg-color);
+        }
+
+        .button-block button:hover {
+            background: var(--fc-button-hover-bg-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div id="calendar" ref="calendarLoaded">
+            </div>
+            <div class="modal" v-show="!modal">
+                <!-- <div class="modal"> -->
+                <div class="modal-content">
+                    <div class="input-block">
+                        <label for="ActivityName">Activity Name</label>
+                        <input type="text" name="" id="ActivityName" v-model="activeName">
+                        <span :style="{opacity:!NameState?'1':'0'}">*Please enter activity name</span>
+                    </div>
+                    <div class="input-block">
+                        <label for="datetimepicker">Activity Date</label>
+                        <input id="datetimepicker" type="text" ref="datetimepicker">
+                        <span :style="{opacity:!ActivityState?'1':'0'}">*Please enter activity date</span>
+                    </div>
+                    <div class="button-block">
+                        <button @click="modal=true">close</button>
+                        <button @click="getValue">add</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    modal: true,
+                    activeName: '',
+                    datas: [],
+                    calendar: null,
+                    NameState: true,
+                    ActivityState: true,
+                }
+            },
+            methods: {
+                modalState() {
+                    this.modal = !this.modal
+                },
+                getValue() {
+                    let time = this.$refs.datetimepicker;
+                    if (!this.activeName.trim()) {
+                        this.NameState = false;
+                    };
+                    if (!time.value) {
+                        this.ActivityState = false;
+                    };
+                    if (this.activeName.trim() && time.value) {
+                        let dateData = {
+                            id: Date.now().toString(),
+                            title: this.activeName.trim(),
+                            start: time.value.replaceAll('/', '-'),
+                        };
+                        this.datas.push(dateData);
+                        this.calendar.addEvent(dateData);
+                        this.modal = true;
+                        time.value = '';
+                        this.activeName = '';
+                        this.NameState = true;
+                        this.ActivityState = true;
+                    }
+
+                },
+                deleteData(date) {
+                    if (confirm('是否刪除此筆活動？')) {
+                        this.datas = this.datas.filter((data) => data.id !== date.event.id);
+                        date.event.remove();
+                    }
+                },
+                savelocalStorage() {
+                    localStorage.setItem('datas', JSON.stringify(this.datas))
+                }
+            },
+            watch: {
+                datas: {
+                    handler() {
+                        this.savelocalStorage();
+                    },
+                    deep: true
+                }
+
+            }
+            ,
+            mounted() {
+                if (localStorage.getItem('datas')) {
+                    this.datas = JSON.parse(localStorage.getItem('datas'));
+                };
+
+                this.$nextTick(() => {
+                    $(this.$refs.datetimepicker).datetimepicker();
+                });
+
+                var calendarEl = this.$refs.calendarLoaded;
+                this.calendar = new FullCalendar.Calendar(calendarEl, {
+                    editable: true,
+                    events: this.datas,
+                    initialView: 'dayGridMonth',
+                    customButtons: {
+
+                        myCustomButton: {
+                            text: '+',
+                            click: this.modalState,
+                        }
+                    },
+                    headerToolbar: {
+                        left: 'title',
+                        center: 'myCustomButton',
+                        right: 'prev,next today'
+                    },
+                    eventClick: this.deleteData,
+                    dayMaxEventRows: true,
+                    views: {
+                        timeGrid: {
+                            dayMaxEventRows: 3
+                        }
+                    },
+                    eventTimeFormat: {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: false
+                    }
+                });
+                this.calendar.render();
+            },
+
+        }).mount('#app')
+
+    </script>
+</body>

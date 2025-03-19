@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*==(不嚴格等於)
+        ===(嚴格等於 除了值相同 型態也要一樣)*/
+        // !是not也是不等於
+
+        let a = 5;
+        let b = 10;
+        let c = "5";
+        let d = "10";
+        let f = undefined;/*甚麼都沒有*/
+        let g = null; /*甚麼都沒有*/
+        let h = ""; /*空字串*/
+        let i = 0;
+
+        console.log('a > b =>', a > b);
+        // (字串,比較運算式)
+        console.log('a < b =>', a < b);
+        console.log('b >= a =>', b >= a);
+        console.log('c == a =>', c == a);
+        console.log('c === a =>', c === a);
+        console.log('f == g =>', f == g);
+        console.log('f === g =>', f === g);
+        console.log('g == h =>', g == h);
+        console.log('g === h =>', g === h);
+        console.log('g == i =>', g == i);
+        console.log('g === i =>', g === i);
+
+        console.log(!g);
+        // null不存在
+        console.log(!f);
+        // undefined不存在
+        console.log(!h);
+        // ""不存在
+        console.log(!i);
+        
+    </script>
+</body>
+
+</html>

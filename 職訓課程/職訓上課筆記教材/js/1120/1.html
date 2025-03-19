@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函式傳入值 返回值
+        a0();
+        // 呼叫
+        let str1 = a1();
+        // 接收
+        console.log(1111, str1);
+
+        a2(str1);
+
+
+        a3(10, 20)
+
+        let a = 100, b = 200;
+
+        a3(a, b)
+
+        let c = a3(a, b);
+
+
+        console.log(2222, c);
+
+        function a0() {
+            let str = '1-你好'
+            console.log(str);
+        }
+
+        function a1() {
+            let str = '2-好'
+            console.log(str);
+            return str;
+            // 回傳
+        }
+
+        // 傳入a2(str1);
+        function a2(x) {
+            console.log(x);
+        }
+
+        // 傳入又傳出
+        function a3(x, y) {
+            console.log(x + y);
+            return (x + y);
+        }
+
+    </script>
+</body>
+
+</html>

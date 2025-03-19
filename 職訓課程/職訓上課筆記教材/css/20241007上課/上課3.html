@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            /* 初始化 歸零 */
+        }
+
+        #box-a {
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            left: 100px;
+            top: 50px;
+
+        }
+
+        #box-b {
+            background-color: rgb(255, 132, 0);
+            width: 100px;
+            height: 100px;
+            position: absolute;
+/* 絕對定位 */
+            left: 20px;
+            top: 50px;
+        }
+
+        #box-c {
+            background-color: rgb(224, 23, 77);
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            /* 會向外層找有定位的直系親屬 例如position,absolute,fixed,sticky
+            來定位,若無則根據body來定位*/
+            left: 100px;
+            top: 50px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box-a">
+        <div id="box-b"></div>
+        <div id="box-c"></div>
+    </div>
+
+
+</html>

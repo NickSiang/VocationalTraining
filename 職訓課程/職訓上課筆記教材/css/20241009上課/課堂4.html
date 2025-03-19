@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            /* width: 100px;
+            height: 200px; */
+            background-color: rgb(191, 173, 207);
+            padding: 10px;
+            border-radius: 10px;
+            float: left;
+            margin: 20px;
+
+        }
+
+        a:link {
+            color: rgb(84, 160, 69);
+        }
+        /* 未拜訪過的 */
+
+        /* a:visited {
+            background-color: red;
+        } */
+        /* 拜訪過的 幾乎不用 */
+
+        a:hover {
+            opacity: 0.5;
+        }
+        /* 滑鼠移到上方 比較常用*/
+        /* a:active{
+        font-size: 26px;
+        } */
+         /* 為什麼使用字變大 部分連結無法點開? */
+        /* 滑鼠按下 */
+    </style>
+</head>
+
+<body>
+    <a class="btn" href="">沒有超連結</a>
+    <!-- a是一個行內元素 寬高不會變動 -->
+    <a class="btn" href="#"href="#">href="#"只有#</a>
+    <a href="./images/t3.jpg" class="btn">看圖片</a>
+    <a href= "./images/t3.jpg" class="btn" target="_blank">開新一頁到圖片</a>
+    <!-- 選a:blank -->
+     <a href="https://reurl.cc/Kl5W7n"  class="btn" target="_blank" rel="noopener noreferrer">開新一頁到網站</a>
+     <a href="./課堂3.html"  class="btn" target="_blank" rel="noopener noreferrer">開新一頁內網</a>
+     <a href="./課堂4返回.html" class="btn">看圖可返回</a>
+     <a download href="./images/t3.jpg" class="btn">下載圖片</a>
+    </body>
+
+</html>

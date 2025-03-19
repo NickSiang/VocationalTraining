@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+ 
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/P/dinotaeng/b.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+}
+/* @media(max-width:1320px)
+{} */
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.7;
+    transform: scale(0.9);
+    /* hover 是在控制當滑鼠移至某元件時，某元件該如何反應 */
+}
+
+.nav {
+    background-color: rgba(165, 42, 42, 0.901);
+    width: 366px;
+    height: 100%;
+    padding: 75px;
+    flex-shrink: 0;
+/* 畫面縮小碰到導覽列不會將空白的部分填滿 */
+
+}
+@media (max-width:1320px) {
+    .nav {
+      width: 100%;
+      height: 100px;
+    }
+  }
+
+
+.nav-btn-all {
+    background-color: aliceblue;
+    width: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.nav-btn {
+    background-color: rgba(222, 184, 135, 0.575);
+    width: 100%;
+    height: 50px;
+    margin: 8px;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    border-style: dashed;
+    border-radius: 30px;
+    color: rgb(120, 78, 24);
+
+}
+
+
+.logo {
+    background-image: url(../img/P/dinotaeng/logo.gif);
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 50px;
+}
+
+@media (max-width:1320px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+    float: left;
+  }
+}
+
+.container {
+    background-color: rgb(247, 176, 84);
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+@media (max-width:1400px) {
+    .container {
+      width: 100%;
+     
+    }
+  }
+
+
+.content {
+    background-color: aliceblue;
+    width: 960px;
+    height: 570px;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap;
+}
+@media (max-width:1400px) {
+    .content {
+      width: 800px
+      
+    }
+  }
+
+
+  
+.img {
+    background-color: aqua;
+    width: calc((100% - 10px * 2)/ 3);
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    border-radius: 10px;
+
+}
+
+@media (max-width:1400px) {
+    .img {
+      height: calc(50% - 5px);
+      background-size: cover;
+      background-position: center;
+  
+    }
+  }
+  @media (max-width:1400px) {
+    .img-1 {
+      width: 100%;
+      margin-bottom: 10px;
+  
+    }
+  
+    .img-2 {
+      margin-left: unset;
+      margin-right: 10px;
+      width: calc(50% - 5px);
+    }
+  
+    .img-3 {
+      width: calc(50% - 5px);
+    }
+  }

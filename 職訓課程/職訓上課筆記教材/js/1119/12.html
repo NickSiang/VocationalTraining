@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-BMI計算機</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #adadad, #545454);
+        }
+
+        h1,
+        p {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            /* 變單線 */
+            margin: auto;
+        }
+
+        @media(max-width:531px) {
+            table {
+                width: 100%;
+            }
+        }
+
+        table,
+        th,
+        td,
+        tr {
+            border: 2px solid black;
+        }
+
+        .container {
+            width: 80%;
+            height: 80%;
+            /* border: 2px solid black; */
+            display: flex;
+            flex-wrap: wrap;
+            /* border-radius: 50px; */
+            padding: 40px;
+
+
+            border-radius: 50px;
+            background: #bdbdbd;
+            box-shadow: 20px 20px 60px #2b2b2b,
+                -20px -20px 60px hsl(0, 0%, 71%);
+
+
+        }
+
+        @media(max-width:531px) {
+            .container {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+        }
+
+
+        .text {
+            width: 100%;
+            /* border: 2px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            border-bottom: 1px solid rgb(95, 95, 95);
+
+        }
+
+
+        .block {
+            width: 100%;
+            /* border: 2px solid black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px 20px 10px;
+        }
+
+
+
+        .enter {
+            padding: 10px 16px;
+        }
+
+        .btn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clear {
+            margin-left: 20px;
+        }
+
+        .result {
+            width: 50px;
+            height: 20px;
+            margin: 2px 0 0 2px;
+            /* border: 2px solid black; */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .block-bottom p{
+            width:180px;
+            border-radius:10px;
+            background:linear-gradient( rgb(153, 153, 153) 1%,rgba(177, 177, 177, 0.962) 100%);
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="text">
+            <h1>BMI計算機</h1>
+            <p>身體質量指數(Body Mass Index , 簡稱BMI式公認用來估計肥胖程度的方法)</p>
+            <p>BMI = 體重(公斤)/身高的平方(公尺)</p>
+        </div>
+
+
+        <div class="block block-top">
+            <div class="enter">我的身高:<input type="number" name="" class="n1">公分</div>
+            <div class="enter">我的體重:<input type="number" name="" class="n2">公斤</div>
+            <div class="btn">
+                <button type="button" class="calc">計算</button>
+                <button type="button" class="clear">重新計算</button>
+            </div>
+        </div>
+
+
+
+        <div class="block block-bottom">
+            <p>你的BMI為 :<span class="result"></span></p>
+        </div>
+
+
+
+        <table class="">
+
+            <thead>
+
+                <tr>
+
+                    <th colspan="3">BMI值</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td></td>
+                    <td>男性</td>
+                    <td>女姓</td>
+                </tr>
+
+                <tr>
+                    <td>體重過輕</td>
+                    <td>
+                        <20 </td>
+                    <td>
+                        <19 </td>
+                </tr>
+
+                <tr>
+                    <td>正常體重</td>
+                    <td>20-25</td>
+                    <td>20-25</td>
+                </tr>
+
+                <tr>
+                    <td>體重過重</td>
+                    <td>25-30</td>
+                    <td>25-30</td>
+                </tr>
+
+                <tr>
+                    <td>肥胖</td>
+                    <td>30-40</td>
+                    <td>30-40</td>
+                </tr>
+
+                <tr>
+                    <td>病態肥胖</td>
+                    <td>>40</td>
+                    <td>>40</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <script>
+        let n1 = document.querySelector(".n1");
+        let n2 = document.querySelector(".n2");
+
+        let calc = document.querySelector(".calc");
+        let clear = document.querySelector(".clear");
+        let result = document.querySelector(".result");
+
+
+
+        calc.addEventListener("click", function () {
+            let num1Value = n1.value;
+            // 身高
+            let num2Value = n2.value;
+            // 體重
+            if (num1Value && num2Value) {
+                let total = num2Value * 1 / (num1Value * num1Value / 10000) * 1;
+                result.textContent = total.toFixed(1);
+            }
+            else {
+                alert('請輸入')
+            }
+        });
+
+        clear.addEventListener('click', function () {
+            n1.value = '';
+            n2.value = '';
+            result.textContent = ''
+        })
+
+
+
+    </script>
+</body>
+
+</html>

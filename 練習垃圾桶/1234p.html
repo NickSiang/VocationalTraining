@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 3000px;
+        }
+
+        .bannar {
+            width: 100%;
+            height: 100vh;
+            background-color: aqua;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .bannar-1,
+        .bannar-4 {
+            background-image: url(./練習圖片1/img_parallax.jpg);
+        }
+
+        .bannar-2 {
+            background-image: url(./練習圖片1/img_parallax2.jpg);
+        }
+
+        .bannar-3 {
+            background-image: url(./練習圖片1/img_parallax3.jpg);
+        }
+
+        .btn {
+            width: 330px;
+            height: 64px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 10px;
+            line-height: 64px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /* 少逗號 */
+            
+        }
+
+        .btn-1 {
+            background: black;
+        }
+
+        .btn-4 {
+            background-color: black;
+            width: 164px;
+        }
+
+
+
+        .content {
+            text-align: justify;
+            /* 文字左右對齊 */
+            padding: 80px;
+         
+            }
+
+    </style>
+</head>
+
+<body>
+    <div class="all">
+
+        <div class="bannar bannar-1">
+            <div class="btn btn-1">SCROLL DOWN</div>
+        </div>
+
+        <!-- <div class="content content-1">
+            <p>Parallax scrolling is a web site trend where the background content is moved at a different speed than
+                the foreground content while scrolling. Nascetur per nec posuere turpis, lectus nec libero turpis nunc
+                at, sed posuere mollis ullamcorper libero ante lectus, blandit pellentesque a, magna turpis est sapien
+                duis blandit dignissim. Viverra interdum mi magna mi, morbi sociis. Condimentum dui ipsum consequat
+                morbi, curabitur aliquam pede, nullam vitae eu placerat eget et vehicula. Varius quisque non molestie
+                dolor, nunc nisl dapibus vestibulum at, sodales tincidunt mauris ullamcorper, dapibus pulvinar, in in
+                neque risus odio. Accumsan fringilla vulputate at quibusdam sociis eleifend, aenean maecenas vulputate,
+                non id vehicula lorem mattis, ratione interdum sociis ornare. Suscipit proin magna cras vel, non sit
+                platea sit, maecenas ante augue etiam maecenas, porta porttitor placerat leo.</p>
+        </div> -->
+
+        <div class="bannar bannar-2">
+            <div class="btn btn-2">LESS HEIGHT</div>
+
+        </div>
+
+        <!-- <div class="content content-2">
+            <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+        </div> -->
+
+        <div class="bannar bannar-3">
+            <div class="btn btn-3">SCROLL UP</div>
+        </div>
+        <div class="content content-3">
+            <p>Scroll up and down to really get the feeling of how Parallax Scrolling works.</p>
+        </div>
+
+        <div class="bannar bannar-4">
+            <div class="btn btn-4">COOL!</div>
+        </div>
+
+    </div>
+</body>
+
+</html>

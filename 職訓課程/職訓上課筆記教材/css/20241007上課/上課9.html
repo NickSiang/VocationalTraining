@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 3000px;
+            background: gray;
+
+        }
+
+        #nav {
+            background-color: wheat;
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            /* 固定定位 */
+            /* 元素會相對於瀏覽器視窗來定位，這意味著即便頁面捲動，它還是會固定在相同的位置。 */
+           
+         
+        }
+        #left{
+            background: green;
+            width: 100px;
+            height: 80px;
+        }
+
+        #all {
+            background-color: rgb(235, 49, 49);
+            width: 100%;
+            /* height: 3000px; */
+            color: white;
+            padding-top: 80px;
+        }
+
+        #banner {
+            background: black;
+            width:60%;
+            height: 300px;
+            color: black;
+            padding-top: 100px;
+            margin: auto;
+            background-image: url(./img/);
+            /* 背景圖片 */
+            /* url位置 */
+            background-repeat: no-repeat;
+            /* 圖片不重複 */
+            background-size: cover;
+            /* 圖片全覆蓋 */
+            background-position: center;
+            /* 圖片調整位置 */
+            position: relative;
+
+        }
+
+        #avatar {
+            background: rgb(191, 113, 113);
+            width: 150px;
+            height: 150px;
+            background-image: url(./img/);
+            background-size: cover;
+            border-radius: 50%;
+            position: absolute;
+            left: 100px;
+            bottom: -120px;
+            border: 5px solid black;
+            
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="left"></div>
+        <div id="middle">
+        <div id="fb logo"></div>
+        <div id="fb search"></div>
+        </div>
+        <div id="bottom"></div>
+
+    </div>
+    
+    <div id="all">
+        <div id="banner">
+            <div id="avatar"></div>
+        </div>
+    </div>
+</body>
+
+</html>

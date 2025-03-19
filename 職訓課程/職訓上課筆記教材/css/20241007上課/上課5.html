@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            /* 初始化 歸零 */
+        }
+
+        #box-a {
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+            margin-top: 100px;
+            margin-left: 100px;
+            position: relative;
+
+
+        }
+
+        #box-b {
+            background-color: rgb(255, 132, 0);
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            /* 絕對定位 */
+            right: -100px;
+            /* 負值會超出區 */
+            bottom: 0;
+            
+
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box-a">
+        <div id="box-b"></div>
+
+    </div>
+
+
+</html>

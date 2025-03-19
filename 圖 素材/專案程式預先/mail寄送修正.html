@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>EmailJS 寄信範例</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .all {
+            width: 400px;
+            border: 1px solid;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        form{
+            display: flex;
+            gap: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <h1>發送郵件範例</h1>
+
+        <form id="email-form">
+            <!-- required 是一個布林屬性，用於指示該表單欄位是必填的。也就是說，在表單提交之前，這個欄位不能是空的。 -->
+            <input type="email" id="sendemail" placeholder="請輸入信箱" required><br>
+            <button type="submit">發送郵件</button>
+        </form>
+    </div>
+
+
+    <script>
+        emailjs.init('FWOuZjvYJe6rfSKOI');  // 替換為你的 User ID
+
+        document.getElementById('email-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const templateParams = {
+                to_email: document.getElementById('sendemail').value,
+                from_email: 's28688117@gmail.com',
+            };
+
+            const serviceID = 'default_service';
+            const templateID = 'template_jyhwspp';
+
+            emailjs.send(serviceID, templateID, templateParams)  // 替換為你的 Service ID 和 Template ID
+                .then(function (response) {
+                    alert("郵件發送成功！" + response.text);
+                }, function (error) {
+                    alert("發送失敗：" + error.text);
+                });
+        });
+
+    </script>
+</body>
+
+</html>

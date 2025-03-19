@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="textInput">
+    <button onclick="add()">新增</button>
+    <div id="root">
+    </div>
+
+    <script>
+
+        var todos = [
+            {
+                title: "倒垃圾"
+            },
+            {
+                title: "繳電話費"
+            },
+            {
+                title: "採買本週食材"
+            },
+        ];
+
+        function render() {
+            const root = document.querySelector('#root');
+            const allList = document.createElement('ul');
+            root.textContent = '';
+            root.append(allList);
+            todos.forEach((item, index) => {
+                const list = document.createElement('li');
+                const span = document.createElement('span');
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = '刪除';
+                span.textContent = `${item.title}`;
+                allList.append(list);
+                list.append(span);
+                list.append(deleteBtn);
+
+                deleteBtn.onclick = () => {
+                    todos.splice(index, 1)
+                    render();
+                }
+            })
+        };
+
+        function add() {
+            const textInput = document.querySelector('#textInput');
+            todos.push({ title: `${textInput.value}` });
+            textInput.value = '';
+            render();
+        }
+
+
+        render();
+
+    </script>
+</body>
+
+</html>

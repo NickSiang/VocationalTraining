@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="tittlename"></div>
+    <div id=""></div>
+
+    <script>
+        let tittlename = document.querySelector('.');
+        let tittlename = document.querySelector('.');
+        let tittlename = document.querySelector('.');
+
+        // 取api用fetch
+        fetch('https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-98DE9976-8906-41AD-A1E7-2599F553F4A3')
+            // 執行成功要做甚麼事情
+            .then((response) => response.json())
+            .then((data) => {
+                tittlename.textContent = data.records.datase
+                city.forEach(element => {
+                    city.innerHTML += `<div></div>`
+                });
+            })
+
+
+        // 非同步 
+        // async
+    </script>
+</body>
+
+</html>

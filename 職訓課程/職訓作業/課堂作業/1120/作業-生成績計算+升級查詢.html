@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-學生成績計算+升級查詢</title>
+
+    <style>
+        .block {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin: 20px 0;
+        }
+
+        button {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <div class="block">
+            <div>國文: <input type="number" min="0" max="100" id="chinese"></div>
+            <div>數學: <input type="number" min="0" max="100" id="math"></div>
+            <div>英文: <input type="number" min="0" max="100" id="english"></div>
+        </div>
+
+        <div>
+            <button type="button" class="clear">清空</button>
+            <button type="button" class="calc">計算</button>
+        </div>
+
+        <div class="block">
+            <div>平均: <div class="average"></div>
+            </div>
+            <div>結果: <div class="result"></div>
+            </div>
+            <div>等級: <div class="level"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let chinese = document.querySelector('#chinese')
+    let math = document.querySelector('#math')
+    let english = document.querySelector('#english')
+    let clear = document.querySelector('.clear')
+    let calc = document.querySelector('.calc')
+    let average = document.querySelector('.average')
+    let result = document.querySelector('.result')
+    let level = document.querySelector('.level')
+
+
+    calc.addEventListener('click', function () {
+        let chineseValue = chinese.value * 1;
+        let mathValue = math.value * 1;
+        let englishValue = english.value * 1;
+
+        let averageValue = ((chineseValue + mathValue + englishValue) / 3).toFixed(2);
+
+        if (chineseValue == '' || mathValue == '' || englishValue == '') {
+            alert('請輸入分數');
+            return;
+        }
+
+        average.textContent = `${averageValue}分`;
+
+        if (averageValue >= 90) {
+
+            result.textContent = '及格';
+            level.textContent = 'A';
+        }
+
+        else if (averageValue >= 80) {
+            result.textContent = '及格';
+            level.textContent = 'B';
+        }
+
+        else if (averageValue >= 70) {
+            result.textContent = '及格';
+            level.textContent = 'C';
+        }
+        else if (averageValue >= 60) {
+            result.textContent = '及格';
+            level.textContent = 'D';
+        }
+        else {
+            result.textContent = '不及格';
+            level.textContent = 'E再接再厲';
+        }
+
+    });
+
+    clear.addEventListener('click', function () {
+        chinese.value = '';
+        math.value = '';
+        english.value = '';
+        average.textContent = '';
+        result.textContent = '';
+        level.textContent = '';
+    })
+
+</script>
+
+
+</html>
+
+<!-- 國文、英文、數學
+1.能輸入分數
+2.計算並顯示平均分數
+3.判斷是否及格
+4.還要給等級=>A(90分以上)、B(80分以上)、C(70分以上)、D(60分以上)、不及格(60分以下)=>死當 -->

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #app {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .note {
+            border: 2px solid rgba(128, 128, 128, 0.249);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .content {
+            width: 160px;
+        }
+
+        .noteBlock {
+            width: 800px;
+            display: flex;
+            align-items: start;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 20px;
+            margin: 0 auto;
+        }
+
+        .inputBlock {
+            max-width: 600px;
+            height: 100%;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="inputBlock">
+            <label for="textInput">記事標題:</label>
+            <input type="text" id="textInput" v-model.trim="textInput">
+            <label for="textArea">記事內容:</label>
+            <textarea name="" id="textArea" v-model.trim="textArea"></textarea>
+            <label for="selectColor">選擇顏色:</label>
+            <select name="" id="selectColor" v-model="color">
+                <option value="" hidden disabled selected>請選擇顏色</option>
+                <option v-for="(color,index) in ['red','green','blue']" :value="color" :key="color">{{color}}</option>
+            </select>
+            </br>
+            <button type="button" @click="addNote">新增</button>
+        </div>
+
+        <div class="noteBlock">
+            <div class="note" v-for="(note,index) in notes" :key="note" :style="{'background-color':note.color}">
+                <h3 class="title">
+                    {{note.title}}
+                </h3>
+                <p class="content">
+                    {{note.content}}
+                </p>
+                <button type="button" @click="deleteBtn(index)" :value="index">刪除</button>
+            </div>
+
+        </div>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+        <script>
+            const { createApp } = Vue
+
+            createApp({
+                data() {
+                    return {
+                        notes: [
+                            {
+                                title: "春節行程安排",
+                                content: "吃飽睡，睡飽吃",
+                                color: "red",
+                            },
+                            {
+                                title: "工作待辦事項",
+                                content: "詢問各家廠商報價",
+                                color: "green",
+                            },
+                            {
+                                title: "運動健身計畫",
+                                content: "每天早上六點去健身",
+                                color: "blue",
+                            },
+                        ],
+                        textInput: '',
+                        textArea: '',
+                        color: '',
+                    }
+                },
+                mounted() {
+                    this.notes[0].content = '多出門、到處走走、也要多運動'
+                    if (localStorage.getItem('notes')) {
+                        this.notes = JSON.parse(localStorage.getItem('notes'));
+                    }
+                },
+                methods: {
+                    addNote() {
+                        if (!this.textInput || !this.textArea || !this.color) {
+                            return alert('請輸入完整資料');
+                        }
+
+                        this.notes.push({
+                            title: this.textInput,
+                            content: this.textArea,
+                            color: this.color,
+                        })
+
+                        this.textInput = '';
+                        this.textArea = '';
+                        this.color = '';
+                    },
+                    deleteBtn(index) {
+                        this.notes.splice(index, 1);
+
+                    }
+                },
+                watch: {
+                    notes: {
+                        handler(newValue) {
+                            localStorage.setItem("notes", JSON.stringify(newValue))
+                        },
+                        deep: true
+                    },
+
+                }
+            }).mount('#app')
+        </script>
+</body>
+
+</html>
+
+<!-- 新增一個 input 來輸入「記事標題」
+新增一個 textarea 來輸入「記事內容」
+新增一個 select 來選擇顏色
+新增一個「新增」按鈕，點擊之後，會新增記事
+請將這些欄位的內容，放在 application state 裡面管理 -->

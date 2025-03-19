@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- section html寫法 -->
+
+<body>
+    <main>
+        <section>
+            <div>
+                <!-- <button type="button" onclick="userput">1</button> -->
+                <button type="button" class="userinput" data-userresult="剪刀">1</button>
+                <button type="button" class="userinput" data-userresult="石頭">2</button>
+                <button type="button" class="userinput" data-userresult="布">3</button>
+                <div>
+                    <img src="" alt="請出拳 " class="resultimg">
+
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="result">結果</div>
+        </section>
+    </main>
+
+    <script>
+        // 宣告使用者結果和電腦結果
+        let userouput = '';
+        let computerouput = '';
+        let resultshow = document.querySelector('.result');
+
+        // 1.點擊使用者按鈕(剪刀 石頭 布) 
+        let user = document.querySelectorAll('.userinput');
+
+        // 一開始要綁上監聽事件 
+        user.forEach((item) => {
+            item.addEventListener('click', function () {
+                // 點擊到之前先把三個按鈕的背景顏色清空
+
+                // 監聽事件點擊下去 會執行的事 
+                user.forEach((coloritem) => {
+                    coloritem.style.backgroundColor = '';
+                })
+                item.style.backgroundColor = 'red';
+                // console.log(item.dataset.userr);
+
+                
+        console.log(userouput, computerouput);
+
+                userouput = item.dataset.userresult;
+                computerresult()
+
+                // == 值相等就可以
+                // ===值和型別都要相等
+
+                if (userouput == computerouput) {
+                    console.log('平手');
+                    resultshow.innerHTML = `平手`
+                }
+                else if (userouput == '剪刀') {
+                    if (computerouput == '石頭') {
+                        console.log('你輸了');
+                        resultshow.innerHTML = `你輸了`
+
+                    }
+                    if (computerouput == '石頭') {
+                        console.log('你贏了');
+                        resultshow.innerHTML = `你贏了`
+                    }
+                }
+                else if (userouput == '石頭') {
+                    if (computerouput == '剪刀') {
+                        console.log('你輸了');
+                        resultshow.innerHTML = `你輸了`
+                    }
+                    if (computerouput == '布') {
+                        console.log('你贏了');
+                        resultshow.innerHTML = `你贏了`
+                    }
+
+                }
+                else if (userouput == '布') {
+                    if (computerouput == '石頭') {
+                        console.log('你輸了');
+                        resultshow.innerHTML = `你輸了`
+                    }
+                    if (computerouput == '剪刀') {
+                        console.log('你贏了');
+                        resultshow.innerHTML = `你贏了`
+                    }
+                }
+
+            })
+
+        });
+
+        // 2.電腦會隨機產生一個(剪刀 石頭 布)
+        // 方法是呼叫才會執行
+        function computerresult() {
+            let resultshow = ['剪刀', '石頭', '布'];
+            let resultpath = ['./img/Frame 5.png', './img/Frame 6.png', './img/Frame 7.png'];
+            let resultIndex = Math.floor(Math.random() * 3);
+
+            let changeimg = document.querySelector('.resultimg');
+            changeimg.src = resultpath[resultIndex];
+            computerouput = resultshow[resultIndex];
+        }
+
+        // console.log(changeimg);
+        // console.log(resultshow[2]);
+        // console.log(resultIndex);
+
+
+
+        // let Object1 = ['1', '2', '3', '4'];
+        // let Object2 = { '一': 1, '二': 2, '三': 3, '四': 4 };
+        // 比較常用陣列格式
+        // array[] 陣列
+        // 1.有序排列
+        // console.log(Object1[1]);
+
+
+        // json{} 物件
+        // 2.無序排列
+        // Object['key1']
+        // console.log(Object['一']);
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- 剪刀時頭布流程 -->
+<!-- 1.點擊使用者按鈕(剪刀 石頭 布) -->
+<!-- 兩種方式 -->
+<!-- 綁在按鈕上=onclicl() -->
+<!-- 綁定監聽事件.addlinsten -->
+<!-- 2.電腦會隨機產生一個(剪刀 石頭 布) -->
+<!-- 3.使用者和電腦的結果進行比對 -->
+<!-- 4.比對後的結果顯示  -->

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        main {
+            width: fit-content;
+            margin: 80px auto;
+        }
+
+        main .alert {
+            font-size: 20px;
+            font-weight: 600;
+            list-style: none;
+            padding: 32px 20px;
+            border-radius: 18px;
+            color: rgb(255, 255, 255);
+            display: flex;
+            gap: 24px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alert-primary {
+            border-left: 6px solid #0071eb;
+            background: #0071eb;
+        }
+
+        .alert-success {
+            border-left: 6px solid #35ab45;
+            background: #35ab45;
+        }
+
+        .alert-danger {
+            border-left: 6px solid #e6492e;
+            background: #e6492e;
+        }
+
+        .alert-warning {
+            border-left: 6px solid #f5a92f;
+            background: #f5a92f;
+        }
+
+        .alert button {
+            border: transparent;
+            background: transparent;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        .alert button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="alert alert-primary">
+            歡迎您點擊「抖內」按鈕，以實際行動支持我們。
+            <button class="btn-close">×</button>
+        </div>
+        <hr>
+        <div class="alert alert-success">
+            您已成功下訂單！以下為您的訂單詳細資訊。
+            <button class="btn-close">×</button>
+        </div>
+        <hr>
+        <div class="alert alert-danger">
+            抱歉，系統發生錯誤，請稍後重新嘗試。
+            <button class="btn-close">×</button>
+        </div>
+        <hr>
+        <div class="alert alert-warning">
+            請注意，以下內容包含「劇透」爆雷資訊。
+            <button class="btn-close">×</button>
+        </div>
+    </main>
+
+    <script>
+
+        document.querySelectorAll('.btn-close').forEach(function (btn) {
+            btn.addEventListener('click', remove)
+        });
+
+        function remove(event) {
+            event.target.closest('div').remove();
+        };
+
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- localStorage / sessionStorage寫的指令都一樣 -->
+  <!-- localStorage.setItem("lastname", "Smith");//設定 -->
+  <!-- localStorage.getItem("lastname");//取得 -->
+
+  <script>
+    // key 是不可以重複的，如果有重複。最後的指令會把原本的覆蓋過去
+    // value 只能夠存字串
+    localStorage.setItem("lastname", "Smith");
+    localStorage.setItem("lastname01", "1");
+
+    console.log(localStorage.getItem('lastname01'));
+
+    // 陣列
+    let a = ['客家鮮油雞', '五味軟絲', '沙拉軟絲'];
+    // 物件
+    let b = {
+      order01: '客家鮮油雞',
+      order02: '五味軟絲',
+      order03: '沙拉軟絲',
+    }
+
+    localStorage.setItem('order', a);
+    localStorage.setItem('order2', JSON.stringify(b));
+    console.log(JSON.parse(localStorage.getItem('order2')));
+    // js Object 可以使用 JSON的處理方式來轉換
+    //parse()	//字串轉換物件
+    //stringify()//物件轉換字串
+
+    // 複習
+
+    localStorage.setItem('ordeer2',b);
+    localStorage.setItem('order2', JSON.stringify(b));
+    console.log(localStorage.getItem('order2'));
+    console.log(JSON.stringify(localStorage.getItem('order')));
+
+  </script>
+</body>
+
+</html>

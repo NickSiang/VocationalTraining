@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        .big-box {
+            width: 500px;
+            height: 500px;
+            background-color: #d16e6e;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 20%;
+            height: 20%;
+            background-color: aqua;
+            border: 2px solid black;
+        }
+
+        .answer {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big-box">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box answer"></div>
+    </div>
+    <script>
+        const bigBox = document.querySelector('.big-box');
+        const answer = document.querySelector('.answer');
+        let mytouch = 0
+        // 清空
+
+        bigBox.addEventListener('click', function () {
+            mytouch++;
+            bigBox.innerHTML = '';
+
+
+            for (let i = 0; i < mytouch; i++) {
+                bigBox.innerHTML += '<div class="box"></div>';
+            }
+     
+
+        boxAll = document.querySelectorAll('.box');
+        for (let i = 0; i < mytouch; i++) {
+            boxAll[i].style.backgroundColor = getColor();
+        }
+    });
+
+        function getColor() {
+            let r = Math.floor(Math.random() * 255) + 1;
+            let g = Math.floor(Math.random() * 255) + 1;
+            let b = Math.floor(Math.random() * 255) + 1;
+            return `rgb(${r},${g},${b})`;
+        }
+    </script>
+</body>
+
+</html>

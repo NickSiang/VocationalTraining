@@ -1,0 +1,431 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(../img/P/dinotaeng/b.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+
+}
+
+@media (max-width:1280px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+.nav {
+  background-color: rgba(165, 42, 42, 0.901);
+  width: 366px;
+  height: 100%;
+  padding: 75px;
+  flex-shrink: 0;
+  /* 不要被壓縮 body已經被宣告flex */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+
+  /* 用flex-direction:column; padding下去推 不要用  */
+  /* justify-content: center; */
+  /* align-items: center;   */
+
+}
+
+@media(max-width: 1280px) {
+  .nav {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+
+
+  }
+}
+
+
+
+.logo {
+  background-image: url(../img/P/dinotaeng/logo.gif);
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 50px;
+}
+
+@media (max-width:1280px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+
+  }
+}
+
+
+
+@media (max-width:610px) {
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.logo:hover {
+  opacity: 0.7;
+  transform: translate(-50%, -50%) scale(1.2);
+  /* 注意要讓logo的動畫影子也要絕對位置對齊才不會有鬼影 */
+
+}
+
+.nav-btn-all {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+  /* background-color: aqua; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+
+}
+
+@media (max-width:1280px) {
+  .nav-btn-all {
+    width: 250px;
+    height: 100%;
+    margin: 0;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+  }
+}
+
+@media (max-width:610px) {
+  .nav-btn-all {
+
+    width: 96px;
+    height: 200px;
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+  }
+}
+
+.nav-btn:hover {
+  opacity: 0.7;
+  transform: scale(0.9);
+}
+
+.nav-btn {
+  background-color: rgba(222, 184, 135, 0.575);
+  width: 100%;
+  height: 50px;
+  font-size: 32px;
+  line-height: 50px;
+  text-align: center;
+  border-style: dashed;
+  border-radius: 30px;
+  color: rgb(120, 78, 24);
+}
+
+@media (max-width:1280px) {
+  .nav-btn {
+    width: 80px;
+
+
+
+  }
+}
+
+@media (max-width:610px) {
+
+  .nav-btn {
+    margin: 10px auto;
+    display: block;
+  }
+}
+
+.nav-btn-1 {
+  background-image: url(../img/icon/32px/house-chimney\ .png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+
+
+}
+
+.nav-btn-2 {
+  background-image: url(../img/icon/32px/instagram.png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+}
+
+.nav-btn-3 {
+  background-image: url(../img/icon/32px/facebook.png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+}
+
+
+
+.container {
+  background-color: rgb(247, 176, 84);
+  width: calc(100% - 366px);
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+@media (max-width:1320px) {
+  .container {
+    width: 100%;
+    height: 100%;
+
+  }
+}
+
+
+
+
+.content {
+
+  width: 960px;
+  height: 570px;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+
+@media (max-width:1380px) {
+  .content {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 30px;
+
+
+
+  }
+}
+
+@media (max-width:610px) {
+  .content {
+
+    padding: 0;
+
+
+
+  }
+}
+
+
+
+.img {
+  width: calc((100% - 10px * 2)/ 3);
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  border-radius: 10px;
+}
+
+@media (max-width:1380px) {
+  .img {
+    height: calc(50% - 5px);
+    background-size: cover;
+    background-position: center;
+
+  }
+}
+
+@media (max-width:610px) {
+  .img {
+
+    background-position: center;
+    width: 100%;
+    height: calc(100% / 3);
+
+  }
+}
+
+
+.img:hover {
+  background-image: url(../img/P/dinotaeng/fun.gif);
+  transition: 1s;
+}
+
+
+.img-1 {
+  background-image: url(../img/P/dinotaeng/b2.jpg);
+}
+
+.img-2 {
+  background-image: url(../img/P/dinotaeng/b3.jpg);
+  margin: 0 10px;
+}
+
+.img-3 {
+  background-image: url(../img/P/dinotaeng/b1.jpg);
+}
+
+@media (max-width:1380px) {
+  .img-1 {
+    width: 100%;
+    margin-bottom: 10px;
+
+  }
+
+  .img-2 {
+    margin-left: unset;
+    margin-right: 10px;
+    width: calc(50% - 5px);
+  }
+
+  .img-3 {
+    width: calc(50% - 5px);
+  }
+}
+
+@media (max-width:610px) {
+  .img-1 {
+    margin: 0;
+
+  }
+
+  .img-2 {
+
+    width: 100%;
+    margin: 0;
+  }
+
+  .img-3 {
+    width: 100%;
+  }
+}
+
+@media (max-width:1280px) {
+  .ham-btn {
+    display: none;
+
+  }
+}
+
+
+
+/* ===================================================== */
+@media (max-width:710px) {
+  .ham-btn .line {
+    background-color: rgb(234, 228, 179);
+    width: 80%;
+    height: 10px;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+    display: none;
+
+  }
+}
+
+
+
+
+@media (max-width:610px) {
+  .ham-btn .line {
+    display: block;
+
+  }
+}
+
+@media (max-width:610px) {
+  .ham-btn .line-1 {
+
+    top: 25%
+  }
+}
+
+@media (max-width:610px) {
+  .ham-btn .line-2 {
+    top: 50%
+  }
+}
+
+@media (max-width:610px) {
+  .ham-btn .line-3 {
+    top: 75%
+  }
+}
+
+
+#ham-menu-switch:checked+.ham-btn .line-1 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+
+}
+
+#ham-menu-switch:checked+.ham-btn .line-2 {
+  display: none;
+}
+
+#ham-menu-switch:checked+.ham-btn .line-3 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (max-width:610px) {
+  #ham-menu-switch:checked~.nav-btn-all {
+    display: block;
+  }
+}
+
+
+
+@media (max-width:610px) {
+  .ham-btn {
+    width: 80px;
+    height: 80px;
+    background-color: burlywood;
+    border-radius: 20px;
+    display: block;
+    position: relative;
+  }
+}

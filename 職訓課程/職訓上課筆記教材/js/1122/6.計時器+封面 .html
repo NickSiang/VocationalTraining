@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        width: 50px;
+    }
+</style>
+
+<body>
+    <div class="demo"></div>
+    <button type="button" class="pause">暫停</button>
+    <button type="button" class="start">繼續</button>
+    <script>
+
+        const demo = document.querySelector('.demo');
+        const pause = document.querySelector('.pause ');
+        const start = document.querySelector('.start');
+        // 倒數 
+        let counter = 5;
+        let myInterval = setInterval(showCounter, 1000);
+        
+        demo.textContent =counter;
+        // getNewTime();
+        // 箭頭函式 把function 變成=>移至()後
+
+        pause.addEventListener('click', () => {
+            // 清除一個時段區間變數
+            clearInterval(myInterval);
+        });
+
+        start.addEventListener('click', () => {
+            // 清除一個時段區間變數
+            myInterval = setInterval(showCounter, 1000);
+        });
+
+        
+        function showCounter() {
+            // 不讓值變負
+            if(counter > 0){
+                counter--;
+            }
+            demo.textContent = counter;
+        }
+
+
+    </script>
+</body>
+
+
+</html>

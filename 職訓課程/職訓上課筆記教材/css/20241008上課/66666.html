@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            /* height: 3000px; */
+        }
+
+        .nav {
+            background-color: burlywood;
+            width: 80%;
+            height: 100px;
+            position: fixed;
+            left: 10%;
+            top: 0;
+            z-index: 9;
+        }
+
+        .logo {
+            background-image: url(./images/table.jpg);
+            width: 80px;
+            height: 80px;
+            float: left;
+            border-radius: 50%;
+            float: left;
+            margin: 10px 0 0 10px;
+            transition: 1s;
+            /* 延遲 */
+
+        }
+
+        .logo:hover {
+            /* 將滑鼠移置上面會產生 */
+            transform: rotate(48deg)scale(1.2);
+
+
+        }
+
+        .nav-btn-all {
+            /* background-color: aqua; */
+            width: 290px;
+            height: 50px;
+            float: right;
+            margin-top: 25px;
+
+        }
+
+        .nav-btn {
+            background-color: rgb(79, 109, 109);
+            width: 80px;
+            height: 50px;
+            float: left;
+            font-size: 24px;
+            margin-left: 10px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 18px;
+            
+
+
+        }
+
+        .container {
+            /* background-color: rgb(212, 136, 136); */
+            width: 80%;
+            height: 3000px;
+            margin: auto;
+
+        }
+
+        .banner {
+            width: 100%;
+            height: 50vh;
+            background-size: cover;
+            background-attachment: fixed;
+            padding-top: 50vh;
+
+        }
+        
+
+
+
+        .mask {
+            width: 100%;
+            height: 50vh;
+            background: black;
+            opacity: 0.5;
+            margin: top 100vh;
+        }
+
+        .btn {
+            width: 20px;
+            background-color: white;
+            font-size: 24px;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 2px;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .banner-1 {
+            background-image: url(./images/f1.jpg);
+        }
+
+        .banner-2 {
+            background-image: url(./images/f2.jpg);
+        }
+
+        .banner-3 {
+            background-image: url(./images/f3.jpg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="logo"></div>
+        <!-- 一個右上角logo -->
+        <div class="nav-btn-all">
+            <div class="nav-btn nav-btn-1">一區</div>
+            <div class="nav-btn nav-btn-2">二區</div>
+            <div class="nav-btn nav-btn-3">三區</div>
+            <!-- 左上角狀態列 -->
+        </div>
+    </div>
+    <!-- 導覽列 -->
+
+    <div class="container">
+        <div class="banner banner-1">
+            <!-- 圖片 -->
+            <div class="mask">
+                <!-- 陰影 -->
+                <div class="btn btn-1">1</div>
+                <!-- 陰影裡置中按鈕 -->
+            </div>
+        </div>
+        <div class="banner banner-2">
+            <div class="mask">
+                <div class="btn btn-2">2</div>
+            </div>
+        </div>
+        <div class="banner banner-3">
+            <div class="mask">
+                <div class="btn btn-3">3</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 容器 -->
+</body>
+
+</html>

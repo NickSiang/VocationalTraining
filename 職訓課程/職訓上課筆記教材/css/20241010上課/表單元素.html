@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- div比較乾淨 p會預設css  -->
+    <!-- form表單 -->
+     <form>
+    <label for="my-name">請點我填</label>
+    <p>姓名: <input type="text" placeholder="這個是預設提示"required>
+    </p>
+    <div>姓名: <input type="text" value="這個是預設點下去有字"required>
+    </div>
+    <br><br>
+    <label for="my-name">姓名:</label>
+    <input id="my-name" type="text" value="點姓名可以填寫"required>
+    <br><br>
+    性別:
+    <input type="radio" name="gender">男 &nbsp;
+    <input type="radio" name="gender">女
+    <!-- > &gt < &lt &nbsp > -->
+    <!-- name="gender" 欄位名稱 不會男女都可以點 -->
+    <br>
+    <br>
+    動物 (可複選):
+    <input type="checkbox">貓
+    <input type="checkbox">狗
+    <input type="checkbox">牛
+     <input type="checkbox">豬
+    <input type="checkbox">雞
+    <br>
+    <br>
+    Email:<input type="email" required>
+    <!-- required必填 -->
+    <br>
+    <br>
+    年齡:<input type="number" min="0" max="100">
+    <br>
+    <br>
+    地址:<select>
+        <option selected>台中市</option>
+        <!-- 預設 -->
+        <option value="台北市">台北市</option>
+        <!-- 表單送出去是台北市 -->
+        <option value="">高雄市</option>
+    </select>
+    <br>
+    <br>
+   密碼:<input type="password">
+   <br>
+   <br>
+   <input type="file">
+   <br>
+   <br>
+   <input type="date">
+   <br>
+   <br>
+  
+    <button type="reset">清除</button>
+       <button type="submit">送出</button> 
+</form>
+<button type="button">一般按鈕</button>
+
+  </body>
+</html>

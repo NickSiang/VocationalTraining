@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .htm-btn {
+            width: 100px;
+            height: 100px;
+            display: block;
+            background-color: green;
+            position: relative;
+        }
+
+        .htm-btn .line {
+            width: 80%;
+            height: 10%;
+            background-color: black;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .htm-btn .line-1 {
+            top: 25%;
+
+        }
+
+        .htm-btn .line-2 {
+            top: 50%;
+
+        }
+
+        .htm-btn .line-3 {
+            top: 75%;
+
+        }
+#ham-menu-switch:checked+.htm-btn .line-1{
+    background-color: bisque;
+    position: absolute;
+    top: 50%;
+    transform:translate(-50% , -50%) rotate(45deg);
+   
+}
+#ham-menu-switch:checked+.htm-btn .line-2{
+    display: none;
+   
+}
+#ham-menu-switch:checked+.htm-btn .line-3{
+    background-color: bisque;
+    position: absolute;
+    top: 50%;
+    transform:translate(-50% , -50%) rotate(-45deg);
+}
+
+
+
+
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+    <input type="checkbox" id="ham-menu-switch" hidden>
+    <label for="ham-menu-switch" class="htm-btn">
+        <!-- 利用 label 的 for 屬性，將 for 的屬性值
+        設定為某表單元件的 id 值，藉此來建立關聯。 -->
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+
+
+
+    </label>
+</body>
+
+</html>

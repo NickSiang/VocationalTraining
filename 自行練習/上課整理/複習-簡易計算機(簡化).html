@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" class="num1">
+    <input type="number" class="num2">
+    </br></br>
+    <button type="button" class="add">+</button>
+    <button type="button" class="sub">-</button>
+    <button type="button" class="mult">*</button>
+    <button type="button" class="divide">/</button>
+    <button type="button" class="mod">%</button>
+    </br></br>
+    結果: <span class="result"></span>
+
+    <script>
+
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+        let result = document.querySelector('.result');
+
+        // 定義運算函式
+        // calculate 是一個函式，它接收一個 operator 參數（運算符，如 +, -, * 等）
+        // ，根據這個運算符執行不同的數學運算。
+        // 意思是指函數接受了一個參數 那個參數是switch判斷的目標數值 
+        // (將此函數想接收的參數放置)=>
+        const calculate = (operator) => {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+
+            //switch 語句根據 operator 的不同值來選擇運行哪一個計算：
+            // case '+'：如果 operator 是加號，則執行加法。
+            // case '-'：如果 operator 是減號，則執行減法。
+            // case '*'：如果 operator 是乘號，則執行乘法。
+            // case '/'：如果 operator 是除號，則執行除法。
+            // case '%'：如果 operator 是取餘數符號，則執行取餘數操作
+
+            // switch後面加入即將要被用來判斷的目標數值
+            // 若數值()等於case的值條件成立
+            switch (operator) {
+                case '+': result.textContent = num1Value + num2Value; break;
+                case '-': result.textContent = num1Value - num2Value; break;
+                case '*': result.textContent = num1Value * num2Value; break;
+                case '/': result.textContent = num1Value / num2Value; break;
+                case '%': result.textContent = num1Value % num2Value; break;
+            }
+        };
+
+
+        // 綁定事件
+        // 不需要 {}，如果箭頭函數只有一個表達式（例如 () => calculate('+')）。
+        // 需要 {}，如果箭頭函數需要執行多個語句或包含複雜邏輯（例如 () => { ... }）。
+        // 點擊按鈕時，會執行匿名函數 () => calculate('+')，然後將 '+' 作為參數傳遞給 calculate 函數。
+        document.querySelector('.add').addEventListener('click', () => calculate('+'));
+        document.querySelector('.sub').addEventListener('click', () => calculate('-'));
+        document.querySelector('.mult').addEventListener('click', () => calculate('*'));
+        document.querySelector('.divide').addEventListener('click', () => calculate('/'));
+        document.querySelector('.mod').addEventListener('click', () => calculate('%'));
+
+
+    </script>
+</body>
+
+</html>

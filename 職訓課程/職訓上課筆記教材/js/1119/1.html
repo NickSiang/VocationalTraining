@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid black;
+            line-height: 100px;
+            align-items: center;
+            margin-bottom: 10px;
+
+        }
+
+        .box-1 {
+            background-color: antiquewhite;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box box-1">1號</div>
+
+    <!-- 找出2號盒 底色變黃 -->
+    <div class="box box-2">2</div>
+    <!-- 找出3號盒 文字變綠 -->
+    <div class="box box-3">3</div>
+    <!-- 找出4號盒 變成圓 底色變黃 文字變紅-->
+    <div class="box box-4">3</div>
+
+    <script>
+        console.log('我是控制台 可以除錯用 可把訊息顯示出去');
+
+        // 變色
+        /*js在寫法上遵守小駝峰(第一個單字小寫 之後換單字第一個字母大寫)
+        js大小寫敏感*/
+
+        document.querySelector('.box-1').style.backgroundColor = 'red';
+        document.querySelector('.box-1').style.backgroundColor = 'blue';
+        document.querySelector('.box-1').style.backgroundColor = 'yellow';
+        // 在這份文件上 查詢選擇器 class=box-1
+        document.querySelector('.box-1').addEventListener('click', function () {
+            console.log('我是控制台');
+            document.querySelector('.box-1').style.backgroundColor = 'blue';
+        });
+        /* addEventListener增加一個事件傾聽器
+        按下去函式會進行*/
+        // 函式 預先寫好的程式碼 呼叫才會執行
+
+        document.querySelector('.box-2').addEventListener('click', function () {
+            document.querySelector('.box-2').style.backgroundColor = "yellow";
+        });
+
+        document.querySelector('.box-3').addEventListener('click', function () {
+            document.querySelector('.box-3').style.color = "green";
+        });
+
+        document.querySelector('.box-4').addEventListener('click', function () {
+            document.querySelector('.box-4').style.backgroundColor = 'yellow';
+            document.querySelector('.box-4').style.color = 'red';
+            document.querySelector('.box-4').style.boderRadius = '50%';
+        });
+
+        let box1 = document.querySelector('.box-1').addEventListener('click', function () {
+            document.querySelector('.box-1').style.backgroundColor = 'blue';
+        });
+
+    </script>
+    <!-- 寫在body結束上方 -->
+</body>
+
+</html>

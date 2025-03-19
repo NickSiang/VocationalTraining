@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <script>
+        //array =>陣列
+        let dataArr = [];//空陣列
+
+        dataArr = [100, 99, 70, 80, 60];
+        console.log(dataArr);
+
+        // log第二個數
+        console.log(dataArr[0]);
+        let a2 = dataArr[2];
+        console.log(a2)
+
+        // 加入 / 刪除陣列
+        // 加入至最後
+        dataArr.push(200);
+        console.log(dataArr);
+
+        // 修改資料
+        dataArr[2] = 999;
+        console.log(1111, dataArr[2]);
+
+        //刪除最後
+        dataArr.pop();
+        console.log(dataArr);
+
+        //任意方法 切割
+        // 從座標二後刪除一個
+        dataArr.splice(2, 1);
+        console.log(dataArr);
+
+        dataArr = [100, 99, 70, 80, 60, 20, 83];
+        dataArr.splice(1, 6);
+        console.log(dataArr);
+
+        // 從座標2後刪1個 接著放入 (刪除70)
+        dataArr = [100, 99, 70, 80, 60, 20, 83];
+        dataArr.splice(2, 1, 'A', 'B');
+        console.log(dataArr);
+
+        // // 整理
+        // dataArr.pop()//刪除最後
+        // dataArr.splice(作用座標 ,座標後刪除 , 加入的變數, 加入的變數)
+        // dataArr.push(加入的變數)// 加入至最後
+
+
+        let newArr = [];
+        newArr.push(999);
+        newArr.push(888);
+        newArr.push(777);
+        newArr.push(666);
+        newArr.push(555);
+
+        let A777 = newArr[2];
+        console.log(A777);
+        console.log(newArr);
+
+        newArr[4] = 444;
+        console.log(newArr);
+
+        newArr.splice(1,1);
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

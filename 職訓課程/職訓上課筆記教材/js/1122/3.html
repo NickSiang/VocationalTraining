@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="demo"></div>
+    <script>
+
+        const demo = document.querySelector('.demo')
+
+        // setInterval 是 JavaScript 中的一個函數，
+        // 用於 定期執行某段程式碼，時間間隔以毫秒計算。
+
+        // setInterval(callback, delay);
+        // callback：你想執行的函數或箭頭函數。
+        // delay：時間間隔，單位是毫秒（1000 毫秒 = 1 秒）。
+
+        // =>箭頭函式
+        //   做事        時間間格毫秒
+        setInterval(() => console.log(1), 3000);
+
+        setInterval(showlog, 2000)
+
+        function showlog() {
+            console.log('B');
+        }
+
+
+        getNewTime();
+
+        setInterval(getNewTime, 1000);
+
+        // 取得當前的時間並顯示在頁面中
+        function getNewTime() {
+
+            const date = new Date();
+            demo.textContent = date;
+            demo.textContent = date.toLocaleString();
+            // demo.textContent = date.toLocaleTimeString();
+        }
+    </script>
+</body>
+
+
+</html>

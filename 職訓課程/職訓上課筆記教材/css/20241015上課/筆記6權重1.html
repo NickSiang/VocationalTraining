@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* *通用選擇器 對所有的html標籤作用 */
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 3px black solid;
+        }
+
+        /* 類別選擇器 */
+
+        #box-1 {
+            background-color: red;
+        }
+
+        /* id選擇器 */
+
+        .box-1 {
+            background-color: blue;
+        }
+
+        .box-1,
+        .box-2,
+        .box-3 {
+            background-color: green;
+        }
+
+        .box-3 .box-30 {
+            background-color: purple;
+        }
+        /* 所有後代選擇器 */
+
+        .box-3 >.box-30 {
+            background-color: yellow;
+        }
+        /* 直接後代選擇器 */
+    </style>
+</head>
+
+<body>
+    <div id="box-1" class="box box-1"></div>
+    <div class="box box-2"></div>
+    <div class="box box-3">
+        <div class="box-30 box-3-a"></div>
+        <div class="box-30 box-3-b"></div>
+    </div>
+    <div class="box-30 box-3-c"></div>
+
+    </div>
+
+</body>
+
+</html>

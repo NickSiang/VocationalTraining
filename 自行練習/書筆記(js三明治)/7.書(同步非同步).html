@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // setTimeout的例子??問題6-13
+        for (var i = 0; i < 3; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 1000)
+        }
+        // 使用var = console.log(i);為3 3 3 
+
+        for (var i = 0; i < 3; i++) {
+            (function (x) {
+                setTimeout(function () {
+                console.log(x);
+            }, 1000)
+            })(i)
+        }
+
+
+        for (let i = 0; i < 3; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 1000)
+        }
+        // 使用let = console.log(i);為0 1 2
+
+        // console.log(i);
+        
+        // 使用 var 時，所有的回呼函式（setTimeout）共享同一個變數 i。
+        // var是全域變數,setTimeout會先放在儲列等全域執行完再執行因此得到3
+
+        // 使用 let 時，回呼函式會「閉包」每次迴圈中創建的不同 i，因此可以記住當前的值。
+        // let是區塊變數,當遇到時擱置一旁,在一起執行
+
+    </script>
+</body>
+
+</html>

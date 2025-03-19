@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        main {
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 50px 0;
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+            border-radius: 8px;
+            background-image: linear-gradient(160deg, #0093E9 0%, #7ac1ff 100%);
+        }
+
+
+        .m-y {
+            margin: 0 40px;
+        }
+
+        .topblock {
+            background: #4f4f4f85;
+            padding: 10px 40px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .topblock p {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 800;
+            font-size: 24px;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .midblock {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            padding: 18px 0;
+        }
+
+        .midblock input {
+            color: rgba(255, 255, 255, 0.9);
+            height: 42px;
+            border: transparent;
+            border-radius: 20px;
+            padding: 0 10px;
+            font-size: 18px;
+            background: transparent;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 12px;
+            outline: none;
+        }
+
+        .midblock input:focus {
+            color: black;
+            background: white;
+            border: 2px solid rgb(122, 122, 122);
+        }
+
+        .midblock #add {
+            width: 42px;
+            height: 100%;
+            font-size: 24px;
+            color: white;
+            background: transparent;
+            border: white 2px solid;
+            border-radius: 16px;
+            cursor: pointer;
+        }
+
+        .midblock #add:hover {
+            background: #ffffff;
+            color: rgb(122, 122, 122);
+            border: 2px solid rgb(122, 122, 122);
+        }
+
+        .bottomblock #note {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            margin: 0 0 40px;
+        }
+
+        #note li {
+            list-style: none;
+            padding: 18px 20px;
+            border-radius: 12px;
+            background: rgba(98, 98, 98, 0.132);
+            backdrop-filter: blur(3px);
+            color: white;
+            border: 1px solid rgba(162, 162, 162, 0.233);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #note li button {
+            border: transparent;
+            background: transparent;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #note li button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="topblock">
+            <p>待辦事項</p>
+        </section>
+        <section class="midblock m-y">
+            <div>
+                <input type="text" id="textInput">
+            </div>
+            <button type="button" id="add">+</button>
+        </section>
+        <section class="bottomblock m-y">
+            <ul id="note">
+                <li>
+                    <span>倒垃圾</span>
+                    <button type="button" class="deleteBtn">X</button>
+                </li>
+                <li>
+                    <span>繳電話費</span>
+                    <button type="button" class="deleteBtn">X</button>
+                </li>
+                <li>
+                    <span>採買本週食材</span>
+                    <button type="button" class="deleteBtn">X</button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script>
+        const add = document.getElementById('add');
+
+        add.addEventListener('click', function () {
+            const note = document.getElementById('note');
+            const textInput = document.getElementById('textInput');
+
+            const deleteBtn = document.createElement('button');
+
+            const list = document.createElement('li');
+            const listText = document.createElement('span');
+
+            listText.textContent = textInput.value;
+            deleteBtn.textContent = 'X';
+            deleteBtn.classList.add('deleteBtn');
+            deleteBtn.onclick = remove;
+
+            note.append(list);
+            list.append(listText, deleteBtn);
+
+            textInput.value = '';
+        });
+
+        function remove() {
+            event.target.parentElement.remove();
+        };
+
+        document.querySelectorAll('.deleteBtn').forEach(function (btn) {
+            btn.addEventListener('click', remove);
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const now = new Date();
+        console.log(now);
+
+        let year = now.getFullYear();
+        let month = now.getMonth();
+        let day = now.getDate();
+        let weekday = now.getDay();
+        let hour = now.getHours();
+        let second = now.getSeconds();
+        let total = now.getTime();
+
+
+        console.log(total);
+        console.log(year);
+        console.log(typeof year);
+
+        console.log(`民國${year - 1911}年`);
+        console.log(`${month + 1}月`);
+        console.log(`${day}號`);
+        console.log(`星期${weekday}`);
+
+        // 補0的第二種方法
+        
+        // padStart()只能用在字串
+        // 到第四個前填入3個0
+        const name ='5';
+        // 放置位置第2筆,前面插入0
+        const newName =name.padStart(3, '0');
+        console.log(newName);
+        
+    </script>
+</body>
+
+</html>

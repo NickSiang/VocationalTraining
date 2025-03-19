@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+
+        select {
+            height: 30px;
+        }
+
+        input[type=radio] {
+            width: 20px;
+            height: 20px;
+            background-color: aquamarine;
+        }
+
+        input:checked {
+            appearance: none;
+            border-radius: 50%;
+            background-color: rgb(101, 101, 101);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        性別:
+        <label for="male">
+            <input type="radio" id="male" name="gender" value="男">男
+            <!-- 選擇回傳的value是可自訂 -->
+        </label>
+
+        <label for="">
+            <input type="radio" id="female" name="gender" value="女">女
+        </label>
+        <div>
+            年齡
+            <select>
+                <!-- option[value="$@11"]{$@11}*20 -->
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <button type="button" class="query">查詢</button>
+        結果:
+        <span class="result"></span>
+    </div>
+
+
+    <script>
+        const queryBtn = document.querySelector('.query');
+        const ageSelect = document.querySelector('.age');
+        const result = document.querySelector('.result');
+
+        queryBtn.addEventListener('click', function () {
+            let gender
+        })
+
+
+    </script>
+
+</body>
+
+</html>

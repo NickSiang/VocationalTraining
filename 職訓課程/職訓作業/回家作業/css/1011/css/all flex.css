@@ -1,0 +1,419 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    /* background: palevioletred; */
+    background-image: url(../img/P/dinotaeng/b.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+@media(max-width: 1230px) {
+    body {
+        width: 100vw;
+        height: 100vh;
+        flex-wrap: wrap;
+        display: flex;
+    }
+}
+
+.nav {
+    width: 366px;
+    height: 100vh;
+    background-color: rgba(165, 42, 42, 0.901);
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+
+
+
+}
+
+
+@media(max-width: 1230px) {
+    .nav {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+
+
+    }
+}
+
+@media(max-width: 630px) {
+    .nav {
+        padding: 0;
+        position: relative;
+    }
+}
+
+.logo {
+    /* background-color: black; */
+    width: 150px;
+    height: 150px;
+    margin: 100px auto 0;
+    cursor: pointer;
+    background-image: url(../img/P/dinotaeng/logo.gif);
+    background-position: center;
+    background-size: cover;
+
+
+}
+
+@media(max-width: 1230px) {
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin: 0;
+
+    }
+}
+
+@media(max-width: 630px) {
+    .logo {
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* margin: auto; */
+        /* 要問說logo margin:auto; nav會扣掉旁邊的漢堡條才來置中 */
+    }
+}
+
+.logo:hover:hover  {
+    opacity: 0.8;
+    transform: scale(0.9) translate(-50%, -50%);
+}
+
+.nav-all-btn {
+    width: 100px;
+    height: 290px;
+    /* background-color: blue; */
+    margin: 100px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+@media(max-width: 1230px) {
+    .nav-all-btn {
+        width: 300px;
+        height: 70px;
+        margin: 5px;
+        justify-content: space-evenly;
+
+    }
+}
+
+
+
+@media(max-width: 630px) {
+    .nav-all-btn {
+        /* background-color: antiquewhite; */
+        width: 100px;
+        height: 200px;
+        padding: 10px;
+        margin: 0;
+        position: absolute;
+        top: 100%;
+        display: none;
+
+    }
+}
+
+.nav-btn {
+    width: 100%;
+    height: 90px;
+    background-color: rgb(215, 194, 194);
+    margin-bottom: 10px;
+    border-radius: 18px;
+    opacity: 0.8;
+
+}
+
+.nav-btn:hover {
+    transform: scale(0.9);
+    opacity: 0.9;
+
+}
+
+
+
+@media(max-width: 1230px) {
+    .nav-btn {
+        width: 90px;
+        height: 100%;
+        margin: 0;
+
+    }
+}
+
+@media(max-width: 630px) {
+    .nav-btn {
+
+        width: 80px;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+}
+
+.nav-btn-1 {
+    background-image: url(../img/icon/32px/house-chimney\ .png);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.nav-btn-2 {
+    background-image: url(../img/icon/32px/instagram.png);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.nav-btn-3 {
+    background-image: url(../img/icon/32px/facebook.png);
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+@media(max-width: 630px) {
+    .nav-btn-2 {
+        margin: 10px 0 10px 0;
+
+    }
+}
+
+
+.container {
+    width: calc(100% - 366px);
+    height: 100vh;
+    background-color: rgb(247, 176, 84);
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 1230px) {
+    .container {
+        width: 100%;
+        height: calc(100vh - 100px);
+        padding: 30px;
+
+    }
+}
+
+@media(max-width:630px) {
+    .container {
+        padding: 0;
+    }
+}
+
+
+.content {
+    width: 960px;
+    height: 570px;
+    /* background-color: bisque; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+
+}
+
+@media(max-width: 1380px) {
+    .content {
+        width: 800px;
+        height: 570px;
+        flex-wrap: wrap;
+
+    }
+}
+
+@media(max-width: 1230px) {
+    .content {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+.img {
+    width: calc((100% - 20px) / 3);
+    height: 100%;
+
+    border-radius: 18px;
+    background-size: cover;
+    background-position: center;
+
+}
+
+@media(max-width: 1380px) {
+    .img {
+        width: calc(50% - 5px);
+        height: calc(50% - 5px);
+
+    }
+}
+
+@media(max-width: 630px) {
+    .img {
+        width: 100%;
+        height: calc(100% / 3);
+
+    }
+}
+
+.img-1 {
+    background-image: url(../img/P/dinotaeng/b2.jpg)
+}
+
+
+@media(max-width: 1380px) {
+    .img-1 {
+        width: 800px;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width: 1230px) {
+    .img-1 {
+        width: 100%;
+    }
+}
+
+@media(max-width: 630px) {
+    .img-1 {
+        margin: 0;
+    }
+}
+
+
+.img-2 {
+    background-image: url(../img/P/dinotaeng/b1.jpg);
+    margin: 0 10px;
+    /* 方法二 */
+    /* margin:0 15px ; */
+}
+
+@media(max-width: 1380px) {
+    .img-2 {
+        margin: 0 10px 0 0;
+    }
+}
+
+@media(max-width: 630px) {
+    .img-2 {
+        margin: 0;
+    }
+}
+
+.img-3 {
+    background-image: url(../img/P/dinotaeng/b3.jpg)
+}
+
+.img:hover {
+
+    background-image: url(../img/P/dinotaeng/fun.gif);
+    transition: 1s;
+
+}
+
+/* ===================================== */
+@media(max-width: 630px) {
+    .htm-btn {
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+        border-radius: 20px;
+        background-color: burlywood;
+        position: relative;
+    }
+}
+
+@media(max-width: 830px) {
+    .htm-btn .line {
+        width: 80%;
+        height: 10%;
+        background-color: rgb(234, 228, 179);
+        border-radius: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 1s;
+        display: none;
+
+    }
+}
+
+@media(max-width: 630px) {
+    .htm-btn .line {
+
+        display: block;
+
+    }
+}
+
+
+
+
+.htm-btn .line-1 {
+    top: 25%;
+
+}
+
+.htm-btn .line-2 {
+    top: 50%;
+
+}
+
+.htm-btn .line-3 {
+    top: 75%;
+
+}
+
+#ham-menu-switch:checked+.htm-btn .line-1 {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+}
+
+#ham-menu-switch:checked+.htm-btn .line-2 {
+    display: none;
+
+}
+
+#ham-menu-switch:checked+.htm-btn .line-3 {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (max-width:630px) {
+    #ham-menu-switch:checked~.nav-all-btn {
+        display: block;
+    }
+}
+
+
+
+@media(max-width: 610px) {
+    .htm-btn .line {
+        transition: 0.8s;
+
+    }
+}
+
+/* ===================================== */

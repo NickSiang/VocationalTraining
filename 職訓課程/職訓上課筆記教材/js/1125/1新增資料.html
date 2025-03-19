@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>姓名: <input type="text" class="name"></p>
+
+    <button type="button" class="add">新增</button>
+    <button type="button" class="search">查詢</button>
+    <button type="button" class="del">刪除</button>
+    <p>列表: <span class="result"></span></p>
+
+    <script>
+        const name = document.querySelector('.name');
+        const add = document.querySelector('.add');
+        const search = document.querySelector('.search');
+        const del = document.querySelector('.del');
+        const result = document.querySelector('.result');
+        // 空陣列存放資料
+        let arr = [];
+
+        add.addEventListener('click', () => {
+            let myName = name.value;// 1. 獲取輸入框中的值
+            arr.push(myName);// 2. 將這個值加入到一個陣列 `arr`
+            result.innerHTML += `<br>${myName}`;//3. 將這個值以換行的形式顯示在 `result` 內
+        })
+
+        // indexOf() 的工作方式：
+        // 陣列搜索機制：
+
+        // indexOf() 從陣列的第一個元素開始，逐一比較每個元素與目標值。
+        // 如果找到了匹配的值，則返回該值在陣列中的索引（以 0 為起始）。
+        // 如果沒有找到匹配的值，則返回 - 1。
+
+        //- 1 是一個約定，表示目標值不在陣列中。
+        // 它用來區分「找到的索引」和「未找到」的狀況，
+        // 因為陣列的索引總是非負數（從 0 開始），所以 - 1 是一個合理的錯誤標記。
+
+        search.addEventListener('click', () => {
+            let myName = name.value;
+            let arrIndex = arr.indexOf(myName); //查找該值在陣列中的索引
+            console.log(arrIndex);
+            if (arrIndex === -1) { //找不到資料會回傳 -1
+                alert('資料不存在');
+            } else {
+                alert(`找到${myName}，在第${arrIndex + 1}筆`);
+            }
+        });
+
+        del.addEventListener('click', () => {
+            let myName = name.value;
+            let arrIndex = arr.indexOf(myName);
+            console.log(arrIndex);
+            if (arrIndex === -1) { //找不到資料會回傳 -1
+                alert('資料不存在');
+            } else {
+                // alert(`找到${myName}，在第${arrIndex + 1}筆`);
+                console.log(arr);
+                // 使用 splice() 方法，從陣列 arr 中刪除指定索引位置的元素。
+                // 第一個參數是刪除的起始位置（arrIndex）。
+                // 第二個參數是刪除的數量（1 表示只刪除該位置的一個元素）。
+                // arr.splice(arrIndex, 1);
+                arr.splice(arrIndex, 1);
+                console.log(arr);
+                showAll();
+            };
+        });
+
+        // 先做刪除完後 清空再重新載入所有資料
+
+
+        function showAll() {
+            //目標：將 HTML 元素 result 的內容清空。
+            //作用：避免每次新增內容時，舊的資料重複顯示。
+            result.innerHTML = '';//清空顯示區域 result.innerHTML。
+
+            // 把陣列的內容逐一顯示
+            // forEach：用來一個一個取出陣列的每個值。
+            // item：代表陣列中的每個值。
+            // 把這些值加到顯示區域裡，每個值加一個換行 <br>。
+            arr.forEach(function (item) {
+                result.innerHTML += `<br>${item}`;
+            });
+        };
+
+    </script>
+</body>
+
+</html>
+<!-- 1.輸入姓名
+2.新增 => 存入陣列
+3.查詢 => 必須顯示在第幾筆
+4.刪除
+5.列表 -->

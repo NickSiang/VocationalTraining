@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .card-region {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 10px;
+        }
+
+        .card {
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            padding: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <button type="button" class="all">全部</button>
+    <button type="button" class="all">北部</button>
+    <div class="card-region"></div>
+
+    <script>
+        const cardRegion = document.querySelector('.card-region');
+        const url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-98DE9976-8906-41AD-A1E7-2599F553F4A3';
+        let orginalData;
+        let orgData = [];//整理完資料存放區
+
+        // 主程式
+        fetchData();
+
+
+        // 取資料
+        function fetchData() {
+            fetch(url)
+                .then((response) => response.json())
+                .then((result) => {
+                    orginalData = result;
+                    //整理資料
+                    organizationData();
+                    orgData.forEach(showAllCard);
+                    // 資料安排處理
+                    // arrangeDate();
+                });
+        }
+        function organizationData() {
+            let locations = orginalData.records.location;
+            locations.forEach((location) => {
+                let locationName = location.locationName;
+                let locWE0T0 = location.weatherElement[0].time[0];
+                let parameterValue = locWE0T0.parameter.parameterValue;
+                let wxCondition = locWE0T0.parameter.parameterName;
+                let startTime = locWE0T0.startTime;
+                let maxT = location.weatherElement[4].time[0].parameter.parameterName;
+
+
+                let temp = {
+                    city: locationName,
+                    Wx: wxCondition,
+                    WxImgIndex: parameterValue,
+                    statTime: statTime,
+                    maxT: maxT,
+                };
+            });
+        }
+
+        orgData.push(temp);
+        console.log(orgData);
+
+
+
+
+
+        function showAllCard(city) {
+            cardRegion.innerHTML += `
+            <div class='card'>
+           <img src ='${orgData.img}'alt=圖片 ,><br/>
+            <p>天氣${city.city}</p>
+            <p>天氣${city.Wx}</p>
+            <p>天氣${city.startTime}</p>
+            <p>天氣${city.maxT}</p>
+            </div>
+            `;
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- CWA-98DE9976-8906-41AD-A1E7-2599F553F4A3 -->

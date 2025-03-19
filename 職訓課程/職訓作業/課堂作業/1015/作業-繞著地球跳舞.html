@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-繞著地球跳舞</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .big-box {
+            width: 500px;
+            height: 500px;
+            border-radius: 40%;
+            background-color: blue;
+            /* border: 5px red solid; */
+            position: relative;
+            animation-name: roll-ball;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+
+        .box-roll {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: orange;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -100%);
+            animation-name: color-ball;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+        }
+
+        .small-box {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            /* background-color: yellow; */
+            border: 3px red solid;
+            position: absolute;
+            animation-name: reverse-roll-ball;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+        .mini-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            /* background-color: rgb(255, 0, 0); */
+            border: 2px red solid;
+            position: absolute;
+            animation-name: reverse-roll-ball;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+        }
+        .mini-box-roll {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(0%, -100%);
+            animation-name: color-ball;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+
+
+        @keyframes roll-ball {
+
+
+            0% {
+                border-color: red;
+                transform: rotate(0deg);
+            }
+
+            12% {
+                border-color: orange;
+                ;
+            }
+
+            25% {
+                border-color: yellow;
+                ;
+            }
+
+            37% {
+                border-color: green;
+                ;
+            }
+
+            50% {
+                border-color: blue;
+                ;
+            }
+
+            62% {
+                bborder-color: purple;
+                ;
+            }
+
+            75% {
+                border-color: plum;
+                ;
+            }
+
+            87% {
+                border-color: gray;
+                ;
+            }
+
+            100% {
+                border-color: black;
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes reverse-roll-ball {
+
+
+            0% {
+                border-color: red;
+                transform: rotate(360deg);
+            }
+
+            12% {
+                border-color: orange;
+                ;
+            }
+
+            25% {
+                border-color: yellow;
+                ;
+            }
+
+            37% {
+                border-color: green;
+                ;
+            }
+
+            50% {
+                border-color: blue;
+                ;
+            }
+
+            62% {
+                bborder-color: purple;
+                ;
+            }
+
+            75% {
+                border-color: plum;
+                ;
+            }
+
+            87% {
+                border-color: gray;
+                ;
+            }
+
+            100% {
+                border-color: black;
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes color-ball {
+
+            /* 關鍵影格=>一定要實際做出來的影格*/
+            0% {
+                background-color: red;
+            }
+
+            12.5% {
+                background-color: red;
+                opacity: 0.8;
+            }
+
+            25% {
+                background-color: yellow;
+            }
+
+            37.5% {
+                background-color: yellow;
+                opacity: 0.8;
+            }
+
+            50% {
+                background-color: greenyellow;
+            }
+
+            62.5% {
+                background-color: greenyellow;
+                opacity: 0.8;
+            }
+
+            75% {
+                background-color: blue;
+            }
+
+            87.5% {
+                background-color: blue;
+                opacity: 0.8;
+            }
+
+            100% {
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big-box">
+    </div>
+
+    <div class="small-box">
+        <div class="box-roll"></div>
+    </div>
+
+    <div class="mini-box">
+        <div class="mini-box-roll"></div>
+    </div>
+</body>
+
+</html>

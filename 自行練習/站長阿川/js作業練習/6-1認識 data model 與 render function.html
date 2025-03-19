@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+    </div>
+
+    <script>
+
+        var todos = [
+            {
+                title: "倒垃圾"
+            },
+            {
+                title: "繳電話費"
+            },
+            {
+                title: "採買本週食材"
+            },
+        ];
+
+        function render() {
+            const allList = document.createElement('ul');
+            todos.forEach((item) => {
+                const list = document.createElement('li');
+                const span = document.createElement('span');
+                const root = document.querySelector('#root');
+                span.textContent = `${item.title}`;
+                root.append(allList);
+                allList.append(list);
+                list.append(span);
+            })
+        };
+
+
+        render();
+
+    </script>
+</body>
+
+</html>

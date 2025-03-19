@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+body{
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    /* align-content: center; */
+    
+}
+        .box {
+            width: 300px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .box-1 {
+            box-shadow: 10px 10px;
+        }
+        .box-2 {
+            box-shadow: 5px 10px 5px red;  
+        }
+        .box-3 {
+            box-shadow: 5px 10px 5px 10px orange;  
+        }
+        .box-4 {
+            box-shadow: 5px 10px 5px 10px orange; 
+            box-shadow: none; 
+        }
+        .box-5 {
+            box-shadow: 5px 5px  orange,10px 10px  blue; 
+            
+        }
+        .box-6 {
+            box-shadow: 5px 5px 10px orange,10px 10px 20px yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box-1">1</div>
+    <div class="box box-2">2</div>
+    <div class="box box-3">3</div>
+    <div class="box box-4">4</div>
+    <div class="box box-5">5</div>
+    <div class="box box-6">6</div>
+    <div class="box box-7">7</div>
+
+
+</body>
+
+</html>

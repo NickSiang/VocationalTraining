@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            margin: 20px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div>
+        <label for="date_timepicker_start">入住日期:</label>
+        <input id="date_timepicker_start" type="text" readonly>
+    </div>
+    <div>
+        <label for="date_timepicker_end">退房日期:</label>
+        <input id="date_timepicker_end" type="text" placeholder="Y/M/D" readonly>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous">
+        </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+
+        jQuery(() => {
+            const start = $('#date_timepicker_start');
+            const end = $('#date_timepicker_end');
+
+            start.datetimepicker({
+                format: 'Y/m/d',
+                value: new Date(),
+                onShow: function (ct) {
+                    this.setOptions({
+                        maxDate: end.val() ? end.val() : false
+                    })
+                },
+                timepicker: false
+            });
+            end.datetimepicker({
+                format: 'Y/m/d',
+                onShow: function (ct) {
+                    this.setOptions({
+                        minDate: start.val() ? start.val() : false
+
+                    })
+                },
+                timepicker: false
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- 設定日期格式format:'Y-m-d' -->
+<!-- 禁用時間選擇timepicker:false -->
+<!-- 限制可選日期 minDate:'2025-01-01' -->
+<!-- 最大可選日期，讓使用者 不能選擇超過這個日期的時間。maxDate  -->
+
+<!-- 只能選擇今天以後的日期-->
+<!-- $("#datetimepicker").datetimepicker({
+    minDate: 0 // 0 代表今天
+}); -->
+
+<!-- 設定開始日期 & 結束日期的連動 此頁-->
+
+<!-- 顯示 24 小時制 hours12: false -->
+<!-- 預設選擇今天value: new Date(), -->

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        .big-box {
+            width: 500px;
+            height: 500px;
+            background-color: #d16e6e;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 20%;
+            height: 20%;
+            background-color: aqua;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big-box">
+        <!-- <div class="box"></div> -->
+    </div>
+    <script>
+        const bigBox = document.querySelector('.big-box')
+        let mytouch = 0
+
+        
+        // 清空
+        bigBox.addEventListener('click', function () {
+            bigBox.innerHTML = '';
+            mytouch++;
+        
+
+        for (let i = 0; i < mytouch; i++) {
+            bigBox.innerHTML += '<div class="box">'
+        }});
+    </script>
+</body>
+
+</html>

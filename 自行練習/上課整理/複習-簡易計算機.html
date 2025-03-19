@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" name="" id="" class="num1">
+    <input type="number" name="" id="" class="num2">
+    </br></br>
+    <button type="button" class="add">+</button>
+    <button type="button" class="sub">-</button>
+    <button type="button" class="mult">*</button>
+    <button type="button" class="divide">/</button>
+    <button type="button" class="mod">%</button>
+    </br></br>
+    結果:<span class="result"></span>
+
+    <script>
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+
+        let add = document.querySelector('.add');
+        let sub = document.querySelector('.sub');
+        let mult = document.querySelector('.mult');
+        let divide = document.querySelector('.divide');
+        let mod = document.querySelector('.mod');
+        let result = document.querySelector('.result');
+
+        add.addEventListener('click', addfun);
+        // (可在縮寫)
+
+        // .value 是什麼？
+        // 在 JavaScript 中，.value 是 HTML 表單元素
+        //（如 <input>、<textarea>、<select>）的一個屬性，
+        // 用來獲取或設置這些元素的值
+
+        //使用.value 的元素
+        // 以下 HTML 元素常用.value：
+        //1.<input>：文字輸入框、數字輸入框、密碼框等。
+        //2.<textarea>：多行文字輸入框。
+        //3.<select>：下拉選單。
+
+        // 把
+        // let num1Value = Number(num1.value);
+        // let num2Value = Number(num2.value);
+        // 放外面,你在外面先獲取了 num1Value 和 num2Value 的值。
+        // 這樣一來，當你點擊按鈕時，這些值不會更新，即使你改變了輸入框中的數字。
+
+        // 每次點擊加法按鈕時，num1 和 num2 的值會被重新獲取
+        // ，然後做加法計算並顯示結果。
+        // 這樣可以確保每次點擊時計算的都是最新的數字！
+
+        function addfun() {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+            result.textContent = num1Value + num2Value;
+        };
+
+        sub.addEventListener('click', () => {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+            result.textContent = num1Value - num2Value;
+        });
+
+        mult.addEventListener('click', () => {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+            result.textContent = num1Value * num2Value;
+        });
+
+        divide.addEventListener('click', () => {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+            result.textContent = (num1Value / num2Value);
+        });
+
+        mod.addEventListener('click', () => {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+            result.textContent = (num1Value % num2Value);
+        });
+
+
+    </script>
+</body>
+
+</html>

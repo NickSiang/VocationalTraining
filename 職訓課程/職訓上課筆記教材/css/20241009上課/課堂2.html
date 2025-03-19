@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dollor {
+            color: aqua;
+            width: 200px;height: 30px;
+            background-color: red;
+            /* 要行內區塊 才能改變寬高 */
+            /* 產生寬高 行內 */
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            /* 方法2 */
+            /* position: absolute; */
+            /* 方法3 */
+            /* float: left; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <span>span</span>
+        <span>特性不會佔一整列</span>
+        <span class="dollor">Lorem ipsum dolor </span>sit amet consectetur adipisicing elit. Quisquam, laboriosam minus
+        possimus eum omnis sunt, suscipit impedit eveniet velit corporis dolor eaque commodi repellendus inventore saepe
+        dignissimos eius quia id.
+        <!-- span行內元素(inline) 特性不會佔一整列 -->
+        <!-- #22.33 快捷-->
+        <!-- span.dollor -->
+        <!-- span#222.333 -->
+    </div>
+
+</body>
+
+</html>

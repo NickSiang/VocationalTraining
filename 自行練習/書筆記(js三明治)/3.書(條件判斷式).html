@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ===========================================
+        // Falsy Value
+        // ""
+        // 0
+        // false
+        // undefined
+        // nall
+        // NaN
+
+        // Truthy Value
+        // 空字串外字串
+        // {} 空物件
+        // [] 空陣列
+        // function(){}空函式
+
+        // ===========================================
+        // if判斷式
+        /* if (這邊寫入條件判斷 結果為true執行) {
+         }else{若上述if條件不成立則執行這段else對應的程式碼區塊
+         }*/
+
+        // if (這邊不一定只能放比較運算式) {}
+        // 只要括號內的數值能轉為布林值的true 該區條件則成立
+        //   if(''){
+        // }
+
+        // ===========================================
+        // Switch判斷式和if判斷式相像 當需要撰寫很多連續的if else時
+        // 適合用Switch判斷式來取代
+        // switch(目標值)和case後的數值: 是用嚴格的相等下去計算
+        // 因此兩邊型別與值相同才會做計算
+
+        /*switch (即將要判斷的目標數a) {
+            case 1:
+                // 若數值a等於case對應的數值,則條件成立
+                執行對應的區塊,執行完後必須用break終止
+                否則後面所有case區塊內的邏輯皆會被執行
+                直到break為止
+
+                break;
+            case 2:
+                break;
+
+            default:以上皆不成立會執行此區塊邏輯
+                break;
+        }*/
+
+        // switch (a) {
+        //     case 1:
+        //     case 2:
+        //         (可看作a===1 || a===2)
+        //         break;
+
+        //     default:
+        //         break;
+        // }
+
+        // ===========================================
+        // for迴圈
+        /*for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            
+        }*/
+        /*for (宣告變數初始值; 條件判斷; 迴圈結束時執行的動作) {
+            迴圈要執行的邏輯 
+        }*/
+
+        // for (let i = 0; i < 5; i++) {
+        //     // 迴圈要執行的邏輯
+        //     // 會執行五次 從0開始
+        // }
+
+        // for迴圈搭配陣列
+        // 陣列元素可用陣列名稱搭配index來存取
+        // 當需要依序取出陣列每個元素就可使用for
+        let array = ['first', 'second', 'third'];
+        for (let i = 0; i < array.length; i = i + 1) {
+            console.log(array[i]);
+        }
+
+        // while迴圈
+        // 只要在某條件成立情況下,都會重複執行這段程式碼
+        // 通常運用在不確定迴圈會執行幾次
+        // while(條件判斷){
+        //     // 迴圈內要執行的邏輯
+        // }
+
+        // 通常使用會利用在迴圈之外的數值來做迴圈判斷
+        // 然後在迴圈內再改變那個值的內容
+        let i = 0;
+        while (i < 1) {
+            i = i + 1;
+        }
+
+
+        // 三元運算子
+        // 條件判斷 ? 運算式A : 運算式B
+        // 若條件判斷結果成立 執行運算式A 並將結果做為整個三元運算式
+        // 結果回傳 反之回傳B
+        // 與if else判斷式相像 可以取代簡單的 if else
+
+        let a = 1;
+        var result;
+
+        if (!!a) {
+            result = 'a';
+        } else {
+            result = 'b';
+        }
+        console.log(result);
+
+        var result = !!a?result='a':result='b';
+        console.log(result);
+
+
+    </script>
+</body>
+
+</html>

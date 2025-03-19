@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            margin-bottom: 10px;
+        }
+
+        li span {
+            margin-right: 22px;
+        }
+
+        li button {
+            margin: 0 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="textInput">
+    <select id="list-rank">
+        <option value="normal">一般</option>
+        <option value="important">重要</option>
+        <option value="urgent">緊急</option>
+    </select>
+    <button onclick="add()">新增</button>
+
+    <button onclick="exportList()">匯出</button>
+
+    <div id="root">
+    </div>
+
+    <script>
+
+        var todos = [
+            {
+                title: "倒垃圾",
+                category: "normal",
+                isCompleted: false
+            },
+            {
+                title: "繳電話費",
+                category: "important",
+                isCompleted: false
+            },
+            {
+                title: "採買本週食材",
+                category: "urgent",
+                isCompleted: false
+            },
+        ];
+
+        function render() {
+            const root = document.querySelector('#root');
+            const allList = document.createElement('ul');
+            root.textContent = '';
+            root.append(allList);
+
+            todos.forEach((item, index) => {
+                const listLi = document.createElement('li');
+                const listSpan = document.createElement('span');
+                const doneSpan = document.createElement('span');
+                const doneBtn = document.createElement('button');
+                const deleteBtn = document.createElement('button');
+
+                doneSpan.textContent = '(已完成)'
+
+                deleteBtn.textContent = '刪除';
+                listSpan.textContent = `${item.title}`;
+
+                allList.append(listLi);
+                listLi.append(listSpan);
+                listLi.append(doneSpan);
+                listLi.append(doneBtn);
+                listLi.append(deleteBtn);
+
+                if (item.category == 'normal') {
+                    listSpan.style.color = 'green'
+                } else if (item.category == 'important') {
+                    listSpan.style.color = 'orange'
+                } else if (item.category == 'urgent') {
+                    listSpan.style.color = 'red'
+                }
+
+                if (item.isCompleted == false) {
+                    doneSpan.style.display = 'none'
+                    doneBtn.textContent = '標示為已完成'
+                } else if (item.isCompleted == true) {
+                    doneSpan.style.display = 'inline-block'
+                    doneBtn.textContent = '標示為未完成'
+                }
+
+
+                doneBtn.onclick = () => {
+                    if (!todos[index].isCompleted) {
+                        todos[index].isCompleted = true;
+                    } else if (todos[index].isCompleted) {
+                        todos[index].isCompleted = false;
+                    }
+                    render();
+                }
+
+                deleteBtn.onclick = () => {
+                    todos.splice(index, 1);
+                    render();
+                }
+            })
+        };
+
+        function add() {
+            const textInput = document.querySelector('#textInput');
+            const listRank = document.querySelector('#list-rank');
+
+            todos.push({ title: `${textInput.value}`, category: `${listRank.value}`, isCompleted: false });
+            textInput.value = '';
+            listRank.value = 'normal';
+            render();
+        }
+
+        // function exportList() {
+        //     let alertArray = '今日代辦 :\n';
+
+        //     todos.forEach((item, index) => {
+        //         let isDone = item.isCompleted ? '(已完成)' : '';
+
+        //         if (item.category == 'normal') {
+        //             alertArray += `${index + 1}.${item.title}${isDone}\n`
+        //         } else if (item.category == 'important') {
+        //             alertArray += `${index + 1}.*${item.title}*${isDone}\n`
+        //         } else if (item.category == 'urgent') {
+        //             alertArray += `${index + 1}.**${item.title}**${isDone}\n`
+        //         }
+        //     })
+
+        //     alert(alertArray)
+        //     render();
+        // }
+
+        function exportList() {
+            let alertArray = '今日代辦 :\n';
+
+            let categoryFormat = {
+                normal: (title, isDone) => `${title}${isDone}`,
+                important: (title, isDone) => `*${title}*${isDone}`,
+                urgent: (title, isDone) => `**${title}**${isDone}`
+            }
+
+            alertArray += todos.map((item, index) => {
+                let isDone = item.isCompleted ? '(已完成)' : '';
+                return `${index+1}${categoryFormat[item.category](item.title,isDone)}`
+            }).join('\n');
+            // .join('\n') 是 JavaScript 中的一個方法，用於將陣列中的所有元素連接成一個單一的字串，並且用換行符 (\n) 分隔每個元素。
+            alert(alertArray);
+        }
+        
+        render();
+
+    </script>
+</body>
+
+</html>

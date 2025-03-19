@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跑馬燈</title>
+    <style>
+        /* 跑馬燈容器 */
+        .marquee {
+            width: 100%;
+            overflow: hidden; /* 隱藏溢出的內容 */
+            background: #f0f0f0; /* 背景顏色 */
+            padding: 10px 0; /* 上下間距 */
+            display: flex;
+            align-items: center;
+        }
+
+        /* 跑馬燈滾動區域 */
+        .marquee-content {
+            display: flex;
+            animation: scroll 40s linear infinite; /* 動畫定義 */
+        }
+
+        /* 滾動動畫 */
+        @keyframes scroll {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* 每個內容元素的樣式 */
+        .marquee-item {
+            margin: 0 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap; /* 禁止換行 */
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee">
+        <div class="marquee-content" id="marquee-content">
+            <!-- 預設內容將由 JavaScript 生成 -->
+        </div>
+    </div>
+
+    <script>
+        // 跑馬燈數據
+        const items = [
+            "這是第一條消息！",
+            "歡迎使用跑馬燈效果！",
+            "今天的天氣很好！",
+            "最新優惠活動！",
+            "感謝您的支持！"
+        ];
+
+        // 動態生成跑馬燈內容
+        const marqueeContent = document.getElementById("marquee-content");
+
+        // 將內容插入到跑馬燈中
+        items.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "marquee-item";
+            div.textContent = item;
+            marqueeContent.appendChild(div);
+        });
+
+        // 複製一份內容，實現無縫滾動
+        items.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "marquee-item";
+            div.textContent = item;
+            marqueeContent.appendChild(div);
+        });
+
+        items.forEach((item) => {
+            const div = document.createElement("div");
+            div.className = "marquee-item";
+            div.textContent = item;
+            marqueeContent.appendChild(div);
+        });
+    </script>
+</body>
+</html>

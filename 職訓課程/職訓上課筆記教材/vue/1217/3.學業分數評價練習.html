@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #all {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        div {
+            display: flex;
+            gap: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="all">
+
+        <label for="">
+            國語: <input type="number" name="" id="" v-model="ch">
+        </label>
+
+        <label for="">
+            英文: <input type="number" name="" id="" v-model="en">
+        </label>
+
+        <label for="">
+            數學: <input type="number" name="" id="" v-model="ma">
+        </label>
+
+        <label for="">
+            專業一: <input type="number" name="" id="" v-model="p1">
+        </label>
+
+        <label for="">
+            專業二: <input type="number" name="" id="" v-model="p2">
+        </label>
+
+        <div>
+            <button type="button" @click="calc">計算</button>
+            <button type="button" @click="remove">清除</button>
+        </div>
+
+        <div v-if="avg==''" style="color: black;">平均分數:{{avg}}</div>
+        <div v-else-if="avg>=60" style="color: blue;">平均分數:{{avg}}</div>
+        <div v-else style="color:red;">平均分數:{{avg}}</div>
+
+        <!-- v-bind 的方式-->
+        <!-- <div :style="{ color:color === false ? 'red' : color === true ? 'blue' : 'black'}">平均分數:{{avg}}</div> -->
+
+        <div>總評:{{grade}}</div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    ch: '',
+                    en: '',
+                    ma: '',
+                    p1: '',
+                    p2: '',
+                    avg: '',
+                    grade: '',
+
+                    // <!-- v-bind 的方式-->
+                    // color: '',
+                }
+            },
+
+            methods: {
+                calc() {
+                    let total = parseInt(this.ch) + parseInt(this.en) + parseInt(this.ma) + parseInt(this.p1) + parseInt(this.p2);
+                    this.avg = (total / 5).toFixed(1);
+                    let avgValue = this.avg;
+
+                    if (this.ch == '' || this.en == '' || this.ma == '' || this.p1 == '' || this.p2 == '') {
+                        this.avg = ''
+                        this.grade = ''
+                        return;
+                    }
+
+                    if (avgValue * 1 >= 90) {
+                        this.grade = 'A'
+                        // this.color = true
+                    }
+                    else if
+                        (avgValue * 1 >= 80 && avgValue * 1 < 90) {
+                        this.grade = 'B'
+                        // this.color = true
+                    }
+                    else if
+                        (avgValue * 1 >= 70 && avgValue * 1 < 80) {
+                        this.grade = 'C'
+                        // this.color = true
+                    }
+                    else if
+                        (avgValue * 1 >= 60 && avgValue * 1 < 70) {
+                        this.grade = 'D'
+                        // this.color = true
+                    }
+
+                    else {
+                        this.grade = 'E'
+                        // this.color = false
+                    }
+                },
+                remove() {
+                    this.ch = '',
+                        this.en = '',
+                        this.ma = '',
+                        this.p1 = '',
+                        this.p2 = '',
+                        this.avg = '',
+                        this.grade = ''
+                }
+            },
+
+        }).mount('#all')
+
+
+
+
+    </script>
+
+</body>
+
+</html>

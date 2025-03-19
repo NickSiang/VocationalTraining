@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 儲存、取出資料的語法 — 儲存setItem、取出getItem -->
+    <!-- localStorage.setItem('myName',str); -->
+    <!-- localStorage.getItem('myName'); -->
+
+    <div>
+        <input type="text" name="message board" id="" class="message-board">
+        <button type="button" class="save">儲存</button>
+        <button type="button" class="del">刪除</button>
+        <div class="result">留言板</div>
+    </div>
+
+</body>
+
+<script>
+
+    let message = document.querySelector('.message-board');
+    let save = document.querySelector('.save');
+    let del = document.querySelector('.del')
+    let result = document.querySelector('.result');
+    let board = [];
+    let local = (localStorage.getItem('bArray')).split(',');
+
+    // if (localStorage.getItem('bArray') != null) {
+    //     barray = (localStorage.getItem('bArray'));
+    // }
+
+    result.innerHTML += `<br/>${local}`
+
+
+    save.addEventListener('click', function () {
+        let messageValue = message.value;
+        // console.log(messageValue);
+        board.push(`${messageValue}`);
+        console.log(board);
+
+        localStorage.setItem('bArray',(board));
+        result.innerHTML += `<br/> ${messageValue}`;
+
+    })
+
+    //parse()	//字串轉換物件
+    //stringify()//物件轉換字串
+    //使用 split() 方法 // 字串轉換為陣列
+    //適用於有特定分隔符的字串，例如逗號、空格等。
+
+    // del.addEventListener('click', function () {
+    //     let messageValue = message.value
+    //     board.splice(1, 1, `${messageValue}`);
+    // })
+
+</script>
+
+</html>
+
+<!-- 1.有區塊可以輸入留言 送出留言
+2.留言的文字會一個個顯示在畫面上
+3.重新開啟瀏覽器後,歷史留言會出來
+4.擴充:刪除留言 -->

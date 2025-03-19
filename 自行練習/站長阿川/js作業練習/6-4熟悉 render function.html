@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="textInput">
+    <button onclick="add()">新增</button>
+    <select id="list-rank">
+        <option value="normal">一般</option>
+        <option value="important">重要</option>
+        <option value="urgent">緊急</option>
+    </select>
+    <div id="root">
+    </div>
+    <script>
+        var todos = [
+            {
+                title: "倒垃圾",
+                category: "normal"
+            },
+            {
+                title: "繳電話費",
+                category: "important"
+            },
+            {
+                title: "採買本週食材",
+                category: "urgent"
+            },
+        ];
+
+        function render() {
+            const root = document.querySelector('#root');
+            const allList = document.createElement('ul');
+            root.textContent = '';
+            root.append(allList);
+
+            todos.forEach((item, index) => {
+                const listLi = document.createElement('li');
+                const listSpan = document.createElement('span');
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = '刪除';
+                listSpan.textContent = `${item.title}`;
+                allList.append(listLi);
+                listLi.append(listSpan);
+                listLi.append(deleteBtn);
+
+                if (item.category == 'normal') {
+                    listSpan.style.color = 'green'
+                } else if (item.category == 'important') {
+                    listSpan.style.color = 'orange'
+                } else if (item.category == 'urgent') {
+                    listSpan.style.color = 'red'
+                }
+
+                deleteBtn.onclick = () => {
+                    todos.splice(index, 1);
+                    render();
+                }
+            })
+        };
+
+        function add() {
+            const textInput = document.querySelector('#textInput');
+            const listRank = document.querySelector('#list-rank');
+
+            todos.push({ title: `${textInput.value}`, category: `${listRank.value}` });
+            textInput.value = '';
+            listRank.value = 'normal';
+            render();
+        }
+
+        render();
+    </script>
+</body>
+
+</html>

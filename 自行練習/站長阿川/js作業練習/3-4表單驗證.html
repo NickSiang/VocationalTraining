@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        main {
+            width: 390px;
+            margin: 80px auto;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 8px 5px rgba(175, 175, 175, 0.26);
+            position: relative;
+        }
+
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        section div {
+            height: 102px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            color: rgb(139, 142, 153);
+            font-weight: 800;
+        }
+
+        input {
+            width: auto;
+            height: 40px;
+            padding: 0 0 0 10px;
+            border-radius: 7px;
+            outline: none;
+            border: 1px solid #e5e5e5;
+            filter: drop-shadow(0px 1px 0px #efefef) drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+            transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+        }
+
+        input:focus {
+            border: 1px solid transparent;
+            box-shadow: 0px 0px 0px 2px #242424;
+            background-color: transparent;
+        }
+
+        span {
+            color: red;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 20px;
+            background: rgb(33, 33, 33);
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #313131;
+        }
+
+        button:active {
+            scale: 0.95;
+        }
+
+        .modal {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            background: #00000038;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 100px;
+            border-radius: 20px;
+            background: white;
+        }
+
+        .btn-close {
+            width: 163px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="inputBlock">
+            <div>
+                <label for="name">用戶暱稱:</label>
+                <input type="text" name="" id="name" placeholder="請輸入用戶暱稱">
+                <span>不能為空白、必須在40字以內</span>
+            </div>
+            <div>
+                <label for="mail">電子信箱:</label>
+                <input type="email" name="" id="mail" placeholder="請輸入電子信箱">
+                <span>不能為空白、必須包含 @ 符號</span>
+            </div>
+            <div>
+                <label for="password" password>密碼:</label>
+                <input type="text" name="" id="password" placeholder="請輸入密碼">
+                <span>不能為空白、必須在8字以上、必須在100字以內</span>
+            </div>
+        </section>
+
+        <section>
+            <button type="button" id="signUpBtn">註冊</button>
+        </section>
+
+    </main>
+
+
+    <div class="modal">
+        <div class="card">
+            <h1>註冊成功</h1>
+            <button class="btn-close">關閉</button>
+        </div>
+    </div>
+
+    <script>
+        let timer = '';
+        const signUpBtn = document.querySelector('#signUpBtn');
+        const closeBtn = document.querySelector('.btn-close');
+
+        signUpBtn.addEventListener('click', register);
+        closeBtn.addEventListener('click', close);
+
+        function register() {
+            const name = document.querySelector('#name');
+            const mail = document.querySelector('#mail');
+            const password = document.querySelector('#password');
+            let valid = true;
+
+            const nameError = name.closest('div').querySelector('span');
+
+            if (name.value.trim() === '' || name.value.trim().length > 10) {
+                nameError.style.display = 'block';
+                valid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+
+            const mailError = mail.closest('div').querySelector('span');
+
+            if (mail.value.trim() === '' || !(mail.value.includes('@'))) {
+                mailError.style.display = 'block';
+                valid = false;
+            } else {
+                mailError.style.display = 'none';
+            }
+
+            const passwordError = password.closest('div').querySelector('span');
+
+            if (password.value.trim() === '' || password.value.trim().length < 8 || password.value.trim().length > 100) {
+                passwordError.style.display = 'block';
+                valid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            if (valid) {
+                let modal = document.querySelector('.modal');
+                modal.style.display = 'flex';
+                let countdown = 5;
+                clearInterval(timer);
+
+                timer = setInterval(function () {
+                    closeBtn.textContent = `${countdown}秒後將關閉視窗`;
+                    countdown--;
+
+                    if (countdown < 0) {
+                        clearInterval(timer);
+                        close();
+                    };
+                }, 1000)
+            }
+
+        }
+
+        function close() {
+            let modal = document.querySelector('.modal');
+            closeBtn.textContent = "關閉";
+            modal.style.display = 'none';
+            clearInterval(timer);
+        }
+
+    </script>
+</body>
+
+</html>

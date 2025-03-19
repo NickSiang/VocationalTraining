@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 純值Symbol
+        // Symbol是透過Symbol()方法產生
+        // 每個Symbol值被產生出來之後,所存放的記憶體位置不ㄧ樣
+        // 因此適合用來避免物件屬性意外被修改
+
+        let a = {};
+        let symbol1 = Symbol('123');
+        let symbol2 = Symbol('123');
+        // symbol1和symbol2是不同的兩個值
+
+        // console.log(symbol1 === symbol2);
+        console.log(symbol1, typeof (symbol1));
+        console.log(symbol2, typeof (symbol2));
+        // console.log(typeof symbol1);
+
+        a.symbol1 = symbol1;
+        a[1] = 'asd';
+
+
+        console.log(a[symbol1], '沒有加""');
+        // 方括號內的屬性名稱必須是字串或變數
+        //undefined 這邊是用symbol型別來存取而不是字串
+        console.log(a['symbol1']);
+        console.log(a[1]);
+
+        console.log(a);
+        // 上述例子可以看出使用字串來存取物件屬性跟以symbol
+        // 來存取會得到不同的結果
+
+        // 問題1 第33行log出{symbol1: 'hello'} 當中的key值 symbol1 裡是一個Symbol('123')記憶體位置?
+        // 問題2 console.log(a[symbol1]);和console.log(a['symbol1']);存取哪裡不同
+
+        // 解答1 不常用 存進去的值為字串非symbol值
+
+        // ======================================================================
+
+        // return之前有說過
+
+
+        function first() {
+            return second()
+        }
+
+        function second() {
+            return third()
+        }
+
+        function third() {
+            return '你好'
+        }
+
+        let result1 = first();
+
+
+        console.log(result1);
+
+        // 問題1 碰到return 會離開執行環境 上面是回到全域嗎?
+        // 遇到函式first呼叫時去執行 return second() 回傳函式second()至全域後呼叫
+        // 回傳是回傳至全域 還是離開這個執行環境直接執行second
+
+        // 問題2 若當函式裡有函式
+
+        // 解答1 先把return裡面事情做好再回傳執行順序
+        // 1.result1宣告
+        // 2.呼叫first()
+        // 3.return second() 去做好這件事
+        // 4.最後return '你好'一直往上回傳至result1
+
+        // ======================================================================
+        // const add1 = (a) => (b) => a + b;
+
+        const add1 = function (a) {
+            return function (b) {
+                return a + b;
+            }
+        }
+
+
+        console.log(add1(1)(2), '123');
+        // 問題1 箭頭函式邏輯是否等於下例
+        // 問題2 add1(1)(2)的執行方式?(2) 會先從(1)開始?
+        // 問題3 函式宣告通常是宣告變數或是賦名
+        // 下方例子
+
+        // ======================================================================
+
+        function addAB(a) {
+            return function addB(b) {
+                return (a + b);
+            }
+        }
+
+        let addB = addAB(3);
+        
+        console.log(addB);
+        
+        let result = addB(5);
+
+        console.log(addB(5), addB(10));
+
+
+        // return是將值或函式回傳到呼叫該函式的地方。(回傳給呼叫者)
+        // 問題1 執行順序  addB(5)被呼叫但為甚麼需要return?
+
+        // ======================================================================
+
+
+        function pushFuncToArray() {
+            let funcArr = [];
+
+            for (var i = 0; i < 3; i = i + 1) {
+                funcArr.push(function () {
+                    console.log(i);
+                });
+            }
+            // return functionArr;
+            console.log(funcArr);
+            return funcArr;
+        }
+
+        var functionArr = pushFuncToArray();
+        console.log(functionArr[0]);
+
+        functionArr[0](); // 輸出: 3
+        functionArr[1](); // 輸出: 3
+        functionArr[2](); // 輸出: 3
+
+
+        // 問題1 這題是書上寫的 但報錯 return functionArr;是可行的? return funcArr;
+        // 問題2 functionArr[0]() 等於?第0筆資料 再去呼叫函式 此寫法? 但是函是不是被宣告了嗎?
+        // 解答2 functionArr是一個陣列[f(),f(),f()] functionArr[0]()是找出第0筆後直接呼叫
+        // ======================================================================
+
+        // console.log();
+        // (function () {
+        //     console.log('你好');
+
+        // })();
+
+
+    </script>
+</body>
+
+</html>

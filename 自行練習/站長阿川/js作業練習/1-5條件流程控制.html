@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        main {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            border-radius: 8px;
+            color: black;
+        }
+
+        .btnblock {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: #5280ff;
+            color: white;
+            box-shadow: 5px 5px 0px black;
+            border: 3px solid black;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #fff;
+            color: #5280ff;
+            border: 3px solid #5280ff;
+            box-shadow: 5px 5px 0px #5280ff;
+        }
+
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0px 0px 0px #5280ff;
+        }
+
+        .block {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .block div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input,
+        select {
+            padding: 8px;
+            font-size: 18px;
+            border: 3px solid black;
+            box-shadow: 5px 5px 0px black;
+            outline: none;
+            font-weight: 600;
+        }
+
+        input:focus,
+        select:focus {
+            border: 3px solid #5280ff;
+            box-shadow: 5px 5px 0px #5280ff;
+            transition: all 0.6s ease;
+            color: #5280ff;
+        }
+
+        option {
+            font-weight: 600;
+        }
+
+        .orderlist {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 3px solid black;
+            box-shadow: 5px 5px 0px black;
+        }
+
+        .orderlist .title {
+            border-bottom: 5px solid black;
+            text-align: center;
+            padding-bottom: 6px;
+        }
+
+        .orderlist span {
+            margin-left: 5px;
+            color: #5280ff;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="block">
+            <div>
+                <label for="name">客戶姓名:</label>
+                <input type="text" id="name" placeholder="請輸入名字">
+            </div>
+            <div>
+                <label for="gender">服裝分類:</label>
+                <select id="gender">
+                    <option value="" selected hidden disabled></option>
+                    <option value="">男裝</option>
+                    <option value="">女裝</option>
+                </select>
+            </div>
+            <div>
+                <label for="type">服裝類型:</label>
+                <select id="type">
+                    <option value="" selected hidden disabled></option>
+                    <option value="">外套</option>
+                    <option value="">上衣</option>
+                    <option value="">下身</option>
+                </select>
+            </div>
+        </section>
+        <section class="btnblock">
+            <button type="button" onclick="clickBtn1()">我要訂購</button>
+            <button type="button" onclick="clickBtn2()">認識工廠</button>
+        </section>
+        <section class="orderlist">
+            <p class="title">您的訂單</p>
+            <div>顧客姓名:<span id="listName"></span></div>
+            <div>服裝分類:<span id="listGender"></span></div>
+            <div>服裝類型:<span id="listType"></span></div>
+        </section>
+    </main>
+
+    <script>
+        function clickBtn1() {
+            const name = document.getElementById('name').value;
+
+            const gender = document.getElementById('gender');
+            const genderIndex = gender.selectedIndex;
+            const genderText = gender.options[genderIndex].text;
+
+            const type = document.getElementById('type');
+            const typeIndex = type.selectedIndex;
+            const typeText = type.options[typeIndex].text;
+            
+            document.getElementById('listName').textContent = name;
+            document.getElementById('listGender').textContent = genderText;
+            document.getElementById('listType').textContent = typeText;
+
+            alert(document.getElementById('name').value + '您好！謝謝您對我們的衣服有興趣！請致電 0987-654-321，會有專人提供您報價！');
+
+            if (genderIndex == 1) { alert('最近剛好是工廠週年慶，只要您今天來電下單，我們將贈送您帥氣領帶！') };
+            if (genderIndex == 2) { alert('最近剛好是工廠週年慶，只要您今天來電下單，我們將贈送您美麗圍巾！') };
+
+        }
+
+        function clickBtn2() {
+            alert('我們工廠位於新北市，通過國際 ISO9001 認證，品質讓您放心！');
+        }
+    </script>
+</body>
+
+</html>

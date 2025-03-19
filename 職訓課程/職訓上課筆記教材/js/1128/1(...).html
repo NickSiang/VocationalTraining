@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>終極密碼</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .input-area {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input {
+            padding: 5px;
+            width: 100px;
+        }
+
+        button {
+            padding: 5px 15px;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 20px;
+        }
+
+        .reset-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="input-area">
+            <input type="number" id="userInput" placeholder="請輸入數字">
+            <button onclick="guess()">猜!</button>
+        </div>
+        <div id="result">範圍：1 - 100</div>
+        <button id="resetBtn" onclick="resetGame()" class="reset-btn hidden">重新開始</button>
+    </div>
+
+    <script>
+        let answer = Math.floor(Math.random() * 100) + 1;
+        let minNum = 1;
+        let maxNum = 100;
+        let gameOver = false;
+
+
+        function guess() {
+            if (gameOver) return;
+
+            let userGuess = document.getElementById('userInput').value * 1;
+            let resultDiv = document.getElementById('result');
+            let resetBtn = document.getElementById('resetBtn')
+
+
+            if (userGuess < minNum || userGuess > maxNum) {
+                resultDiv.textContent = `請輸入 ${minNum} - ${maxNum} 之間的數字`;
+                return;
+            }
+
+            if (userGuess === answer) {
+                resultDiv.textContent = `恭喜答對！答案就是 ${answer}`;
+                gameOver = true;
+                resetBtn.classList.remove('hidden');
+
+            } else if (userGuess < answer) {
+                minNum = userGuess;
+                resultDiv.textContent = `範圍：${userGuess} - ${maxNum}`;
+
+            } else {
+                maxNum = userGuess;
+                resultDiv.textContent = `範圍：${minNum} - ${userGuess}`;
+
+            }
+
+            document.getElementById('userInput').value = '';
+        }
+
+
+        function resetGame() {
+
+            answer = Math.floor(Math.random() * 100) + 1;
+            minNum = 1;
+            maxNum = 100;
+            gameOver = false;
+
+            document.getElementById('result').textContent = '範圍：1 - 100';
+            document.getElementById('userInput').value = '';
+            document.getElementById('resetBtn').classList.add('hidden');
+        }
+
+    </script>
+</body>
+
+</html>

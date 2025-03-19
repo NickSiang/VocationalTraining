@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您有麥當勞會員嗎</title>
+
+    <style>
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+            color: #333;
+            font-family: jf-openhuninn-2.1;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(#FF8000 0%, #E60013 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 100px;
+            border-radius: 60px;
+            border: none;
+            background-color: rgba(245, 222, 179, 0);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+
+        button:hover{
+            background-color: gainsboro;
+        }
+
+        .all {
+            width: 100%;
+            height: 100vh;
+            gap: 20px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            
+            max-width: 375px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 30px;
+            margin-top: 40px;
+        }
+
+        .btn-block-top {
+            width: 100%;
+            display: flex;
+        }
+
+        .btn-block {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .btn-block>button{
+            background: #333;
+            color: #FFF;
+            width:180px;
+            padding:10px;
+        }
+        
+        .btn-block>button:hover{
+            background:rgb(168, 168, 168);
+            color: #333;
+            width:180px;
+            padding:10px;
+        }
+    
+    
+        .btn-block-bottom {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+            gap: 10px;
+        }
+
+        main {
+            width: 80%;
+            height: 70%;
+            padding: 10px;
+            background: #FFF;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bottom-img {
+            width: 375px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+
+        <a href=""><img src="./img/logo.png" alt="" class="logo"></a>
+
+        <main>
+            <div class="btn-block-top">
+                <button type="button" class="btn"><img src="./img/Frame 287.png" alt=""> 回上一頁</button>
+            </div>
+
+            <div class="btn-block">
+                <p>您有麥當勞會員嗎?</p>
+                <button type="button">掃描會員</button>
+                <button type="button">加入會員</button>
+                <button type="button">不需要</button>
+            </div>
+
+
+            <div class="btn-block-bottom">
+                <button type="button"><img src="./img/Frame 286 (1).png" alt="">友善模式</button>
+                <button type="button"><img src="./img/Vector (7).png" alt="">專人服務鈴</button>
+            </div>
+        </main>
+
+
+        <img src="./img/跑馬燈動畫.png" alt="" class="bottom-img">
+
+    </div>
+
+</body>
+
+</html>
+
+<!-- max-width =375px -->

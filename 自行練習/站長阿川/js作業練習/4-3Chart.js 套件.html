@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px;
+            border: 2px solid rgba(170, 170, 170, 0.179);
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="lineChart" class="chart"></canvas>
+    </div>
+
+    <div>
+        <canvas id="barChart" class="chart"></canvas>
+    </div>
+    <div>
+        <canvas id="pieChart" class="chart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+        const lineChart = document.getElementById('lineChart');
+        const barChart = document.getElementById('barChart');
+        const pieChart = document.getElementById('pieChart');
+
+        const dataLabel1 = ['103年', '104年', '105年', '106年', '107年', '108年', '109年', '110年', '111年', '112年'];
+        const lienSource = [
+            {
+                label: '機車/男性',
+                data: [55561, 54941, 51331, 49640, 44797, 40403, 36495, 25406, 42476, 48825],
+                color: 'rgba(255, 107, 107)'
+            },
+            {
+                label: '機車/女性',
+                data: [4106, 4374, 4449, 4330, 3750, 3703, 3350, 2288, 4076, 5009],
+                color: 'rgba(77, 150, 255)'
+            },
+            {
+                label: '汽車/男性',
+                data: [27322, 29208, 29169, 29700, 28547, 25704, 23477, 18007, 27283, 31070],
+                color: 'rgba(107, 203, 119)'
+            },
+            {
+                label: '汽車/女性',
+                data: [1893, 1986, 2072, 2117, 2054, 2229, 2249, 1636, 2674, 2960],
+                color: 'rgba(255, 199, 95) '
+            },
+        ]
+
+
+        const datasets1 = lienSource.map((item) => (
+            {
+                label: item.label,
+                data: item.data,
+                fill: false,
+                borderWidth: 2,
+                borderColor: item.color,
+                pointBackgroundColor: 'transparent',
+                pointHoverBackgroundColor: item.color,
+                pointHoverRadius: 20,
+                pointRadius: 4,
+                backgroundColor: item.color
+            })
+        )
+
+        new Chart(lineChart, {
+            type: 'line',
+            data: {
+                labels: dataLabel1,
+                datasets: datasets1
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '103~112年酒駕、吸毒駕駛等(35條)統計',
+                        font: {
+                            size: 22
+                        },
+                        padding: {
+                            top: 30,
+                            bottom: 6
+                        },
+                    },
+                    subtitle: {
+                        display: true,
+                        text: '資料資源品質檢測時間	2024-12-13 16:01:18',
+                        padding: {
+                            top: 0,
+                            bottom: 20
+                        },
+                    }
+                }
+            }
+        })
+
+
+        new Chart(barChart, {
+            type: 'bar',
+            data: {
+                labels: dataLabel1,
+                datasets: [{
+                    label: '駕駛人數',
+                    data: [88882, 90509, 87021, 85787, 79148, 72039, 65571, 47337, 76509, 87864],
+                    backgroundColor: 'rgba(74, 144, 226, 0.7)',
+                    borderColor: 'rgba(74, 144, 226, 1)',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '103~112年酒駕、吸毒駕駛等(35條)統計',
+                        font: {
+                            size: 22
+                        },
+                        padding: {
+                            top: 30,
+                            bottom: 6
+                        },
+                    },
+                    subtitle: {
+                        display: true,
+                        text: '資料資源品質檢測時間	2024-12-13 16:01:18',
+                        padding: {
+                            top: 0,
+                            bottom: 20
+                        },
+                    }
+                }
+            }
+        });
+
+        new Chart(pieChart, {
+            type: 'doughnut',
+            data: {
+                labels: ['機車/男性', '機車/女性', '汽車/男性', '汽車/女性'],
+                datasets: [{
+                    label: '駕駛人數',
+                    data: [48825, 5009, 31070, 2960],
+                    backgroundColor: ['rgba(255, 107, 107,0.7)', 'rgba(77, 150, 255,0.7)', 'rgba(107, 203, 119,0.7)', 'rgba(255, 199, 95,0.7)'],
+                    borderColor: ['rgba(255, 107, 107)', 'rgba(77, 150, 255)', 'rgba(107, 203, 119)', 'rgba(255, 199, 95)'],
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '112年酒駕、吸毒駕駛等(35條)統計',
+                        font: {
+                            size: 22
+                        },
+                        padding: {
+                            top: 30,
+                            bottom: 6
+                        },
+                    },
+                    subtitle: {
+                        display: true,
+                        text: '資料資源品質檢測時間	2024-12-13 16:01:18',
+                        padding: {
+                            top: 0,
+                            bottom: 20
+                        },
+                    }
+                }
+            }
+        })
+
+        lineChart.style.height = '400px';
+        barChart.style.height = '400px';
+        pieChart.style.height = '400px';
+
+    </script>
+</body>
+
+</html>
+
+<!-- 請在網頁上，畫出三種圖表
+
+折線圖 Line Chart
+長條圖 Bar Chart
+圓餅圖 Pie Chart -->
+<!-- options:{}中的{}假設是寫一個物件通用可能會有bug在長條圖左右兩側資料被砍 -->

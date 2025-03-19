@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+
+<div id="app">
+    <div class=" h-[300px] border m-8 p-5">
+        <p class="text-[30px] font-bold mb-3">訂閱電子報</p>
+        <p class="text-[20px] font-bold mb-3">輸入您的電子郵件獲得更多活動資訊</p>
+        <div :class="this.show" class="h-[30px]">{{this.message}}</div>
+        <input :class="this.show" v-model="email" type="email" name="" id=""
+            class="border-[2px] border-black rounded p-1 mr-5">
+        <!-- border-rose-600 -->
+        <button type="button" class="font-bold border-[2px] border-black p-1 rounded" @click="submit">訂閱</button>
+
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                email: "",
+                message: "",
+                show: "",
+                border:"",
+            }
+        }, mounted() {
+            // 初始化 預先載入
+            emailjs.init('FWOuZjvYJe6rfSKOI');
+        }
+        ,
+        methods: {
+            submit() {
+                if (!this.email) {
+                    this.message = "請輸入電子郵件地址。";
+                    this.border = "border-red";
+                    this.show = "text-[red]";
+                    return;
+
+                } else if (!this.validateEmail(this.email)) {
+                    this.message = "電子郵件格式錯誤。";
+                    this.show = "red";
+                    this.border = "border-red";
+                    this.email = '';
+                    return;
+                }
+
+                else {
+                    this.show = "text-[green]";
+                    this.message = "郵件發送成功！";
+                }
+
+
+                const templateParams = {
+                    to_email: this.email,
+                    from_email: 's28688117@gmail.com',
+                };
+
+                const serviceID = 'default_service';
+                const templateID = 'template_jyhwspp';
+
+                emailjs.send(serviceID, templateID, templateParams)  // 替換為你的 Service ID 和 Template ID
+                    .then(function (response) {
+                        alert("郵件發送成功！" + response.text);
+                    }, function (error) {
+                        alert("發送失敗：" + error.text);
+                    });
+
+                this.email = '';
+            },
+
+            validateEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        },
+
+    }).mount('#app')
+</script>
+</body>
+
+</html>

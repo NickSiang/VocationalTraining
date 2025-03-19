@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-天氣API應用-圖像天氣卡片</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: rgb(50, 146, 255);
+            font-weight: 600;
+            color: rgba(211, 233, 252, 0.832);
+        }
+
+
+        p {
+            margin: 0;
+            padding: 2px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        h1 {
+            margin-top: 100px;
+        }
+
+
+        h3 {
+            font-size: 24px;
+            margin: 0 0 12px;
+        }
+
+        .all {
+            width: 100%;
+            background: linear-gradient(rgba(83, 102, 240, 0.768), rgba(62, 188, 246, 0.774), rgba(240, 196, 75, 0.536));
+        }
+
+        .maxwidth {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-block {
+            width: 90%;
+            gap: 20px;
+            margin-top: 100px;
+            border-bottom: 2px solid rgba(226, 226, 226, 0.305);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            width: 80px;
+            height: 40px;
+            color: rgba(255, 255, 255, 0.968);
+            font-size: 20px;
+            font-weight: 600;
+            background-color: rgba(19, 49, 138, 0.599);
+            border: none;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.697);
+        }
+
+        .card-region {
+            width: 90%;
+            gap: 30px;
+            margin: 50px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 300px;
+            background: rgba(0, 0, 0, 0.136);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            padding: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+        .card img {
+            width: 100%;
+            height: 80px;
+            padding: 20px 0 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.216);
+
+        }
+
+        .card img+p {
+            font-size: 38px;
+            /* background-color: aqua; */
+            padding: 10px;
+        }
+
+        @media(max-width:716px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+
+            .btn-block {
+                margin: 20px;
+                gap: 10px;
+            }
+        }
+
+        @media(max-width:571px) {
+
+            h1 {
+                font-size: 22px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="all">
+        <div class="maxwidth">
+            <h1>今明36小時天氣預報</h1>
+            <h2></h2>
+
+            <div class="btn-block">
+                <button type="button" class="">全部</button>
+                <button type="button" class="">北部</button>
+                <button type="button" class="">中部</button>
+                <button type="button" class="">南部</button>
+                <button type="button" class="">東部</button>
+                <button type="button" class="">離島</button>
+            </div>
+
+            <div class="card-region"></div>
+        </div>
+    </div>
+
+    <script>
+        const url = 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-98DE9976-8906-41AD-A1E7-2599F553F4A3';
+        const h2 = document.querySelector('h2');
+        const CardRegion = document.querySelector('.card-region');
+        const AllBtn = document.querySelectorAll('button');
+
+        const RegionAll = [
+            ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '南投縣', '彰化縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣',
+                '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'
+            ],
+            ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣', '苗栗縣'],
+            ['臺中市', '南投縣', '彰化縣', '雲林縣', '嘉義市', '嘉義縣'],
+            ['臺南市', '高雄市', '屏東縣'],
+            ['宜蘭縣', '花蓮縣', '臺東縣'],
+            ['澎湖縣', '金門縣', '連江縣'],
+        ]
+
+        let OrginalData;
+
+        let OrganizeData = [];
+        // console.log(OrganizeData)
+
+        fetchData();
+
+
+        // 1.取資料
+        function fetchData() {
+            fetch(url).then((response) => {
+                return response.json();
+            })
+                .then((result) => {
+                    console.log(result);
+
+                    OrginalData = result;
+                    organizationData();
+                    creatCard();
+                    buttonListener();
+
+                })
+        }
+
+        // 2.整理想要的資料 
+        function organizationData() {
+            let locations = OrginalData.records.location;
+            let updateTime = OrginalData.records.location[0].weatherElement[0].time[0].startTime;
+            h2.innerHTML = `天氣預報更新時間: ${updateTime}`
+
+            locations.forEach((data) => {
+                let locationName = data.locationName;
+                let WxState = data.weatherElement[0].time[0].parameter.parameterName;
+                let WxValue = data.weatherElement[0].time[0].parameter.parameterValue;
+                let MinTState = data.weatherElement[2].time[0].parameter.parameterName;
+                let MaxTState = data.weatherElement[4].time[0].parameter.parameterName;
+                let aveTState = ((MinTState * 1 + MaxTState * 1) / 2).toFixed(0)
+                let PoPState = data.weatherElement[1].time[0].parameter.parameterName;
+
+                OrganizeData.push({
+                    Location: `${locationName}`,
+                    WX: `${WxState}`,
+                    WxValue: `${WxValue}`,
+                    Pop: `${PoPState}`,
+                    MinT: `${MinTState}`,
+                    MaxT: `${MaxTState}`,
+                    aveT: `${aveTState}`,
+                })
+            });
+        }
+
+        // 3.生成卡片 和資訊
+        function creatCard(dataArray = OrganizeData) {
+            CardRegion.innerHTML = '';
+
+            //問題? 卡片排序為指定順序 需要複習
+            if (dataArray === OrganizeData) {
+                dataArray.sort((a, b) => {
+                    let OrderArray = RegionAll[0]
+                    return OrderArray.indexOf(a.Location) - OrderArray.indexOf(b.Location)
+                });
+            }
+
+            dataArray.forEach((data) => {
+                if (data.WxValue * 1 < 10) {
+                    data.WxValue = '0' + data.WxValue * 1;
+                }
+
+                let img = `https://www.cwa.gov.tw/V8/assets/img/weather_icons/weathers/svg_icon/day/${data.WxValue}.svg`;
+
+                CardRegion.innerHTML +=
+                    `
+                    <div class="card">
+                    <h3>${data.Location}</h3>
+                     <img src = ${img}>
+                    <p>${data.aveT}°</p>
+                    <p>${data.WX}</p>
+                    <br/><br/>
+                    <p>💧 ${data.Pop}%</p>
+                    <br/>
+                    <p>🌡 ${data.MaxT}° / ${data.MinT}°</p>
+                    </div>
+                    `;
+            })
+        }
+
+        // 4.點擊上區域按鈕 會出現對應區域卡片
+        function buttonListener() {
+            AllBtn.forEach((btn, index) => {
+                btn.addEventListener('click', function () {
+                    let NowRegion = RegionAll[index]
+                    console.log(NowRegion);
+
+                    // 問題? 需要複習
+                    let filteredData = OrganizeData.filter((data) => NowRegion.includes(data.Location));
+                    // console.log(filteredData);
+
+                    creatCard(filteredData)
+                });
+            })
+        };
+
+
+    </script>
+</body>
+
+</html>
+<!-- 氣象卡 -->
+<!-- 1.取資料 -->
+<!-- 2.整理資料 -->
+<!-- 3.生成卡片 -->
+<!-- 4.點擊上區域按鈕 會出現對應區域卡片-->

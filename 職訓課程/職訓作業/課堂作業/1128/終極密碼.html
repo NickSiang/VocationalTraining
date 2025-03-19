@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰終極密碼</title>
+</head>
+
+<body>
+    <section>
+
+        <div>
+            <input type="number" class="number">
+            <button type="button">送出</button>
+        </div>
+        <br />
+
+        <div class="result">答案框:</div>
+
+    </section>
+
+    <script>
+
+        let number = document.querySelector('.number');
+        let button = document.querySelector('button');
+        let result = document.querySelector('.result');
+        let minNumber = 1;
+        let maxNumber = 100;
+        let computer = Math.floor(Math.random() * 100) + 1;
+        // console.log(computer);
+
+        button.addEventListener('click', function () {
+
+            let numValue = number.value;
+
+            if (numValue > maxNumber || numValue < minNumber) {
+                alert(`範圍在 ${minNumber} 到 ${maxNumber}之間`);
+                return;
+            }
+
+            if (numValue == computer) {
+                result.innerHTML = '恭喜你!你答對了';
+                return;
+            }
+
+            if (numValue > computer) {
+                maxNumber = numValue;
+                result.innerHTML = `範圍在 ${minNumber} 到 ${maxNumber}之間`;
+            }
+
+            if (numValue < computer) {
+                minNumber = numValue;
+                result.innerHTML = `範圍在 ${minNumber} 到 ${maxNumber}之間`;
+            }
+        })
+        
+
+
+    </script>
+</body>
+
+</html>111
+
+<!-- 1.輸入數字1-100 點擊按鈕
+// 2.系統生成亂數 比對輸入值是否等同於亂數
+// 3.答對顯示畫面上 沒有答對就會縮小範圍 -->

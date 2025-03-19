@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .all {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:
+            radial-gradient(farthest-side at -33.33% 50%, #0000 52%, #8b91a3 54% 57%, #0000 59%) 0 calc(144px/2),
+            radial-gradient(farthest-side at 50% 133.33%, #0000 52%, #8b91a3 54% 57%, #0000 59%) calc(144px/2) 0,
+            radial-gradient(farthest-side at 133.33% 50%, #0000 52%, #8b91a3 54% 57%, #0000 59%),
+            radial-gradient(farthest-side at 50% -33.33%, #0000 52%, #8b91a3 54% 57%, #0000 59%),
+            #000000;
+        background-size: calc(144px/4.667) 144px, 144px calc(144px/4.667);
+
+
+    }
+
+    .container {
+        width: 80%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: end;
+    }
+
+    .screen {
+        width: 720px;
+        height: 400px;
+        background-color: rgba(242, 242, 242, 0.942);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 20px;
+    }
+
+
+    .block {
+        width: 50%;
+        height: 20%;
+        background: rgba(255, 255, 255, 0.449);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.275);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 20px;
+    }
+
+
+    .icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        cursor: pointer;
+        background-position: center;
+        background-size: cover;
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .icon:hover {
+        box-shadow: 0px 0px 10px 2px rgb(198, 198, 198);
+    }
+</style>
+
+<body>
+    <div class="all">
+
+        <div class="container">
+            <div class="screen result"></div>
+            <div class="block">
+
+                <img src="./img/Frame 5.png" alt="" class="icon paper">
+
+                <img src="./img/Frame 6.png" alt="" class="icon rock">
+
+                <img src="./img/Frame 7.png" alt="" class="icon scissors">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let screenResult = document.querySelector('.screen');
+        let icon = document.querySelectorAll('.icon');
+
+
+        // 箭頭函數跟一般函數有差
+
+        // forEach對每個元素執行的操作
+        // forEach(option => { ... })：為 options 的每個選項加上點擊事件處理器。
+        icon.forEach(option => {
+            option.addEventListener('click', () => {
+                // this.classList[1]：取得被點擊的選項的第二個 class（rock、paper 或 scissors）
+                // let playerChoice = this.classList[1];
+                
+                // .target 是 JavaScript 事件物件 (event) 的一個屬性，
+                // 用來獲取觸發事件的 DOM 元素。
+                // 事件委託： 如果事件綁定在父層元素，而需要檢測點擊的是子層元素，
+                // 必須用 event.target 來獲取真正被點擊的子層。
+                let playerChoice = event.target.classList[1];
+
+                
+                let choices = ['paper', 'rock', 'scissors'];
+                let computerChoice = choices[Math.floor(Math.random() * 3)];
+                let result = '';
+
+                if (playerChoice === computerChoice) {
+                    result = `平手`;
+                }
+
+                else if ((playerChoice === 'rock' && computerChoice === 'scissors') ||
+                    (playerChoice === 'paper' && computerChoice === 'rock') ||
+                    (playerChoice === 'scissors' && computerChoice === 'rock')
+                ) {
+                    result = `你贏了`;
+                }
+                else {
+                    result = '你輸了';
+                }
+
+                screenResult.innerHTML = `電腦出${translate(computerChoice)} 你出${translate(playerChoice)} ${result}`;
+            })
+        });
+
+        function translate(choice) {
+            if (choice === 'rock') {
+                return '石頭';
+            }
+            if (choice === 'paper') {
+                return '布';
+            }
+            if (choice === 'scissors') {
+                return '剪刀';
+            }
+        }
+
+    </script>
+</body>
+
+</html>

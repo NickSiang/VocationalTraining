@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-weight: 600;
+            font-family: Inter;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        h2,
+        h3,
+        p {
+            margin: 0;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .all {
+            max-width: 375px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        nav {
+            min-height: 75px;
+            width: 375px;
+            padding: 10px 12px;
+            background-color: white;
+            border-bottom: 1px solid #D9D9D9;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+        }
+
+        .shopping-cart{
+            position: absolute;
+            right: 20px;
+        }
+        main {
+            padding-top: 75px;
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .left-block {
+            overflow-y: scroll;
+            scrollbar-width: none;
+            width: 88px;
+            font-size: 10px;
+            padding: 0px 12px 125px;
+            border-right: 1px solid rgba(0, 0, 0, 0.16);
+            background: rgba(255, 255, 255, 0.50);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .small-card {
+            width: 64px;
+            padding: 4px 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .small-card:active {
+            border-radius: 10px;
+            background: #FFF;
+            box-shadow: 0px 0px 4px 0px rgba(114, 42, 14, 0.25);
+        }
+
+        .right-block {
+            width: 287px;
+            padding: 0px 0px 125px;
+            display: flex;
+            flex-direction: column;
+            scrollbar-width: none;
+            overflow-y: scroll;
+        }
+
+        .right-block h3 {
+            width: 100%;
+            height: 68px;
+            font-size: 24px;
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .big-card-space {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+
+        .big-card {
+            width: 124px;
+            height: 152px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .big-card:active {
+            background: #FCC305;
+        }
+
+        .big-card p {
+            font-size: 12px;
+        }
+
+        .big-card span {
+            font-size: 8px;
+        }
+
+        footer {
+            display: flex;
+            position: fixed;
+            bottom: 0px;
+        }
+
+        .footer-space {
+            width: 375px;
+            background: rgb(245, 245, 245);
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+            border-radius: 30px 30px 0px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 5px;
+        }
+
+        button {
+            width: 120px;
+            height: 39px;
+            background-color: rgb(252, 195, 5);
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <nav>
+            <a href=""><img src="./img/logo .png" alt="">
+            </a>
+            <a href="" class="shopping-cart"><img src="./img/購物車.png" alt=""></a>
+        </nav>
+
+        <main>
+            <div class="left-block">
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+                <a class="small-card">
+                    <img src="./img/QR.png" alt="">
+                    <p>掃描商品券</p>
+                </a>
+            </div>
+
+            <div class="right-block">
+                <h3>極選系列</h3>
+                <div class="big-card-space">
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                    <a class="big-card">
+                        <img src="./img/small-img.png" alt="">
+                        <p>帕瑪森主廚鷄腿堡</p>
+                        <span>$108</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-space">
+                <button type="button">取消整筆訂單</button>
+                <button type="button">友善模式</button>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

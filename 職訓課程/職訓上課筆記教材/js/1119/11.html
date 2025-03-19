@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td,
+        tr {
+            border: 2px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+            /* 變單線 */
+        }
+
+        /* tr:nth-of-type(2n) {
+            background-color: bisque;
+        } */
+
+        tbody tr:nth-of-type(2n) {
+            background-color: bisque;
+        }
+        /* tbody裡面 tr偶數個 */
+
+        /* tbody tr:nth-of-type(2n+1) {
+            background-color: bisque;
+        /* } 會壞掉 */
+    </style>
+</head>
+
+<body>
+    <table>
+        <!-- 表頭 -->
+        <thead>
+            <!-- 表頭列 -->
+            <tr>
+                <!-- 表頭欄位 -->
+                <th>month</th>
+                <th>saving</th>
+                <th colspan="2">備註1</th>
+                <!-- 合併 -->
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- 表內容列 -->
+            <tr>
+                <td rowspan="2">1月</td>
+                <td>12345</td>
+                <td>a</td>
+                <td>a</td>
+            </tr>
+
+            <tr>
+                <td>2月</td>
+                <td>12345</td>
+                <td>b</td>
+                <td>b</td>
+            </tr>
+
+            <tr>
+                <td>3月</td>
+                <td>12345</td>
+                <td>c</td>
+                <td>c</td>
+            </tr>
+
+            <tr>
+                <td>4月</td>
+                <td>12345</td>
+                <td>d</td>
+                <td>d</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>結算</td>
+                <td>12345</td>
+                <td>d</td>
+                <td>d</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

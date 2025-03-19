@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-Color game完整版</title>
+    <link href="https://fonts.cdnfonts.com/css/comicy" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/comicy');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-image: linear-gradient(#f7d9d3 2px, transparent 2px), linear-gradient(to right, #f7d9d3 2px, transparent 2px);
+            background-size: 32px 32px;
+            background-color: #ffffff;
+            font-family: 'Comicy', sans-serif;
+        }
+
+        .btn {
+            font-family: 'Comicy', sans-serif;
+            font-size: 28px;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgba(252, 252, 252, 0.542);
+            color: rgb(0, 0, 0);
+            border: 2px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #000;
+            color: #ffffff;
+        }
+
+        .homepage {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* HTML: <div class="loader"></div> */
+        .home {
+            width: 400px;
+            aspect-ratio: 1;
+            background:
+                linear-gradient(#ed303c 0 0),
+                linear-gradient(#3b8183 0 0),
+                linear-gradient(#ff9c5b 0 0) #ed303c;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: l12 2s infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes l12 {
+            0% {
+                background-size: 100% 100%, 100% 100%, 100% 100%
+            }
+
+            33% {
+                background-size: 0px 0px, 100% 100%, 100% 100%
+            }
+
+            66% {
+                background-size: 0px 0px, 0px 0px, 100% 100%
+            }
+
+            100% {
+                background-size: 0px 0px, 0px 0px, 0px 0px
+            }
+        }
+
+
+
+        .big-box {
+            background-color: white;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .box {
+            background-color: red;
+            width: 50%;
+            height: 50%;
+            border: 5px solid white;
+            border-radius: 10px;
+        }
+
+        .answer {
+            opacity: 0.8;
+        }
+
+        .game {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .none {
+            display: none;
+        }
+
+        .demo {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .btn-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="homepage">
+        <div class="home"></div>
+        <button type="button" class="start btn ">Game start!</button>
+        <button type="button" class="go btn">continue</button>
+    </div>
+
+    <div class="game none">
+        <div class="demo"></div>
+        <div class="big-box"></div>
+        <div class="btn-block">
+            <button type="button" class="pause btn">pause</button>
+            <button type="button" class="resume btn">restart</button>
+        </div>
+    </div>
+
+    <script>
+
+        const homepage = document.querySelector('.homepage');
+        const game = document.querySelector('.game');
+        const start = document.querySelector('.start');
+        const pause = document.querySelector('.pause');
+        const resume = document.querySelector('.resume');
+        const go = document.querySelector('.go');
+        const demo = document.querySelector('.demo');
+        const bigBox = document.querySelector('.big-box');
+
+        let counter = 10;
+        let myInterval = null;
+
+        let level = 2;
+        let passCount = 0;
+
+
+        game.classList.add('none');
+        go.classList.add('none');
+
+        start.addEventListener('click', () => startGame());
+        pause.addEventListener('click', () => pauseGame());
+        go.addEventListener('click', () => goGame());
+        resume.addEventListener('click', () => resumeGame());
+
+        function startGame() {
+            homepage.classList.add('none');
+            game.classList.remove('none');
+            demo.textContent = `TIME: ${counter}`;
+            start.classList.add('none');
+            myInterval = setInterval(showCounter, 1000);
+        }
+
+        function pauseGame() {
+            homepage.classList.remove('none');
+            game.classList.add('none');
+            go.classList.remove('none');
+            start.classList.add('none');
+            clearInterval(myInterval);
+        }
+
+        function goGame() {
+            homepage.classList.add('none');
+            game.classList.remove('none');
+            myInterval = setInterval(showCounter, 1000);
+        }
+
+        function resumeGame() {
+            level = 2;        
+            passCount = 0;  
+            counter = 10;       
+            clearInterval(myInterval);
+            demo.textContent = `TIME: ${counter}`;
+            homepage.classList.remove('none');
+            game.classList.add('none');
+            go.classList.add('none');
+            start.classList.remove('none');
+            repeatDo(); 
+        }
+
+        function stopGame() {
+            homepage.classList.remove('none');
+            game.classList.add('none');
+            go.classList.add('none');
+            start.classList.remove('none');
+            clearInterval(myInterval);
+            counter = 10;
+        }
+
+        function showCounter() {
+            if (counter > 0) {
+                counter--;
+            } else {
+                alert(`Time's up!`);
+                level = 2;
+                resumeGame();
+            }
+
+            demo.textContent = `TIME: ${counter}`;
+        }
+
+
+        function repeatDo() {
+            bigBox.innerHTML = '';
+            for (let i = 0; i < level ** 2; i++) {
+                bigBox.innerHTML += `<div class="box"></div>`;
+            }
+
+            const boxAll = document.querySelectorAll('.box');
+            const answerIndex = Math.floor(Math.random() * (level ** 2));
+            const answerBox = boxAll[answerIndex];
+
+            answerBox.classList.add('answer');
+            answerBox.style.opacity = `${0.6 + level * 0.04}`;
+
+            const color = getColor();
+
+            boxAll.forEach(box => {
+                box.style.backgroundColor = color;
+                box.style.width = `${100 / level}%`;
+                box.style.height = `${100 / level}%`;
+            });
+
+            answerBox.addEventListener('click', () => handleAnswerClick());
+        }
+
+
+        function getColor() {
+            const r = Math.floor(Math.random() * 255) + 1;
+            const g = Math.floor(Math.random() * 255) + 1;
+            const b = Math.floor(Math.random() * 255) + 1;
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function handleAnswerClick() {
+            passCount++;
+            counter += 1;
+
+            if (passCount === level) {
+                level++;
+                passCount = 0;
+            }
+
+            if (level < 8) {
+                repeatDo();
+            } else {
+                alert('恭喜全數過關');
+                resumeGame();
+            }
+        }
+
+        repeatDo();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>姓名: <input type="text" class="name"></p>
+
+    <button type="button" class="add">新增</button>
+    <button type="button" class="search">查詢</button>
+    <button type="button" class="del">刪除</button>
+    <p>列表: <span class="result"></span></p>
+
+    <script>
+        const name = document.querySelector('.name');
+        const add = document.querySelector('.add');
+        const search = document.querySelector('.search');
+        const del = document.querySelector('.del');
+        const result = document.querySelector('.result');
+        let arr = [];
+
+        add.addEventListener('click', () => {
+            let myName = name.value;
+            arr.push(myName);
+            result.innerHTML += `<br>${myName}`;
+        })
+
+        searchfun();
+        delfun();
+
+
+        function searchfun() {
+            search.addEventListener('click', () => {
+                let myName = name.value;
+                let arrIndex = arr.indexOf(myName);
+                if (arrIndex === -1) {
+                    alert('資料不存在');
+                } else {
+                    alert(`找到${myName}，在第${arrIndex + 1}筆`);
+                }
+            });
+
+        }
+
+
+        function delfun() {
+            del.addEventListener('click', () => {
+                let myName = name.value;
+                let arrIndex = arr.indexOf(myName);
+                if (arrIndex === -1) {
+                    alert('資料不存在');
+                } else {
+                    arr.splice(arrIndex, 1);
+                    showAll();
+                };
+            });
+
+        }
+
+        function showAll() {
+            result.innerHTML = '';
+            arr.forEach(function (item) {
+                result.innerHTML += `<br>${item}`;
+            });
+        };
+
+    </script>
+</body>
+
+</html>
+<!-- 1.輸入姓名
+2.新增 => 存入陣列
+3.查詢 => 必須顯示在第幾筆
+4.刪除
+5.列表 -->

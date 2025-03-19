@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專案行程規劃</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h5{
+            margin: 0;
+            color: red;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .phase {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .phase h3 {
+            margin: 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>前端網頁設計專案行程規劃</h1>
+
+    <h2>任務分配表</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>角色</th>
+                <th>組員</th>
+                <th>職責</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>PM專案管理</td>
+                <td>柏翔</td>
+                <td>確定項目時間表</td>
+            </tr>
+            <tr>
+                <td>網站前置/輔助</td>
+                <td>A B</td>
+                <td>需求文件撰寫、資料整理、協助、簡報準備</td>
+            </tr>
+            <tr>
+                <td>UI/UX 設計師</td>
+                <td>C D</td>
+                <td>使用者體驗設計、視覺設計、檢查靜態頁面</td>
+            </tr>
+            <tr>
+                <td>前端工程師</td>
+                <td>柏翔 E</td>
+                <td>靜態頁面製作、功能開發</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>專案時間軸</h2>
+    
+    <div class="timeline">
+        <div class="phase">
+            <h3>階段 1：規劃與主題選定（2 天）</h3>
+            <ul>
+                <li>🚩腦力激盪與討論（所有組員）</li>
+                <li>需求文件撰寫（A B）</li>
+                <li>資料整理（A B）</li>
+                <li>🚩文件審核、修正（所有組員）</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>階段 2：UI/UX 設計（3 天）</h3>
+            <ul>
+                <li>使用者研究與數據蒐集（C D），（A B 協助）</li>
+                <li>流程圖與線框圖設計（C D）</li>
+                <li>🚩高保真設計稿製作（C D），（所有組員 討論）</li>  
+            </ul>
+              <h5>備註:至少完成3至4個主要頁面設計精稿</h5>
+        </div>
+
+        <div class="phase">
+            <h3>階段 3：前端開發（2 天）</h3>
+            <ul>
+                <li>靜態頁面製作（柏翔 E）</li>
+                <li>功能實作（柏翔 E）</li>
+                <li>設計檢查與回饋（C D）</li>
+            </ul>
+            <h5>備註:六日完成設計師切版(後續加上JS)</h5>
+        </div>
+
+        <div class="phase">
+            <h3>階段 4：測試與修正（2 天）</h3>
+            <ul>
+                <li>🚩功能測試（所有組員）</li>
+                <li>問題記錄（A B）</li>
+                <li>Bug 修正與調整（柏翔 E）</li>
+            </ul>
+        </div>
+
+        <div class="phase">
+            <h3>最後階段：簡報（待所有階段完成）</h3>
+            <ul>
+                <li>簡報製作、網站資料統整（A B）</li>
+                <li>設計亮點說明（C D）</li>
+                <li>程式面說明（柏翔 E）</li>
+            </ul>
+        </div> 
+    </div>
+</body>
+</html>
+

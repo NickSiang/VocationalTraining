@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            color: red;
+            text-align: center;
+        }
+
+        /* 在此例中，所有<p> 元素都將居中對齊，並帶有紅色文字顏色： */
+        #red {
+            color: red;
+        }
+
+        #green {
+            color: green;
+        }
+
+        
+
+        .center {
+            text-align: center
+        }
+
+        /* CSS 类选择器根据 class 属性的内容匹配元素。 */
+        p.fancy {
+            color: #f60;
+            background: #666;
+        }
+        /* 對於W3C compliant CSS：如果您定義了color屬性，您也必須定義background-color屬性。 */
+        /* 背景屬性
+        background-color屬性指定元素的背景色。
+        opacity 屬性指定元素的不透明度/透明度。取值範圍為0.0 - 1.0。值越低，越透明：
+        小缺點就是，整個div區塊內的元素，也會一塊變成半透明的效果。
+        background-image
+
+        background-repeat
+
+        background-attachment
+
+        background-position */
+
+    </style>
+</head>
+
+<body>
+    <img src="https://www.w3school.com.cn/i/css/selector.gif">
+    <p>這是練習1</p>
+    <p>這是練習2</p>
+    <p id="red">这个段落是红色。</p>
+    <p id="green">这个段落是绿色。</p>
+    <!-- 元素p id屬性為綠色
+    id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。 -->
+
+    <h1 class="center">This heading will be center-aligned </h1>
+    <p class="center">This heading will be center-aligned </h1>
+        <!-- id 选择器以 "#" 来定义。 -->
+        <!-- 類別(class) 與 ID(id) 都是可套用到標籤上的屬性。
+    設定 ID 就像幫標籤取一個「專屬的名字」，只能用一次；
+    而類別(class) 就像是幫標籤貼上一個「分類」，可以重複使用。
+    之後只要修改 ID 或類別的 CSS，有套用過的標籤都會同步修改，非常方便。 -->
+    <p class="fancy">2222</td>
+        <!-- 類別名稱為fancy 的p將是帶有灰色背景的橘色。 -->
+        <!-- 1.執行比class為優先
+        2.id幫標籤取一個「專屬的名字」，只能用一次
+        3.類別(class) 就像是幫標籤貼上一個「分類」，可以重複使用。
+        4.命名規則
+        - 不可以包含空格(space)
+        - 可以使用英數字與連字號「-」、底線「_ 」描述
+        - 第一個字一定是英文字母 -->
+        <img src="https://www.w3school.com.cn/i/css/boxmodel.gif">
+        <p class="center">內容- 框的內容，其中顯示文字和圖像。<br/>
+內邊距- 清除內容周圍的區域。內邊距是透明的。<br/>
+邊框- 圍繞內邊距和內容的邊框。<br/>
+外邊距- 清除邊界外的區域。外邊距是透明的。</p>
+
+
+</body>
+<!-- id 属性只能在每个 HTML 文档中出现一次 -->
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 快捷#all>#top+#middle+#bottom  */
+    /* 快捷二#all>#top+(#middle>#middle-left+#middle-right)+#bottom */
+    #all {
+      background-color: aqua;
+      width: 600px;
+      height: 600px;
+    }
+
+    #box-top {
+      background-color: black;
+      width: 600px;
+      height: 150px;
+    }
+
+    #box-middle {
+      background-color: blue;
+      width: 600px;
+      height: 300px;
+    }
+
+    #box-middle-left {
+      background-color: chartreuse;
+      width: 150px;
+      height: 300px;
+      float: left;
+    }
+
+    #box-middle-right {
+      background-color: purple;
+      width: 450px;
+      height: 300px;
+      float: left;
+
+    }
+
+    #box-middle-right-top {
+      background-color: red;
+      width: 450px;
+      height: 100px;
+    }
+
+    #box-middle-right-middle {
+      background-color:blue ;
+      width: 450px;
+      height: 100px;
+    }
+
+    #box-middle-right-bottom {
+      background-color:yellow ;
+      width: 450px;
+      height: 100px;
+    }
+
+    #box-bottom {
+      background-color:orange;
+      width: 600px;
+        height: 150px;
+        float:left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="all">
+    <div id="box-top"></div>
+    <div id="box-middle">
+      <div id="box-middle-left"></div>
+      <div id="box-middle-right">
+        <div id="box-middle-right-top"></div>
+        <div id="box-middle-right-middle"></div>
+        <div id="box-middle-right-bottom"></div>
+      </div>
+      <div id="box-bottom"></div>
+    </div>
+
+</body>
+
+</html>

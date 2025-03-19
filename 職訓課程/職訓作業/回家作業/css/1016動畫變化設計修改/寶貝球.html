@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .all {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pokemon-ball {
+            animation: ball 2s linear infinite;
+            position: relative;
+        }
+
+        .pokemon-ball::before {
+            content: "";
+            position: absolute;
+            top: 51.2%;
+            left: 49.6%;
+            border-radius: 50%;
+            box-shadow: 0px 0px 100px 2px red;
+            animation: color-change 3s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes color-change {
+            0% {
+                box-shadow: 0px 0px 100px 20px red;
+                transform: rotate(20deg);
+            }
+
+            50% {
+                box-shadow: 0px 0px 70px 40px red;
+                transform: rotate(-20deg);
+            }
+
+            100% {
+                box-shadow: 0px 0px 100px 20px red;
+                transform: rotate(20deg);
+            }
+        }
+
+        @keyframes ball {
+            0% {
+                transform: rotate(20deg);
+            }
+
+            50% {
+                transform: rotate(-20deg);
+            }
+
+            100% {
+                transform: rotate(20deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <svg class="ball" width="115" height="116" viewBox="0 0 115 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M59.1987 0L78 2L83.5002 4L80 6L61 7.5H49.5L40.5 6L35.5 4L39 2L59.1987 0Z" fill="#9D423F" />
+            <path d="M63.5 24.5V51L31.5 46L34 23L63.5 24.5Z" fill="#D94F1A" />
+            <path d="M87.5 23L92.5 48L63.5 51V24.5L87.5 23Z" fill="#D73409" />
+            <path d="M98.5 20L108 42L92.5 48L87.5 23L98.5 20Z" fill="#BE0A05" />
+            <path d="M34 23L31.5 46L10 42L22 21.5L34 23Z" fill="#C40B06" />
+            <path d="M22 21.5L10 42L2.50024 36L15.5002 17L22 21.5Z" fill="#8B303B" />
+            <path d="M40.5 6L22 21.5L15.5002 17L35.5 4L40.5 6Z" fill="#992D33" />
+            <path d="M100.5 15.5L112 35.5L110.5 39L108 42L98.5 20L100.5 15.5Z" fill="#85474E" />
+            <path d="M49.5 7.5L34 23L22 21.5L40.5 6L49.5 7.5Z" fill="#B40502" />
+            <path d="M61 7.5L63.5 24.5L34 23L49.5 7.5H61Z" fill="#C51005" />
+            <path d="M80 6L87.5 23L63.5 24.5L61 7.5L80 6Z" fill="#BD0704" />
+            <path d="M98.5 20L87.5 23L80 6L89.25 13L98.5 20Z" fill="#B50904" />
+            <path d="M100.5 15.5L98.5 20L89.25 13L80 6L83.5002 4L100.5 15.5Z" fill="#993D42" />
+            <path d="M10 42L9 62.5L6.50006 61L0 53.5L2.50024 36L10 42Z" fill="#8A454F" />
+            <path d="M31.5 46L29.5 68L9 62.5L10 42L31.5 46Z" fill="#BE0E06" />
+            <path d="M63.5 51L53 52.5L45.5 58.5L42.5 62.5L40.5 66.5L39.5 69L29.5 68L31.5 46L63.5 51Z" fill="#D61506" />
+            <path d="M108 42L113.5 61.5L96 68.5L92.5 48L108 42Z" fill="#B81206" />
+            <path d="M110.5 39L112 35.5L114.5 55.5L113.5 61.5L108 42L110.5 39Z" fill="#802325" />
+            <path d="M92.5 48L96 68.5L86.5 69L82.5 59L74 52.5L63.5 51L92.5 48Z" fill="#D41A05" />
+            <path d="M9 68V87.5L3.00006 79L0.500061 61L9 68Z" fill="#8FA0AE" />
+            <path d="M29.9999 75.575L30.4999 95.575L9 87.5V68L29.9999 75.575Z" fill="#BEBDC3" />
+            <path
+                d="M43.5 83.575L45 86.075L50.5 90.075L53.4999 92.075L62.5 95.075V101.075L30.4999 95.575L29.9999 75.575L39.9999 77.075L43.5 83.575Z"
+                fill="#D1CED5" />
+            <path d="M82.0001 85.5L86.5001 77L97.0001 75.5L93.0001 96L62.5 101.075V95.075L72.0001 93L82.0001 85.5Z"
+                fill="#CDCED3" />
+            <path d="M110.5 69.5H113L110 79.5L107.5 89.5L93.0001 96L97.0001 75.5L110.5 69.5Z" fill="#B4BBC5" />
+            <path d="M30.4999 95.575L29.5 107L21.5001 103L15.0001 96L9 87.5L30.4999 95.575Z" fill="#B4B3B9" />
+            <path d="M62.5 101.075L61.5001 115.5H49.5001L38.0001 111.5L29.5 107L30.4999 95.575L62.5 101.075Z"
+                fill="#CDCBCC" />
+            <path d="M93.0001 96V104L86.0001 108L70.0001 113.5L67.0001 114.5L61.5001 115.5L62.5 101.075L93.0001 96Z"
+                fill="#CECECE" />
+            <path d="M107.5 89.5L93.0001 104V96L107.5 89.5Z" fill="#B5B5BD" />
+            <path d="M6.50006 61L9 62.5V68L3.25003 61.5V59.375V57.25L6.50006 61Z" fill="#3C485B" />
+            <path d="M29.5 68L29.9999 75.575L9 68V62.5L29.5 68Z" fill="#0E1118" />
+            <path d="M39.5 69L39.9999 77.075L29.9999 75.575L29.5 68L39.5 69Z" fill="#0E0F13" />
+            <path
+                d="M72.0001 93L62.5 95.075L53.4999 92.075L50.5 90.075L45 86.075L43.5 83.575L39.9999 77.075L39.5 69L40.5 66.5L42.5 62.5L45.5 58.5L52.8353 52.6317L63.5 51L74 52.5L82.5 59L86.5 69L86.5001 77L82.0001 85.5L72.0001 93Z"
+                fill="#1C1D21" />
+            <path d="M96 68.5L97.0001 75.5L86.5001 77L86.5 69L96 68.5Z" fill="#0E1419" />
+            <path d="M111 62.5L110.5 69.5L97.0001 75.5L96 68.5L111 62.5Z" fill="#0D141E" />
+            <path d="M6.21991 64.8573L9 68L0.500061 61L3.25003 59.375V61.5L6.21991 64.8573Z" fill="#525B6D" />
+            <path
+                d="M51.0001 63L56.5001 59L63.5001 57.5L71.0001 59L76.5001 63.5L80.0001 70.5L79.5001 77L76.5001 83L70.5001 88L63.5001 89.5L57.0001 88L51.0001 83.575L47.5001 76.5V69L51.0001 63Z"
+                fill="#D9D9D9" fill-opacity="0.66" />
+            <g filter="url(#filter0_d_0_1)">
+                <path
+                    d="M63.5583 66L65.4729 66.2325L67.2761 66.9164L68.8633 68.0119L70.1422 69.4555L71.0385 71.1632L71.5 73.0357V74.9643L71.0385 76.8368L70.1422 78.5445L68.8633 79.9881L67.2761 81.0836L65.4729 81.7675L63.5583 82L61.6438 81.7675L59.8405 81.0836L58.2533 79.9881L56.9745 78.5445L56.0782 76.8368L55.6167 74.9643V73.0357L56.0782 71.1632L56.9745 69.4555L58.2533 68.0119L59.8405 66.9164L61.6438 66.2325L63.5583 66Z"
+                    fill="#D6D1D5" shape-rendering="crispEdges" />
+                <path
+                    d="M63.6186 65.5036L63.5583 65.4963L63.4981 65.5036L61.5835 65.7361L61.5233 65.7434L61.4665 65.765L59.6632 66.4488L59.6065 66.4704L59.5565 66.5049L57.9693 67.6004L57.9194 67.6349L57.8791 67.6804L56.6002 69.1239L56.5599 69.1694L56.5317 69.2231L55.6355 70.9308L55.6073 70.9846L55.5927 71.0435L55.1312 72.916L55.1167 72.975V73.0357V74.9643V75.025L55.1312 75.084L55.5927 76.9565L55.6073 77.0154L55.6355 77.0692L56.5317 78.7769L56.5599 78.8306L56.6002 78.8761L57.8791 80.3196L57.9194 80.3651L57.9693 80.3996L59.5565 81.4951L59.6065 81.5296L59.6632 81.5512L61.4665 82.235L61.5233 82.2566L61.5835 82.2639L63.4981 82.4964L63.5583 82.5037L63.6186 82.4964L65.5331 82.2639L65.5934 82.2566L65.6502 82.235L67.4534 81.5512L67.5102 81.5296L67.5601 81.4951L69.1473 80.3996L69.1973 80.3651L69.2376 80.3196L70.5165 78.8761L70.5567 78.8306L70.5849 78.7769L71.4812 77.0692L71.5094 77.0154L71.5239 76.9565L71.9855 75.084L72 75.025V74.9643V73.0357V72.975L71.9855 72.916L71.5239 71.0435L71.5094 70.9846L71.4812 70.9308L70.5849 69.2231L70.5567 69.1694L70.5165 69.1239L69.2376 67.6804L69.1973 67.6349L69.1473 67.6004L67.5601 66.5049L67.5102 66.4704L67.4534 66.4488L65.6502 65.765L65.5934 65.7434L65.5331 65.7361L63.6186 65.5036Z"
+                    stroke="black" stroke-opacity="0.15" shape-rendering="crispEdges" />
+            </g>
+            <path d="M111 62.5L112.5 62L113 69.5H110.5L111 62.5Z" fill="#A7A7A9" />
+            <defs>
+                <filter id="filter0_d_0_1" x="45.5166" y="56.8927" width="36.0834" height="36.2146"
+                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                        result="hardAlpha" />
+                    <feOffset dy="1" />
+                    <feGaussianBlur stdDeviation="4.55" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
+                </filter>
+            </defs>
+        </svg>
+
+    </div>
+</body>
+
+</html>

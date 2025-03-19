@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            /* 初始化 歸零 */
+        }
+
+        #box-a {
+            background-color: aqua;
+            width: 300px;
+            height: 300px;
+            border-radius: 10%;
+            position: relative;
+            /* position: static; */
+            /* 默認設置 靜態 */
+            /* position: static;取消 不會用none */
+        }
+
+        #box-b {
+            background-color: rgb(255, 132, 0);
+            /* background-color: transparent; */
+            /* 透明 */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* 原角 */
+            position: absolute;
+            
+
+        }
+
+        #box-c {
+            background-color: rgb(197, 184, 97);
+            width: 300px;
+            height: 300px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box-a">
+        <div id="box-b"></div>
+
+    </div>
+    <div id="box-c"></div>
+
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid black;
+            line-height: 100px;
+            align-items: center;
+            margin-bottom: 10px;
+
+        }
+
+        .box-1 {
+            background-color: antiquewhite;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box box-1">1號</div>
+
+    <!-- 找出2號盒 底色變黃 -->
+    <div class="box box-2">2</div>
+    <!-- 找出3號盒 文字變綠 -->
+    <div class="box box-3">3</div>
+    <!-- 找出4號盒 變成圓 底色變黃 文字變紅-->
+    <div class="box box-4">4</div>
+
+    <div class="box box-5">5</div>
+    <script>
+        console.log('我是控制台 可以除錯用 可把訊息顯示出去');
+
+        document.box1;
+
+
+        let box1 = document.querySelector('.box-1').addEventListener('click', function () {
+            document.querySelector('.box-1').style.backgroundColor = 'blue';
+        });
+
+        let box2 = document.querySelector('.box-2').addEventListener('click', function () {
+            document.querySelector('.box-2').style.backgroundColor = 'yellow'
+                ;
+        });
+
+        document.querySelector('.box-3').addEventListener('click', function () {
+            document.querySelector('.box-3').style.color = 'green';
+        });
+
+        document.querySelector('.box-4').addEventListener('click', function () {
+            document.querySelector('.box-4').style.backgroundColor = 'yellow'
+            document.querySelector('.box-4').style.color = 'red'
+            document.querySelector('.box-4').style.borderRadius = '50%'
+        });
+
+
+        // cssText 是 JavaScript 用於直接操作 HTML 元素的內聯樣式的一個屬性。
+        // 它可以將多個 CSS 樣式作為一個字符串一次性應用到某個元素，
+        // 而不用逐一設置單獨的樣式屬性。
+
+        const box5 = document.querySelector('.box-5');
+        box5.addEventListener('click', () => {
+            box5.style.cssText = `
+             background-color:red;
+             color:yellow;
+             border-radius:50%;
+            `;
+        });
+
+
+        // 模板字符串（``）多行支持： 
+        // 模板字符串可以直接換行，無需使用轉義符
+        // 語法靈活： 適合處理動態內容，比如組合 HTML、CSS 或動態文本。
+        // 插值功能： 可以使用 ${expression} 直接插入變量或表達式的值。
+
+
+        // 普通字符串（'' 或 ""）F
+        // 單行限制： 普通字符串不能直接換行，如果需要換行，必須使用轉義符 \n。
+        // 語法簡單： 適合處理簡單的靜態字符串。
+        // 無法插值： 無法直接插入變量或表達式，必須用字符串拼接（+）
+
+        // 選擇建議
+        // 用模板字符串： 當你需要多行文本、插值變量或生成動態內容時。
+        // 用普通字符串： 當你只需處理靜態的、簡單的字符串時。
+
+
+
+
+
+    </script>
+    <!-- 寫在body結束上方 -->
+</body>
+
+</html>

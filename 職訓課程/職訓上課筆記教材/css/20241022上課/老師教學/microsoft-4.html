@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <link rel="stylesheet" href="./microsoft-4.css">
+</head>
+
+<body>
+  <nav class="container-normal">
+    <div class="logo">
+      <img src="./img/logo.png" alt="">
+    </div>
+    <ul class="menu pc-menu">
+      <li> <a href=""> <span>Miscro365</span> </a> </li>
+      <li> <a href=""> <span>mis-2</span> </a> </li>
+      <li> <a href=""> <span>miscro-1</span> </a> </li>
+      <li> <a href=""> <span>Mis</span> </a> </li>
+      <li> <a href=""> <span>mis-2</span> </a> </li>
+      <li> <a href=""> <span>misc</span> </a> </li>
+    </ul>
+
+    <ul class="menu func-menu">
+      <!-- phone 漢堡按鈕在此 -->
+      <!-- phone menu 漢堡按鈕在此 -->
+       
+      <li class="ham-samll">
+
+        <input type="checkbox" id="ham-btn-switch">
+        <label for="ham-btn-switch">按鈕</label>
+        <ul class="phone-menu">
+
+          <li> <a href=""> <span>Miscro 365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>支援</span> </a> </li>
+
+
+          <input type="checkbox" id="sub-1-switch" class="sub-switch" hidden>
+          <label for="sub-1-switch">
+            <li tabindex="0">
+              <span>軟體</span>
+              <i class="fa-solid fa-chevron-down"></i>
+              <i class="fa-solid fa-chevron-up"></i>
+            </li>
+          </label>
+
+          <ul class="sub-dropdown-menu">
+            <li> <a href=""> <span>Mis</span> </a> </li>
+            <li> <a href=""> <span>mis-2</span> </a> </li>
+          </ul>
+
+
+
+          <input type="checkbox" id="sub-2-switch" class="sub-switch" hidden>
+          <label for="sub-2-switch">
+            <li tabindex="0">
+              <span>軟體22222</span>
+              <i class="fa-solid fa-chevron-down"></i>
+              <i class="fa-solid fa-chevron-up"></i>
+            </li>
+          </label>
+          <ul class="sub-dropdown-menu">
+            <li> <a href=""> <span>Mis</span> </a> </li>
+            <li> <a href=""> <span>mis-2</span> </a> </li>
+          </ul>
+          <input type="checkbox" id="sub-3-switch" class="sub-switch" hidden>
+          <label for="sub-3-switch">
+            <li tabindex="0">
+              <span>軟體33333</span>
+              <i class="fa-solid fa-chevron-down"></i>
+              <i class="fa-solid fa-chevron-up"></i>
+            </li>
+          </label>
+
+          <ul class="sub-dropdown-menu">
+            <li> <a href=""> <span>Mis</span> </a> </li>
+            <li> <a href=""> <span>mis-2</span> </a> </li>
+          </ul>
+
+        </ul>
+      </li>
+
+
+
+      <li class="all-miscrosoft>
+        <div>
+          <span>所有Miscrosoft</span>
+          <sub>
+            <i class="fa-solid fa-chevron-down"></i>
+          </sub>
+          <!-- <div>
+            <a href="xxxx">AAAAA</a>
+            <a href="xxxx">BBBB</a>
+            <a href="xxxx">CCCCC</a>
+          </div> -->
+        </div>
+      </li>
+      <li class="search">
+        <a href="">
+          <span class="hide-text">misx</span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <span class="hide-text">misc</span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <span class="hide-text">Miss</span>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <header id="header" class="container-full">
+    <!-- 輪播 Swiper -->
+    <picture>
+      <source media="(min-width:1400px)" srcset="./img/swiper/T1-1920x600.avif">
+      <source media="(min-width:1084px)" srcset="./img/swiper/T1-1399x600.avif">
+      <source media="(min-width:900px)" srcset="./img/swiper/T1-1920x600.avif">
+      <source media="(min-width:540px)" srcset="./img/swiper/T1-1399x600.avif">
+      <!-- 找不到就這一張 -->
+      <img class="w-100" src="./img/A.jpg" alt="">
+    </picture>
+  </header>
+  <!-- 內容區 -->
+  <main class="container-full">
+
+    <section class="container-normal">
+      <section class="three-choice">
+        <a href="#" class="one-choice">
+          <img src="./img/three-choice/1-365.svg" alt="">
+          <span class="title">選擇您的 Microsoft 365</span>
+        </a>
+        <a href="#" class="one-choice">
+          <img src="./img/three-choice/1-365.svg" alt="">
+          <div class="title">Microsoft 365</div>
+        </a>
+        <a href="#" class="one-choice">
+          <img src="./img/three-choice/1-365.svg" alt="">
+          <div class="title">選擇您的 Microsoft</div>
+        </a>
+      </section>
+      <section class="four-card">
+        <a href="#" class="one-card">
+          <img class="w-100" src="./img/four-card/1s.avif" alt="">
+          <div class="sub-text">
+            <div class="sub-text-inner">
+              <h2 class="title">適用於商務的 Surface</h2>
+              <div class="content">無論從事哪種工作，都有一款有助於成功的 Surface。</div>
+            </div>
+            <div>
+              <div class="btn" tabindex="1">
+                <span>立即選購</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="one-card">
+          <img class="w-100" src="./img/four-card/1s.avif" alt="">
+          <div class="sub-text">
+            <div class="sub-text-inner">
+              <h2 class="title">適用於商務的 Surface</h2>
+              <div class="content">無論從事哪種工作，都有一款有助於成功的 Surface。</div>
+            </div>
+            <div>
+              <div class="btn" tabindex="1">
+                <span>立即選購</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="one-card">
+          <img class="w-100" src="./img/four-card/1s.avif" alt="">
+          <div class="sub-text">
+            <div class="sub-text-inner">
+              <h2 class="title">適用於商務的 Surface</h2>
+              <div class="content">無論從事哪種工作，都有一款有助於成功的 Surface。</div>
+            </div>
+            <div>
+              <div class="btn" tabindex="1">
+                <span>立即選購</span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+
+        <a href="#" class="one-card">
+          <img class="w-100" src="./img/four-card/1s.avif" alt="">
+          <div class="sub-text">
+            <div class="sub-text-inner">
+              <h2 class="title">適用於商務的 Surface</h2>
+              <div class="content">無論從事哪種工作，都有一款有助於成功的 Surface。</div>
+            </div>
+            <div>
+              <div class="btn" tabindex="1">
+                <span>立即選購</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </section>
+    </section>
+    <section class="sticky-main container-full">
+      <section class="sticky-main-inner container-normal">
+        <section class="big-img">
+          <picture>
+            <source media="(min-width:1400px)" srcset="./img/swiper/T1-1920x600.avif">
+            <source media="(min-width:1084px)" srcset="./img/swiper/T1-1399x600.avif">
+            <source media="(min-width:900px)" srcset="./img/swiper/T1-1920x600.avif">
+            <source media="(min-width:540px)" srcset="./img/swiper/T1-1399x600.avif">
+            <!-- 找不到就這一張 -->
+            <img class="w-100" src="./img/A.jpg" alt="">
+          </picture>
+        </section>
+        <section class="four-card">
+          <a href="#" class="one-card">
+            <img class="w-100" src="./img/four-card/1s.avif" alt="">
+            <div class="sub-text">
+              <div class="sub-text-inner">
+                <h2 class="title">適用於商務的 Surface</h2>
+                <div class="content">無論從事哪種工作，都有一款有助於成功的 Surface。</div>
+              </div>
+              <div>
+                <div class="btn" tabindex="1">
+                  <span>立即選購</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="one-card">
+            <img class="w-100" src="./img/four-card/1s.avif" alt="">
+            <div class="sub-text">
+              <div class="sub-text-inner">
+                <h2 class="title">AAAACopilot 是您的 AI 良伴</h2>
+                <div class="content">始終在側，隨時隨地為您提供所需支援。</div>
+              </div>
+              <div>
+                <div class="btn" tabindex="1">
+                  <span>查看您的電腦是否準備就緒</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="one-card">
+            <img class="w-100" src="./img/four-card/1s.avif" alt="">
+            <div class="sub-text">
+              <div class="sub-text-inner">
+                <h2 class="title">AAAACopilot 是您的 AI 良伴</h2>
+                <div class="content">始終在側，隨時隨地為您提供所需支援。</div>
+              </div>
+              <div>
+                <div class="btn" tabindex="1">
+                  <span>查看您的電腦是否準備就緒</span>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="one-card">
+            <img class="w-100" src="./img/four-card/1s.avif" alt="">
+            <div class="sub-text">
+              <div class="sub-text-inner">
+                <h2 class="title">AAAACopilot 是您的 AI 良伴</h2>
+                <div class="content">始終在側，隨時隨地為您提供所需支援。</div>
+              </div>
+              <div>
+                <div class="btn" tabindex="1">
+                  <span>查看您的電腦是否準備就緒</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </section>
+        <section class="other">其他</section>
+      </section>
+      <div class="go-top">回到首頁</div>
+    </section>
+  </main>
+  <footer>
+    <section class="container-normal">
+      <div class="footer-menu">
+        <ul>
+          <p>最新動向</p>
+          <li> <a href=""> <span>Miscro365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>misc</span> </a> </li>
+        </ul>
+        <ul>
+          <p>最新動向</p>
+          <li> <a href=""> <span>Miscro365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>misc</span> </a> </li>
+        </ul>
+        <ul>
+          <p>最新動向</p>
+          <li> <a href=""> <span>Miscro365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>misc</span> </a> </li>
+        </ul>
+        <ul>
+          <p>最新動向</p>
+          <li> <a href=""> <span>Miscro365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>misc</span> </a> </li>
+        </ul>
+        <ul>
+          <p>最新動向</p>
+          <li> <a href=""> <span>Miscro365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>misc</span> </a> </li>
+        </ul>
+        <ul>
+          <p>最新動向</p>
+          <li> <a href=""> <span>Miscro365</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>miscro-1</span> </a> </li>
+          <li> <a href=""> <span>Mis</span> </a> </li>
+          <li> <a href=""> <span>mis-2</span> </a> </li>
+          <li> <a href=""> <span>misc</span> </a> </li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-left"></div>
+        <div class="footer-nav-right"></div>
+      </div>
+    </section>
+  </footer>
+</body>
+
+</html>

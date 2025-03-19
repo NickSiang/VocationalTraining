@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let i = 0;
+
+        i = i + 1;
+
+        console.log(i);
+
+        i++;
+        console.log(i);
+        // i++ 是 後綴遞增運算符，
+        // 這會將 i 的值加 1，
+        // 但會先返回原本的值，再進行加 1。
+        //  先做後+
+        //let a = i++; 使用的是原本的 i 值(0)，但執行後 i 的值更新為 1。
+        // 所以 a = 0，而後來的 i = 1。
+
+        ++i;
+        console.log(i);
+        // ++i 是 前綴遞增運算符，
+        // 這會先將 i 的值加 1，再返回新的值。
+        // 所以這會將 i 增加到 3。
+        // let b = ++i; 是先將 i 加 1 (i = 1)，然後回傳新值 (1)。
+        // 所以 b = 1，而後來的 i = 1。
+
+    </script>
+</body>
+
+</html>

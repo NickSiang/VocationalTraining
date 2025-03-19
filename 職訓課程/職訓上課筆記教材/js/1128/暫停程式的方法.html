@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // return -> 方法(function)，回傳資料為主
+    console.log(testa());
+    function testa() {
+      console.log('我進到方法裡面了');
+      return 2;
+      console.log('在return後，先回傳數值了，所以執行不到這邊');
+    }
+
+    // break -> if、for(直接終止後面要做的事情)
+    for (let index = 0; index < 10; index++) {
+      if (index == 5) {
+        break;
+      }
+      console.log(index);
+    }
+
+    // continue -> for(略過這一次要做的事情，執行下一個動作)
+    for (let index = 0; index < 10; index++) {
+      if (index == 5) {
+        continue;
+      }
+      console.log(index);
+    }
+  </script>
+</body>
+
+</html>

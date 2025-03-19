@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-size: 24px;
+    }
+
+    select {
+      height: 30px;
+    }
+
+    input[type=radio] {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+    }
+
+    input:checked {
+      appearance: none;
+      border-radius: 50%;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    性別
+    <label for="male">
+      <input type="radio" id="male" name="gender" value="男">男
+      <!-- <input type="radio" id="male" name="gender" value="男" checked>男 -->
+    </label>
+    <label for="female">
+      <input type="radio" id="female" name="gender" value="女">女
+    </label>
+  </div>
+  <div>
+    年齡
+    <select class="age">
+      <!-- option[value="$@11"]{$@11}*20 -->
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+    </select>
+  </div>
+  <button type="button" class="query">查詢</button>
+  <div>
+    結果:
+    <span class="result"></span>
+  </div>
+
+  <script>
+    const queryBtn = document.querySelector('.query');
+    const age = document.querySelector('.age');
+    const result = document.querySelector('.result');
+
+    queryBtn.addEventListener('click', function(){
+      // radio的取值
+      let gender = document.querySelector('input[name="gender"]:checked');
+      console.log(gender);
+      
+      if (!gender) {
+        alert('請選擇性別');
+        return; //返回
+      }
+      let genderValue = gender.value
+      // select的取值
+      let ageValue = age.value;
+      console.log(ageValue);
+      if (genderValue === '女'){
+        // alert('女性，不用服兵役');
+        result.textContent = '女性，不用服兵役';
+      }else {
+        if (ageValue < 18) {
+          // alert('未滿18，不用服兵役');
+          result.textContent = '未滿18，不用服兵役';
+        }else {
+          // alert('恭喜，你可以保衛國家');
+          result.textContent = '恭喜，你可以保衛國家';
+        }
+      }
+      // 清空 checkbox 的方法
+      // gender.checked = false; 
+      // select 中的被選擇項更改方法
+      // age.selectedIndex = 0;
+    });
+  </script>
+</body>
+
+</html>
+<!-- 男子年滿18歲必須服兵役
+輸入 性別
+輸入 年齡
+查詢按鈕
+輸出 結果 --></body>

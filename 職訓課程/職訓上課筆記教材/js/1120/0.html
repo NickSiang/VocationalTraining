@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let a = 10;
+    let b = 100;
+    let c;
+
+    c = a + b;
+    console.log(c);
+    c = a - b;
+    console.log(c);
+    c = a * b;
+    console.log(c);
+    c = a / b;
+    console.log(c);
+    console.log('===============');
+    
+    // 呼叫函式
+    add();
+    sub();
+    mult();
+    divide();
+
+    console.log('----------------');
+    
+    function add() {
+      c = a + b;
+      console.log(c);
+      // return; //返回，可省略
+    }
+
+    function sub() {
+      c = a - b;
+      console.log(c);
+      // return; //返回，可省略
+    }
+
+    function mult() {
+      c = a * b;
+      console.log(c);
+      // return; //返回，可省略
+    }
+
+    function divide() {
+      c = a / b;
+      console.log(c);
+      // return; //返回，可省略
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Scroll Progress Timeline</title>
+ <style>
+    @keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#container {
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+
+  /* 具名的 scroll progress timeline */
+  /* scroll-timeline-name: --squareTimeline; */
+}
+
+#square {
+  background-color: lightcoral;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  animation-name: rotateAnimation;
+
+  /* 具名的 scroll progress timeline */
+  /* animation-timeline: --squareTimeline; */
+
+  /* 匿名的 scroll progress timeline */
+  animation-timeline: scroll(block nearest);
+}
+
+#stretcher {
+  height: 200vh;
+}
+
+ </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Scroll Progress Timeline</h1>
+      <div id="square"></div>
+      <div id="stretcher"></div>
+    </div>
+  </body>
+</html>

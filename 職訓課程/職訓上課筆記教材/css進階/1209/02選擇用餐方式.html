@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02</title>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-weight: 600;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .all {
+            width: 100%;
+            height: 100vh;
+            max-width: 375px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        nav {
+            height: 68px;
+            display: flex;
+            padding: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner {
+            flex: 1;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        main {
+            height: 344px;
+            padding: 42px 0px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0 12px;
+        }
+
+        .card-space {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+
+        }
+
+        h2 {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 10px;
+        }
+
+        p {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 140px;
+            height: 160px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ABA6A6;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .card:active {
+            background: linear-gradient(144deg, #FC6405 0%, #E60013 103.82%);
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            height: min(88px, 12vh);
+            background-color: rgb(31, 181, 73);
+            display: flex;
+        }
+
+        .btn-block {
+            width: 287px;
+            height: 88px;
+            background-color: rgb(245, 245, 245);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        button {
+            width: 120px;
+            height: 39px;
+            background-color: rgb(252, 195, 5);
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-block-right {
+            width: 88px;
+            height: 88px;
+            background-color: rgb(245, 245, 245);
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <nav>
+            <a href=""><img src="./img/logo .png" alt="">
+            </a>
+        </nav>
+
+        <div class="banner"><img src="./img/image 1.png" alt=""></div>
+
+        <main>
+            <h2>請選擇用餐方式</h2>
+            <div class="card-space">
+                <div class="card">
+                    <p>內用</p>
+                    <img src="./img/內用.png" alt="">
+                </div>
+                <div class="card">
+                    <p>外帶</p>
+                    <img src="./img/外帶.png" alt="">
+                </div>
+            </div>
+        </main>
+
+        <div class="container">
+            <div class="btn-block">
+                <button type="button">English</button>
+                <button type="button">友善模式</button>
+            </div>
+
+            <div class="btn-block-right">
+                <img src="./img/掃描.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

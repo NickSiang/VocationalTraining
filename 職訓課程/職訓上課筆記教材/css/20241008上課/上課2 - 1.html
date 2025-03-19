@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height:calc(100vh - ((100vh - 500px) / 2));
+            /* vw看到這個視窗的寬高度 */
+            padding-top:calc((100vh - 500px) / 2) ;
+            /* padding採用寬度來做 */
+            /* 100vw 當高度超過100vh(視窗高度) 會有水平捲軸 因為沒有扣除垂直卷軸寬度*/
+            /* 100% 當高度超過100vh(視窗高度) 不會有水平捲軸*/
+        }
+
+        #box-a {
+            background: black;
+            width: 500px;
+            height: calc(500px - ((500px - 100px) / 2));
+            /* 高要減掉pddding-top所增加的範圍 */
+            /* height: 500px; */
+            /* padding: 200px; */
+            padding-top: calc((500px - 100px) / 2);
+            /* 高200 100 200 */
+            /* padding有加大面積效應 */
+            margin: auto;
+        }
+
+        #box-b {
+            background: bisque;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box-a">
+        <div id="box-b"></div>
+    </div>
+</body>
+
+</html>

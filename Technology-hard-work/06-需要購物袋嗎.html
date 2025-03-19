@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-需要購物袋嗎</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="w-full h-screen max-w-[375px] font-semibold mx-auto flex flex-col">
+        <nav class="w-full relative  border-b-[1px] border-[#D9D9D9]">
+            <!-- logo按鈕 -->
+            <button onclick="location.href='./01-起始畫面.html';"
+                class="w-full h-[68px] flex items-center justify-center border-b-[1px] border-[#D9D9D9]">
+                <img class="w-[68px]" src="./img/logo.png" alt="logo">
+            </button>
+
+            <!-- 返回按鈕 -->
+            <button onclick="location.href='./05-麥當勞商品卡片.html';" class="absolute top-[78px] left-[10px] w-[56px]">
+                <img src="./img/叉叉按鈕.png" alt="返回">
+            </button>
+
+        </nav>
+
+        <main class="h-full">
+
+            <div class="w-full h-[94px] p-16">
+                <p class="text-center text-black-500 text-2xl font-black ">請問需要購物袋嗎</p>
+            </div>
+
+            <div class="h-full flex justify-center ">
+                <div class="w-[264px] h-min flex flex-wrap gap-4">
+                    <!-- 第一張卡 -->
+                    <button onclick="location.href='./07-購物車內容.html';"
+                        class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                        <img class="w-[100px] " src="./img/購物袋黑.png" alt="購物袋黑">
+                        <div class="text-center px-2 ">
+                            <p class="text-xs font-bold truncate">百分百購物袋(黑)
+                            </p>
+                            <p class="text-[8px] font-medium">$49</p>
+                        </div>
+                    </button>
+                    <!-- 第二張卡 -->
+                    <button onclick="location.href='./07-購物車內容.html';"
+                        class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                        <img class="w-[100px]" src="./img/購物袋紅.png" alt="購物袋紅">
+                        <div class="text-center px-2">
+                            <p class="text-xs font-bold truncate">百分百購物袋(黑)
+                            </p>
+                            <p class="text-[8px] font-medium">$49</p>
+                        </div>
+                    </button>
+                    <!-- 第三張卡 -->
+                    <button onclick="location.href='./07-購物車內容.html';"
+                        class="w-[124px] h-[152px] bg-white rounded-[20px] flex flex-col items-center shadow-[0_0px_4px_0_rgba(0,0,0,0.25)] gap-y-2 p-3">
+                        <img class="w-[100px]" src="./img/購物袋.png" alt="購物袋">
+                        <div class="text-center px-2">
+                            <p class="text-xs font-bold truncate">塑膠袋</p>
+                            <p class="text-[8px] font-medium">$2</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="w-full h-[94px] flex items-center justify-center p-4">
+                <!-- 連結到你的訂單內容 -->
+                <button onclick="location.href='./07-購物車內容.html';" class=" w-[160px] h-[39px] bg-[rgb(252,195,5)] rounded-[10px] flex items-center
+                    justify-center">不需要,謝謝!
+                </button>
+            </div>
+           
+
+        </footer>
+    </div>
+</body>
+
+</html>

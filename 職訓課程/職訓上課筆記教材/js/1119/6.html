@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" class="n1">
+    <input type="number" class="n2">
+    <br /><br />
+    <button type="button" class="add">+</button>
+    <button type="button" class="sub">-</button>
+    <button type="button" class="mult">*</button>
+    <button type="button" class="divide">/</button>
+    <button type="button" class="mod">%</button>
+    <br />
+    結果<span class="result"></span>
+    <script>
+        // DOM的操作
+        let num1 = document.querySelector('.n1');
+        let num2 = document.querySelector('.n2');
+
+        let add = document.querySelector('.add');
+        let sub = document.querySelector('.sub');
+        let mult = document.querySelector('.mult');
+        let divide = document.querySelector('.divide');
+        let mod = document.querySelector('.mod');
+        let result = document.querySelector('.result');
+
+
+
+        add.addEventListener('click', addfun);
+
+        sub.addEventListener('click', subfun);
+
+        mult.addEventListener('click', multfun);
+
+        divide.addEventListener('click', dividefun);
+
+        mod.addEventListener('click', modfun);
+
+        
+        function addfun() {
+            let num1Value = num1.value;
+            // let num1 = document.querySelector('.n1');
+
+            let num2Value = num2.value;
+            let total = num1.value * 1 + num2.value * 1
+            result.textContent = total;
+            // textContent = total; // 將結果更新到畫面
+        }
+
+        function subfun() {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 - num2Value * 1
+            result.textContent = total;
+            // textContent 是一個屬性，用於獲取或設定元素中的文字內容。
+            // result 是一個變數
+            // let result = document.querySelector('.result');
+        }
+
+
+        function multfun() {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 * num2Value * 1
+            result.textContent = total;
+        }
+
+        function dividefun() {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 / num2Value * 1
+            result.textContent = total;
+        }
+
+        function modfun() {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 % num2Value * 1
+            result.textContent = total;
+        }
+        // 函數宣告addfun 有名函式
+
+
+        // 匿名函式(無命名)
+        // 從input取出都是字串
+    </script>
+</body>
+
+</html>

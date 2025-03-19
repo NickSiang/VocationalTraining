@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="all">
+
+        身高: <input type="number" name="" id="" v-model="height">
+        </br></br>
+        體重: <input type="number" name="" id="" v-model="weight">
+        </br></br>
+        <button type="button" @click="calc">計算</button>
+        </br></br>
+        <div>你的BMI為:{{result}}</div>
+
+
+    </div>
+
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js">
+    </script>
+
+    <script>
+
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    height: '',
+                    weight: '',
+                    result: ''
+                }
+            },
+            methods: {
+                calc() {
+                    let heightValue = parseInt(this.height) / 100 * parseInt(this.height) / 100;
+                   
+
+                    if (height == '' || weight == '') {
+                        this.result ==''
+                    }
+                    else{
+                        this.result = (parseInt(this.weight) / heightValue).toFixed(1);
+                    }
+
+                }
+            },
+
+
+
+        }).mount('#all')
+
+    </script>
+</body>
+
+</html>

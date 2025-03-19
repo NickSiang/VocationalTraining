@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        main {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .item {
+            margin-bottom: 10px;
+        }
+
+        details {
+            width: 100%;
+            text-align: left;
+            color: #ffffff;
+            background-color: rgb(33, 33, 33);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+
+        }
+
+        summary {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        summary::after {
+            content: "➕";
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        details[open] summary::after {
+            content: "➖";
+            transform: rotate(180deg);
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition:all 0.5s ease-in-out;
+            padding: 0 15px;
+            background-color: #fafafa;
+            border-left: 3px solid #ddd;
+            color: black;
+        }
+
+        details[open] .answer {
+            max-height: 200px;
+            padding: 15px;
+        }
+
+        details:hover {
+            background-color: rgb(56, 56, 56);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="item">
+            <details>
+                <summary>如何辦理退換貨？</summary>
+                <div class="answer">
+                    <p>請參考退貨服務頁面。</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="item">
+            <details>
+                <summary>退款方式及退款時間？</summary>
+                <div class="answer">
+                    <p>約7-8個工作天完成退款作業。</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="item">
+            <details>
+                <summary>未退回的退款，是否可直接折抵新訂單？</summary>
+                <div class="answer">
+                    <p>很抱歉，重新訂購時無法直接於新訂單扣抵。</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="item">
+            <details>
+                <summary>發票遺失是否仍能辦理退換貨？</summary>
+                <div class="answer">
+                    <p>很抱歉，需要有發票才能辦理退換貨。</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="item">
+            <details>
+                <summary>什麼情況無法辦理退換貨？</summary>
+                <div class="answer">
+                    <p>超過7天退貨期限，就無法辦理。</p>
+                </div>
+            </details>
+        </div>
+    </main>
+</body>
+
+</html>

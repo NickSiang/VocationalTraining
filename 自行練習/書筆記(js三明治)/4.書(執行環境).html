@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <script>
+        // 執行環境
+        // 任何javascript程式碼被執行 讀取的地方 像是函式
+        // 都可以是執行環境
+        // 全域環境 函式環境
+
+        // 每個函式都有屬於自己的執行環境
+        // 但是只在函式被呼叫時產生
+
+        // 語彙環境 白話[把這段程式碼寫在哪]
+
+        // 在全域環境底下無法取得函式內所宣告的變數
+        // 是因為[該函式的執行環境沒有被產生]
+        // 函式內宣告的變數 只能在函式內取用
+
+        // =======================================
+
+        // 這邊是宣告一個全域變數
+        let globalText = 'Hello';
+
+        // 呼叫函式 才可產生一個執行環境
+        // hello();
+
+
+        function hello() {
+            let localText = 'byebye';
+            // 回傳函式內宣告之變數
+            // return localText;
+        }
+
+        console.log(globalText);
+
+        // 會得到undefinded 會得到函式的值
+        console.log(hello());
+
+        //會得到ƒ hello() {
+        //let localText='byebye'
+        //回傳函式內宣告之變數
+        //return localText;
+        // }一整個函式
+        // 函式的名稱
+        console.log(hello);
+        // =======================================
+        // 區塊範疇(block Scope)
+        // var和let const的差異
+
+        // let和const宣告變數關鍵字,能以區塊來定義
+        // 區塊就是兩個大括號裡的範圍({})
+        // 而block Scope 就是利用區塊的大括號去定義範疇
+
+        // ex:
+        // 必須要有名函式,函式才會執行 或是宣告變數給函式
+        if (true) {
+            var a1 = 'hello';
+            let a2 = 'bye';
+        }
+
+        console.log(a1);
+        // console.log(a2);//a2 is not defined
+
+        // 上面這段 在全域可取到a1
+
+        // =======================================
+        // 函式範疇與區塊範疇
+
+        let condition = true;
+
+        function bar() {
+
+            if (condition) {
+                var firstName = 'Daft';
+                let lastName = 'Punk';
+                const fullName = 'Daft Punk';
+            }
+
+            // 被呼叫後才會執行下面這段
+            // (可查看是否有被呼叫)
+            console.log(firstName); //Daft
+            // console.log(lastName);//lastName is not defined
+            // console.log(fullName);//fullName is not defined
+        }
+
+        // 呼叫函式後去執行
+        bar();
+        // 無法取得函式內宣告的變數
+        // console.log(firstName);//firstName is not defined
+        // console.log(lastName);//lastName is not defined
+        // console.log(fullName);//fullName is not defined
+
+        // 上述例子可發現即使使用var 宣告的變數]也會函式的範疇
+        // 而無法在全域取得
+
+        // =======================================
+        //作用域煉 3-20
+        //主宰js在某範疇內找不到變數時,向外層範疇
+        //尋找的依據和順序
+
+        // 執行環境決定了程式碼被執行的順序
+        // 語彙環境則決定js在不同範疇間查找變數的方式和順序
+        //ex
+
+        const globalText1 = "globalTex1";
+
+        function a() {
+            const texta = "texta";
+            console.log(globalText1);//globalTex1
+
+            function c() {
+                const textc = "textc";
+                console.log(texta);//texta
+                b();
+
+            }
+            c()
+        }
+
+        function b() {
+            // console.log(textc);//textc is not defined
+        }
+
+        a()
+
+        // 由上例子可知
+        // 1.函式執行順序為a c b 
+        // 2.函式b 雖在函式c被執行,但無法取得函式c所宣告之變數
+        // 當執行環境往外外找尋變數,若找不到時會不斷往更外一層
+        // 的語彙環境去尋找直到找到這變數或是找到全域環境
+
+        // =======================================
+        // 提升現象3-22
+        // 在宣告一個變數或函式之前,就能夠讓這個變數能夠先被使用
+        // 且不會出錯
+
+        //為變數及函式保留記憶體的動作被稱為提升 所有環境皆會出現
+
+        // 函數表達式(提升)
+        // 如果函數是作為變數的值來定義,那麼該函數不會被提升
+        // ex
+
+        // myfunction();
+
+        var myfunction = function () {
+            console.log('你好');
+        }
+        myfunction();
+        // =======================================
+        // var let const
+
+        // let const好處避免變數修改或覆蓋
+
+        // let可以重新附值
+        // 和var一樣宣告時可以不給值
+        let age = 16;
+        age = 20;
+
+        console.log(age);
+
+        // const不能重新附值
+        // 所宣告的變數只能被讀取
+        // 且宣告時一定要指派內容
+
+        // const age1 = 16;
+        // age1 = 20;
+
+        // console.log(age1);
+
+        // 但當const與物件和陣列使用時
+
+        const fruitGroup = {
+            dragonfruit: '火龍果',
+            apple: '蘋果',
+        };
+
+        fruitGroup.banana = '香蕉';
+
+        console.log(fruitGroup);
+        // {dragonfruit: '火龍果', apple: '蘋果', banana: '香蕉'}
+
+        // 使用const宣告變數內容若是物件和陣列,則該物件裡面的屬性
+        // 還是能夠可以被存取修改,因為當變數被宣告且存放的數值
+        // 是一個物件所帶給的並不是物件的內容,而是記憶體位置
+        // 只要該變數記憶體位置保持一致就不會有問題
+
+        const fruitGroup1 = {
+            dragonfruit: '火龍果',
+            apple: '蘋果',
+        };
+
+        // let emptyObject = {};
+        // fruitGroup1 = emptyObject
+        // 4.書(執行環境).html:192 Uncaught TypeError: Assignment to constant variable.
+
+        // =======================================
+        // let和const的提升 3-29
+        // 使用let 和const宣告變數會先保留記憶體位置
+        // 但不像var會先指派預設值undefined,而是在進入執行階段
+        // 變數正式被指派之前這個變數是不允許被使用的
+        // ex
+
+        function hello() {
+            console.log('hello' + name);
+            // let name;
+            // let name = jack;
+        }
+
+        hello();
+
+        // =======================================
+        // let const
+        // 避免依賴變數的提升來開發
+        // 可增加可讀性
+        // const可避免同一個變數被修改多次而造成
+        // 問題追蹤不易的情況
+
+
+    </script>
+</body>
+
+</html>

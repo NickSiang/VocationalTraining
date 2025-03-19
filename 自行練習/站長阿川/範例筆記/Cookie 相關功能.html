@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    Your Age: <input type="text">
+    Your Name: <input type="text">
+    <button onclick="save()">Save</button>
+
+    <script>
+        if (document.cookie) {
+            // alert(document.cookie);
+            // console.log(document.cookie);myage=222; myname=333
+            var arr = document.cookie.split(';');
+            // console.log(arr);{'myage=222','myname=333'}
+
+            var myage = arr[0].split('=')[1];
+            var myname = arr[1].split('=')[1];
+            // console.log(myage);/222
+            // console.log(myname);/333
+
+            document.querySelectorAll('input')[0].value = myage;
+            document.querySelectorAll('input')[1].value = myname;
+        }
+
+        function save() {
+            var myage = document.querySelectorAll('input')[0].value;
+            var myname = document.querySelectorAll('input')[1].value;
+            // 存入
+            document.cookie = 'myage=' + myage;
+            document.cookie = 'myname=' + myname;
+            alert('saved!');
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 3000px;
+            background: gray;
+
+        }
+
+        #nav {
+            background-color: wheat;
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            
+
+            /* 固定定位 */
+            /* 元素會相對於瀏覽器視窗來定位，這意味著即便頁面捲動，它還是會固定在相同的位置。 */
+        }
+
+        #left {
+            background: rgb(239, 255, 239);
+            width: 20%;
+            height: 80px;
+        }
+
+        #logo {
+            background: green;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 100;
+            bottom: 100px;
+        }
+
+        #search {
+            background-color: aliceblue;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        #middle {
+            background: rgb(122, 205, 122);
+            width: 60%;
+            height: 80px;
+            
+
+            
+        }
+        #right {
+            background: blue;
+            width: 20%;
+            height: 80px;
+            }
+
+        #all {
+            background-color: rgb(235, 49, 49);
+            width: 100%;
+            /* height: 3000px; */
+            color: white;
+            padding-top: 80px;
+        }
+
+        #banner {
+            background: black;
+            width: 60%;
+            height: 300px;
+            color: black;
+            padding-top: 100px;
+            margin: auto;
+            background-image: url(./img/);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+
+        }
+
+        #avater {
+            background: rgb(191, 113, 113);
+            width: 150px;
+            height: 150px;
+            background-image: url(./img/);
+            background-size: cover;
+            border-radius: 50%;
+            position: absolute;
+            left: 100px;
+            bottom: -120px;
+            border: 5px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="left">
+            <div id="logo"></div>
+            <div id="search"></div>
+
+        </div>
+        <div id="middle"></div>
+        <div id="bottom"></div>
+
+    </div>
+
+    <div id="all">
+        <div id="banner">
+            <div id="avater"></div>
+        </div>
+    </div>
+</body>
+
+</html>

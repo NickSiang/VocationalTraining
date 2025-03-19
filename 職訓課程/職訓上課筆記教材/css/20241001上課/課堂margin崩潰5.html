@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box-a {
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            /* 把自己放在這一列的中央 */
+
+        }
+
+        #box-b {
+            background-color: rgb(64, 199, 46);
+            width: 100px;
+            height: 100px;
+            margin-top: 50px;
+            margin-left: auto;
+        }
+
+        #box-c {
+            background-color: rgb(127, 16, 29);
+            width: 400px;
+            height: 100px;
+            float: left;
+            /* 漂浮在上因此margin-top只作用在box4跟2  */
+            margin-top: 100px;
+            margin: auto;
+        }
+        #box-d {
+            background-color: rgb(127, 16, 73);
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            margin-left: auto;
+            
+            
+        }
+
+        /* 一旦float margin auto 不會作用
+        注意只有auto不行 auto */
+        /* 盡可能的往左推所以就彈到右邊 */
+        /* 推力統一由父層 */
+        /* B沒跟著推 少用top 盡量用bottom 只有上下會崩潰 左右不會 */
+        /*margin崩潰 collapse 
+        上物下推 下物上推 只會採最大的 最好只採一方法編寫 */
+    </style>
+</head>
+
+<body>
+    <div id="box-a">1</div>
+    <div id="box-b">2</div>
+    <div id="box-c">3</div>
+    <div id="box-d">4</div>
+</body>
+
+</html>

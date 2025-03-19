@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-兵役查詢</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <label for="male">
+                男<input type="radio" name="gender" id="male" value="male">
+            </label>
+
+            <label for="female">
+                女<input type="radio" name="gender" id="female" value="female">
+            </label>
+        </div>
+        </br>
+        <div>
+            <select name="" id="age">
+                <!-- option[value="@$12"]{@$12}*30 -->
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        </br>
+        <div>
+            <button type="button">查詢</button>
+        </div>
+        </br>
+        <div>
+            結果: <div class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        // 需注意id選擇器要#
+        let age = document.querySelector('#age');
+        let button = document.querySelector('button');
+        let result = document.querySelector('.result');
+
+
+
+
+        button.addEventListener('click', function () {
+            let gender = document.querySelector('input[name="gender"]:checked');
+
+
+            if (!gender) {
+                alert('請選擇性別')
+                return;
+            }
+
+            let genderValue = gender.value;
+            let ageValue = age.value;
+
+            // 記得數值型態
+            if (genderValue === 'male' && ageValue > 17)
+                result.innerHTML = '恭喜,你要當兵';
+
+            else {
+                result.innerHTML = '你不用當兵';
+            }
+
+        }
+
+        )
+
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- 男18-30需服兵役
+女不用服兵役 -->

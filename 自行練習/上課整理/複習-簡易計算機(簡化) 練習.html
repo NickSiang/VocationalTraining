@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" class="num1">
+    <input type="number" class="num2">
+    </br></br>
+    <button type="button" class="add">+</button>
+    <button type="button" class="sub">-</button>
+    <button type="button" class="mult">*</button>
+    <button type="button" class="divide">/</button>
+    <button type="button" class="mod">%</button>
+    <button type="button" class="clear">清空</button>
+    </br></br>
+    結果: <span class="result"></span>
+
+    <script>
+
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+        let result = document.querySelector('.result');
+
+        let add = document.querySelector('.add');
+        let sub = document.querySelector('.sub');
+        let mult = document.querySelector('.mult');
+        let divide = document.querySelector('.divide');
+        let mod = document.querySelector('.mod');
+        let clear = document.querySelector('.clear');
+
+        let calculate = (operator) => {
+            let num1Value = Number(num1.value);
+            let num2Value = Number(num2.value);
+
+            // isNaN() 是 JavaScript 中的一個全局函數，
+            // 用來檢查一個值是否是 NaN（Not-a-Number）。
+            // 如果該值不是數字，則返回 true，如果是有效的數字則返回 false。
+
+            if (num1Value && num2Value) {
+                switch (operator) {
+                    case '+': result.textContent = num1Value + num2Value; break;
+                    case '-': result.textContent = num1Value - num2Value; break;
+                    case '*': result.textContent = num1Value * num2Value; break;
+                    case '/': if (num2Value === 0) {
+                        result.textContent = '無法除以0';
+                    }
+                    else {
+                        result.textContent = (num1Value / num2Value).toFixed(2);
+                    } break;
+                    case '%': result.textContent = num1Value % num2Value; break;
+                    case '': result.textContent = ''; break;
+                }
+            } else { alert('請輸入數值') };
+
+        };
+
+        add.addEventListener('click', () => calculate('+'));
+        sub.addEventListener('click', () => calculate('-'));
+        mult.addEventListener('click', () => calculate('*'));
+        divide.addEventListener('click', () => calculate('/'));
+        mod.addEventListener('click', () => calculate('%'));
+        clear.addEventListener('click', () => calculate(''));
+
+    </script>
+</body>
+
+</html>

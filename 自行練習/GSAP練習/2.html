@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1 class="quote">Welcome to the aquarium</h1>
+    <h5 class="quote">Please scroll down to continue</h5>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+
+    <script>
+gsap.registerPlugin(ScrollTrigger);
+
+// trigger代表你想要作用的區塊(如果不寫的話會自動抓gsap.to的對象，所以也可以省略)
+gsap.to(".b", {
+    scrollTrigger: {
+        trigger: ".b",
+    }
+});
+gsap.to(".b", {
+    x: 150,
+    rotation: 360,
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: ".b", //觸發的物件(可省略)
+      start: "50% 70%", // (物件開始位置, 卷軸開始位置) 參數可以設定 top center bottom px %
+      end: "+=300", //(物件結束位置, 卷軸結束位置) , 也可以設卷軸捲動多少結束動畫(+=300是指start的位置再加上300)
+      pin: true, // 物件執行完動畫會跟著卷軸走，類似 position: fixed
+      scrub: 1, // 物件動畫延遲的秒數
+      toggleClass: "active", // 增加移除的class，class名稱須為字串
+      markers: true // 顯示標記
+    }
+});
+    </script>
+</body>
+
+</html>

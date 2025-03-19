@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .carousel {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            position: absolute;
+        }
+
+        .content {
+            height: 400px;
+            margin-right: 0px;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .yellow {
+            background: yellow;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .btn-container {
+            margin: 20px auto;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cursor-progress {
+            display: flex;
+            gap: 20px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+
+        .active {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="carousel">
+            <div class="container">
+                <div class="content red"><img src="" alt=""></div>
+                <div class="content yellow"><img src="" alt=""></div>
+                <div class="content green"><img src="" alt=""></div>
+                <div class="content blue"><img src="" alt=""></div>
+            </div>
+        </section>
+        <section class="btn-container">
+            <button type="button" id="controlTime">⏸</button>
+            <button type="button" id="left-btn">&larr;</button>
+            <div class="cursor-progress">
+
+            </div>
+            <button type="button" id="right-btn">&rarr;</button>
+        </section>
+    </main>
+
+    <script>
+        // 畫面顯示數量
+        const contentShow = 1;
+        // 輪播動畫秒數
+        const moveSpeed = 1.5;
+        // 輪播位置
+        let position = 0;
+        // 內容間隔
+        let contentSpace = 0;
+        // 暫停/開始
+        let control = true;
+        // 自動播放時間間隔
+        let timer = 1500;
+        let start;
+        // 防止連續點擊
+        let disableMove = false;
+        // 視窗大小變動時延遲
+        let resizeTimeout;
+        const carousel = document.querySelector('.carousel');
+        const container = document.querySelector('.container');
+        let allContent = document.querySelectorAll('.content');
+        const leftBtn = document.querySelector('#left-btn');
+        const rightBtn = document.querySelector('#right-btn');
+        const controlTimeBtn = document.querySelector('#controlTime');
+
+        function move(step) {
+            if (disableMove) return;
+
+            disableMove = true;
+            position -= step;
+
+            container.style.transition = `transform ${moveSpeed}s ease-in-out`;
+            container.style.transform = `translateX(-${contentSpace * position}px)`;
+
+            // 等待動畫結束再進行無縫跳轉
+            setTimeout(() => {
+                if (position <= 0) {
+                    position = allContent.length - 2 * contentShow;
+                    container.style.transition = 'none';
+                    container.style.transform = `translateX(-${contentSpace * position}px)`;
+                } else if (position >= allContent.length - contentShow) {
+                    position = contentShow;
+                    container.style.transition = 'none';
+                    container.style.transform = `translateX(-${contentSpace * position}px)`;
+                }
+                disableMove = false;
+
+            }, moveSpeed * 1000);
+
+            setTimeout(() => {
+                updateProgress();
+            }, 0)
+        }
+
+        function insertClonedSlider() {
+            const firstContent = allContent[0];
+            const lastContent = allContent[allContent.length - 1];
+
+            // 複製前面幾個元素並插入到最後
+            Array.from(allContent)
+                .slice(0, contentShow)
+                .forEach((el) => lastContent.insertAdjacentElement("afterend", el.cloneNode(true)));
+
+            // 複製陣列的尾部元素。並插入到最前
+            Array.from(allContent)
+                .slice(-contentShow)
+                .forEach((el) => firstContent.insertAdjacentElement("beforebegin", el.cloneNode(true)));
+
+            // DOM 本身是動態的，但 querySelectorAll 返回的 NodeList 是 靜態的（非即時更新）
+            allContent = document.querySelectorAll('.content');// 重新取得所有內容
+        }
+
+        function contentSize() {
+            // 讀取輪播寬度
+            const carouselWidth = carousel.offsetWidth / contentShow;
+            // 內容間距(getComputedStyle取得元素當前計算後的 CSS 樣式，即 最終渲染到畫面上的樣式。)
+            const gap = parseInt(getComputedStyle(allContent[0]).marginRight) || 0;
+            // 內容寬度
+            const contentWidth = carouselWidth - gap * (contentShow - 1) / contentShow;
+
+            allContent.forEach((e) => {
+                e.style.width = `${contentWidth}px`;
+            });
+
+            //輪播時，每次移動的距離。(.offsetLeft 是該元素相對於父層的 left 值)
+            contentSpace = allContent[1].offsetLeft - allContent[0].offsetLeft;
+
+            carousel.style.height = `${allContent[0].offsetHeight}px`;
+
+            // 初始位置設定
+            position = contentShow;
+            container.style.transform = `translateX(-${contentSpace * position}px)`;
+        }
+
+        function togglePlay() {
+            if (control) {
+                clearInterval(start);
+                controlTimeBtn.textContent = '▶';
+            } else {
+                start = setInterval(() => move(-1), timer);
+                controlTimeBtn.textContent = '⏸';
+            }
+            control = !control;
+
+        }
+
+        function startAutoPlay() {
+            start = setInterval(() => move(-1), timer);
+        }
+
+
+        function progress() {
+            const cursorProgress = document.querySelector('.cursor-progress');
+
+            for (let i = 0; i < allContent.length - 2; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('progress-dot');
+                if (i === 0) dot.classList.add('active')
+                cursorProgress.append(dot);
+            }
+
+        }
+
+        function updateProgress() {
+            let realContentLength = allContent.length - 2 * contentShow;
+
+            // 讓 position 限制在有效範圍內
+            // position 不是從 0 開始，而是從 contentShow 開始 但進度是從0開始
+            // (position - contentShow) = realContentLength 進度為0
+            let index = (position - contentShow) % realContentLength;
+
+            // 避免負數索引
+            if (index < 0) index += realContentLength;
+            // console.log(index);
+            document.querySelectorAll('.progress-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // 初始化輪播
+        insertClonedSlider();
+        contentSize();
+        startAutoPlay();
+        progress();
+
+        // 綁定事件
+        controlTimeBtn.addEventListener('click', togglePlay);
+        leftBtn.addEventListener('click', () => move(1));
+        rightBtn.addEventListener('click', () => move(-1));
+
+        // resize事件會在視窗大小變更時觸發,讓輪播可以適應不同螢幕大小
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(contentSize, 200); 
+        });
+
+
+    </script>
+
+</body>
+
+</html>

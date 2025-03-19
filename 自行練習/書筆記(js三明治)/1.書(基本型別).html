@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ===========================================
+        // typeof可察看語法
+        typeof 100;
+        typeof '100';
+
+        console.log(typeof 100);
+
+        // ===========================================
+        // 字串 特性可以相加
+        let str = ' hello goodbye ';
+        let str1 = ' 你好 再見 ';
+        let str2 = ' 1111';
+        let str01 = str + str1 + str2;
+        console.log(str01);
+
+        // ===========================================
+        // 字串模板 `${}`=>// 模板字串 的功能是直接插入變數的值或表達式的結果，而不改變變數的型別。
+        // 僅將插入的結果視為 字串的一部分 來處理。
+
+        let intro = `hello goodbye ${str} 1111`;
+        console.log(intro);
+        console.log(typeof `${str}`);
+
+        // ===========================================
+        //轉型成字串 String()函式 可將非字串數值轉成字串型別
+        let age = 18;
+        let ageString = String(age);
+        console.log(ageString);
+
+        // String()函式可讀性差 因此可利用字串相加觸發js[強制轉型]
+        /*[強制轉型] 表示當運算值兩邊的數值為不同型別時,
+         js會替你嘗試將兩邊數值轉成相同的型別*/
+
+        let year = 2021;
+        /*運算符 + 是字串連接符號， 當一個數字（2021）
+        與字串（""）進行相加操作時，
+        JavaScript 會自動將數字轉換成字串。*/
+
+        let yearString = 2021 + "";// 強制轉型為字串
+        let yearStringTemplate = `${yearString}`;
+
+        console.log(yearString);
+        console.log(yearStringTemplate);
+
+        // `${}`和String()差異? gpt
+        // ===========================================
+        // 基本數值使用
+        let no1 = 10;
+        let no2 = no1 + 66;
+        console.log(no2);
+        let no3 = no1 * 66;
+        console.log(no3);
+        // ===========================================
+        // 轉型成數值 Number函式
+        let numberString = "20";
+        // 將字串轉為數值
+        Number(numberString);
+        console.log(typeof Number(numberString));
+        // ===========================================
+        // 轉型成數值-parseInt 整數 ,parseFloat浮點數(有小數點數字)
+        // parseFloat套進parseInt會變整數
+        let stringNumber = parseInt('1.666');
+        console.log(stringNumber);
+
+        let stringNumber2 = parseFloat('1.666');
+        console.log(stringNumber2);
+
+        // 也可利用強制轉型成數值
+        // 當只把單一數值與+號一起使用,就會把+號後的值轉成數字
+        // 缺點:閱讀性 可能有影響
+        let stringNumber3 = + "20";
+        console.log(typeof stringNumber3);
+
+        // ===========================================
+        // NaN是一個數值型別 當不是數值型別與數值一起運算或想
+        // 轉型成為數值型時,若這個型別無法正常計算成果或無法轉為數值
+        // 會回傳NaN
+        let str5 = Number('111+gggg');
+        console.log(str5);
+
+        // ===========================================
+        // undefined 變數宣告預設值 此型別只有一個與之相同名稱的數值,
+        // 可用來表示某變數已經被宣告,但未被定義數值內容
+        let newVarible;
+        console.log(newVarible);
+        // 未經宣告報錯
+        // console.log(newVarible2);
+
+        // ===========================================
+        // null 空值 代表這個變數沒有內容
+        // 可用來想讓這個變數值是空的
+        let newVarible3 = null;
+        console.log(newVarible3);
+        // null屬性是object可能為bug
+
+        // ===========================================
+        // Boolean布林值 true false
+        // 最常使用於某條件成立做某件事(if判式)
+        // Boolean的全域函數可將非布林型別墅值型別轉為布林值
+        // !=>反向運算子 兩次得正  
+        // undefined null 數值0 和空字串 轉為布林值為false
+        let someString = 'hello';
+        let emptyString = '';
+        let zero = 0;
+        console.log(!!someString);
+        console.log(!!emptyString);
+        console.log(!!zero);
+
+        // ===========================================
+        // 物件object 一連串鍵與值配對的組合
+        // 物件是一個個的名稱和對應內容聚集在一起所形成的結果
+        // 創建一個物件 用{大括號}來創建一個物件
+        let anObject = {
+            key1: 'value1',
+            key2: 'value2',
+        }
+        console.log(anObject);
+        console.log(typeof anObject);
+
+        // 物件屬性的存取
+        // 一般的變數宣告並被賦值後,
+        // 會用該變數的名稱表示要存取的對應內容,
+        // 而如果這個變數裡面存放的是物件則可用[中括號]和
+        // 小點符號. 來拿到物件裡的內容
+        console.log(anObject.key1);
+        // 可發現所有物件的屬性名都是字串型別(就算不是也會被轉成字串)
+        console.log(anObject['key1']);
+
+        // 使用方式與變數相同 但若使用不存在物件裡的屬性名稱,
+        // 來存取某物件,不會像未宣告變數拿來使用那樣發生錯誤,
+        // 而是顯示undefined的結果而已
+        console.log(anObject['key3']);
+
+        // 物件屬性對應的內容沒有限制可存放的型別,
+        // 可在物件某個屬性內容放入另一個物件
+
+        // ===========================================
+        // 陣列Array 與陣列像 但使用上有差異 
+        // 陣列是把一系列的數值放在一起所形成的組合
+        // 物件是一個個的名稱和對應內容聚集在一起所形成的結果
+        let = ['x', 2];
+        // 物件宣告是{}存取是[]和. 陣列宣告是[]存取[]
+        // 陣列不像物件一樣有明確屬性對哪一個內容作存取
+        // 所以會從第0個元素開始給每個元素一個足以區別內容的號碼
+        // 稱之[索引]index
+        let array = ['1', '2', '3'];
+        console.log(array[0]);
+
+        // .length 存取陣列元素長度
+        console.log(array.length);
+        console.log(typeof array.length);
+
+        // ===========================================
+        // 轉型成字串:
+        // 在想轉型的數值後,利用一個空字串與之相加
+        let num = 5 + '';
+        console.log(typeof num);
+        // 轉型成數值:
+        // 利用加法運算子 + 利用一元運算子的格式
+        let num2 = +'你好';
+        console.log(typeof num2);
+        // 轉型成布林值:
+        // 用!!得到與數值對等的布林值
+        let num3 = !!5;
+        console.log(typeof num3);
+    </script>
+</body>
+
+</html>

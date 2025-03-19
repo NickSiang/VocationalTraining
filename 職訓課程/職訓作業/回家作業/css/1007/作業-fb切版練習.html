@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fb切版練習</title>
+</head>
+<style>
+    /* 問題 */
+    /* 視窗縮小部分物件無法跟著等比縮小(狀態列可以跟著頭像去變動) */
+    /* z-index使用方式是否有誤 好友小圖像(可以) */
+    /* 關於 % 和 px 和 calc()使用時機 施作時主要依靠視覺上來排班*/
+
+    body {
+        background-color: white;
+        height: 3000px;
+        margin: 0;
+    }
+
+    #nav {
+        background-color: white;
+        width: 100%;
+        height: 57px;
+        position: fixed;
+        z-index: 10;
+
+    }
+
+    #left {
+        width: 25%;
+        height: 100%;
+        float: left;
+        position: relative;
+
+    }
+
+    #fb-icon {
+        background-image: url(./svg/svgexport-1.svg);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        position: relative;
+        left: 16px;
+        top: 8px;
+
+    }
+
+    #search {
+        background-color: rgb(242, 242, 242);
+        width: 280px;
+        height: 40px;
+        border-radius: 20px;
+        position: absolute;
+        left: 64px;
+        top: 8px;
+    }
+
+    #search-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url(./svg/svgexport-3.svg);
+        background-size: cover;
+        position: absolute;
+        left: 12px;
+        top: 12px;
+
+    }
+
+    #search-text {
+        color: gray;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        position: absolute;
+        left: 36px;
+        top: 10px;
+    }
+
+    #middle {
+        width: 50%;
+        height: 100%;
+        float: left;
+        position: relative;
+
+    }
+
+    #house-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url(./svg/svgexport-4.svg);
+        background-size: cover;
+        position: absolute;
+        left: calc(26% - 12px);
+        top: 16px;
+    }
+
+    #market-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url(./svg/svgexport-5.svg);
+        background-size: cover;
+        position: absolute;
+        left: calc(42% - 12px);
+        top: 16px;
+    }
+
+    #friend-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url(./svg/svgexport-6.svg);
+        background-size: cover;
+        position: absolute;
+        left: calc(58% - 12px);
+        top: 16px;
+    }
+
+    #game-icon {
+        width: 24px;
+        height: 24px;
+        background-image: url(./svg/svgexport-7.svg);
+        background-size: cover;
+        position: absolute;
+        left: calc(74% - 12px);
+        top: 16px;
+    }
+
+    #right {
+
+        width: 25%;
+        height: 100%;
+        float: left;
+        position: relative;
+
+    }
+
+    #menu-icon {
+        background-color: rgb(230, 230, 230);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        float: left;
+        position: relative;
+        left: 178px;
+        top: 8px;
+    }
+
+    #menu1-icon {
+        background-image: url(./svg/svgexport-8.svg);
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+
+    }
+
+    #message-icon {
+        background-color: rgb(230, 230, 230);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        float: left;
+        position: relative;
+        left: 186px;
+        top: 8px;
+    }
+
+    #message1-icon {
+        background-image: url(./svg/svgexport-9.svg);
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+
+    }
+
+    #bell-icon {
+        background-color: rgb(230, 230, 230);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        float: left;
+        position: relative;
+        left: 194px;
+        top: 8px;
+    }
+
+    #bell1-icon {
+        background-image: url(./svg/svgexport-10.svg);
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+
+    }
+
+    #avatar-icon {
+        background-image: url(./svg/avatar-icon.jpg);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        float: left;
+        position: relative;
+        left: 202px;
+        top: 8px;
+    }
+
+    #arrow-icon {
+        background-color: rgb(230, 230, 230);
+        width: 12px;
+        height: 12px;
+        border: 2px white solid;
+        border-radius: 50%;
+        position: absolute;
+        left: 65%;
+        top: 65%;
+
+    }
+
+    #arrow1-icon {
+        background-image: url(./svg/svgexport-12.svg);
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        left: 28px;
+        top: 28px;
+
+    }
+
+
+    #all {
+         width: 100%;
+        padding-top: 56px;
+        background: linear-gradient(to bottom, rgb(66, 66, 66), white);
+        }
+
+
+
+
+    #banner {
+        background-color: blueviolet;
+        width: 72%;
+        height: 300px;
+        background-image: url(./images/table.jpg);
+        background-size: cover;
+        background-position: center;
+        padding-top: 106px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        margin: auto;
+        position: relative;
+    }
+
+    #avatar {
+        background-color: black;
+        width: 170px;
+        height: 170px;
+        background-image: url(./images/avatar.jpg);
+        background-size: cover;
+        border: 4px white solid;
+        border-radius: 50%;
+        position: absolute;
+        left: 30px;
+        bottom: -145px;
+        z-index: 10;
+    }
+
+    #camera-icon {
+        background-color: rgb(220, 220, 220);
+        background-image: url(./svg/camera-icon.jpg);
+        background-size: cover;
+        width: 32px;
+        height: 32px;
+        border: 2px white solid;
+        border-radius: 50%;
+        position: absolute;
+        left: 75%;
+        top: 75%;
+
+    }
+
+    #name {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600px;
+        font-size: 35px;
+        height: 50px;
+        width: 180px;
+        position: absolute;
+        top: 30%;
+        left: 110%;
+    }
+
+    #friends {
+        font-family: Arial, Helvetica, sans-serif;
+        color: gray;
+        font-size: 15px;
+        height: 50px;
+        width: 180px;
+        position: absolute;
+        top: 55%;
+        left: 110%;
+
+    }
+
+    #small-camera-icon {
+        width: 130px;
+        height: 40px;
+        background: rgb(218, 210, 210);
+        border-radius: 8px;
+        position: absolute;
+        left: 85%;
+        top: 85%;
+    }
+
+    #small-camera-icon1 {
+        background-image: url(./svg/camera-icon.jpg);
+        height: 27px;
+        width: 27px;
+        border-radius: 50%;
+        background-size: cover;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+    }
+
+    #small-camera-icon2 {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        position: absolute;
+        left: 35px;
+        top: 10px;
+    }
+
+
+    #intro {
+        width: 100%;
+        height: 12%;
+        position: relative;
+        top: 130%;
+    }
+
+    #intro1 {
+        background-image: url(./images/f1.jpg);
+        width: 40px;
+        height: 40px;
+        border: 2px white solid;
+        border-radius: 50%;
+        background-size: cover;
+        position: absolute;
+        left: 20%;
+        z-index: 10;
+        /* 不確定是否可這樣使用 */
+    }
+
+    #intro2 {
+        background-image: url(./images/f2.jpg);
+        width: 40px;
+        height: 40px;
+        border: 2px white solid;
+        background-position: center;
+        border-radius: 50%;
+        background-size: cover;
+        position: absolute;
+        left: 23%;
+        z-index: 9;
+    }
+
+    #intro3 {
+        background-image: url(./images/f3.jpg);
+        width: 40px;
+        height: 40px;
+        border: 2px white solid;
+        border-radius: 50%;
+        background-size: cover;
+        position: absolute;
+        left: 26%;
+        z-index: 8;
+    }
+
+    #plus-icon {
+        width: 150px;
+        height: 100%;
+        background-color: rgb(60, 75, 238);
+        border-radius: 8px;
+        position: absolute;
+        left: 65%;
+
+    }
+
+    #plus-icon1 {
+        color: white;
+        position: absolute;
+        left: 18px;
+        top: 7px;
+
+    }
+
+    #plus-icon2 {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        position: absolute;
+        left: 36px;
+        top: 7px;
+    }
+
+    #pen-icon {
+        width: 150px;
+        height: 100%;
+        background-color: rgba(205, 205, 205, 0.975);
+        border-radius: 8px;
+        position: absolute;
+        left: 80%;
+    }
+
+    #pen-icon1 {
+        background-image: url(./svg/pen.jpg);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-size: cover;
+        position: absolute;
+        left: 18px;
+        top: 6px;
+
+    }
+
+    #pen-icon2 {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        position: absolute;
+        left: 50px;
+        top: 7px;
+    }
+
+    #check-icon {
+        width: 50px;
+        height: 100%;
+        background-color: rgba(205, 205, 205, 0.975);
+        border-radius: 8px;
+        position: absolute;
+        left: 95%;
+    }
+
+    #check-icon1 {
+        background-image: url(./svg/svgexport-12.svg);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-size: cover;
+        position: absolute;
+        left: 15px;
+        top: 6px;
+
+    }
+</style>
+
+<body>
+    <div id="nav">
+        <div id="left">
+            <div id="fb-icon"></div>
+            <div id="search">
+                <div id="search-icon"></div>
+                <div id="search-text">搜尋 Facebook</div>
+            </div>
+        </div>
+
+        <div id="middle">
+            <div id="house-icon"></div>
+            <div id="market-icon"></div>
+            <div id="friend-icon"></div>
+            <div id="game-icon"></div>
+        </div>
+        <div id="right">
+            <div id="menu-icon">
+                <div id="menu1-icon"></div>
+            </div>
+            <div id="message-icon">
+                <div id="message1-icon"></div>
+            </div>
+            <div id="bell-icon">
+                <div id="bell1-icon"></div>
+            </div>
+            <div id="avatar-icon">
+                <div id="arrow-icon"></div>
+                <div id="arrow1-icon"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="all">
+        <div id="banner">
+
+            <div id="avatar">
+                <div id="camera-icon"></div>
+
+                <div id="name">Tom Nook</div>
+                <div id="friends">666位朋友</div>
+            </div>
+            <div id="small-camera-icon">
+                <div id="small-camera-icon1"></div>
+                <div id="small-camera-icon2">編輯封面照片</div>
+            </div>
+            <div id="intro">
+                <div id="intro1"></div>
+                <div id="intro2"></div>
+                <div id="intro3"></div>
+                <div id="plus-icon">
+                    <div id="plus-icon1">+</div>
+                    <div id="plus-icon2">新增到限時動態</div>
+
+                </div>
+                <div id="pen-icon">
+                    <div id="pen-icon1"></div>
+                    <div id="pen-icon2">編輯個人檔案</div>
+                </div>
+
+                <div id="check-icon">
+                    <div id="check-icon1">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+</body>
+
+</html>

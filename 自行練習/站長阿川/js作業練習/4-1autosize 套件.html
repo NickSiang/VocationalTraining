@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        form {
+            width:fit-content;
+            margin: 80px auto;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-shadow: 0px 0px 8px 5px rgba(175, 175, 175, 0.26);
+            border-radius: 20px;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <form action="">
+        <input type="text" name="" id="" placeholder="請輸入暱稱">
+        <textarea name="" id="myTextarea" placeholder="請輸入留言"></textarea>
+        <button type="submit" id="submit" onclick="prevent(event)">送出</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/3.0.20/autosize.min.js"></script>
+
+    <script>
+        autosize(document.querySelector('#myTextarea'));
+        
+        function prevent(e){
+            e.preventDefault();
+        }
+    </script>
+
+</body>
+
+</html>

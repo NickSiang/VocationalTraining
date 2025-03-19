@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .big-box {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            position: relative;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: translate(-100%, -100%);
+            animation-name: roll-ball;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+        }
+
+
+        @keyframes roll-ball {
+
+
+            0% {
+                background-color: red;
+                left: 0;
+                top: 0;
+                transform: translate(-100%, -100%);
+            }
+
+            12% {
+                background-color: red;
+                left: 0;
+                top: 0;
+                opacity: 0.8;
+                transform: translate(-100%, -100%);
+            }
+
+            25% {
+                background-color: yellow;
+                left: 100%;
+                top: 0;
+                transform: translate(0, -100%);
+            }
+
+            37% {
+                background-color: yellow;
+                opacity: 0.8;
+                left: 100%;
+                top: 0;
+                transform: translate(0, -100%);
+            }
+
+            50% {
+                background-color: greenyellow;
+                left: 100%;
+                top: 100%;
+                transform: translate(0, 0);
+            }
+
+            62% {
+                background-color: greenyellow;
+                opacity: 0.8;
+                left: 100%;
+                top: 100%;
+                transform: translate(0, 0);
+            }
+
+            75% {
+                background-color: blue;
+                left: 0;
+                top: 100%;
+                transform: translate(-100%, 0);
+            }
+
+            87% {
+                background-color: blue;
+                opacity: 0.8;
+                left: 0;
+                top: 100%;
+                transform: translate(-100%, 0);
+            }
+
+            100% {
+                background-color: purple;
+                left: 0;
+                top: 0;
+
+                transform: translate(-100%, -100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big-box">
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

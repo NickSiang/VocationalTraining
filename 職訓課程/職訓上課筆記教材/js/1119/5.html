@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" class="n1">
+    <input type="number" class="n2">
+    <br/><br/>
+    <button type="button" class="add">+</button>
+    <button type="button" class="sub">-</button>
+    <button type="button" class="mult">*</button>
+    <button type="button" class="divide">/</button>
+    <button type="button" class="mod">%</button>
+    <br />
+    結果<span class="result"></span>
+    <script>
+        // DOM的操作
+        let num1 = document.querySelector('.n1');
+        let num2 = document.querySelector('.n2');
+
+        let add = document.querySelector('.add');
+        let sub = document.querySelector('.sub');
+        let mult = document.querySelector('.mult');
+        let divide = document.querySelector('.divide');
+        let mod = document.querySelector('.mod');
+        let result = document.querySelector('.result');
+
+
+
+        add.addEventListener('click', function () {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 + num2Value * 1
+            // let total2 = Number(num1Value) + Number(num2Value)
+            result.textContent = total;
+        });
+
+        sub.addEventListener('click', function () {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 - num2Value * 1
+            // let total2 = Number(num1Value) + Number(num2Value)
+            result.textContent = total;
+        });
+
+        mult.addEventListener('click', function () {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 * num2Value * 1
+            // let total2 = Number(num1Value) + Number(num2Value)
+            result.textContent = total;
+        });
+
+        divide.addEventListener('click', function () {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 / num2Value * 1
+            // let total2 = Number(num1Value) + Number(num2Value)
+            result.textContent = total;
+        });
+
+        mod.addEventListener('click', function () {
+            let num1Value = num1.value;
+            let num2Value = num2.value;
+            let total = num1Value * 1 % num2Value * 1
+            // let total2 = Number(num1Value) + Number(num2Value)
+            result.textContent = total;
+        });
+
+        // 從input取出都是字串
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="score">
+
+        國文<input type="number" name="" id="" v-model="ch"><br /><br />
+        英文<input type="number" name="" id="" v-model="en"><br /><br />
+        數學<input type="number" name="" id="" v-model="ma"><br /><br />
+        <br /><br />
+
+        <button type="button" @click="calc">計算</button>
+
+        平均:{{avr}}<br />
+
+
+        <div v-if="avr==''"></div>
+        <div v-else-if="av>59">及格</div>
+        <div v-else>不及格</div>
+    </div>
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+
+        const { createApp } = Vue
+
+        createApp({
+
+            data() {
+                return {
+                    ch: '',
+                    en: '',
+                    ma: '',
+                    avr: '',
+                }
+            },
+            methods: {
+                calc() {
+                    let total = parseInt(this.ch) + parseInt(this.en) + parseInt(this.ma);
+                    this.avr = (total / 3).toFixed(1);
+                }
+
+            }
+
+
+        }).mount('#score')
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAB</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* 自動計算面積效應 */
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: black;
+
+        }
+
+        .nav {
+            width: 100%;
+            height: 100px;
+            background-color: gray;
+
+            /* padding: 75px 80px; */
+
+
+        }
+
+        .nav-btn-all {
+            /* background-color: black; */
+            width: 370px;
+            height: 60px;
+            float: right;
+            margin: 20px;
+            
+
+
+
+            /* margin: 0 auto; */
+
+
+        }
+
+        .nav-btn {
+            background-color: blanchedalmond;
+            width: 110px;
+            height: 60px;
+            float: left;
+            margin-left: 10px;
+            /* margin-bottom: 10px; */
+            font-size: 32px;
+            line-height: 50px;
+            /* border:2px  inset lightsalmon; */
+            /* border-top-style: groove; */
+            border-radius: 10px;
+
+        }
+
+        .logo {
+            background-image: url(./images/avatar.jpg);
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            float: left;
+            margin: 10px;
+            
+        }
+
+        .container {
+            background-color: lightgray;
+            width: 100%;
+            height: calc(100% - 100px);
+            /* height: calc(100% - (100vh - 570px) / 2); */
+            float: left;
+            /* padding-top: calc((100vh - 570px) / 2); */
+        }
+
+        .content {
+            /* background: lightpink; */
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            padding: 70px 40px;
+
+        }
+
+        .img {
+            background-color: blue;
+            background: center;
+            width: calc((100% - 20px) / 3);
+            height: calc(50% - 5px);
+            float: left;
+            border-radius: 10px;
+
+
+        }
+
+        .img-1 {
+            width: 100%;
+            background-image: url(./images/t1.jpg);
+            margin-bottom: 10px;
+        }
+
+        .img-2 {
+            width: calc(50% - 5px);
+            background-image: url(./images/t2.jpg);
+            margin-right: 10px;
+        }
+
+        .img-3 {
+            width: calc(50% - 5px);
+            background-image: url(./images/t3.jpg);
+        }
+
+        .img:hover {
+            /* transform: scale(1.05); */
+            /* transform: scale(0.9); */
+            opacity: 0.6;
+            transform: rotateY(180deg) scale(0.8);
+            transition: 2s;
+            border-radius: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="nav">
+        <!-- 漢堡條在此 之後要加 -->
+        <div class="logo"></div>
+        <div class="nav-btn-all">
+            <a href="" class="nav-btn nav-btn-1">1</a>
+            <a href="" class="nav-btn nav-btn-2">2</a>
+            <a href="" class="nav-btn nav-btn-3">3</a>
+    </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <!-- 包進圖片的容器 -->
+            <div class="img img-1"></div>
+            <div class="img img-2"></div>
+            <div class="img img-3"></div>
+        </div>
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<!-- crtl+f可以去查詢 -->

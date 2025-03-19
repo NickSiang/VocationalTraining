@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            margin-bottom: 10px;
+        }
+
+        li span {
+            margin-right: 22px;
+        }
+
+        li button {
+            margin: 0 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="textInput">
+    <button onclick="add()">新增</button>
+    
+    <select id="list-rank">
+        <option value="normal">一般</option>
+        <option value="important">重要</option>
+        <option value="urgent">緊急</option>
+    </select>
+    <div id="root">
+    </div>
+
+    <script>
+
+        var todos = [
+            {
+                title: "倒垃圾",
+                category: "normal",
+                isCompleted: false
+            },
+            {
+                title: "繳電話費",
+                category: "important",
+                isCompleted: false
+            },
+            {
+                title: "採買本週食材",
+                category: "urgent",
+                isCompleted: false
+            },
+        ];
+
+        function render() {
+            const root = document.querySelector('#root');
+            const allList = document.createElement('ul');
+            root.textContent = '';
+            root.append(allList);
+
+            todos.forEach((item, index) => {
+                const listLi = document.createElement('li');
+                const listSpan = document.createElement('span');
+                const doneSpan = document.createElement('span');
+                const doneBtn = document.createElement('button');
+                const deleteBtn = document.createElement('button');
+
+                doneSpan.textContent = '(已完成)'
+                
+                deleteBtn.textContent = '刪除';
+                listSpan.textContent = `${item.title}`;
+
+                allList.append(listLi);
+                listLi.append(listSpan);
+                listSpan.append(doneSpan);
+                listLi.append(doneBtn);
+                listLi.append(deleteBtn);
+
+                if (item.category == 'normal') {
+                    listSpan.style.color = 'green'
+                } else if (item.category == 'important') {
+                    listSpan.style.color = 'orange'
+                } else if (item.category == 'urgent') {
+                    listSpan.style.color = 'red'
+                }
+
+                if (item.isCompleted == false) {
+                    doneSpan.style.display = 'none'
+                    doneBtn.textContent = '標示為已完成'
+                } else if (item.isCompleted == true) {
+                    doneSpan.style.display = 'inline-block'
+                    doneBtn.textContent = '標示為未完成'
+                }
+
+
+                doneBtn.onclick = () => {
+                    if (!todos[index].isCompleted) {
+                        todos[index].isCompleted = true;
+                    }else if(todos[index].isCompleted){
+                        todos[index].isCompleted = false;
+                    }
+                    render();
+                }
+
+                deleteBtn.onclick = () => {
+                    todos.splice(index, 1);
+                    render();
+                }
+            })
+        };
+
+        function add() {
+            const textInput = document.querySelector('#textInput');
+            const listRank = document.querySelector('#list-rank');
+
+            todos.push({ title: `${textInput.value}`, category: `${listRank.value}`, isCompleted: false});
+            textInput.value = '';
+            listRank.value = 'normal';
+            render();
+        }
+
+        render();
+
+    </script>
+</body>
+
+</html>

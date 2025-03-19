@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>無縫輪播（帶進度點）</title>
+    <style>
+        *,
+        ::before,
+        ::after {
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            height: 600px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffffa3;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter:blur(20px);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        .carousel-control-prev {
+            left: 10px;
+        }
+
+        .carousel-control-next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="carousel">
+        <div class="carousel-inner">
+        </div>
+        <div class="carousel-control carousel-control-prev">&#10094;</div>
+        <div class="carousel-control carousel-control-next">&#10095;</div>
+        <div class="carousel-indicators"></div>
+
+    </div>
+
+    <script>
+        const carouselInner = document.querySelector(".carousel-inner");
+        const prevBtn = document.querySelector(".carousel-control-prev");
+        const nextBtn = document.querySelector(".carousel-control-next");
+        const indicatorsContainer = document.querySelector(".carousel-indicators");
+
+        let img = [
+            `https://images.unsplash.com/photo-1738066246945-81af71b60493?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
+            `https://images.unsplash.com/photo-1739312025707-bbf6765973b3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
+            `https://images.unsplash.com/photo-1739047855450-27615bc98bc5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
+            `https://images.unsplash.com/photo-1504446659705-07c22b96c3fd?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
+            `https://images.unsplash.com/photo-1740121565887-efe5b47fe9fb?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`
+        ]
+
+        let items = [
+            `<div class="carousel-item red"><img src="${img[0]}" alt=""></div>`,
+            `<div class="carousel-item blue"><img src="${img[1]}" alt=""></div>`,
+            `<div class="carousel-item green"><img src="${img[2]}" alt=""></div>`,
+            `<div class="carousel-item green"><img src="${img[3]}" alt=""></div>`,
+            `<div class="carousel-item green"><img src="${img[4]}" alt=""></div>`,
+        ];
+
+        // **克隆首尾元素，插入到開頭與結尾**
+        carouselInner.innerHTML =
+            items[items.length - 1] +  // 克隆最後一張放到最前面
+            items.join("") +           // 原始內容
+            items[0];                  // 克隆第一張放到最後面
+
+        // **生成進度點**
+        items.forEach((_, i) => {
+            const indicator = document.createElement("div");
+            indicator.classList.add("indicator");
+            indicator.dataset.index = i;
+            indicatorsContainer.append(indicator);
+        });
+
+        let index = 1; // **從第一張（實際上是第二個元素）開始**
+        let totalItems = document.querySelectorAll(".carousel-item").length;
+        let isTransitioning = false; // 防止連點
+        let indicators = document.querySelectorAll(".indicator");
+
+        function updateCarousel() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            carouselInner.style.transition = "transform 0.5s ease-in-out";
+            carouselInner.style.transform = `translateX(-${index * 100}%)`;
+
+            setTimeout(() => {
+                if (index === 0) {
+                    index = totalItems - 2;
+                    carouselInner.style.transition = "none";
+                    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+                } else if (index === totalItems - 1) {
+                    index = 1;
+                    carouselInner.style.transition = "none";
+                    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+                }
+                isTransitioning = false;
+                updateIndicators();
+            }, 500);
+        }
+
+        function updateIndicators() {
+            indicators.forEach(ind => ind.classList.remove("active"));
+
+            let realIndex = index - 1; // 確保指示點對應正確的圖片
+            if (realIndex < 0) realIndex = items.length - 1;
+            if (realIndex >= items.length) realIndex = 0;
+            indicators[realIndex].classList.add("active");
+        }
+
+        prevBtn.addEventListener("click", () => {
+            if (!isTransitioning) {
+                index--;
+                updateCarousel();
+            }
+        });
+
+        nextBtn.addEventListener("click", () => {
+            if (!isTransitioning) {
+                index++;
+                updateCarousel();
+            }
+        });
+
+        let autoPlay = setInterval(() => {
+            index++;
+            updateCarousel();
+        }, 3000);
+
+        // 滑鼠懸停暫停輪播，移開繼續播放
+        document.querySelector(".carousel").addEventListener("mouseenter", () => clearInterval(autoPlay));
+        document.querySelector(".carousel").addEventListener("mouseleave", () => {
+            autoPlay = setInterval(() => {
+                index++;
+                updateCarousel();
+            }, 3000);
+        });
+
+        // **點擊進度點切換幻燈片**
+        indicators.forEach(indicator => {
+            indicator.addEventListener("click", (e) => {
+                if (!isTransitioning) {
+                    index = Number(e.target.dataset.index) + 1;
+                    updateCarousel();
+                }
+            });
+        });
+
+        // **初始化設定：將 `.carousel-inner` 位置移到正確的第一張**
+        carouselInner.style.transform = `translateX(-${index * 100}%)`;
+        updateIndicators(); // 設定初始進度點
+    </script>
+</body>
+
+</html>

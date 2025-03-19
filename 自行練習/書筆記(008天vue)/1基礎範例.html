@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <id id="app">
+        {{message}}
+        <!-- 在vue.js的Mustache模板語法裡,除了單純將data的內容
+         渲染至畫面外,也可以在裡面放一些簡單的運算式 -->
+        <br /><br />
+        {{number*5}}
+
+    </id>
+
+    <script src=" https://unpkg.com/vue@3/dist/vue.global.js">
+    </script>
+
+    <script>
+        // 3.0寫法
+
+        // 一開始須先建立一個Vue的物件實體
+        // 並將這個物件指訂製某個變數
+        const vm = Vue.createApp({
+            // Vue實體的定義狀態是透過data屬性來儲存
+            // 實體回傳的狀態會以物件Key-value的形式
+            data() {
+                const message = '你好啊';
+
+                return {
+                    message,
+                    number: 2,
+                }
+            }
+        });
+        // 會得到一個新的物件,而稱之為[vue.js的實體物件]
+
+        // 當建立Vue.js的實體物件時,還會引入一個物件參數
+        // 這個物件就是Vue.js實體的核心,通稱為[options物件]
+        // 在這個物件中會定義各式各樣ui與模板相關的狀態,事件,以及
+        // 要被呼叫的函式(或稱為方法)
+
+        // 等待需要時,再mount到某個節點上
+        vm.mount('#app')
+
+        // Vue實體被建立之後,Vue.js就會自動為這個實體加上
+        // $data屬性,我們就可以透過vm.$data.XXX來操作內部狀態
+
+        vm.$data.number = 5;
+
+
+        // 須注意若在createApp時並未將此實體同時掛載至某個DOM節點時
+        // 在變動vm.$data.XXX會跳出錯誤1.2.3
+
+
+
+
+    </script>
+
+</body>
+
+</html>

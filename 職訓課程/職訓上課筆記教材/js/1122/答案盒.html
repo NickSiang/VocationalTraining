@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .big-box {
+      background-color: aqua;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background-color: red;
+      width: 50%;
+      height: 50%;
+      border: 2px solid yellow;
+    }
+
+    .answer {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="big-box">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box answer"></div>
+  </div>
+  <script>
+    const answerBox = document.querySelector('.answer');
+    answerBox.addEventListener('click', function () {
+      alert('恭喜，你過關了');
+    });
+
+  </script>
+</body>
+
+</html>
